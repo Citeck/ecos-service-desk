@@ -1,0 +1,22 @@
+---
+id: petition-channels-type
+name:
+  ru: Канал обращения
+sourceType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@DEFAULT_FORM
+journalRef: uiserv/journal@petition-channels-journal
+inheritForm: false
+dispNameTemplate:
+  ru: ${channel}
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: code
+      name:
+        ru: Код
+        en: Code
+    - id: channel
+      name:
+        ru: Наименование канала
+        en: Channel name

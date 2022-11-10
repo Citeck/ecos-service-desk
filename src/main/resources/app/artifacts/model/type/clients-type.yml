@@ -1,0 +1,26 @@
+---
+id: clients-type
+name:
+  ru: Клиенты
+sourceType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@clients-form
+journalRef: uiserv/journal@clients-journal
+inheritForm: false
+dispNameTemplate:
+  ru: ${client}
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: clientCode
+      name:
+        ru: Код клиента
+        en: Client code
+    - id: client
+      name:
+        ru: Клиент
+        en: Client
+    - id: project
+      name:
+        ru: Проект
+        en: Project

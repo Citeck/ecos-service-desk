@@ -1,0 +1,17 @@
+---
+id: marks-journal
+name:
+  ru: Метки
+typeRef: emodel/type@marks-type
+editable: false
+columns:
+  - id: code
+    name:
+      ru: Код
+      en: Code
+    type: TEXT
+  - id: name
+    name:
+      ru: Наименование
+      en: Name
+    type: TEXT

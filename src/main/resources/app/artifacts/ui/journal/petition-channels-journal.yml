@@ -1,0 +1,17 @@
+---
+id: petition-channels-journal
+name:
+  ru: Канал обращения
+typeRef: emodel/type@petition-channels-type
+editable: false
+columns:
+  - id: code
+    name:
+      ru: Код
+      en: Code
+    type: TEXT
+  - id: channel
+    name:
+      ru: Наименование канала
+      en: Channel name
+    type: TEXT

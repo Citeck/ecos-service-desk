@@ -1,0 +1,22 @@
+---
+id: system-module-journal
+name:
+  ru: Модули системы
+typeRef: emodel/type@system-module-type
+editable: false
+columns:
+  - id: code
+    name:
+      ru: Код
+      en: Code
+    type: TEXT
+  - id: name
+    name:
+      ru: Наименование
+      en: Name
+    type: TEXT
+  - id: client
+    name:
+      ru: Клиент
+      en: Client
+    type: ASSOC

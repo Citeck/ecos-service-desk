@@ -1,0 +1,196 @@
+---
+id: sd-request-type
+name:
+  ru: Заявка SD
+sourceType: ECOS_MODEL
+parentRef: emodel/type@case
+formRef: uiserv/form@request-sd-form
+journalRef: uiserv/journal@sd-request-journal
+inheritForm: false
+dispNameTemplate:
+  ru: Заявка №${regNumber}
+defaultCreateVariant: true
+model:
+  roles:
+    - id: initiator-role
+      name:
+        ru: Инициатор
+        en: Initiator
+      attributes:
+        - initiator
+    - id: impl-first-line-role
+      name:
+        ru: Исполнитель 1-ой линии ТП
+        en: 1st support line implementer
+      assignees:
+        - GROUP_impl-first-line
+    - id: impl-second-line-role
+      name:
+        ru: Исполнители 2-ой линии ТП
+        en: 2nd support line implementer
+      assignees:
+        - GROUP_impl-second-line
+    - id: impl-third-line-role
+      name:
+        ru: Исполнители 3-ей линии ТП
+        en: 3rd support line implementers
+      assignees:
+        - GROUP_impl-third-line
+    - id: lead-tech-role
+      name:
+        ru: Руководитель ТП
+        en: Support lead
+    - id: add-partic-role
+      name:
+        ru: Дополнительный участник
+        en: Additional participant
+    - id: tech-role
+      name:
+        ru: Технолог ТП
+        en: Support technologist
+      assignees:
+        - GROUP_tech-group
+  statuses:
+    - id: request-new
+      name:
+        ru: Новый
+        en: New
+    - id: request-firstLine
+      name:
+        ru: Передано 1-ой линии ТП
+        en: Transferred on 1st support line
+    - id: request-first-line-work
+      name:
+        ru: В работе на 1-ой линии ТП
+        en: Working on 1st support line
+    - id: request-second-line
+      name:
+        ru: Передано 2-ой линии ТП
+        en: Transferred on 2nd support line
+    - id: request-second-line-work
+      name:
+        ru: В работе на 2-ой линии ТП
+        en: Working on 2nd support line
+    - id: request-third-line
+      name:
+        ru: Передано 3-ей линии ТП
+        en: Transferred on 3rd support line
+    - id: request-third-line-work
+      name:
+        ru: В работе на 3-ей линии ТП
+        en: Working on 3rd support line
+    - id: request-approve
+      name:
+        ru: Подтверждение выполнения заявки
+    - id: request-clarification
+      name:
+        ru: На уточнении
+        en: Clarify
+    - id: request-hold
+      name:
+        ru: На удержании
+        en: On hold
+    - id: request-closes
+      name:
+        ru: Закрыта
+        en: Closed
+  attributes:
+    - id: regNumber
+      name:
+        ru: Регистрационный номер
+        en: Registration number
+      mandatory: true
+    - id: client
+      name:
+        ru: Клиент
+        en: Client
+      type: ASSOC
+      config:
+        typeRef: emodel/type@clients-type
+      mandatory: true
+    - id: initiator
+      name:
+        ru: Инициатор
+        en: Initiator
+      type: PERSON
+      mandatory: true
+    - id: author
+      name:
+        ru: Автор
+        en: author
+    - id: petitionChannel
+      name:
+        ru: Канал обращения
+        en: Channel of petition
+      type: ASSOC
+      mandatory: true
+    - id: petitionType
+      name:
+        ru: Тип обращения
+        en: Type of petition
+      type: ASSOC
+      mandatory: true
+    - id: serviceType
+      name:
+        ru: Вид сервиса
+        en: Type of service
+      type: ASSOC
+      mandatory: true
+    - id: systemModule
+      name:
+        ru: Модуль системы
+        en: System module
+      type: ASSOC
+      mandatory: true
+    - id: letterTopic
+      name:
+        ru: Тема письма
+        en: Topic of the letter
+      mandatory: true
+    - id: letterContent
+      name:
+        ru: Содержание обращения
+        en: Letter content
+    - id: exampleLink
+      name:
+        ru: Ссылка на пример
+        en: Link to the example
+    - id: resolution
+      name:
+        ru: Резолюция
+        en: Resolution
+      mandatory: true
+    - id: mark
+      name:
+        ru: Метка
+        en: Mark
+      type: ASSOC
+      mandatory: true
+    - id: sla
+      name:
+        ru: SLA
+        en: SLA
+      type: ASSOC
+    - id: firstReactionTimestamp
+      name:
+        ru: Дата/Время первой реакции
+        en: Date/Time first reaction
+      type: DATETIME
+    - id: closedTimestamp
+      name:
+        ru: Дата/Время закрытия
+        en: Closing Date/Time
+      type: DATETIME
+    - id: stoppingTimestamp
+      name:
+        ru: Дата/Время остановки
+        en: Stopping Date/Time
+      type: DATETIME
+    - id: implementer
+      name:
+        ru: Исполнитель
+        en: Implementer
+    - id: comment
+      name:
+        ru: Комментарий
+        en: Comment

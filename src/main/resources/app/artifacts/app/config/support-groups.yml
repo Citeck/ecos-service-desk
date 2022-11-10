@@ -1,0 +1,13 @@
+---
+id: service-desk-groups
+name:
+  ru: Группы SD
+  en: SD groups
+value:
+  - impl-first-line
+  - impl-second-line
+  - impl-third-line
+  - tech-group
+valueDef:
+  type: JSON
+  multiple: true

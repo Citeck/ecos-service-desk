@@ -1,0 +1,22 @@
+---
+id: service-types-type
+name:
+  ru: Виды сервиса
+sourceType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@service-types-form
+journalRef: uiserv/journal@service-types-journal
+inheritForm: false
+dispNameTemplate:
+  ru: ${name}
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: code
+      name:
+        ru: Код
+        en: Code
+    - id: name
+      name:
+        ru: Наименование
+        en: Name
