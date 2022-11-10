@@ -1,0 +1,23 @@
+---
+id: marks-type
+name:
+  ru: Метки
+sourceType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@marks-form
+journalRef: uiserv/journal@marks-journal
+inheritForm: false
+dispNameTemplate:
+  ru: ${name}
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: code
+      name:
+        ru: Код
+        en: Code
+      type: NUMBER
+    - id: name
+      name:
+        ru: Наименование
+        en: Name
