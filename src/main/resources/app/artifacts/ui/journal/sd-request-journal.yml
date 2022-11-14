@@ -5,10 +5,10 @@ name:
 typeRef: emodel/type@sd-request-type
 editable: false
 columns:
-  - id: regNumber
+  - id: _docNum
     name:
-      ru: Регистрационный номер
-      en: Registration number
+      ru: Номер заявки
+      en: Request number
     type: TEXT
   - id: client
     name:
