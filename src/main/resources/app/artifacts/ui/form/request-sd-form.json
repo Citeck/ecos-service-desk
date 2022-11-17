@@ -31,8 +31,7 @@
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "textfield",
-                "input": true,
-                "addAnother": "ecos.forms.btn.add-another"
+                "input": true
               }
             ],
             "type": "column",
@@ -52,29 +51,22 @@
                   "en": "Client"
                 },
                 "key": "client",
+                "disabled": true,
                 "modalTitle": "",
                 "journalId": "clients-journal",
                 "queryData": "",
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
-                "input": true,
-                "addAnother": "ecos.forms.btn.add-another"
+                "input": true
               }
             ]
           }
         ],
         "oneColumnInViewMode": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nshow = formMode != \"CREATE\"",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\nif(type == \"widget\" || formMode == \"CREATE\") {\n  show = false;\n}",
         "type": "columns",
-        "input": false,
-        "addAnother": "ecos.forms.btn.add-another"
-      },
-      {
-        "input": true,
-        "key": "horizontalLine2",
-        "addAnother": "ecos.forms.btn.add-another",
-        "type": "horizontalLine"
+        "input": false
       },
       {
         "label": {
@@ -94,7 +86,6 @@
                 "optionalWhenDisabled": false,
                 "type": "selectOrgstruct",
                 "input": true,
-                "addAnother": "ecos.forms.btn.add-another",
                 "defaultValue": ""
               }
             ],
@@ -115,28 +106,26 @@
                   "en": "Author"
                 },
                 "key": "author",
+                "disabled": true,
                 "defaultValue": "",
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "textfield",
-                "input": true,
-                "addAnother": "ecos.forms.btn.add-another"
+                "input": true
               }
             ]
           }
         ],
         "oneColumnInViewMode": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nshow = formMode != \"CREATE\"",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\nif(type == \"widget\" || formMode == \"CREATE\") {\n  show = false;\n}",
         "type": "columns",
-        "input": false,
-        "addAnother": "ecos.forms.btn.add-another"
+        "input": false
       },
       {
         "key": "table2",
         "numRows": 1,
         "type": "table",
         "input": false,
-        "addAnother": "ecos.forms.btn.add-another",
         "rows": [
           [
             {
@@ -165,8 +154,8 @@
                   "type": "selectJournal",
                   "input": true,
                   "tags": [],
-                  "addAnother": "ecos.forms.btn.add-another",
                   "queryData": "",
+                  "customActionRefs": [],
                   "placeholder": "",
                   "prefix": "",
                   "customClass": "",
@@ -218,12 +207,14 @@
                   "properties": {},
                   "shortcut": "",
                   "triggerChangeWhenCalculate": false,
+                  "addAnother": "Добавить ещё",
                   "customPredicateJs": "",
                   "queryDataJs": "",
                   "presetFilterPredicatesJs": "",
                   "hideCreateButton": false,
                   "hideEditRowButton": false,
                   "hideDeleteRowButton": false,
+                  "enableCreateButton": false,
                   "isFullScreenWidthModal": false,
                   "isSelectedValueAsText": false,
                   "isTableMode": false,
@@ -236,7 +227,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "etd4c3"
+                  "id": "e3nejui"
                 }
               ]
             },
@@ -266,8 +257,8 @@
                   "type": "selectJournal",
                   "input": true,
                   "tags": [],
-                  "addAnother": "ecos.forms.btn.add-another",
                   "queryData": "",
+                  "customActionRefs": [],
                   "placeholder": "",
                   "prefix": "",
                   "customClass": "",
@@ -319,12 +310,14 @@
                   "properties": {},
                   "shortcut": "",
                   "triggerChangeWhenCalculate": false,
+                  "addAnother": "Добавить ещё",
                   "customPredicateJs": "",
                   "queryDataJs": "",
                   "presetFilterPredicatesJs": "",
                   "hideCreateButton": false,
                   "hideEditRowButton": false,
                   "hideDeleteRowButton": false,
+                  "enableCreateButton": false,
                   "isFullScreenWidthModal": false,
                   "isSelectedValueAsText": false,
                   "isTableMode": false,
@@ -337,7 +330,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "evoptpai"
+                  "id": "e12pz6f"
                 }
               ]
             },
@@ -367,8 +360,8 @@
                   "type": "selectJournal",
                   "input": true,
                   "tags": [],
-                  "addAnother": "ecos.forms.btn.add-another",
                   "queryData": "",
+                  "customActionRefs": [],
                   "placeholder": "",
                   "prefix": "",
                   "customClass": "",
@@ -420,12 +413,14 @@
                   "properties": {},
                   "shortcut": "",
                   "triggerChangeWhenCalculate": false,
+                  "addAnother": "Добавить ещё",
                   "customPredicateJs": "",
                   "queryDataJs": "",
                   "presetFilterPredicatesJs": "",
                   "hideCreateButton": false,
                   "hideEditRowButton": false,
                   "hideDeleteRowButton": false,
+                  "enableCreateButton": false,
                   "isFullScreenWidthModal": false,
                   "isSelectedValueAsText": false,
                   "isTableMode": false,
@@ -438,7 +433,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "eqixk9"
+                  "id": "eju00fa"
                 }
               ]
             }
@@ -448,7 +443,6 @@
       {
         "input": true,
         "key": "horizontalLine3",
-        "addAnother": "ecos.forms.btn.add-another",
         "type": "horizontalLine"
       },
       {
@@ -461,8 +455,7 @@
         "refreshOn": [],
         "optionalWhenDisabled": false,
         "type": "textfield",
-        "input": true,
-        "addAnother": "ecos.forms.btn.add-another"
+        "input": true
       },
       {
         "label": {
@@ -477,8 +470,7 @@
         "refreshOn": [],
         "rows": 10,
         "type": "textarea",
-        "input": true,
-        "addAnother": "ecos.forms.btn.add-another"
+        "input": true
       },
       {
         "label": {
@@ -511,12 +503,10 @@
             }
           ]
         },
-        "defaultValue": "",
         "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode != \"CREATE\") {\n  const recordRef = _.get(instance, '_currentForm.options.actionRecord');\n  Citeck.Records.get(recordRef).load('_status?str')\n    .then(stat => stat == \"request-first-line-work\")\n} else {\n  show = false;\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\n\nshow = false;\n\nif(formMode != \"CREATE\") {\n  const recordRef = _.get(instance, '_currentForm.options.actionRecord');\n  Citeck.Records.get(recordRef).load('_status?str')\n    .then(stat => {\n      if( stat == \"request-first-line-work\" && type != \"widget\") {\n        instance.show(true)\n      }\n    })\n}",
         "type": "ecosSelect",
-        "input": true,
-        "addAnother": "ecos.forms.btn.add-another"
+        "input": true
       },
       {
         "label": {
@@ -545,8 +535,7 @@
                 "optionalWhenDisabled": false,
                 "type": "datetime",
                 "input": true,
-                "suffix": true,
-                "addAnother": "ecos.forms.btn.add-another"
+                "suffix": true
               }
             ],
             "type": "column",
@@ -580,8 +569,7 @@
                 "optionalWhenDisabled": false,
                 "type": "datetime",
                 "input": true,
-                "suffix": true,
-                "addAnother": "ecos.forms.btn.add-another"
+                "suffix": true
               }
             ],
             "md": 4
@@ -611,18 +599,16 @@
                 "optionalWhenDisabled": false,
                 "type": "datetime",
                 "input": true,
-                "suffix": true,
-                "addAnother": "ecos.forms.btn.add-another"
+                "suffix": true
               }
             ],
             "md": 4
           }
         ],
         "oneColumnInViewMode": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode != \"CREATE\") {\n  const recordRef = _.get(instance, '_currentForm.options.actionRecord');\n  Citeck.Records.get(recordRef).load('_status?str')\n    .then(stat => stat == \"request-first-line-work\")\n} else {\n  show = false;\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\n\nshow = false;\n\nif(formMode != \"CREATE\") {\n  const recordRef = _.get(instance, '_currentForm.options.actionRecord');\n  Citeck.Records.get(recordRef).load('_status?str')\n    .then(stat => {\n      if( stat == \"request-first-line-work\" && type != \"widget\") {\n        instance.show(true)\n      }\n    })\n}",
         "type": "columns",
-        "input": false,
-        "addAnother": "ecos.forms.btn.add-another"
+        "input": false
       },
       {
         "label": {
@@ -717,7 +703,8 @@
         "type": "columns",
         "input": false
       }
-    ]
+    ],
+    "formId": "request-sd-form"
   },
   "attributes": {}
 }
