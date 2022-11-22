@@ -191,3 +191,7 @@ model:
       name:
         ru: Комментарий
         en: Comment
+    - id: priority
+      name:
+        ru: Приоритет
+        en: Priority

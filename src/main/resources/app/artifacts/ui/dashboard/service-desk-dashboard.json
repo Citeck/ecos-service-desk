@@ -111,8 +111,9 @@
           "props": {
             "id": "7c456711-ee3f-43b2-959e-2a28afc1557b",
             "config": {
-              "widgetDisplayCondition": "",
-              "elementsDisplayCondition": {}
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {},
+              "selectedJournal": "uiserv/journal@history-records-widget"
             }
           },
           "description": "История"
