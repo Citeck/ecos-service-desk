@@ -149,6 +149,46 @@
             "input": false,
             "key": "column",
             "index": 0
+          },
+          {
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Приоритет",
+                  "en": "Priority"
+                },
+                "key": "priority",
+                "dataSrc": "values",
+                "data": {
+                  "values": [
+                    {
+                      "label": "Low",
+                      "value": "low"
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium"
+                    },
+                    {
+                      "label": "High",
+                      "value": "high"
+                    },
+                    {
+                      "label": "Urgent",
+                      "value": "urgent"
+                    }
+                  ]
+                },
+                "defaultValue": "medium",
+                "optionalWhenDisabled": false,
+                "type": "ecosSelect",
+                "input": true
+              }
+            ]
           }
         ],
         "oneColumnInViewMode": false,
@@ -248,7 +288,8 @@
         "type": "columns",
         "input": false
       }
-    ]
+    ],
+    "formId": "request-sd-additional-widget-form"
   },
   "attributes": {}
 }
