@@ -1,0 +1,97 @@
+---
+id: support-third-line-working-journal
+name:
+  ru: В работе на 3-ей линии ТП
+  en: Working on 3rd support line
+predicate:
+  att: _status
+  val: request-third-line-work
+  t: eq
+typeRef: emodel/type@sd-request-type
+editable: false
+columns:
+  - id: _created
+    name:
+      ru: Дата создания
+      en: Creation date
+    type: DATETIME
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+  - id: _status
+    name:
+      ru: Статус
+      en: Status
+    type: TEXT
+  - id: _docNum
+    name:
+      ru: Номер заявки
+      en: Request number
+    type: NUMBER
+  - id: client
+    name:
+      ru: Клиент
+      en: Client
+    type: ASSOC
+  - id: initiator
+    name:
+      ru: Инициатор
+      en: Initiator
+    type: PERSON
+  - id: author
+    name:
+      ru: Автор
+      en: Author
+    type: TEXT
+  - id: petitionChannel
+    name:
+      ru: Канал обращения
+      en: Channel of petition
+    type: ASSOC
+  - id: serviceType
+    name:
+      ru: Вид сервиса
+      en: Type of service
+    type: ASSOC
+  - id: systemModule
+    name:
+      ru: Модуль системы
+      en: System module
+    type: ASSOC
+  - id: letterTopic
+    name:
+      ru: Тема письма
+      en: Topic of the letter
+    type: TEXT
+  - id: letterContent
+    name:
+      ru: Содержание обращения
+      en: Letter content
+    type: TEXT
+  - id: resolution
+    name:
+      ru: Резолюция
+      en: Resolution
+    type: TEXT
+  - id: firstReactionTimestamp
+    name:
+      ru: Дата/Время первой реакции
+      en: Date/Time first reaction
+    type: DATETIME
+  - id: closedTimestamp
+    name:
+      ru: Дата/Время закрытия
+      en: Closing Date/Time
+    type: DATETIME
+  - id: stoppingTimestamp
+    name:
+      ru: Дата/Время остановки
+      en: Stopping Date/Time
+    type: DATETIME
+  - id: implementer
+    name:
+      ru: Исполнитель
+      en: Implementer
+    type: TEXT
