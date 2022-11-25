@@ -1,0 +1,35 @@
+---
+id: create-groups
+date: 2022-11-25T00:00:00Z
+type: mutate
+targetApp: emodel
+config:
+  records:
+    - id: emodel/authority-group@
+      attributes:
+        id: impl-support-first-line-default
+        name:
+          ru: 1-ая линия ТП
+          en: 1st line support
+
+    - id: emodel/authority-group@
+      attributes:
+        id: impl-support-second-line-default
+        name:
+          ru: 2-ая линия ТП
+          en: 2nd line support
+
+    - id: emodel/authority-group@
+      attributes:
+        id: impl-support-third-line-default
+        name:
+          ru: 3-я линия ТП
+          en: 3rd line support
+
+    - id: emodel/authority-group@
+      attributes:
+        id: technologists-default
+        name:
+          ru: Технологи
+          en: Technologists
+
