@@ -8,7 +8,7 @@ formRef: uiserv/form@clients-form
 journalRef: uiserv/journal@clients-journal
 inheritForm: false
 dispNameTemplate:
-  ru: ${client}
+  ru: '${client}'
 defaultCreateVariant: true
 model:
   attributes:
@@ -24,3 +24,7 @@ model:
       name:
         ru: Проект
         en: Project
+    - id: postDomain
+      name:
+        ru: Почтовый домен
+        en: E-mail domain

@@ -20,3 +20,8 @@ columns:
       ru: Проект
       en: Project
     type: TEXT
+  - id: postDomain
+    name:
+      ru: Почтовый домен
+      en: E-mail domain
+    type: TEXT
