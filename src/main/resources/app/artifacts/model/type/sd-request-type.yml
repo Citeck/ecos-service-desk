@@ -79,6 +79,7 @@ model:
     - id: request-approve
       name:
         ru: Подтверждение выполнения заявки
+        en: Confirmation of request completion
     - id: request-clarification
       name:
         ru: На уточнении
