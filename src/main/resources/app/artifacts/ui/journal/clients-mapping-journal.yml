@@ -1,0 +1,28 @@
+---
+id: clients-mapping-journal
+name:
+  ru: Маппинг клиентов
+  en: Clients mapping
+typeRef: emodel/type@clients-mapping-type
+editable: false
+columns:
+  - id: client
+    name:
+      ru: Клиент
+    type: ASSOC
+  - id: implFirstLineSupport
+    name:
+      ru: Исполнитель 1-ой линии ТП
+    type: AUTHORITY_GROUP
+  - id: implSecondLineSupport
+    name:
+      ru: Исполнитель 2-ой линии ТП
+    type: AUTHORITY_GROUP
+  - id: implThirdLineSupport
+    name:
+      ru: Исполнитель 3-ей линии ТП
+    type: AUTHORITY_GROUP
+  - id: technologist
+    name:
+      ru: Технолог
+    type: AUTHORITY_GROUP

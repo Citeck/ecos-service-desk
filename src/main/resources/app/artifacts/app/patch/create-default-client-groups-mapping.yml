@@ -1,0 +1,13 @@
+---
+id: create-default-client-groups-mapping
+date: 2022-12-06T00:00:00Z
+type: mutate
+targetApp: emodel
+config:
+  records:
+    - id: emodel/t-clients-mapping-type@
+      attributes:
+        implFirstLineSupport: emodel/authority-group@impl-support-first-line-default
+        implSecondLineSupport: emodel/authority-group@impl-support-second-line-default
+        implThirdLineSupport: emodel/authority-group@impl-support-third-line-default
+        technologist: emodel/authority-group@technologists-default

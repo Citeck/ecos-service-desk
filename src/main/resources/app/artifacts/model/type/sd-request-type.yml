@@ -23,20 +23,20 @@ model:
       name:
         ru: Исполнитель 1-ой линии ТП
         en: 1st support line implementer
-      assignees:
-        - GROUP_impl-first-line
+      attributes:
+        - implFirstLineSupport
     - id: impl-second-line-role
       name:
         ru: Исполнители 2-ой линии ТП
         en: 2nd support line implementer
-      assignees:
-        - GROUP_impl-second-line
+      attributes:
+        - implSecondLineSupport
     - id: impl-third-line-role
       name:
         ru: Исполнители 3-ей линии ТП
         en: 3rd support line implementers
-      assignees:
-        - GROUP_impl-third-line
+      attributes:
+        - implThirdLineSupport
     - id: lead-tech-role
       name:
         ru: Руководитель ТП
@@ -49,8 +49,8 @@ model:
       name:
         ru: Технолог ТП
         en: Support technologist
-      assignees:
-        - GROUP_tech-group
+      attributes:
+        - technologist
   statuses:
     - id: request-first-line
       name:
@@ -187,6 +187,7 @@ model:
       name:
         ru: Исполнитель
         en: Implementer
+
     - id: comment
       name:
         ru: Комментарий
@@ -195,3 +196,312 @@ model:
       name:
         ru: Приоритет
         en: Priority
+    - id: implFirstLineSupport
+      name:
+        ru: Исполнитель 1-ой линии ТП
+        en: Implementer of the 1st line support
+      type: AUTHORITY_GROUP
+      mandatory: true
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var mappingClient = Records.query({
+                "sourceId": "emodel/t-clients-mapping-type",
+                "consistency": "EVENTUAL",
+                "language": "predicate",
+                "page": {
+                    "maxItems": 1
+                },
+                "query": {
+                    "t": "and",
+                    "val": [
+                        {
+                            "att": "_type",
+                            "t": "eq",
+                            "val": "emodel/type@clients-mapping-type"
+                        },
+                        {
+                            "att": "client",
+                            "t": "eq",
+                            "val": value.load("client?str")
+                        }
+                    ]
+                },
+                "sortBy": [
+                    {
+                        "ascending": false,
+                        "attribute": "_created"
+                    }
+                ],
+            }, {
+                id: "id"
+            });
+
+            if (mappingClient.records.length > 0) {
+                return Records.get(mappingClient.records[0].id).load("implFirstLineSupport");
+            } else {
+                var defaultMappingClient = Records.query({
+                    "sourceId": "emodel/t-clients-mapping-type",
+                    "consistency": "EVENTUAL",
+                    "language": "predicate",
+                    "page": {
+                        "maxItems": 1
+                    },
+                    "query": {
+                        "t": "and",
+                        "val": [
+                            {
+                                "att": "_type",
+                                "t": "eq",
+                                "val": "emodel/type@clients-mapping-type"
+                            },
+                            {
+                                "att": "client",
+                                "t": "empty"
+                            }
+                        ]
+                    },
+                    "sortBy": [
+                        {
+                            "ascending": false,
+                            "attribute": "_created"
+                        }
+                    ],
+                }, {
+                    id: "id"
+                });
+                    return Records.get(defaultMappingClient.records[0].id).load("implFirstLineSupport");
+                }
+        storingType: NONE
+    - id: implSecondLineSupport
+      name:
+        ru: Исполнитель 2-ой линии ТП
+        en: Implementer of the 2nd line support
+      type: AUTHORITY_GROUP
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var mappingClient = Records.query({
+                "sourceId": "emodel/t-clients-mapping-type",
+                "consistency": "EVENTUAL",
+                "language": "predicate",
+                "page": {
+                    "maxItems": 1
+                },
+                "query": {
+                    "t": "and",
+                    "val": [
+                        {
+                            "att": "_type",
+                            "t": "eq",
+                            "val": "emodel/type@clients-mapping-type"
+                        },
+                        {
+                            "att": "client",
+                            "t": "eq",
+                            "val": value.load("client?str")
+                        }
+                    ]
+                },
+                "sortBy": [
+                    {
+                        "ascending": false,
+                        "attribute": "_created"
+                    }
+                ],
+            }, {
+                id: "id"
+            });
+
+            if (mappingClient.records.length > 0) {
+                return Records.get(mappingClient.records[0].id).load("implSecondLineSupport");
+            } else {
+                var defaultMappingClient = Records.query({
+                    "sourceId": "emodel/t-clients-mapping-type",
+                    "consistency": "EVENTUAL",
+                    "language": "predicate",
+                    "page": {
+                        "maxItems": 1
+                    },
+                    "query": {
+                        "t": "and",
+                        "val": [
+                            {
+                                "att": "_type",
+                                "t": "eq",
+                                "val": "emodel/type@clients-mapping-type"
+                            },
+                            {
+                                "att": "client",
+                                "t": "empty"
+                            }
+                        ]
+                    },
+                    "sortBy": [
+                        {
+                            "ascending": false,
+                            "attribute": "_created"
+                        }
+                    ],
+                }, {
+                    id: "id"
+                });
+                    return Records.get(defaultMappingClient.records[0].id).load("implSecondLineSupport");
+                }
+        storingType: NONE
+    - id: implThirdLineSupport
+      name:
+        ru: Исполнитель 3-ей линии ТП
+        en: Implementer of the 3rd line support
+      type: AUTHORITY_GROUP
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var mappingClient = Records.query({
+                "sourceId": "emodel/t-clients-mapping-type",
+                "consistency": "EVENTUAL",
+                "language": "predicate",
+                "page": {
+                    "maxItems": 1
+                },
+                "query": {
+                    "t": "and",
+                    "val": [
+                        {
+                            "att": "_type",
+                            "t": "eq",
+                            "val": "emodel/type@clients-mapping-type"
+                        },
+                        {
+                            "att": "client",
+                            "t": "eq",
+                            "val": value.load("client?str")
+                        }
+                    ]
+                },
+                "sortBy": [
+                    {
+                        "ascending": false,
+                        "attribute": "_created"
+                    }
+                ],
+            }, {
+                id: "id"
+            });
+
+            if (mappingClient.records.length > 0) {
+                return Records.get(mappingClient.records[0].id).load("implThirdLineSupport");
+            } else {
+                var defaultMappingClient = Records.query({
+                    "sourceId": "emodel/t-clients-mapping-type",
+                    "consistency": "EVENTUAL",
+                    "language": "predicate",
+                    "page": {
+                        "maxItems": 1
+                    },
+                    "query": {
+                        "t": "and",
+                        "val": [
+                            {
+                                "att": "_type",
+                                "t": "eq",
+                                "val": "emodel/type@clients-mapping-type"
+                            },
+                            {
+                                "att": "client",
+                                "t": "empty"
+                            }
+                        ]
+                    },
+                    "sortBy": [
+                        {
+                            "ascending": false,
+                            "attribute": "_created"
+                        }
+                    ],
+                }, {
+                    id: "id"
+                });
+                    return Records.get(defaultMappingClient.records[0].id).load("implThirdLineSupport");
+                }
+        storingType: NONE
+    - id: technologist
+      name:
+        ru: Технолог
+        en: Technologist
+      type: AUTHORITY_GROUP
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var mappingClient = Records.query({
+                "sourceId": "emodel/t-clients-mapping-type",
+                "consistency": "EVENTUAL",
+                "language": "predicate",
+                "page": {
+                    "maxItems": 1
+                },
+                "query": {
+                    "t": "and",
+                    "val": [
+                        {
+                            "att": "_type",
+                            "t": "eq",
+                            "val": "emodel/type@clients-mapping-type"
+                        },
+                        {
+                            "att": "client",
+                            "t": "eq",
+                            "val": value.load("client?str")
+                        }
+                    ]
+                },
+                "sortBy": [
+                    {
+                        "ascending": false,
+                        "attribute": "_created"
+                    }
+                ],
+            }, {
+                id: "id"
+            });
+
+            if (mappingClient.records.length > 0) {
+                return Records.get(mappingClient.records[0].id).load("technologist");
+            } else {
+                var defaultMappingClient = Records.query({
+                    "sourceId": "emodel/t-clients-mapping-type",
+                    "consistency": "EVENTUAL",
+                    "language": "predicate",
+                    "page": {
+                        "maxItems": 1
+                    },
+                    "query": {
+                        "t": "and",
+                        "val": [
+                            {
+                                "att": "_type",
+                                "t": "eq",
+                                "val": "emodel/type@clients-mapping-type"
+                            },
+                            {
+                                "att": "client",
+                                "t": "empty"
+                            }
+                        ]
+                    },
+                    "sortBy": [
+                        {
+                            "ascending": false,
+                            "attribute": "_created"
+                        }
+                    ],
+                }, {
+                    id: "id"
+                });
+                    return Records.get(defaultMappingClient.records[0].id).load("technologist");
+                }
+        storingType: NONE
