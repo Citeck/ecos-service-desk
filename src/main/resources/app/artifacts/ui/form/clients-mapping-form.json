@@ -1,0 +1,178 @@
+{
+  "id": "clients-mapping-form",
+  "formKey": "",
+  "title": {
+    "en": "Форма маппинга клиентов"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "emodel/type@clients-mapping-type",
+  "width": "lg",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Клиент"
+        },
+        "key": "client",
+        "modalTitle": "",
+        "journalId": "clients-journal",
+        "queryData": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectJournal",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "1-ая линия ТП"
+        },
+        "key": "implFirstLineSupport",
+        "clearOnHide": false,
+        "modalTitle": "",
+        "journalId": "authority-groups",
+        "queryData": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectJournal",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "2-ая линия ТП"
+        },
+        "key": "implSecondLineSupport",
+        "modalTitle": "",
+        "journalId": "authority-groups",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectJournal",
+        "input": true,
+        "queryData": ""
+      },
+      {
+        "label": {
+          "ru": "3-ая линия ТП"
+        },
+        "key": "implThirdLineSupport",
+        "modalTitle": "",
+        "journalId": "authority-groups",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectJournal",
+        "input": true,
+        "queryData": ""
+      },
+      {
+        "label": {
+          "ru": "Технолог"
+        },
+        "key": "technologist",
+        "modalTitle": "",
+        "journalId": "authority-groups",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectJournal",
+        "input": true,
+        "queryData": ""
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "type": "button",
+                "input": true,
+                "key": "submit2",
+                "conditional": {
+                  "show": null,
+                  "when": null
+                }
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true,
+                "state": ""
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "clients-mapping-form"
+  },
+  "attributes": {}
+}

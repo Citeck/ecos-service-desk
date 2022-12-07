@@ -1,0 +1,37 @@
+---
+id: clients-mapping-type
+name:
+  ru: Маппинг клиентов
+  en: Clients mapping
+sourceType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@clients-mapping-form
+journalRef: uiserv/journal@clients-mapping-journal
+inheritForm: false
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: client
+      name:
+        ru: Клиент
+        en: Client
+      type: ASSOC
+      config:
+        typeRef: emodel/type@clients-type
+        childAssociationFlag: false
+    - id: implFirstLineSupport
+      name:
+        ru: Исполнитель 1-ой линии ТП
+      type: AUTHORITY_GROUP
+    - id: implSecondLineSupport
+      name:
+        ru: Исполнитель 2-ой линии ТП
+      type: AUTHORITY_GROUP
+    - id: implThirdLineSupport
+      name:
+        ru: Исполнитель 3-ей линии ТП
+      type: AUTHORITY_GROUP
+    - id: technologist
+      name:
+        ru: Технолог
+      type: AUTHORITY_GROUP
