@@ -1,8 +1,9 @@
 {
-  "id": "ec305973-1cd7-4880-981a-05ef2a783920",
+  "id": "c5dcfede-bfe0-4e89-a829-99e87bc8a7a7",
   "typeRef": "emodel/type@sd-request-type",
   "appliedToRef": "",
   "authority": null,
+  "scope": "",
   "priority": 0,
   "config": {
     "version": "v2",
@@ -33,10 +34,24 @@
               "widgetDisplayCondition": null,
               "elementsDisplayCondition": {},
               "formId": "uiserv/form@request-sd-form",
-              "titleAsFormName": false,
+              "titleAsFormName": true,
               "v2": {},
               "version": "v2",
               "formMode": "EDIT"
+            }
+          },
+          "description": "Основное"
+        },
+        {
+          "name": "doc-associations",
+          "label": "dashboard-settings.widget.doc-associations",
+          "dndId": "f86188d8-39d1-43e1-b29e-10c127340fdd",
+          "id": "115fa7a7-d2e1-4fdb-937a-a995eccf832a",
+          "props": {
+            "id": "115fa7a7-d2e1-4fdb-937a-a995eccf832a",
+            "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {}
             }
           },
           "description": "Основное"
@@ -80,10 +95,7 @@
               "widgetDisplayCondition": null,
               "elementsDisplayCondition": {},
               "formId": "uiserv/form@request-sd-additional-widget-form",
-              "titleAsFormName": false,
-              "v2": {},
-              "version": "v2",
-              "formMode": "VIEW"
+              "titleAsFormName": true
             }
           },
           "description": "Основное"
@@ -174,6 +186,7 @@
               "widgets": [
                 "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
                 "ecbede90-a55d-423a-9b6b-3ac523600335",
+                "115fa7a7-d2e1-4fdb-937a-a995eccf832a",
                 "291afa3a-50c1-4a3a-9700-8b85767926af"
               ]
             },

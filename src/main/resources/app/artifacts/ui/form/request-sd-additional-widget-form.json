@@ -2,10 +2,10 @@
   "id": "request-sd-additional-widget-form",
   "formKey": "",
   "title": {
-    "en": "Форма дополнительного виджета заявки SD"
+    "en": "Сведения"
   },
   "description": {},
-  "customModule": null,
+  "customModule": "",
   "typeRef": "emodel/type@sd-request-type",
   "width": "lg",
   "system": false,
@@ -183,6 +183,7 @@
                     }
                   ]
                 },
+                "searchEnabled": false,
                 "defaultValue": "medium",
                 "optionalWhenDisabled": false,
                 "type": "ecosSelect",

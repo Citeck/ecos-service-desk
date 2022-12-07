@@ -2,10 +2,10 @@
   "id": "request-sd-form",
   "formKey": "",
   "title": {
-    "en": "Форма заявки SD"
+    "en": "Заявка"
   },
   "description": {},
-  "customModule": null,
+  "customModule": "",
   "typeRef": "emodel/type@sd-request-type",
   "width": "lg",
   "system": false,
