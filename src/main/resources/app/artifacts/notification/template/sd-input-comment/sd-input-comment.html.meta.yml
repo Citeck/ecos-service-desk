@@ -1,0 +1,15 @@
+{
+  "id" : "sd-input-comment",
+  "name" : "О вводе комментария",
+  "notificationTitle" : {
+    "ru" : "Заявка ${docNum}: ${letterTopic}",
+    "en" : "Request ${docNum}: ${letterTopic}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "letterTopic" : "letterTopic",
+    "commenter" : "$process.user"
+  },
+  "multiTemplateConfig" : [ ]
+}
