@@ -1,0 +1,15 @@
+{
+  "id" : "sd-request-hold",
+  "name" : "Об удержании заявки",
+  "notificationTitle" : {
+    "ru" : "Заявка ${docNum}: ${letterTopic}",
+    "en" : "Request ${docNum}: ${letterTopic}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "letterTopic" : "letterTopic",
+    "comment" : "comment"
+  },
+  "multiTemplateConfig" : [ ]
+}
