@@ -65,7 +65,7 @@
               "ru": "Почтовый домен",
               "en": "E-mail domain"
             },
-            "key": "postDomain",
+            "key": "emailDomain",
             "defaultValue": "",
             "refreshOn": [],
             "optionalWhenDisabled": false,
