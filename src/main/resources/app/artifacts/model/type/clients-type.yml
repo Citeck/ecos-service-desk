@@ -24,7 +24,7 @@ model:
       name:
         ru: Проект
         en: Project
-    - id: postDomain
+    - id: emailDomain
       name:
         ru: Почтовый домен
         en: E-mail domain
