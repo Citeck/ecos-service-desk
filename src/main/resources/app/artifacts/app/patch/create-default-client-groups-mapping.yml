@@ -5,7 +5,7 @@ type: mutate
 targetApp: emodel
 config:
   records:
-    - id: emodel/t-clients-mapping-type@
+    - id: emodel/clients-mapping-type@
       attributes:
         implFirstLineSupport: emodel/authority-group@impl-support-first-line-default
         implSecondLineSupport: emodel/authority-group@impl-support-second-line-default
