@@ -29,15 +29,15 @@ columns:
     name:
       ru: Канал обращения
       en: Channel of petition
-    type: ASSOC
+    type: TEXT
   - id: petitionType
     name:
-      ru: 'Тип обращения '
+      ru: Тип обращения
       en: Type of petition
     type: ASSOC
   - id: serviceType
     name:
-      ru: 'Вид сервиса '
+      ru: Вид сервиса
       en: Type of service
     type: ASSOC
   - id: systemModule
@@ -94,9 +94,4 @@ columns:
     name:
       ru: Исполнитель
       en: Implementer
-    type: TEXT
-  - id: comment
-    name:
-      ru: Комментарий
-      en: Comment
     type: TEXT
