@@ -120,7 +120,6 @@ model:
       name:
         ru: Канал обращения
         en: Channel of petition
-      type: ASSOC
       mandatory: true
     - id: petitionType
       name:
@@ -188,11 +187,6 @@ model:
       name:
         ru: Исполнитель
         en: Implementer
-
-    - id: comment
-      name:
-        ru: Комментарий
-        en: Comment
     - id: priority
       name:
         ru: Приоритет
