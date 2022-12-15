@@ -451,7 +451,6 @@
           "en": "Topic of the letter"
         },
         "key": "letterTopic",
-        "defaultValue": "Some topic",
         "refreshOn": [],
         "optionalWhenDisabled": false,
         "type": "textfield",
@@ -466,7 +465,6 @@
         "wysiwyg": {
           "theme": "snow"
         },
-        "defaultValue": "Some text for test business-process",
         "refreshOn": [],
         "rows": 10,
         "type": "textarea",
