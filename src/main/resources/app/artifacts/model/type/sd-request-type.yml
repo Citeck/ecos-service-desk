@@ -279,7 +279,7 @@ model:
         config:
           fn: |-
             var mappingClient = Records.query({
-                "sourceId": "emodel/lients-mapping-type",
+                "sourceId": "emodel/clients-mapping-type",
                 "consistency": "EVENTUAL",
                 "language": "predicate",
                 "page": {
