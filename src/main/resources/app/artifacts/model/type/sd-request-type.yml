@@ -202,7 +202,7 @@ model:
         config:
           fn: |-
             var mappingClient = Records.query({
-                "sourceId": "emodel/t-clients-mapping-type",
+                "sourceId": "emodel/clients-mapping-type",
                 "consistency": "EVENTUAL",
                 "language": "predicate",
                 "page": {
@@ -237,7 +237,7 @@ model:
                 return Records.get(mappingClient.records[0].id).load("implFirstLineSupport");
             } else {
                 var defaultMappingClient = Records.query({
-                    "sourceId": "emodel/t-clients-mapping-type",
+                    "sourceId": "emodel/clients-mapping-type",
                     "consistency": "EVENTUAL",
                     "language": "predicate",
                     "page": {
@@ -279,7 +279,7 @@ model:
         config:
           fn: |-
             var mappingClient = Records.query({
-                "sourceId": "emodel/t-clients-mapping-type",
+                "sourceId": "emodel/lients-mapping-type",
                 "consistency": "EVENTUAL",
                 "language": "predicate",
                 "page": {
@@ -314,7 +314,7 @@ model:
                 return Records.get(mappingClient.records[0].id).load("implSecondLineSupport");
             } else {
                 var defaultMappingClient = Records.query({
-                    "sourceId": "emodel/t-clients-mapping-type",
+                    "sourceId": "emodel/clients-mapping-type",
                     "consistency": "EVENTUAL",
                     "language": "predicate",
                     "page": {
@@ -356,7 +356,7 @@ model:
         config:
           fn: |-
             var mappingClient = Records.query({
-                "sourceId": "emodel/t-clients-mapping-type",
+                "sourceId": "emodel/clients-mapping-type",
                 "consistency": "EVENTUAL",
                 "language": "predicate",
                 "page": {
@@ -391,7 +391,7 @@ model:
                 return Records.get(mappingClient.records[0].id).load("implThirdLineSupport");
             } else {
                 var defaultMappingClient = Records.query({
-                    "sourceId": "emodel/t-clients-mapping-type",
+                    "sourceId": "emodel/clients-mapping-type",
                     "consistency": "EVENTUAL",
                     "language": "predicate",
                     "page": {
@@ -433,7 +433,7 @@ model:
         config:
           fn: |-
             var mappingClient = Records.query({
-                "sourceId": "emodel/t-clients-mapping-type",
+                "sourceId": "emodel/clients-mapping-type",
                 "consistency": "EVENTUAL",
                 "language": "predicate",
                 "page": {
@@ -468,7 +468,7 @@ model:
                 return Records.get(mappingClient.records[0].id).load("technologist");
             } else {
                 var defaultMappingClient = Records.query({
-                    "sourceId": "emodel/t-clients-mapping-type",
+                    "sourceId": "emodel/clients-mapping-type",
                     "consistency": "EVENTUAL",
                     "language": "predicate",
                     "page": {
