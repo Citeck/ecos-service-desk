@@ -3,7 +3,7 @@ id: petition-types-type
 name:
   ru: Типы обращений
 sourceType: ECOS_MODEL
-parentRef: emodel/type@case
+parentRef: emodel/type@data-list
 formRef: uiserv/form@petition-types-form
 journalRef: uiserv/journal@petition-types-journal
 inheritForm: false

@@ -4,8 +4,6 @@ name:
   ru: Канал обращения
 sourceType: ECOS_MODEL
 parentRef: emodel/type@data-list
-formRef: uiserv/form@DEFAULT_FORM
-journalRef: uiserv/journal@petition-channels-journal
 inheritForm: false
 dispNameTemplate:
   ru: ${channel}
