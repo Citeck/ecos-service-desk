@@ -8,8 +8,9 @@
   "tags" : [ ],
   "model" : {
     "docNum" : "_docNum",
-    "status" : "_status?disp",
-    "letterTopic" : "letterTopic"
+    "stat" : "_status._disp.ru",
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
   },
   "multiTemplateConfig" : [ ]
 }

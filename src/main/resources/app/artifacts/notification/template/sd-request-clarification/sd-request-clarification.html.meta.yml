@@ -8,8 +8,8 @@
   "tags" : [ ],
   "model" : {
     "docNum" : "_docNum",
-    "comment" : "comment",
-    "letterTopic" : "letterTopic"
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
   },
   "multiTemplateConfig" : [ ]
 }

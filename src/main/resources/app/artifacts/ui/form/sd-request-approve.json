@@ -1,40 +1,17 @@
 {
-  "id": "petition-types-form",
+  "id": "sd-request-approve",
   "formKey": "",
   "title": {
-    "en": "Форма типов обращений"
+    "en": "Форма подтверждения выполнения"
   },
   "description": {},
   "customModule": "",
-  "typeRef": "emodel/type@petition-types-type",
-  "width": "lg",
+  "typeRef": "",
+  "width": "",
   "system": false,
   "i18n": {},
   "definition": {
     "components": [
-      {
-        "scrollableContent": true,
-        "key": "panel2",
-        "type": "panel",
-        "input": false,
-        "components": [
-          {
-            "label": {
-              "ru": "Наименование",
-              "en": "Name"
-            },
-            "key": "name",
-            "validate": {
-              "required": true
-            },
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true
-          }
-        ]
-      },
       {
         "label": {
           "ru": "Columns"
@@ -42,23 +19,7 @@
         "key": "columns2",
         "columns": [
           {
-            "components": [
-              {
-                "label": "Cancel",
-                "action": "event",
-                "state": "",
-                "showValidations": false,
-                "event": "cancel",
-                "block": true,
-                "type": "button",
-                "input": true,
-                "key": "submit2",
-                "conditional": {
-                  "show": null,
-                  "when": null
-                }
-              }
-            ],
+            "components": [],
             "type": "column",
             "input": false,
             "key": "column",
@@ -91,7 +52,24 @@
             "input": false,
             "key": "column",
             "label": "Column",
-            "components": [],
+            "components": [
+              {
+                "label": {
+                  "ru": "Вернуть в работу",
+                  "en": "Return to work"
+                },
+                "key": "outcome_returnToWork",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ],
             "clearOnHide": true,
             "conditional": {
               "show": null,
@@ -108,10 +86,10 @@
             "components": [
               {
                 "label": {
-                  "ru": "Создать",
-                  "en": "Submit"
+                  "ru": "Подтверждено",
+                  "en": "Approved"
                 },
-                "key": "submit",
+                "key": "outcome_approved",
                 "state": "",
                 "theme": "primary",
                 "block": true,
@@ -129,7 +107,7 @@
         "input": false
       }
     ],
-    "formId": "petition-types-form"
+    "formId": "sd-request-approve"
   },
   "attributes": {}
 }

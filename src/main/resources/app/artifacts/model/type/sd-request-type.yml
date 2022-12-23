@@ -2,7 +2,7 @@
 id: sd-request-type
 name:
   ru: Заявка SD
-sourceType: ECOS_MODEL
+storageType: ECOS_MODEL
 parentRef: emodel/type@case
 formRef: uiserv/form@request-sd-form
 journalRef: uiserv/journal@sd-request-journal
@@ -120,7 +120,15 @@ model:
       name:
         ru: Канал обращения
         en: Channel of petition
-      mandatory: true
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var defClient = Records.get('eapps/cfg@default-client').load('value');
+            var currentClient = value.load("client?str");
+
+            return defClient === currentClient ? "internal" : "external";
+        storingType: NONE
     - id: petitionType
       name:
         ru: Тип обращения
@@ -234,7 +242,7 @@ model:
             });
 
             if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("implFirstLineSupport");
+                return Records.get(mappingClient.records[0].id).load("implFirstLineSupport?str");
             } else {
                 var defaultMappingClient = Records.query({
                     "sourceId": "emodel/clients-mapping-type",
@@ -266,7 +274,7 @@ model:
                 }, {
                     id: "id"
                 });
-                    return Records.get(defaultMappingClient.records[0].id).load("implFirstLineSupport");
+                    return Records.get(defaultMappingClient.records[0].id).load("implFirstLineSupport?str");
                 }
         storingType: NONE
     - id: implSecondLineSupport
@@ -311,7 +319,7 @@ model:
             });
 
             if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("implSecondLineSupport");
+                return Records.get(mappingClient.records[0].id).load("implSecondLineSupport?str");
             } else {
                 var defaultMappingClient = Records.query({
                     "sourceId": "emodel/clients-mapping-type",
@@ -343,7 +351,7 @@ model:
                 }, {
                     id: "id"
                 });
-                    return Records.get(defaultMappingClient.records[0].id).load("implSecondLineSupport");
+                    return Records.get(defaultMappingClient.records[0].id).load("implSecondLineSupport?str");
                 }
         storingType: NONE
     - id: implThirdLineSupport
@@ -388,7 +396,7 @@ model:
             });
 
             if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("implThirdLineSupport");
+                return Records.get(mappingClient.records[0].id).load("implThirdLineSupport?str");
             } else {
                 var defaultMappingClient = Records.query({
                     "sourceId": "emodel/clients-mapping-type",
@@ -420,7 +428,7 @@ model:
                 }, {
                     id: "id"
                 });
-                    return Records.get(defaultMappingClient.records[0].id).load("implThirdLineSupport");
+                    return Records.get(defaultMappingClient.records[0].id).load("implThirdLineSupport?str");
                 }
         storingType: NONE
     - id: technologist
@@ -465,7 +473,7 @@ model:
             });
 
             if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("technologist");
+                return Records.get(mappingClient.records[0].id).load("technologist?str");
             } else {
                 var defaultMappingClient = Records.query({
                     "sourceId": "emodel/clients-mapping-type",
@@ -497,6 +505,6 @@ model:
                 }, {
                     id: "id"
                 });
-                    return Records.get(defaultMappingClient.records[0].id).load("technologist");
+                    return Records.get(defaultMappingClient.records[0].id).load("technologist?str");
                 }
         storingType: NONE

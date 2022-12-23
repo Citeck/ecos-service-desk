@@ -9,7 +9,8 @@
   "model" : {
     "initiator" : "initiator?disp",
     "docNum" : "_docNum",
-    "letterTopic" : "letterTopic"
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
   },
   "multiTemplateConfig" : [ ]
 }

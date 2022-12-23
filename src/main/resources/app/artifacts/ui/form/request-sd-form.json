@@ -9,7 +9,22 @@
   "typeRef": "emodel/type@sd-request-type",
   "width": "lg",
   "system": false,
-  "i18n": {},
+  "i18n": {
+    "ru": {
+      "resolution_done": "Готово",
+      "resolution_notRelevant": "Не актуально",
+      "resolution_knownError": "Известная ошибка",
+      "resolution_duplicate": "Дубликат",
+      "resolution_notReproducible": "Не воспроизводится"
+    },
+    "en": {
+      "resolution_done": "Done",
+      "resolution_notRelevant": "Not relevant",
+      "resolution_knownError": "Known error",
+      "resolution_duplicate": "Duplicate",
+      "resolution_notReproducible": "Not reproducible"
+    }
+  },
   "definition": {
     "components": [
       {
@@ -27,9 +42,11 @@
                 },
                 "key": "_docNum",
                 "disabled": true,
+                "clearOnHide": false,
                 "defaultValue": "",
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
+                "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
                 "type": "textfield",
                 "input": true
               }
@@ -52,11 +69,36 @@
                 },
                 "key": "client",
                 "disabled": true,
+                "clearOnHide": false,
                 "modalTitle": "",
                 "journalId": "clients-journal",
                 "queryData": "",
-                "refreshOn": [],
+                "refreshOn": [
+                  "defaultClient"
+                ],
+                "customDefaultValue": "const formMode = _.get(instance, \"options.formMode\");\nconst defClient = _.get(data, 'defaultClient.client') || null;\nconsole.log(defClient);\n\nif(formMode === \"CREATE\" && defClient !== null) {\n  value = defClient;\n}",
                 "optionalWhenDisabled": false,
+                "logic": [
+                  {
+                    "name": "Hasn't default client",
+                    "trigger": {
+                      "type": "javascript",
+                      "javascript": "const defClient = _.get(data, 'defaultClient.client') || null;\n\nresult = defClient === null;"
+                    },
+                    "actions": [
+                      {
+                        "name": "Disable off",
+                        "type": "property",
+                        "property": {
+                          "label": "Disabled",
+                          "value": "disabled",
+                          "type": "boolean"
+                        },
+                        "state": "false"
+                      }
+                    ]
+                  }
+                ],
                 "type": "selectJournal",
                 "input": true
               }
@@ -64,9 +106,44 @@
           }
         ],
         "oneColumnInViewMode": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\nif(type == \"widget\" || formMode == \"CREATE\") {\n  show = false;\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\nif(type == \"widget\" || formMode == \"CREATE\") {\n  show = true;\n}",
         "type": "columns",
         "input": false
+      },
+      {
+        "label": {
+          "ru": "Приоритет"
+        },
+        "key": "priority",
+        "hidden": true,
+        "clearOnHide": false,
+        "dataSrc": "values",
+        "data": {
+          "values": [
+            {
+              "label": "Low",
+              "value": "low"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "High",
+              "value": "high"
+            },
+            {
+              "label": "Urgent",
+              "value": "urgent"
+            }
+          ]
+        },
+        "defaultValue": "",
+        "customDefaultValue": "value = \"medium\"",
+        "allowCalculateOverride": true,
+        "optionalWhenDisabled": false,
+        "type": "ecosSelect",
+        "input": true
       },
       {
         "label": {
@@ -82,11 +159,13 @@
                   "en": "Initiator"
                 },
                 "key": "initiator",
+                "clearOnHide": false,
+                "currentUserByDefault": true,
+                "defaultValue": "",
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "selectOrgstruct",
-                "input": true,
-                "defaultValue": ""
+                "input": true
               }
             ],
             "type": "column",
@@ -107,8 +186,10 @@
                 },
                 "key": "author",
                 "disabled": true,
+                "clearOnHide": false,
                 "defaultValue": "",
                 "refreshOn": [],
+                "customDefaultValue": "console.log(user);",
                 "optionalWhenDisabled": false,
                 "type": "textfield",
                 "input": true
@@ -227,7 +308,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "e3nejui"
+                  "id": "eearrfi"
                 }
               ]
             },
@@ -330,7 +411,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "e12pz6f"
+                  "id": "ehupncs"
                 }
               ]
             },
@@ -433,7 +514,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "eju00fa"
+                  "id": "eg2zhy"
                 }
               ]
             }
@@ -451,6 +532,7 @@
           "en": "Topic of the letter"
         },
         "key": "letterTopic",
+        "defaultValue": "",
         "refreshOn": [],
         "optionalWhenDisabled": false,
         "type": "textfield",
@@ -465,7 +547,9 @@
         "wysiwyg": {
           "theme": "snow"
         },
+        "defaultValue": "",
         "refreshOn": [],
+        "optionalWhenDisabled": false,
         "rows": 10,
         "type": "textarea",
         "input": true
@@ -476,33 +560,57 @@
           "en": "Resolution"
         },
         "key": "resolution",
+        "clearOnHide": false,
         "dataSrc": "values",
         "data": {
           "values": [
             {
-              "label": "Готово",
+              "label": "resolution_done",
               "value": "done"
             },
             {
-              "label": "Не буду делать",
-              "value": "notDoing"
+              "label": "resolution_notRelevant",
+              "value": "notRelevant"
             },
             {
-              "label": "Дубликат",
+              "label": "resolution_duplicate",
               "value": "duplicate"
             },
             {
-              "label": "Не воспроизводится",
+              "label": "resolution_notReproducible",
               "value": "notReproducible"
             },
             {
-              "label": "Известная ошибка",
+              "label": "resolution_knownError",
               "value": "knownError"
             }
           ]
         },
+        "searchEnabled": false,
+        "defaultValue": "",
         "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\n\nshow = false;\n\nif(formMode != \"CREATE\") {\n  const recordRef = _.get(instance, '_currentForm.options.actionRecord');\n  Citeck.Records.get(recordRef).load('_status?str')\n    .then(stat => {\n      if( stat == \"request-first-line-work\" && type != \"widget\") {\n        instance.show(true)\n      }\n    })\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode !== \"CREATE\") {\n  show = data.statusInfo.status !== \"request-first-line\";\n} else {\n  show = false;\n}",
+        "logic": [
+          {
+            "name": "logic",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
+            },
+            "actions": [
+              {
+                "name": "act",
+                "type": "property",
+                "property": {
+                  "label": "Disabled",
+                  "value": "disabled",
+                  "type": "boolean"
+                },
+                "state": "true"
+              }
+            ]
+          }
+        ],
         "type": "ecosSelect",
         "input": true
       },
@@ -520,7 +628,10 @@
                   "en": "Date/Time first reaction"
                 },
                 "key": "firstReactionTimestamp",
+                "disabled": true,
+                "allowInput": false,
                 "format": "dd-MM-yyyy HH:mm",
+                "clearOnHide": false,
                 "datePicker": {
                   "minDate": "",
                   "maxDate": ""
@@ -554,7 +665,10 @@
                   "en": "Closing Date/Time"
                 },
                 "key": "closedTimestamp",
+                "disabled": true,
+                "allowInput": false,
                 "format": "dd-MM-yyyy HH:mm",
+                "clearOnHide": false,
                 "datePicker": {
                   "minDate": "",
                   "maxDate": ""
@@ -584,7 +698,10 @@
                   "en": "Stopping Date/Time"
                 },
                 "key": "stoppingTimestamp",
+                "disabled": true,
+                "allowInput": false,
                 "format": "dd-MM-yyyy HH:mm",
+                "clearOnHide": false,
                 "datePicker": {
                   "minDate": "",
                   "maxDate": ""
@@ -604,7 +721,7 @@
           }
         ],
         "oneColumnInViewMode": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\n\nshow = false;\n\nif(formMode != \"CREATE\") {\n  const recordRef = _.get(instance, '_currentForm.options.actionRecord');\n  Citeck.Records.get(recordRef).load('_status?str')\n    .then(stat => {\n      if( stat == \"request-first-line-work\" && type != \"widget\") {\n        instance.show(true)\n      }\n    })\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode !== \"CREATE\") {\n  show = data.firstReactionTimestamp !== \"\";\n} else {\n  show = false;\n}",
         "type": "columns",
         "input": false
       },
@@ -617,19 +734,20 @@
           {
             "components": [
               {
-                "label": "Cancel",
+                "label": {
+                  "ru": "Отмена",
+                  "en": "Cancel"
+                },
+                "key": "submit2",
                 "action": "event",
                 "state": "",
                 "showValidations": false,
                 "event": "cancel",
                 "block": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
                 "type": "button",
-                "input": true,
-                "key": "submit2",
-                "conditional": {
-                  "show": null,
-                  "when": null
-                }
+                "input": true
               }
             ],
             "type": "column",
@@ -645,7 +763,46 @@
             "index": 0
           },
           {
-            "components": [],
+            "components": [
+              {
+                "label": "StatusInfo",
+                "source": {
+                  "type": "record",
+                  "record": {
+                    "id": "{{recordId}}",
+                    "attributes": {
+                      "status": "_status?str"
+                    }
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "statusInfo",
+                "type": "asyncData",
+                "input": true
+              },
+              {
+                "label": "Default Client",
+                "source": {
+                  "type": "record",
+                  "record": {
+                    "id": "eapps/cfg@default-client",
+                    "attributes": {
+                      "client": "value"
+                    }
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "defaultClient",
+                "type": "asyncData",
+                "input": true
+              }
+            ],
             "type": "column",
             "input": false,
             "key": "column",
@@ -664,7 +821,27 @@
             "input": false,
             "key": "column",
             "label": "Column",
-            "components": [],
+            "components": [
+              {
+                "label": "Reaction Info",
+                "source": {
+                  "type": "record",
+                  "record": {
+                    "id": "{{data}}",
+                    "attributes": {
+                      "time": "firstReactionTimestamp"
+                    }
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "reactionInfo",
+                "type": "asyncData",
+                "input": true
+              }
+            ],
             "clearOnHide": true,
             "conditional": {
               "show": null,

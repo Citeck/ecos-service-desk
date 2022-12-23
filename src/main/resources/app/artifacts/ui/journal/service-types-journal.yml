@@ -5,11 +5,6 @@ name:
 typeRef: emodel/type@service-types-type
 editable: false
 columns:
-  - id: code
-    name:
-      ru: Код
-      en: Code
-    type: TEXT
   - id: name
     name:
       ru: Наименование
