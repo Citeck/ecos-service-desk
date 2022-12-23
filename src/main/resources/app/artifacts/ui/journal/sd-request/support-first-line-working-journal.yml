@@ -1,11 +1,11 @@
 ---
-id: support-third-line-working-journal
+id: support-first-line-working-journal
 name:
-  ru: В работе на 3-ей линии ТП
-  en: Working on 3rd support line
+  ru: В работе на 1-ой линии ТП
+  en: Working on 1st support line
 predicate:
   att: _status
-  val: request-third-line-work
+  val: request-first-line-work
   t: eq
 typeRef: emodel/type@sd-request-type
 editable: false
@@ -20,6 +20,14 @@ columns:
       ru: Приоритет
       en: Priority
     type: TEXT
+    formatter:
+      type: colored
+      config:
+        color:
+          low: '#DAF7A6'
+          medium: '#FFC300'
+          high: '#FF5733'
+          urgent: '#C70039'
   - id: _status
     name:
       ru: Статус

@@ -1,15 +1,43 @@
 ---
-id: sd-request-journal
+id: support-third-line-working-journal
 name:
-  ru: Заявка SD
+  ru: В работе на 3-ей линии ТП
+  en: Working on 3rd support line
+predicate:
+  att: _status
+  val: request-third-line-work
+  t: eq
 typeRef: emodel/type@sd-request-type
 editable: false
 columns:
+  - id: _created
+    name:
+      ru: Дата создания
+      en: Creation date
+    type: DATETIME
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    formatter:
+      type: colored
+      config:
+        color:
+          low: '#DAF7A6'
+          medium: '#FFC300'
+          high: '#FF5733'
+          urgent: '#C70039'
+  - id: _status
+    name:
+      ru: Статус
+      en: Status
+    type: TEXT
   - id: _docNum
     name:
       ru: Номер заявки
       en: Request number
-    type: TEXT
+    type: NUMBER
   - id: client
     name:
       ru: Клиент
@@ -29,11 +57,6 @@ columns:
     name:
       ru: Канал обращения
       en: Channel of petition
-    type: TEXT
-  - id: petitionType
-    name:
-      ru: Тип обращения
-      en: Type of petition
     type: ASSOC
   - id: serviceType
     name:
@@ -47,34 +70,19 @@ columns:
     type: ASSOC
   - id: letterTopic
     name:
-      ru: Тема обращения
+      ru: Тема письма
       en: Topic of the letter
     type: TEXT
   - id: letterContent
     name:
       ru: Содержание обращения
-      en: Content of the letter
-    type: TEXT
-  - id: exampleLink
-    name:
-      ru: Ссылка на пример
-      en: Link to the example
+      en: Letter content
     type: TEXT
   - id: resolution
     name:
       ru: Резолюция
       en: Resolution
     type: TEXT
-  - id: mark
-    name:
-      ru: Метка
-      en: Mark
-    type: ASSOC
-  - id: sla
-    name:
-      ru: SLA
-      en: SLA
-    type: ASSOC
   - id: firstReactionTimestamp
     name:
       ru: Дата/Время первой реакции
@@ -87,7 +95,7 @@ columns:
     type: DATETIME
   - id: stoppingTimestamp
     name:
-      ru: Дата/Время останова
+      ru: Дата/Время остановки
       en: Stopping Date/Time
     type: DATETIME
   - id: implementer

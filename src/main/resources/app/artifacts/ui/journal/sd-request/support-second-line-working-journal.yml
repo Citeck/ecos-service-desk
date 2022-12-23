@@ -20,6 +20,14 @@ columns:
       ru: Приоритет
       en: Priority
     type: TEXT
+    formatter:
+      type: colored
+      config:
+        color:
+          low: '#DAF7A6'
+          medium: '#FFC300'
+          high: '#FF5733'
+          urgent: '#C70039'
   - id: _status
     name:
       ru: Статус

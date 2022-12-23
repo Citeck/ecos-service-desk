@@ -1,14 +1,8 @@
 ---
-id: open-requests-service-desk-journal
+id: all-requests-service-desk-journal
 name:
-  ru: Все открытые заявки
-  en: All open requests
-predicate:
-  val:
-    att: _status
-    val: request-closes
-    t: eq
-  t: not
+  ru: Все заявки
+  en: All requests
 typeRef: emodel/type@sd-request-type
 editable: false
 columns:
@@ -22,6 +16,14 @@ columns:
       ru: Приоритет
       en: Priority
     type: TEXT
+    formatter:
+      type: colored
+      config:
+        color:
+          low: '#DAF7A6'
+          medium: '#FFC300'
+          high: '#FF5733'
+          urgent: '#C70039'
   - id: _status
     name:
       ru: Статус
