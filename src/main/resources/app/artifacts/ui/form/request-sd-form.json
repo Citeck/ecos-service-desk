@@ -694,7 +694,7 @@
             "components": [
               {
                 "label": {
-                  "ru": "Дата/Время останова",
+                  "ru": "Дата/Время остановки",
                   "en": "Stopping Date/Time"
                 },
                 "key": "stoppingTimestamp",
