@@ -22,7 +22,7 @@
             "components": [
               {
                 "label": {
-                  "ru": "Регистрационный номер"
+                  "ru": "Номер"
                 },
                 "key": "_docNum",
                 "disabled": true,
@@ -46,17 +46,36 @@
             "components": [
               {
                 "label": {
-                  "ru": "Клиент"
+                  "ru": "Приоритет",
+                  "en": "Priority"
                 },
-                "key": "client",
-                "disabled": true,
-                "modalTitle": "",
-                "journalId": "clients-journal",
-                "refreshOn": [],
+                "key": "priority",
+                "dataSrc": "values",
+                "data": {
+                  "values": [
+                    {
+                      "label": "Low",
+                      "value": "low"
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium"
+                    },
+                    {
+                      "label": "High",
+                      "value": "high"
+                    },
+                    {
+                      "label": "Urgent",
+                      "value": "urgent"
+                    }
+                  ]
+                },
+                "searchEnabled": false,
+                "defaultValue": "medium",
                 "optionalWhenDisabled": false,
-                "type": "selectJournal",
-                "input": true,
-                "queryData": ""
+                "type": "ecosSelect",
+                "input": true
               }
             ]
           }
@@ -101,7 +120,6 @@
                   "ru": " Автор"
                 },
                 "key": "author",
-                "disabled": true,
                 "defaultValue": "",
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
@@ -158,36 +176,17 @@
             "components": [
               {
                 "label": {
-                  "ru": "Приоритет",
-                  "en": "Priority"
+                  "ru": "Клиент"
                 },
-                "key": "priority",
-                "dataSrc": "values",
-                "data": {
-                  "values": [
-                    {
-                      "label": "Low",
-                      "value": "low"
-                    },
-                    {
-                      "label": "Medium",
-                      "value": "medium"
-                    },
-                    {
-                      "label": "High",
-                      "value": "high"
-                    },
-                    {
-                      "label": "Urgent",
-                      "value": "urgent"
-                    }
-                  ]
-                },
-                "searchEnabled": false,
-                "defaultValue": "medium",
+                "key": "client",
+                "disabled": true,
+                "modalTitle": "",
+                "journalId": "clients-journal",
+                "refreshOn": [],
                 "optionalWhenDisabled": false,
-                "type": "ecosSelect",
-                "input": true
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
               }
             ]
           }

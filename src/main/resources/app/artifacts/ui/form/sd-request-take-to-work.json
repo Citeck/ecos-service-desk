@@ -1,40 +1,17 @@
 {
-  "id": "petition-types-form",
+  "id": "sd-request-take-to-work",
   "formKey": "",
   "title": {
-    "en": "Форма типов обращений"
+    "en": "Форма взятия заявки в работу"
   },
   "description": {},
   "customModule": "",
-  "typeRef": "emodel/type@petition-types-type",
-  "width": "lg",
+  "typeRef": "",
+  "width": "",
   "system": false,
   "i18n": {},
   "definition": {
     "components": [
-      {
-        "scrollableContent": true,
-        "key": "panel2",
-        "type": "panel",
-        "input": false,
-        "components": [
-          {
-            "label": {
-              "ru": "Наименование",
-              "en": "Name"
-            },
-            "key": "name",
-            "validate": {
-              "required": true
-            },
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true
-          }
-        ]
-      },
       {
         "label": {
           "ru": "Columns"
@@ -42,23 +19,7 @@
         "key": "columns2",
         "columns": [
           {
-            "components": [
-              {
-                "label": "Cancel",
-                "action": "event",
-                "state": "",
-                "showValidations": false,
-                "event": "cancel",
-                "block": true,
-                "type": "button",
-                "input": true,
-                "key": "submit2",
-                "conditional": {
-                  "show": null,
-                  "when": null
-                }
-              }
-            ],
+            "components": [],
             "type": "column",
             "input": false,
             "key": "column",
@@ -108,10 +69,10 @@
             "components": [
               {
                 "label": {
-                  "ru": "Создать",
-                  "en": "Submit"
+                  "ru": "Взять в работу",
+                  "en": "Take to work"
                 },
-                "key": "submit",
+                "key": "outcome_takeToWork",
                 "state": "",
                 "theme": "primary",
                 "block": true,
@@ -129,7 +90,7 @@
         "input": false
       }
     ],
-    "formId": "petition-types-form"
+    "formId": "sd-request-take-to-work"
   },
   "attributes": {}
 }

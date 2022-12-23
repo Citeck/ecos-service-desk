@@ -2,20 +2,16 @@
 id: petition-types-type
 name:
   ru: Типы обращений
-sourceType: ECOS_MODEL
+storageType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@petition-types-form
 journalRef: uiserv/journal@petition-types-journal
 inheritForm: false
 dispNameTemplate:
-  ru: ${name}
+  ru: '${name}'
 defaultCreateVariant: true
 model:
   attributes:
-    - id: code
-      name:
-        ru: Код
-        en: Code
     - id: name
       name:
         ru: Наименование

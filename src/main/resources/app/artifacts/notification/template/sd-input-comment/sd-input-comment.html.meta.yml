@@ -9,7 +9,9 @@
   "model" : {
     "docNum" : "_docNum",
     "letterTopic" : "letterTopic",
-    "commenter" : "$process.user"
+    "commenter" : "$user",
+    "comment" : "$process.event.text",
+    "docRef" : ".id"
   },
   "multiTemplateConfig" : [ ]
 }
