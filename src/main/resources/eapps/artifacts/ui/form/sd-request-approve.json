@@ -59,10 +59,7 @@
                   "en": "Return to work"
                 },
                 "key": "outcome_returnToWork",
-                "action": "event",
                 "state": "",
-                "showValidations": false,
-                "event": "cancel",
                 "block": true,
                 "refreshOn": [],
                 "optionalWhenDisabled": false,

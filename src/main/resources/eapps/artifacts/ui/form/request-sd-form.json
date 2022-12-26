@@ -29,59 +29,25 @@
     "components": [
       {
         "label": {
-          "ru": "Регистрационный номер",
-          "en": "Registration number"
-        },
-        "key": "_docNum",
-        "disabled": true,
-        "clearOnHide": false,
-        "defaultValue": "",
-        "refreshOn": [],
-        "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
-        "type": "textfield",
-        "input": true
-      },
-      {
-        "label": {
           "ru": "Columns"
         },
-        "key": "columns5",
+        "key": "objectObject",
         "columns": [
           {
             "components": [
               {
                 "label": {
-                  "ru": "Приоритет"
+                  "ru": "Регистрационный номер",
+                  "en": "Registration number"
                 },
-                "key": "priority",
+                "key": "_docNum",
+                "disabled": true,
                 "clearOnHide": false,
-                "dataSrc": "values",
-                "data": {
-                  "values": [
-                    {
-                      "label": "Low",
-                      "value": "low"
-                    },
-                    {
-                      "label": "Medium",
-                      "value": "medium"
-                    },
-                    {
-                      "label": "High",
-                      "value": "high"
-                    },
-                    {
-                      "label": "Urgent",
-                      "value": "urgent"
-                    }
-                  ]
-                },
-                "defaultValue": "medium",
-                "customDefaultValue": "value = \"medium\"",
-                "allowCalculateOverride": true,
+                "defaultValue": "",
+                "refreshOn": [],
                 "optionalWhenDisabled": false,
-                "type": "ecosSelect",
+                "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+                "type": "textfield",
                 "input": true
               }
             ],
@@ -307,7 +273,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "eowdt9"
+                  "id": "ex76vgl"
                 }
               ]
             },
@@ -410,7 +376,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "eg1r63"
+                  "id": "er4jr07"
                 }
               ]
             },
@@ -513,7 +479,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "eibgogg"
+                  "id": "en2tacg"
                 }
               ]
             }
@@ -627,7 +593,7 @@
         "searchEnabled": false,
         "defaultValue": "",
         "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode !== \"CREATE\") {\n  show = data.statusInfo.status !== \"request-first-line\";\n} else {\n  show = false;\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst stat = _.get(data, \"statusInfo.status\");\nif(formMode !== \"CREATE\") {\n  show = stat !== \"request-first-line\";\n} else {\n  show = false;\n}",
         "logic": [
           {
             "name": "logic",
@@ -732,7 +698,7 @@
             "components": [
               {
                 "label": {
-                  "ru": "Дата/Время останова",
+                  "ru": "Дата/Время остановки",
                   "en": "Stopping Date/Time"
                 },
                 "key": "stoppingTimestamp",
