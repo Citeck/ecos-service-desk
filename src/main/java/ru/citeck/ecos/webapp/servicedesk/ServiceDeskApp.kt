@@ -4,7 +4,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 import ru.citeck.ecos.webapp.lib.spring.EcosSpringApplication
 
-
 @SpringBootApplication
 @EnableDiscoveryClient
 class ServiceDeskApp {
@@ -17,5 +16,4 @@ class ServiceDeskApp {
             EcosSpringApplication(ServiceDeskApp::class.java).run(*args)
         }
     }
-
 }
