@@ -5,7 +5,7 @@ name:
 storageType: ECOS_MODEL
 parentRef: emodel/type@case
 formRef: uiserv/form@request-sd-form
-journalRef: uiserv/journal@sd-request-journal
+journalRef: uiserv/journal@all-requests-service-desk-journal
 inheritForm: false
 dispNameTemplate:
   ru: Заявка №${_docNum}
@@ -126,10 +126,6 @@ model:
           fn: |-
             var defClient = Records.get('eapps/cfg@default-client').load('value');
             var currentClient = value.load("client?str");
-
-            print(defClient);
-            print(currentClient);
-
             return defClient === currentClient ? "internal" : "external";
         storingType: NONE
     - id: petitionType
