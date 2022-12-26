@@ -2,7 +2,7 @@
 id: service-desk
 typeRef: emodel/type@sd-request-type
 journalRef: uiserv/journal@all-requests-service-desk-journal
-cardFormRef: null
+cardFormRef: uiserv/form@request-sd-board-form
 readOnly: false
 name:
   en: Board

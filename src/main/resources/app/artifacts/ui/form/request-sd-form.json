@@ -29,25 +29,59 @@
     "components": [
       {
         "label": {
+          "ru": "Регистрационный номер",
+          "en": "Registration number"
+        },
+        "key": "_docNum",
+        "disabled": true,
+        "clearOnHide": false,
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+        "type": "textfield",
+        "input": true
+      },
+      {
+        "label": {
           "ru": "Columns"
         },
-        "key": "objectObject",
+        "key": "columns5",
         "columns": [
           {
             "components": [
               {
                 "label": {
-                  "ru": "Регистрационный номер",
-                  "en": "Registration number"
+                  "ru": "Приоритет"
                 },
-                "key": "_docNum",
-                "disabled": true,
+                "key": "priority",
                 "clearOnHide": false,
-                "defaultValue": "",
-                "refreshOn": [],
+                "dataSrc": "values",
+                "data": {
+                  "values": [
+                    {
+                      "label": "Low",
+                      "value": "low"
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium"
+                    },
+                    {
+                      "label": "High",
+                      "value": "high"
+                    },
+                    {
+                      "label": "Urgent",
+                      "value": "urgent"
+                    }
+                  ]
+                },
+                "defaultValue": "medium",
+                "customDefaultValue": "value = \"medium\"",
+                "allowCalculateOverride": true,
                 "optionalWhenDisabled": false,
-                "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
-                "type": "textfield",
+                "type": "ecosSelect",
                 "input": true
               }
             ],
@@ -69,6 +103,9 @@
                 },
                 "key": "client",
                 "disabled": true,
+                "validate": {
+                  "required": true
+                },
                 "clearOnHide": false,
                 "modalTitle": "",
                 "journalId": "clients-journal",
@@ -106,44 +143,8 @@
           }
         ],
         "oneColumnInViewMode": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\nif(type == \"widget\" || formMode == \"CREATE\") {\n  show = true;\n}",
         "type": "columns",
         "input": false
-      },
-      {
-        "label": {
-          "ru": "Приоритет"
-        },
-        "key": "priority",
-        "hidden": true,
-        "clearOnHide": false,
-        "dataSrc": "values",
-        "data": {
-          "values": [
-            {
-              "label": "Low",
-              "value": "low"
-            },
-            {
-              "label": "Medium",
-              "value": "medium"
-            },
-            {
-              "label": "High",
-              "value": "high"
-            },
-            {
-              "label": "Urgent",
-              "value": "urgent"
-            }
-          ]
-        },
-        "defaultValue": "",
-        "customDefaultValue": "value = \"medium\"",
-        "allowCalculateOverride": true,
-        "optionalWhenDisabled": false,
-        "type": "ecosSelect",
-        "input": true
       },
       {
         "label": {
@@ -185,11 +186,9 @@
                   "en": "Author"
                 },
                 "key": "author",
-                "disabled": true,
                 "clearOnHide": false,
                 "defaultValue": "",
                 "refreshOn": [],
-                "customDefaultValue": "console.log(user);",
                 "optionalWhenDisabled": false,
                 "type": "textfield",
                 "input": true
@@ -308,7 +307,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "eearrfi"
+                  "id": "ex76vgl"
                 }
               ]
             },
@@ -411,7 +410,7 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "ehupncs"
+                  "id": "er4jr07"
                 }
               ]
             },
@@ -514,12 +513,45 @@
                   "ecos": {
                     "dataType": "assoc"
                   },
-                  "id": "eg2zhy"
+                  "id": "en2tacg"
                 }
               ]
             }
           ]
         ]
+      },
+      {
+        "label": {
+          "ru": "Исполнитель 3-линии ТП"
+        },
+        "key": "implementerThirdLineSupport",
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+        "logic": [
+          {
+            "name": "log",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
+            },
+            "actions": [
+              {
+                "name": "act",
+                "type": "property",
+                "property": {
+                  "label": "Disabled",
+                  "value": "disabled",
+                  "type": "boolean"
+                },
+                "state": "true"
+              }
+            ]
+          }
+        ],
+        "type": "selectOrgstruct",
+        "input": true
       },
       {
         "input": true,
@@ -532,6 +564,9 @@
           "en": "Topic of the letter"
         },
         "key": "letterTopic",
+        "validate": {
+          "required": true
+        },
         "defaultValue": "",
         "refreshOn": [],
         "optionalWhenDisabled": false,
@@ -544,6 +579,9 @@
           "en": "Content of the letter"
         },
         "key": "letterContent",
+        "validate": {
+          "required": true
+        },
         "wysiwyg": {
           "theme": "snow"
         },
@@ -589,7 +627,7 @@
         "searchEnabled": false,
         "defaultValue": "",
         "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode !== \"CREATE\") {\n  show = data.statusInfo.status !== \"request-first-line\";\n} else {\n  show = false;\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst stat = _.get(data, \"statusInfo.status\");\nif(formMode !== \"CREATE\") {\n  show = stat !== \"request-first-line\";\n} else {\n  show = false;\n}",
         "logic": [
           {
             "name": "logic",
