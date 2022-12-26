@@ -5,7 +5,7 @@ name:
 storageType: ECOS_MODEL
 parentRef: emodel/type@case
 formRef: uiserv/form@request-sd-form
-journalRef: uiserv/journal@all-requests-service-desk-journal
+journalRef: uiserv/journal@sd-request-journal
 inheritForm: false
 dispNameTemplate:
   ru: Заявка №${_docNum}
@@ -127,6 +127,9 @@ model:
             var defClient = Records.get('eapps/cfg@default-client').load('value');
             var currentClient = value.load("client?str");
 
+            print(defClient);
+            print(currentClient);
+
             return defClient === currentClient ? "internal" : "external";
         storingType: NONE
     - id: petitionType
@@ -201,7 +204,7 @@ model:
         en: Priority
     - id: implFirstLineSupport
       name:
-        ru: Исполнитель 1-ой линии ТП
+        ru: Исполнители 1-ой линии ТП
         en: Implementer of the 1st line support
       type: AUTHORITY_GROUP
       mandatory: true
@@ -279,7 +282,7 @@ model:
         storingType: NONE
     - id: implSecondLineSupport
       name:
-        ru: Исполнитель 2-ой линии ТП
+        ru: Исполнители 2-ой линии ТП
         en: Implementer of the 2nd line support
       type: AUTHORITY_GROUP
       computed:
@@ -356,7 +359,7 @@ model:
         storingType: NONE
     - id: implThirdLineSupport
       name:
-        ru: Исполнитель 3-ей линии ТП
+        ru: Исполнители 3-ей линии ТП
         en: Implementer of the 3rd line support
       type: AUTHORITY_GROUP
       computed:
@@ -508,3 +511,11 @@ model:
                     return Records.get(defaultMappingClient.records[0].id).load("technologist?str");
                 }
         storingType: NONE
+    - id: implementerThirdLineSupport
+      name:
+        ru: Исполнитель
+      type: PERSON
+    - id: createdAutomatically
+      name:
+        ru: Создано автоматически
+      type: BOOLEAN
