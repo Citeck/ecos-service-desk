@@ -18,7 +18,7 @@
         },
         "key": "client",
         "modalTitle": "",
-        "journalId": "clients-journal",
+        "journalId": "sd-clients-journal",
         "queryData": "",
         "refreshOn": [],
         "optionalWhenDisabled": false,

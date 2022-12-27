@@ -8,7 +8,7 @@ formRef: uiserv/form@request-sd-form
 journalRef: uiserv/journal@all-requests-service-desk-journal
 inheritForm: false
 dispNameTemplate:
-  ru: Заявка №${_docNum}
+  ru: Заявка SD-${_docNum}
 numTemplateRef: emodel/num-template@sd-reg-number-template
 defaultCreateVariant: true
 model:

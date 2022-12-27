@@ -135,7 +135,7 @@
                 "key": "client",
                 "disabled": true,
                 "modalTitle": "",
-                "journalId": "clients-journal",
+                "journalId": "sd-clients-journal",
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",

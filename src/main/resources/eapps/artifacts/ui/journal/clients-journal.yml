@@ -1,5 +1,5 @@
 ---
-id: clients-journal
+id: sd-clients-journal
 name:
   ru: Клиенты
 typeRef: emodel/type@clients-type
