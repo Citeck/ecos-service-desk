@@ -2,7 +2,7 @@
   "id": "request-sd-form",
   "formKey": "",
   "title": {
-    "en": "Заявка"
+    "en": "Заявка SD"
   },
   "description": {},
   "customModule": "",
@@ -15,39 +15,81 @@
       "resolution_notRelevant": "Не актуально",
       "resolution_knownError": "Известная ошибка",
       "resolution_duplicate": "Дубликат",
-      "resolution_notReproducible": "Не воспроизводится"
+      "resolution_notReproducible": "Не воспроизводится",
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
     },
     "en": {
       "resolution_done": "Done",
       "resolution_notRelevant": "Not relevant",
       "resolution_knownError": "Known error",
       "resolution_duplicate": "Duplicate",
-      "resolution_notReproducible": "Not reproducible"
+      "resolution_notReproducible": "Not reproducible",
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
     }
   },
   "definition": {
     "components": [
       {
         "label": {
+          "ru": "Регистрационный номер",
+          "en": "Registration number"
+        },
+        "key": "_docNum",
+        "disabled": true,
+        "clearOnHide": false,
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+        "type": "textfield",
+        "input": true
+      },
+      {
+        "label": {
           "ru": "Columns"
         },
-        "key": "objectObject",
+        "key": "columns5",
         "columns": [
           {
             "components": [
               {
                 "label": {
-                  "ru": "Регистрационный номер",
-                  "en": "Registration number"
+                  "ru": "Приоритет"
                 },
-                "key": "_docNum",
-                "disabled": true,
+                "key": "priority",
                 "clearOnHide": false,
-                "defaultValue": "",
-                "refreshOn": [],
+                "dataSrc": "values",
+                "data": {
+                  "values": [
+                    {
+                      "label": "sd_priority_low",
+                      "value": "low"
+                    },
+                    {
+                      "label": "sd_priority_medium",
+                      "value": "medium"
+                    },
+                    {
+                      "label": "sd_priority_high",
+                      "value": "high"
+                    },
+                    {
+                      "label": "sd_priority_urgent",
+                      "value": "urgent"
+                    }
+                  ]
+                },
+                "defaultValue": "medium",
+                "customDefaultValue": "value = \"medium\"",
+                "allowCalculateOverride": true,
                 "optionalWhenDisabled": false,
-                "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
-                "type": "textfield",
+                "type": "ecosSelect",
                 "input": true
               }
             ],
@@ -74,7 +116,7 @@
                 },
                 "clearOnHide": false,
                 "modalTitle": "",
-                "journalId": "clients-journal",
+                "journalId": "sd-clients-journal",
                 "queryData": "",
                 "refreshOn": [
                   "defaultClient"

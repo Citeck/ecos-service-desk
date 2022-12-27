@@ -5,7 +5,7 @@ name:
 sourceType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@clients-form
-journalRef: uiserv/journal@clients-journal
+journalRef: uiserv/journal@sd-clients-journal
 inheritForm: false
 dispNameTemplate:
   ru: '${client}'
