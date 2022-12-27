@@ -1,0 +1,52 @@
+---
+id: create-default-sla-patch
+date: 2022-12-27T00:00:00Z
+type: mutate
+targetApp: emodel
+config:
+  records:
+    - id: emodel/sd-sla-type@
+      attributes:
+        priority: low
+        timeZone: GMT+3
+        timeResolve: 480
+        timeFirstReaction: 2400
+        notificationToExecutorTimeReaction: 30
+        notificationToExecutorTimeResolve: 60
+        notificationToSupervisorTime: 25
+        timeToAutoClose: 8640
+        timeToSendFirstLineFromClarify: 4320
+    - id: emodel/sd-sla-type@
+      attributes:
+        priority: medium
+        timeZone: GMT+3
+        timeResolve: 480
+        timeFirstReaction: 1440
+        notificationToExecutorTimeReaction: 30
+        notificationToExecutorTimeResolve: 60
+        notificationToSupervisorTime: 25
+        timeToAutoClose: 8640
+        timeToSendFirstLineFromClarify: 4320
+    - id: emodel/sd-sla-type@
+      attributes:
+        priority: high
+        timeZone: GMT+3
+        timeResolve: 120
+        timeFirstReaction: 480
+        notificationToExecutorTimeReaction: 30
+        notificationToExecutorTimeResolve: 60
+        notificationToSupervisorTime: 25
+        timeToAutoClose: 8640
+        timeToSendFirstLineFromClarify: 4320
+    - id: emodel/sd-sla-type@
+      attributes:
+        priority: urgent
+        timeZone: GMT+3
+        timeResolve: 60
+        timeFirstReaction: 240
+        notificationToExecutorTimeReaction: 30
+        notificationToExecutorTimeResolve: 60
+        notificationToSupervisorTime: 25
+        timeToAutoClose: 8640
+        timeToSendFirstLineFromClarify: 4320
+

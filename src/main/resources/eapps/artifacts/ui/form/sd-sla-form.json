@@ -1,0 +1,645 @@
+{
+  "id": "sd-sla-form",
+  "formKey": "",
+  "title": {
+    "en": "Форма SD SLA"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "emodel/type@sd-sla-type",
+  "width": "",
+  "system": false,
+  "i18n": {
+    "ru": {
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
+    },
+    "en": {
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
+    }
+  },
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Panel"
+        },
+        "key": "panel2",
+        "title": {
+          "ru": "Клиент",
+          "en": "Client"
+        },
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns3",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "Клиент",
+                      "en": "Client"
+                    },
+                    "key": "client",
+                    "modalTitle": "",
+                    "journalId": "sd-clients-journal",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectJournal",
+                    "input": true,
+                    "queryData": ""
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "Приоритет",
+                      "en": "Priority"
+                    },
+                    "key": "priority",
+                    "validate": {
+                      "required": true
+                    },
+                    "dataSrc": "values",
+                    "data": {
+                      "values": [
+                        {
+                          "label": "sd_priority_low",
+                          "value": "low"
+                        },
+                        {
+                          "label": "sd_priority_medium",
+                          "value": "medium"
+                        },
+                        {
+                          "label": "sd_priority_high",
+                          "value": "high"
+                        },
+                        {
+                          "label": "sd_priority_urgent",
+                          "value": "urgent"
+                        }
+                      ]
+                    },
+                    "optionalWhenDisabled": false,
+                    "type": "ecosSelect",
+                    "input": true,
+                    "defaultValue": ""
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "Panel"
+            },
+            "key": "panel",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "panel",
+            "input": false,
+            "components": [
+              {
+                "label": {
+                  "ru": "Columns"
+                },
+                "key": "columns",
+                "columns": [
+                  {
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Часовой пояс",
+                          "en": "Timezone"
+                        },
+                        "key": "timeZone",
+                        "validate": {
+                          "required": true
+                        },
+                        "dataSrc": "values",
+                        "data": {
+                          "values": [
+                            {
+                              "label": "gmt_3",
+                              "value": "GMT+3"
+                            }
+                          ]
+                        },
+                        "optionalWhenDisabled": false,
+                        "type": "ecosSelect",
+                        "input": true,
+                        "defaultValue": ""
+                      }
+                    ],
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "index": 0
+                  },
+                  {
+                    "index": 1,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Штрафные санкции (% от стоимости за час просрочки)",
+                          "en": "Penalties (% of the cost per hour of delay)"
+                        },
+                        "key": "penalties",
+                        "validate": {
+                          "integer": false,
+                          "min": 0
+                        },
+                        "placeholder": {
+                          "ru": "0,5"
+                        },
+                        "isBigNumber": false,
+                        "delimiterValue": " ",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "defaultValue": "",
+                        "type": "number",
+                        "input": true
+                      }
+                    ]
+                  }
+                ],
+                "oneColumnInViewMode": false,
+                "type": "columns",
+                "input": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Panel"
+        },
+        "key": "panel3",
+        "title": {
+          "ru": "SLA",
+          "en": "SLA"
+        },
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns4",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "Время на первую реакцию",
+                      "en": "Reaction time"
+                    },
+                    "key": "timeFirstReaction",
+                    "tooltip": {
+                      "ru": "Время реакции на заявку в рабочих минутах",
+                      "en": "Response time to the application in working minutes"
+                    },
+                    "validate": {
+                      "required": true,
+                      "integer": true,
+                      "min": 1
+                    },
+                    "placeholder": {
+                      "ru": "20"
+                    },
+                    "description": {
+                      "ru": "минут",
+                      "en": "minutes"
+                    },
+                    "isBigNumber": false,
+                    "delimiterValue": " ",
+                    "decimalValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "defaultValue": "",
+                    "type": "number",
+                    "input": true
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "Время на решение",
+                      "en": "Resolve time"
+                    },
+                    "key": "timeResolve",
+                    "tooltip": {
+                      "ru": "Срок решения заявки в рабочих минутах",
+                      "en": "Request resolution time in working minutes"
+                    },
+                    "validate": {
+                      "required": true,
+                      "integer": true,
+                      "min": 1
+                    },
+                    "placeholder": {
+                      "ru": "60"
+                    },
+                    "description": {
+                      "ru": "минут",
+                      "en": "minutes"
+                    },
+                    "isBigNumber": false,
+                    "delimiterValue": " ",
+                    "decimalValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "defaultValue": "",
+                    "type": "number",
+                    "input": true
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "Panel"
+            },
+            "key": "panel4",
+            "title": {
+              "ru": "Уведомления",
+              "en": "Notifications"
+            },
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "panel",
+            "input": false,
+            "components": [
+              {
+                "label": {
+                  "ru": "Columns"
+                },
+                "key": "columns5",
+                "columns": [
+                  {
+                    "components": [
+                      {
+                        "label": {
+                          "en": "Notify the executor about the imminent delay in the reaction in",
+                          "ru": "Уведомить исполнителя о скорой просрочке реакции за"
+                        },
+                        "key": "notificationToExecutorTimeReaction",
+                        "validate": {
+                          "integer": true,
+                          "min": 1
+                        },
+                        "placeholder": {
+                          "ru": "30"
+                        },
+                        "description": {
+                          "ru": "минут",
+                          "en": "minutes"
+                        },
+                        "isBigNumber": false,
+                        "delimiterValue": " ",
+                        "decimalValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "defaultValue": "",
+                        "type": "number",
+                        "input": true
+                      }
+                    ],
+                    "sm": 8,
+                    "md": 4,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "index": 0
+                  },
+                  {
+                    "sm": 8,
+                    "md": 4,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "index": 1,
+                    "components": [
+                      {
+                        "label": {
+                          "en": "Notify the executor about the imminent delay in the resolve in",
+                          "ru": "Уведомить исполнителя о скорой просрочке решения за"
+                        },
+                        "key": "notificationToExecutorTimeResolve",
+                        "validate": {
+                          "integer": true,
+                          "min": 1
+                        },
+                        "placeholder": {
+                          "ru": "60"
+                        },
+                        "description": {
+                          "ru": "минут",
+                          "en": "minutes"
+                        },
+                        "isBigNumber": false,
+                        "delimiterValue": " ",
+                        "decimalValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "defaultValue": "",
+                        "type": "number",
+                        "input": true
+                      }
+                    ]
+                  },
+                  {
+                    "sm": 8,
+                    "md": 4,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "index": 2,
+                    "components": [
+                      {
+                        "label": {
+                          "en": "Notify the executor about the imminent delay in",
+                          "ru": "Уведомить руководителя о скорой просрочке за"
+                        },
+                        "key": "notificationToSupervisorTime",
+                        "validate": {
+                          "integer": true,
+                          "min": 1
+                        },
+                        "placeholder": {
+                          "ru": "25"
+                        },
+                        "description": {
+                          "ru": "минут",
+                          "en": "minutes"
+                        },
+                        "isBigNumber": false,
+                        "delimiterValue": " ",
+                        "decimalValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "defaultValue": "",
+                        "type": "number",
+                        "input": true
+                      }
+                    ]
+                  }
+                ],
+                "oneColumnInViewMode": false,
+                "type": "columns",
+                "input": false
+              }
+            ]
+          },
+          {
+            "label": {
+              "ru": "Panel"
+            },
+            "key": "panel5",
+            "title": {
+              "ru": "Сроки переходов",
+              "en": "Transition times"
+            },
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "panel",
+            "input": false,
+            "components": [
+              {
+                "label": {
+                  "ru": "Columns"
+                },
+                "key": "columns6",
+                "columns": [
+                  {
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Срок автоматического закрытия заявки",
+                          "en": "Automatic close request time"
+                        },
+                        "key": "timeToAutoClose",
+                        "tooltip": {
+                          "ru": "Заявка будет автоматически закрыта, если превышен заданный срок",
+                          "en": "The request will be automatically closed if the specified period is exceeded"
+                        },
+                        "validate": {
+                          "required": true,
+                          "integer": true,
+                          "min": 1
+                        },
+                        "placeholder": {
+                          "ru": "8640 минут (6 дней)",
+                          "en": "8640 minutes (6 days)"
+                        },
+                        "description": {
+                          "ru": "рабочие дни в минутах",
+                          "en": "working days in minutes"
+                        },
+                        "isBigNumber": false,
+                        "delimiterValue": " ",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "defaultValue": "",
+                        "type": "number",
+                        "input": true
+                      }
+                    ],
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "index": 0
+                  },
+                  {
+                    "index": 1,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "components": [
+                      {
+                        "label": {
+                          "en": "Automatic close request time",
+                          "ru": "Срок уточнения"
+                        },
+                        "key": "timeToSendFirstLineFromClarify",
+                        "tooltip": {
+                          "ru": "Заявка, которая находится на уточнении, будет автоматически передана на 1-ую линию, если превышен заданный срок",
+                          "en": "An request that is being clarified will be automatically transferred to the 1st line if the specified period is exceeded"
+                        },
+                        "validate": {
+                          "required": true,
+                          "integer": true,
+                          "min": 1
+                        },
+                        "placeholder": {
+                          "ru": "4320 минут (3 дня)",
+                          "en": "4320 minutes (3 day)"
+                        },
+                        "description": {
+                          "ru": "рабочие дни в минутах",
+                          "en": "working days in minutes"
+                        },
+                        "isBigNumber": false,
+                        "delimiterValue": " ",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "defaultValue": "",
+                        "type": "number",
+                        "input": true
+                      }
+                    ]
+                  }
+                ],
+                "oneColumnInViewMode": false,
+                "type": "columns",
+                "input": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "type": "button",
+                "input": true,
+                "key": "submit2",
+                "conditional": {
+                  "show": null,
+                  "when": null
+                }
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "sd-sla-form"
+  },
+  "attributes": {}
+}
