@@ -10,6 +10,9 @@ inheritForm: false
 dispNameTemplate:
   ru: Заявка SD-${_docNum}
 numTemplateRef: emodel/num-template@sd-reg-number-template
+associations:
+  - id: webLinks
+    journalsFromTarget: false
 defaultCreateVariant: true
 model:
   roles:
@@ -124,7 +127,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var defClient = Records.get('eapps/cfg@default-client').load('value');
+            var defClient = Records.get('service-desk/cfg@default-client').load('value');
             var currentClient = value.load("client?str");
             return defClient === currentClient ? "internal" : "external";
         storingType: NONE
@@ -194,6 +197,19 @@ model:
       name:
         ru: Исполнитель
         en: Implementer
+    - id: webLinks
+      name:
+        ru: Ссылка
+        en: Link
+      type: ASSOC
+      config:
+        typeRef: emodel/type@web-url
+        child: true
+      multiple: true
+    - id: comment
+      name:
+        ru: Комментарий
+        en: Comment
     - id: priority
       name:
         ru: Приоритет

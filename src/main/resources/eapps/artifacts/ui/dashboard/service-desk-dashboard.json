@@ -29,6 +29,7 @@
           "label": "dashboard-settings.widget.properties",
           "id": "ecbede90-a55d-423a-9b6b-3ac523600335",
           "props": {
+            "maxHeightByContent": true,
             "id": "ecbede90-a55d-423a-9b6b-3ac523600335",
             "config": {
               "widgetDisplayCondition": null,
@@ -83,6 +84,19 @@
             }
           },
           "description": "Основное"
+        },
+        {
+          "name": "current-tasks",
+          "label": "dashboard-settings.widget.current-tasks",
+          "dndId": "5b148141-d649-420b-a840-b39a89b8fac7",
+          "id": "adafd908-9ac5-4d0e-80f0-8592db978a4f",
+          "props": {
+            "id": "adafd908-9ac5-4d0e-80f0-8592db978a4f",
+            "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {}
+            }
+          }
         },
         {
           "name": "properties",
@@ -193,6 +207,7 @@
             {
               "widgets": [
                 "b4bcb077-ed4f-498a-b152-97798fddd8fb",
+                "adafd908-9ac5-4d0e-80f0-8592db978a4f",
                 "27c7b7da-9856-406a-a600-54751e21c49b"
               ],
               "width": "25%"
