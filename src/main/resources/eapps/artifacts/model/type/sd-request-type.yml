@@ -127,7 +127,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var defClient = Records.get('eapps/cfg@default-client').load('value');
+            var defClient = Records.get('service-desk/cfg@default-client').load('value');
             var currentClient = value.load("client?str");
             return defClient === currentClient ? "internal" : "external";
         storingType: NONE
