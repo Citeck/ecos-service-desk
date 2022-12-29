@@ -1,0 +1,1162 @@
+{
+  "id": "f09f067b-d980-406b-b0d5-500fa03595c6",
+  "typeRef": "emodel/type@sd-request-type",
+  "permissions": {
+    "matrix": {
+      "initiator-role": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      },
+      "impl-first-line-role": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      },
+      "impl-second-line-role": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      },
+      "impl-third-line-role": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      },
+      "lead-tech-role": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      },
+      "add-partic-role": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      },
+      "tech-role": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      }
+    }
+  },
+  "attributes": {
+    "_docNum": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "client": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "initiator": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "author": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "petitionType": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "serviceType": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "systemModule": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "letterTopic": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "letterContent": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "resolution": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "WRITE",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "WRITE",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "WRITE",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "sla": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    },
+    "implementer": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "add-partic-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        }
+      },
+      "rules": []
+    }
+  }
+}
