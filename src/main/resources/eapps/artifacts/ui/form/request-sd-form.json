@@ -834,7 +834,7 @@
                 "source": {
                   "type": "record",
                   "record": {
-                    "id": "eapps/cfg@default-client",
+                    "id": "service-desk/cfg@default-client",
                     "attributes": {
                       "client": "value"
                     }
