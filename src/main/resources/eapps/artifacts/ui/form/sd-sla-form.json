@@ -301,6 +301,28 @@
       },
       {
         "label": {
+          "ru": "html_duration_hint"
+        },
+        "key": "html_duration_hint",
+        "className": "",
+        "attrs": [
+          {
+            "attr": "",
+            "value": ""
+          }
+        ],
+        "content": {
+          "ru": "Продолжительность времени указывается в формате d, h, m:\n\n<li><i>1d 3h 10m</i> - 1 день 3 часа 10 минут</li>\n<li><i>1d</i> - 1 день</li>\n<li><i>1h 15m</i> - 1 час 15 минут</li>\n<li><i>30m</i> - 30 минут</li>\n",
+          "en": "The duration time is specified in the format d, h, m:\n\n<li><i>1d 3h 10m</i> - 1 day 3 hours 10 minutes</li>\n<li><i>1d</i> - 1 day</li>\n<li><i>1h 15m</i> - 1 hour 15 minutes</li>\n<li><i>30m</i> - 30 minutes</li>"
+        },
+        "refreshOnChange": false,
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "htmlelement",
+        "input": false
+      },
+      {
+        "label": {
           "ru": "Panel"
         },
         "key": "panel3",
@@ -328,28 +350,20 @@
                     },
                     "key": "timeFirstReaction",
                     "tooltip": {
-                      "ru": "Время реакции на заявку в рабочих минутах",
-                      "en": "Response time to the application in working minutes"
+                      "ru": "Время реакции на заявку в рабочей продолжительности времени",
+                      "en": "Response time to the application in working duration"
                     },
                     "validate": {
                       "required": true,
-                      "integer": true,
-                      "min": 1
+                      "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                     },
                     "placeholder": {
-                      "ru": "20"
+                      "ru": "20m"
                     },
-                    "description": {
-                      "ru": "минут",
-                      "en": "minutes"
-                    },
-                    "isBigNumber": false,
-                    "delimiterValue": " ",
-                    "decimalValue": "",
+                    "defaultValue": "",
                     "refreshOn": [],
                     "optionalWhenDisabled": false,
-                    "defaultValue": "",
-                    "type": "number",
+                    "type": "textfield",
                     "input": true
                   }
                 ],
@@ -371,28 +385,20 @@
                     },
                     "key": "timeResolve",
                     "tooltip": {
-                      "ru": "Срок решения заявки в рабочих минутах",
-                      "en": "Request resolution time in working minutes"
+                      "ru": "Срок решения заявки в рабочей продолжительности времени",
+                      "en": "Request resolution time in working duration"
                     },
                     "validate": {
                       "required": true,
-                      "integer": true,
-                      "min": 1
+                      "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                     },
                     "placeholder": {
-                      "ru": "60"
+                      "ru": "60m"
                     },
-                    "description": {
-                      "ru": "минут",
-                      "en": "minutes"
-                    },
-                    "isBigNumber": false,
-                    "delimiterValue": " ",
-                    "decimalValue": "",
+                    "defaultValue": "",
                     "refreshOn": [],
                     "optionalWhenDisabled": false,
-                    "defaultValue": "",
-                    "type": "number",
+                    "type": "textfield",
                     "input": true
                   }
                 ]
@@ -426,28 +432,21 @@
                     "components": [
                       {
                         "label": {
-                          "en": "Notify the executor about the imminent delay in the reaction in",
-                          "ru": "Уведомить исполнителя о скорой просрочке реакции за"
+                          "ru": "Уведомить исполнителя о скорой просрочке реакции за",
+                          "en": "Notify the executor about the imminent delay in the reaction in"
                         },
                         "key": "notificationToExecutorTimeReaction",
                         "validate": {
-                          "integer": true,
-                          "min": 1
+                          "required": true,
+                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                         },
                         "placeholder": {
-                          "ru": "30"
+                          "ru": "30m"
                         },
-                        "description": {
-                          "ru": "минут",
-                          "en": "minutes"
-                        },
-                        "isBigNumber": false,
-                        "delimiterValue": " ",
-                        "decimalValue": "",
+                        "defaultValue": "",
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
-                        "defaultValue": "",
-                        "type": "number",
+                        "type": "textfield",
                         "input": true
                       }
                     ],
@@ -468,28 +467,21 @@
                     "components": [
                       {
                         "label": {
-                          "en": "Notify the executor about the imminent delay in the resolve in",
-                          "ru": "Уведомить исполнителя о скорой просрочке решения за"
+                          "ru": "Уведомить исполнителя о скорой просрочке решения за",
+                          "en": "Notify the executor about the imminent delay in the resolve in"
                         },
                         "key": "notificationToExecutorTimeResolve",
                         "validate": {
-                          "integer": true,
-                          "min": 1
+                          "required": true,
+                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                         },
                         "placeholder": {
-                          "ru": "60"
+                          "ru": "60m"
                         },
-                        "description": {
-                          "ru": "минут",
-                          "en": "minutes"
-                        },
-                        "isBigNumber": false,
-                        "delimiterValue": " ",
-                        "decimalValue": "",
+                        "defaultValue": "",
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
-                        "defaultValue": "",
-                        "type": "number",
+                        "type": "textfield",
                         "input": true
                       }
                     ]
@@ -504,28 +496,21 @@
                     "components": [
                       {
                         "label": {
-                          "en": "Notify the executor about the imminent delay in",
-                          "ru": "Уведомить руководителя о скорой просрочке за"
+                          "ru": "Уведомить руководителя о скорой просрочке за",
+                          "en": "Notify the executor about the imminent delay in"
                         },
                         "key": "notificationToSupervisorTime",
                         "validate": {
-                          "integer": true,
-                          "min": 1
+                          "required": true,
+                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                         },
                         "placeholder": {
-                          "ru": "25"
+                          "ru": "25m"
                         },
-                        "description": {
-                          "ru": "минут",
-                          "en": "minutes"
-                        },
-                        "isBigNumber": false,
-                        "delimiterValue": " ",
-                        "decimalValue": "",
+                        "defaultValue": "",
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
-                        "defaultValue": "",
-                        "type": "number",
+                        "type": "textfield",
                         "input": true
                       }
                     ]
@@ -566,28 +551,20 @@
                         },
                         "key": "timeToAutoClose",
                         "tooltip": {
-                          "ru": "Заявка будет автоматически закрыта, если превышен заданный срок",
-                          "en": "The request will be automatically closed if the specified period is exceeded"
+                          "ru": "Заявка будет автоматически закрыта, если превышен заданный срок (Рабочие дни)",
+                          "en": "The request will be automatically closed if the specified period is exceeded (Work days)"
                         },
                         "validate": {
                           "required": true,
-                          "integer": true,
-                          "min": 1
+                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                         },
                         "placeholder": {
-                          "ru": "8640 минут (6 дней)",
-                          "en": "8640 minutes (6 days)"
+                          "ru": "6d"
                         },
-                        "description": {
-                          "ru": "рабочие дни в минутах",
-                          "en": "working days in minutes"
-                        },
-                        "isBigNumber": false,
-                        "delimiterValue": " ",
+                        "defaultValue": "",
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
-                        "defaultValue": "",
-                        "type": "number",
+                        "type": "textfield",
                         "input": true
                       }
                     ],
@@ -604,33 +581,25 @@
                     "components": [
                       {
                         "label": {
-                          "en": "Automatic close request time",
-                          "ru": "Срок уточнения"
+                          "ru": "Срок уточнения",
+                          "en": "Automatic close request time"
                         },
                         "key": "timeToSendFirstLineFromClarify",
                         "tooltip": {
-                          "ru": "Заявка, которая находится на уточнении, будет автоматически передана на 1-ую линию, если превышен заданный срок",
-                          "en": "An request that is being clarified will be automatically transferred to the 1st line if the specified period is exceeded"
+                          "ru": "Заявка, которая находится на уточнении, будет автоматически передана на 1-ую линию, если превышен заданный срок (Рабочие дни)",
+                          "en": "An request that is being clarified will be automatically transferred to the 1st line if the specified period is exceeded (Work days)"
                         },
                         "validate": {
                           "required": true,
-                          "integer": true,
-                          "min": 1
+                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                         },
                         "placeholder": {
-                          "ru": "4320 минут (3 дня)",
-                          "en": "4320 minutes (3 day)"
+                          "ru": "3d"
                         },
-                        "description": {
-                          "ru": "рабочие дни в минутах",
-                          "en": "working days in minutes"
-                        },
-                        "isBigNumber": false,
-                        "delimiterValue": " ",
+                        "defaultValue": "",
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
-                        "defaultValue": "",
-                        "type": "number",
+                        "type": "textfield",
                         "input": true
                       }
                     ]

@@ -33,40 +33,33 @@ model:
       name:
         ru: Время реакции
         en: Reaction time
-      type: NUMBER
       mandatory: true
     - id: timeResolve
       name:
         ru: Время решения
         en: Resolve time
-      type: NUMBER
       mandatory: true
     - id: notificationToExecutorTimeReaction
       name:
         ru: Время уведомления о просрочке реакции (Исполнителю)
         en: Time of notification of delayed reaction (Executor)
-      type: NUMBER
     - id: notificationToExecutorTimeResolve
       name:
         ru: Время уведомления о просрочке решения (Исполнителю)
         en: Time of notification of delayed resolve (Executor)
-      type: NUMBER
     - id: notificationToSupervisorTime
       name:
         ru: Время уведомления о просрочке (Руководителю)
         en: Time of notification of delay (Supervisor)
-      type: NUMBER
     - id: timeToAutoClose
       name:
         ru: Срок автоматического закрытия
         en: Auto close time
-      type: NUMBER
       mandatory: true
     - id: timeToSendFirstLineFromClarify
       name:
         ru: Срок отправки на 1-ую линию с уточнения
         en: The term of sending to the 1st line from clarify
-      type: NUMBER
       mandatory: true
     - id: penalties
       name:

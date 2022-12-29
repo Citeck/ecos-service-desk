@@ -1,52 +1,55 @@
 ---
 id: create-default-sla-patch
-date: 2022-12-27T00:00:00Z
+date: 2022-12-28T00:12:00Z
 type: mutate
 targetApp: emodel
 config:
   records:
     - id: emodel/sd-sla-type@
       attributes:
+        id: default-low
         priority: low
         timeZone: GMT+3
-        timeResolve: 480
-        timeFirstReaction: 2400
-        notificationToExecutorTimeReaction: 30
-        notificationToExecutorTimeResolve: 60
-        notificationToSupervisorTime: 25
-        timeToAutoClose: 8640
-        timeToSendFirstLineFromClarify: 4320
+        timeFirstReaction: 8h
+        timeResolve: 40h
+        notificationToExecutorTimeReaction: 30m
+        notificationToExecutorTimeResolve: 1h
+        notificationToSupervisorTime: 25m
+        timeToAutoClose: 6d
+        timeToSendFirstLineFromClarify: 3d
     - id: emodel/sd-sla-type@
       attributes:
+        id: default-medium
         priority: medium
         timeZone: GMT+3
-        timeResolve: 480
-        timeFirstReaction: 1440
-        notificationToExecutorTimeReaction: 30
-        notificationToExecutorTimeResolve: 60
-        notificationToSupervisorTime: 25
-        timeToAutoClose: 8640
-        timeToSendFirstLineFromClarify: 4320
+        timeFirstReaction: 8h
+        timeResolve: 1d
+        notificationToExecutorTimeReaction: 30m
+        notificationToExecutorTimeResolve: 1h
+        notificationToSupervisorTime: 25m
+        timeToAutoClose: 6d
+        timeToSendFirstLineFromClarify: 3d
     - id: emodel/sd-sla-type@
       attributes:
+        id: default-high
         priority: high
         timeZone: GMT+3
-        timeResolve: 120
-        timeFirstReaction: 480
-        notificationToExecutorTimeReaction: 30
-        notificationToExecutorTimeResolve: 60
-        notificationToSupervisorTime: 25
-        timeToAutoClose: 8640
-        timeToSendFirstLineFromClarify: 4320
+        timeFirstReaction: 2h
+        timeResolve: 8h
+        notificationToExecutorTimeReaction: 30m
+        notificationToExecutorTimeResolve: 1h
+        notificationToSupervisorTime: 25m
+        timeToAutoClose: 6d
+        timeToSendFirstLineFromClarify: 3d
     - id: emodel/sd-sla-type@
       attributes:
+        id: default-urgent
         priority: urgent
         timeZone: GMT+3
-        timeResolve: 60
-        timeFirstReaction: 240
-        notificationToExecutorTimeReaction: 30
-        notificationToExecutorTimeResolve: 60
-        notificationToSupervisorTime: 25
-        timeToAutoClose: 8640
-        timeToSendFirstLineFromClarify: 4320
-
+        timeFirstReaction: 1h
+        timeResolve: 4h
+        notificationToExecutorTimeReaction: 30m
+        notificationToExecutorTimeResolve: 1h
+        notificationToSupervisorTime: 25m
+        timeToAutoClose: 6d
+        timeToSendFirstLineFromClarify: 3d
