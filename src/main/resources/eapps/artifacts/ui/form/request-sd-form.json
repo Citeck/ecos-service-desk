@@ -1,0 +1,931 @@
+{
+  "id": "request-sd-form",
+  "formKey": "",
+  "title": {
+    "en": "Заявка SD"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "emodel/type@sd-request-type",
+  "width": "lg",
+  "system": false,
+  "i18n": {
+    "ru": {
+      "resolution_done": "Готово",
+      "resolution_notRelevant": "Не актуально",
+      "resolution_knownError": "Известная ошибка",
+      "resolution_duplicate": "Дубликат",
+      "resolution_notReproducible": "Не воспроизводится",
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
+    },
+    "en": {
+      "resolution_done": "Done",
+      "resolution_notRelevant": "Not relevant",
+      "resolution_knownError": "Known error",
+      "resolution_duplicate": "Duplicate",
+      "resolution_notReproducible": "Not reproducible",
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
+    }
+  },
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Регистрационный номер",
+          "en": "Registration number"
+        },
+        "key": "_docNum",
+        "disabled": true,
+        "clearOnHide": false,
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+        "type": "textfield",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns5",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Приоритет"
+                },
+                "key": "priority",
+                "clearOnHide": false,
+                "dataSrc": "values",
+                "data": {
+                  "values": [
+                    {
+                      "label": "sd_priority_low",
+                      "value": "low"
+                    },
+                    {
+                      "label": "sd_priority_medium",
+                      "value": "medium"
+                    },
+                    {
+                      "label": "sd_priority_high",
+                      "value": "high"
+                    },
+                    {
+                      "label": "sd_priority_urgent",
+                      "value": "urgent"
+                    }
+                  ]
+                },
+                "defaultValue": "medium",
+                "customDefaultValue": "value = \"medium\"",
+                "allowCalculateOverride": true,
+                "optionalWhenDisabled": false,
+                "type": "ecosSelect",
+                "input": true
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 0
+          },
+          {
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Клиент",
+                  "en": "Client"
+                },
+                "key": "client",
+                "disabled": true,
+                "validate": {
+                  "required": true
+                },
+                "clearOnHide": false,
+                "modalTitle": "",
+                "journalId": "sd-clients-journal",
+                "queryData": "",
+                "refreshOn": [
+                  "defaultClient"
+                ],
+                "customDefaultValue": "const formMode = _.get(instance, \"options.formMode\");\nconst defClient = _.get(data, 'defaultClient.client') || null;\nconsole.log(defClient);\n\nif(formMode === \"CREATE\" && defClient !== null) {\n  value = defClient;\n}",
+                "optionalWhenDisabled": false,
+                "logic": [
+                  {
+                    "name": "Hasn't default client",
+                    "trigger": {
+                      "type": "javascript",
+                      "javascript": "const defClient = _.get(data, 'defaultClient.client') || null;\n\nresult = defClient === null;"
+                    },
+                    "actions": [
+                      {
+                        "name": "Disable off",
+                        "type": "property",
+                        "property": {
+                          "label": "Disabled",
+                          "value": "disabled",
+                          "type": "boolean"
+                        },
+                        "state": "false"
+                      }
+                    ]
+                  }
+                ],
+                "type": "selectJournal",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns4",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Инициатор",
+                  "en": "Initiator"
+                },
+                "key": "initiator",
+                "clearOnHide": false,
+                "currentUserByDefault": true,
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectOrgstruct",
+                "input": true
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 0
+          },
+          {
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Автор",
+                  "en": "Author"
+                },
+                "key": "author",
+                "clearOnHide": false,
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst type = _.get(instance, \"options.initiator.type\")\nif(type == \"widget\" || formMode == \"CREATE\") {\n  show = false;\n}",
+        "type": "columns",
+        "input": false
+      },
+      {
+        "key": "table2",
+        "numRows": 1,
+        "type": "table",
+        "input": false,
+        "rows": [
+          [
+            {
+              "components": [
+                {
+                  "label": {
+                    "ru": "Тип обращения",
+                    "en": "Type of petition"
+                  },
+                  "key": "petitionType",
+                  "tableView": true,
+                  "modalTitle": "",
+                  "journalId": "petition-types-journal",
+                  "displayColumns": [],
+                  "source": {
+                    "type": "journal",
+                    "custom": {
+                      "columns": []
+                    },
+                    "viewMode": "default"
+                  },
+                  "refreshOn": [],
+                  "displayColumnsAsyncData": [],
+                  "optionalWhenDisabled": false,
+                  "logic": [],
+                  "type": "selectJournal",
+                  "input": true,
+                  "tags": [],
+                  "queryData": "",
+                  "customActionRefs": [],
+                  "placeholder": "",
+                  "prefix": "",
+                  "customClass": "",
+                  "suffix": "",
+                  "multiple": false,
+                  "defaultValue": "",
+                  "protected": false,
+                  "unique": false,
+                  "persistent": true,
+                  "hidden": false,
+                  "clearOnHide": true,
+                  "dataGridLabel": false,
+                  "labelPosition": "top",
+                  "labelWidth": 30,
+                  "labelMargin": 3,
+                  "description": "",
+                  "errorLabel": "",
+                  "tooltip": "",
+                  "hideLabel": false,
+                  "tabindex": "",
+                  "disabled": false,
+                  "autofocus": false,
+                  "dbIndex": false,
+                  "customDefaultValue": "",
+                  "calculateValue": "",
+                  "allowCalculateOverride": false,
+                  "widget": null,
+                  "clearOnRefresh": false,
+                  "validateOn": "change",
+                  "validate": {
+                    "required": false,
+                    "custom": "",
+                    "customPrivate": false,
+                    "customMessage": "",
+                    "json": ""
+                  },
+                  "conditional": {
+                    "show": "",
+                    "when": "",
+                    "eq": "",
+                    "json": ""
+                  },
+                  "alwaysEnabled": false,
+                  "attributes": {},
+                  "customConditional": "",
+                  "disableInlineEdit": false,
+                  "encrypted": false,
+                  "mask": false,
+                  "properties": {},
+                  "shortcut": "",
+                  "triggerChangeWhenCalculate": false,
+                  "addAnother": "Добавить ещё",
+                  "customPredicateJs": "",
+                  "queryDataJs": "",
+                  "presetFilterPredicatesJs": "",
+                  "hideCreateButton": false,
+                  "hideEditRowButton": false,
+                  "hideDeleteRowButton": false,
+                  "enableCreateButton": false,
+                  "isFullScreenWidthModal": false,
+                  "isSelectedValueAsText": false,
+                  "isTableMode": false,
+                  "sortAttribute": "",
+                  "sortAscending": "desc",
+                  "computed": {
+                    "valueDisplayName": ""
+                  },
+                  "searchField": "",
+                  "ecos": {
+                    "dataType": "assoc"
+                  },
+                  "id": "ex76vgl"
+                }
+              ]
+            },
+            {
+              "components": [
+                {
+                  "label": {
+                    "ru": "Вид сервиса",
+                    "en": "Type of service"
+                  },
+                  "key": "serviceType",
+                  "tableView": true,
+                  "modalTitle": "",
+                  "journalId": "service-types-journal",
+                  "displayColumns": [],
+                  "source": {
+                    "type": "journal",
+                    "custom": {
+                      "columns": []
+                    },
+                    "viewMode": "default"
+                  },
+                  "refreshOn": [],
+                  "displayColumnsAsyncData": [],
+                  "optionalWhenDisabled": false,
+                  "logic": [],
+                  "type": "selectJournal",
+                  "input": true,
+                  "tags": [],
+                  "queryData": "",
+                  "customActionRefs": [],
+                  "placeholder": "",
+                  "prefix": "",
+                  "customClass": "",
+                  "suffix": "",
+                  "multiple": false,
+                  "defaultValue": "",
+                  "protected": false,
+                  "unique": false,
+                  "persistent": true,
+                  "hidden": false,
+                  "clearOnHide": true,
+                  "dataGridLabel": false,
+                  "labelPosition": "top",
+                  "labelWidth": 30,
+                  "labelMargin": 3,
+                  "description": "",
+                  "errorLabel": "",
+                  "tooltip": "",
+                  "hideLabel": false,
+                  "tabindex": "",
+                  "disabled": false,
+                  "autofocus": false,
+                  "dbIndex": false,
+                  "customDefaultValue": "",
+                  "calculateValue": "",
+                  "allowCalculateOverride": false,
+                  "widget": null,
+                  "clearOnRefresh": false,
+                  "validateOn": "change",
+                  "validate": {
+                    "required": false,
+                    "custom": "",
+                    "customPrivate": false,
+                    "customMessage": "",
+                    "json": ""
+                  },
+                  "conditional": {
+                    "show": "",
+                    "when": "",
+                    "eq": "",
+                    "json": ""
+                  },
+                  "alwaysEnabled": false,
+                  "attributes": {},
+                  "customConditional": "",
+                  "disableInlineEdit": false,
+                  "encrypted": false,
+                  "mask": false,
+                  "properties": {},
+                  "shortcut": "",
+                  "triggerChangeWhenCalculate": false,
+                  "addAnother": "Добавить ещё",
+                  "customPredicateJs": "",
+                  "queryDataJs": "",
+                  "presetFilterPredicatesJs": "",
+                  "hideCreateButton": false,
+                  "hideEditRowButton": false,
+                  "hideDeleteRowButton": false,
+                  "enableCreateButton": false,
+                  "isFullScreenWidthModal": false,
+                  "isSelectedValueAsText": false,
+                  "isTableMode": false,
+                  "sortAttribute": "",
+                  "sortAscending": "desc",
+                  "computed": {
+                    "valueDisplayName": ""
+                  },
+                  "searchField": "",
+                  "ecos": {
+                    "dataType": "assoc"
+                  },
+                  "id": "er4jr07"
+                }
+              ]
+            },
+            {
+              "components": [
+                {
+                  "label": {
+                    "ru": "Модуль системы",
+                    "en": "System module"
+                  },
+                  "key": "systemModule",
+                  "tableView": true,
+                  "modalTitle": "",
+                  "journalId": "system-module-journal",
+                  "displayColumns": [],
+                  "source": {
+                    "type": "journal",
+                    "custom": {
+                      "columns": []
+                    },
+                    "viewMode": "default"
+                  },
+                  "refreshOn": [],
+                  "displayColumnsAsyncData": [],
+                  "optionalWhenDisabled": false,
+                  "logic": [],
+                  "type": "selectJournal",
+                  "input": true,
+                  "tags": [],
+                  "queryData": "",
+                  "customActionRefs": [],
+                  "placeholder": "",
+                  "prefix": "",
+                  "customClass": "",
+                  "suffix": "",
+                  "multiple": false,
+                  "defaultValue": "",
+                  "protected": false,
+                  "unique": false,
+                  "persistent": true,
+                  "hidden": false,
+                  "clearOnHide": true,
+                  "dataGridLabel": false,
+                  "labelPosition": "top",
+                  "labelWidth": 30,
+                  "labelMargin": 3,
+                  "description": "",
+                  "errorLabel": "",
+                  "tooltip": "",
+                  "hideLabel": false,
+                  "tabindex": "",
+                  "disabled": false,
+                  "autofocus": false,
+                  "dbIndex": false,
+                  "customDefaultValue": "",
+                  "calculateValue": "",
+                  "allowCalculateOverride": false,
+                  "widget": null,
+                  "clearOnRefresh": false,
+                  "validateOn": "change",
+                  "validate": {
+                    "required": false,
+                    "custom": "",
+                    "customPrivate": false,
+                    "customMessage": "",
+                    "json": ""
+                  },
+                  "conditional": {
+                    "show": "",
+                    "when": "",
+                    "eq": "",
+                    "json": ""
+                  },
+                  "alwaysEnabled": false,
+                  "attributes": {},
+                  "customConditional": "",
+                  "disableInlineEdit": false,
+                  "encrypted": false,
+                  "mask": false,
+                  "properties": {},
+                  "shortcut": "",
+                  "triggerChangeWhenCalculate": false,
+                  "addAnother": "Добавить ещё",
+                  "customPredicateJs": "",
+                  "queryDataJs": "",
+                  "presetFilterPredicatesJs": "",
+                  "hideCreateButton": false,
+                  "hideEditRowButton": false,
+                  "hideDeleteRowButton": false,
+                  "enableCreateButton": false,
+                  "isFullScreenWidthModal": false,
+                  "isSelectedValueAsText": false,
+                  "isTableMode": false,
+                  "sortAttribute": "",
+                  "sortAscending": "desc",
+                  "computed": {
+                    "valueDisplayName": ""
+                  },
+                  "searchField": "",
+                  "ecos": {
+                    "dataType": "assoc"
+                  },
+                  "id": "en2tacg"
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": {
+          "ru": "Исполнитель 3-линии ТП"
+        },
+        "key": "implementerThirdLineSupport",
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+        "logic": [
+          {
+            "name": "log",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
+            },
+            "actions": [
+              {
+                "name": "act",
+                "type": "property",
+                "property": {
+                  "label": "Disabled",
+                  "value": "disabled",
+                  "type": "boolean"
+                },
+                "state": "true"
+              }
+            ]
+          }
+        ],
+        "type": "selectOrgstruct",
+        "input": true
+      },
+      {
+        "input": true,
+        "key": "horizontalLine3",
+        "type": "horizontalLine"
+      },
+      {
+        "label": {
+          "ru": "Тема письма",
+          "en": "Topic of the letter"
+        },
+        "key": "letterTopic",
+        "validate": {
+          "required": true
+        },
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "textfield",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "Содержание обращения",
+          "en": "Content of the letter"
+        },
+        "key": "letterContent",
+        "validate": {
+          "required": true
+        },
+        "wysiwyg": {
+          "theme": "snow"
+        },
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "rows": 10,
+        "type": "textarea",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "Резолюция",
+          "en": "Resolution"
+        },
+        "key": "resolution",
+        "clearOnHide": false,
+        "dataSrc": "values",
+        "data": {
+          "values": [
+            {
+              "label": "resolution_done",
+              "value": "done"
+            },
+            {
+              "label": "resolution_notRelevant",
+              "value": "notRelevant"
+            },
+            {
+              "label": "resolution_duplicate",
+              "value": "duplicate"
+            },
+            {
+              "label": "resolution_notReproducible",
+              "value": "notReproducible"
+            },
+            {
+              "label": "resolution_knownError",
+              "value": "knownError"
+            }
+          ]
+        },
+        "searchEnabled": false,
+        "defaultValue": "",
+        "optionalWhenDisabled": false,
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst stat = _.get(data, \"statusInfo.status\");\nif(formMode !== \"CREATE\") {\n  show = stat !== \"request-first-line\";\n} else {\n  show = false;\n}",
+        "logic": [
+          {
+            "name": "logic",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
+            },
+            "actions": [
+              {
+                "name": "act",
+                "type": "property",
+                "property": {
+                  "label": "Disabled",
+                  "value": "disabled",
+                  "type": "boolean"
+                },
+                "state": "true"
+              }
+            ]
+          }
+        ],
+        "type": "ecosSelect",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns3",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Дата/Время первой реакции",
+                  "en": "Date/Time first reaction"
+                },
+                "key": "firstReactionTimestamp",
+                "disabled": true,
+                "allowInput": false,
+                "format": "dd-MM-yyyy HH:mm",
+                "clearOnHide": false,
+                "datePicker": {
+                  "minDate": "",
+                  "maxDate": ""
+                },
+                "timePicker": {
+                  "showMeridian": false
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "datetime",
+                "input": true,
+                "suffix": true
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 0,
+            "md": 4
+          },
+          {
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Дата/Время закрытия",
+                  "en": "Closing Date/Time"
+                },
+                "key": "closedTimestamp",
+                "disabled": true,
+                "allowInput": false,
+                "format": "dd-MM-yyyy HH:mm",
+                "clearOnHide": false,
+                "datePicker": {
+                  "minDate": "",
+                  "maxDate": ""
+                },
+                "timePicker": {
+                  "showMeridian": false
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "datetime",
+                "input": true,
+                "suffix": true
+              }
+            ],
+            "md": 4
+          },
+          {
+            "index": 2,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Дата/Время остановки",
+                  "en": "Stopping Date/Time"
+                },
+                "key": "stoppingTimestamp",
+                "disabled": true,
+                "allowInput": false,
+                "format": "dd-MM-yyyy HH:mm",
+                "clearOnHide": false,
+                "datePicker": {
+                  "minDate": "",
+                  "maxDate": ""
+                },
+                "timePicker": {
+                  "showMeridian": false
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "datetime",
+                "input": true,
+                "suffix": true
+              }
+            ],
+            "md": 4
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode !== \"CREATE\") {\n  show = data.firstReactionTimestamp !== \"\";\n} else {\n  show = false;\n}",
+        "type": "columns",
+        "input": false
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Отмена",
+                  "en": "Cancel"
+                },
+                "key": "submit2",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [
+              {
+                "label": "StatusInfo",
+                "source": {
+                  "type": "record",
+                  "record": {
+                    "id": "{{recordId}}",
+                    "attributes": {
+                      "status": "_status?str"
+                    }
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "statusInfo",
+                "type": "asyncData",
+                "input": true
+              },
+              {
+                "label": "Default Client",
+                "source": {
+                  "type": "record",
+                  "record": {
+                    "id": "eapps/cfg@default-client",
+                    "attributes": {
+                      "client": "value"
+                    }
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "defaultClient",
+                "type": "asyncData",
+                "input": true
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [
+              {
+                "label": "Reaction Info",
+                "source": {
+                  "type": "record",
+                  "record": {
+                    "id": "{{data}}",
+                    "attributes": {
+                      "time": "firstReactionTimestamp"
+                    }
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "reactionInfo",
+                "type": "asyncData",
+                "input": true
+              }
+            ],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "request-sd-form"
+  },
+  "attributes": {}
+}

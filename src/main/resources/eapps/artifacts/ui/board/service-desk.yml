@@ -1,0 +1,51 @@
+---
+id: service-desk
+typeRef: emodel/type@sd-request-type
+journalRef: uiserv/journal@all-requests-service-desk-journal
+cardFormRef: uiserv/form@request-sd-board-form
+readOnly: false
+name:
+  en: Board
+  ru: Service Desk
+actions: null
+columns:
+  - id: request-first-line
+    name:
+      ru: Передано 1-ой линии ТП
+      en: Transferred on 1st support line
+  - id: request-first-line-work
+    name:
+      ru: В работе на 1-ой линии ТП
+      en: Working on 1st support line
+  - id: request-second-line
+    name:
+      ru: Передано 2-ой линии ТП
+      en: Transferred on 2nd support line
+  - id: request-second-line-work
+    name:
+      ru: В работе на 2-ой линии ТП
+      en: Working on 2nd support line
+  - id: request-third-line
+    name:
+      ru: Передано 3-ей линии ТП
+      en: Transferred on 3rd support line
+  - id: request-third-line-work
+    name:
+      ru: В работе на 3-ей линии ТП
+      en: Working on 3rd support line
+  - id: request-clarification
+    name:
+      ru: На уточнении
+      en: Clarify
+  - id: request-hold
+    name:
+      ru: На удержании
+      en: On hold
+  - id: request-approve
+    name:
+      ru: Подтверждение выполнения заявки
+      en: Confirmation of request completion
+  - id: request-closes
+    name:
+      ru: Закрыта
+      en: Closed

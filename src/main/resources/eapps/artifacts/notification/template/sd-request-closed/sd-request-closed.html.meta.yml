@@ -1,0 +1,15 @@
+{
+  "id" : "sd-request-closed",
+  "name" : "О закрытии заявки",
+  "notificationTitle" : {
+    "ru" : "Заявка ${docNum}: ${letterTopic}",
+    "en" : "Request ${docNum}: ${letterTopic}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
+  },
+  "multiTemplateConfig" : [ ]
+}

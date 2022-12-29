@@ -1,0 +1,16 @@
+{
+  "id" : "sd-assign-task",
+  "name" : "О назначении задачи",
+  "notificationTitle" : {
+    "ru" : "Заявка ${docNum}: ${letterTopic}",
+    "en" : "Request ${docNum}: ${letterTopic}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "stat" : "_status._disp.ru",
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
+  },
+  "multiTemplateConfig" : [ ]
+}

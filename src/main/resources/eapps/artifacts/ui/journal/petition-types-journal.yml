@@ -1,0 +1,12 @@
+---
+id: petition-types-journal
+name:
+  ru: Типы обращений
+typeRef: emodel/type@petition-types-type
+editable: false
+columns:
+  - id: name
+    name:
+      ru: Наименование
+      en: Name
+    type: TEXT

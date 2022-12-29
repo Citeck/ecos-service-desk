@@ -5,28 +5,25 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.citeck.ecos.eapps.service-desk</groupId>
+    <groupId>ru.citeck.ecos.webapp.service-desk</groupId>
     <artifactId>ecos-service-desk</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>ru.citeck.ecos.eapps.project</groupId>
-        <artifactId>ecos-apps-simple-parent</artifactId>
-        <version>1.0.2</version>
+        <groupId>ru.citeck.ecos.webapp</groupId>
+        <artifactId>ecos-webapp-spring-simple-parent</artifactId>
+        <version>2.0.0</version>
     </parent>
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>citeck-public</id>
-            <url>https://nexus.citeck.ru/repository/maven-public</url>
+            <id>releases</id>
+            <url>${enterprise.releases.distr.url}</url>
         </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>citeck-plugin-public</id>
-            <url>http://nexus.citeck.ru/repository/maven-public</url>
-        </pluginRepository>
-    </pluginRepositories>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>${enterprise.snapshots.distr.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

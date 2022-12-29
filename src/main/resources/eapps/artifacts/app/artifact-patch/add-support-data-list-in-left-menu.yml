@@ -1,0 +1,122 @@
+id: add-support-data-lists-in-left-menu
+name: {ru: Добавить раздел "Service Desk", en: Add section "Service Desk" }
+
+target: 'ui/menu$default-menu-v1'
+
+type: json
+config:
+  operations:
+    - op: add
+      path: '$..[?(@.id == "sections")].items'
+      value: {
+        "id": "service-desk-section",
+        "label": {
+          "ru": "Service Desk"
+        },
+        "icon": "ui/icon@i-leftmenu-current-tasks",
+        "hidden": false,
+        "type": "SECTION",
+        "config": {},
+        "action": {
+          "type": "",
+          "config": {}
+        },
+        "items": [
+          {
+            "id": "all-open-requests",
+            "label": {
+              "en": "Все открытые заявки"
+            },
+            "icon": "",
+            "hidden": false,
+            "type": "JOURNAL",
+            "config": {
+              "recordRef": "uiserv/journal@open-requests-service-desk-journal",
+              "displayCount": true
+            },
+            "action": {
+              "type": "",
+              "config": {}
+            },
+            "items": [],
+            "allowedFor": []
+          },
+          {
+            "id": "working-first-line-support",
+            "label": {
+              "en": "В работе на 1-ой линии ТП"
+            },
+            "icon": "",
+            "hidden": false,
+            "type": "JOURNAL",
+            "config": {
+              "recordRef": "uiserv/journal@support-first-line-working-journal",
+              "displayCount": true
+            },
+            "action": {
+              "type": "",
+              "config": {}
+            },
+            "items": [],
+            "allowedFor": []
+          },
+          {
+            "id": "working-second-line-support",
+            "label": {
+              "en": "В работе на 2-ой линии ТП"
+            },
+            "icon": "",
+            "hidden": false,
+            "type": "JOURNAL",
+            "config": {
+              "recordRef": "uiserv/journal@support-second-line-working-journal",
+              "displayCount": true
+            },
+            "action": {
+              "type": "",
+              "config": {}
+            },
+            "items": [],
+            "allowedFor": []
+          },
+          {
+            "id": "working-third-line-support",
+            "label": {
+              "en": "В работе на 3-ей линии ТП"
+            },
+            "icon": "",
+            "hidden": false,
+            "type": "JOURNAL",
+            "config": {
+              "recordRef": "uiserv/journal@support-third-line-working-journal",
+              "displayCount": true
+            },
+            "action": {
+              "type": "",
+              "config": {}
+            },
+            "items": [],
+            "allowedFor": []
+          },
+          {
+            "id": "all-requests",
+            "label": {
+              "en": "Все заявки"
+            },
+            "icon": "",
+            "hidden": false,
+            "type": "JOURNAL",
+            "config": {
+              "recordRef": "uiserv/journal@all-requests-service-desk-journal",
+              "displayCount": true
+            },
+            "action": {
+              "type": "",
+              "config": {}
+            },
+            "items": [],
+            "allowedFor": []
+          }
+        ],
+        "allowedFor": []
+      }

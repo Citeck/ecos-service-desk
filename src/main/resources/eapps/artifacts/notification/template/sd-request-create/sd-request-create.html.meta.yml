@@ -1,0 +1,16 @@
+{
+  "id" : "sd-request-create",
+  "name" : "О создании заявки",
+  "notificationTitle" : {
+    "ru" : "Заявка ${docNum}: ${letterTopic}",
+    "en" : "Request ${docNum}: ${letterTopic}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "initiator" : "initiator?disp",
+    "docNum" : "_docNum",
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
+  },
+  "multiTemplateConfig" : [ ]
+}

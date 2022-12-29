@@ -1,0 +1,15 @@
+{
+  "id" : "sd-request-clarification",
+  "name" : "О запросе уточнения",
+  "notificationTitle" : {
+    "ru" : "Заявка ${docNum}: ${letterTopic}",
+    "en" : "Request ${docNum}: ${letterTopic}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
+  },
+  "multiTemplateConfig" : [ ]
+}

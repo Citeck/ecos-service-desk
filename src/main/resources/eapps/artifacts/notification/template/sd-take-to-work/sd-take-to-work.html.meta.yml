@@ -1,0 +1,15 @@
+{
+  "id" : "sd-take-to-work",
+  "name" : "О взятии в работу",
+  "notificationTitle" : {
+    "ru" : "Заявка ${docNum}: ${letterTopic}",
+    "en" : "Request ${docNum}: ${letterTopic}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "letterTopic" : "letterTopic",
+    "docRef" : ".id"
+  },
+  "multiTemplateConfig" : [ ]
+}

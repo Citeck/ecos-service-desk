@@ -1,2 +1,4 @@
 ---
-type: maven-ecos-apps
+type: 'maven-webapp'
+properties:
+  jdk: JDK17
