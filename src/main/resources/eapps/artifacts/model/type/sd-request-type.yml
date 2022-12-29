@@ -44,6 +44,8 @@ model:
       name:
         ru: Руководитель ТП
         en: Support lead
+      assignees:
+        - GROUP_support-lead
     - id: add-partic-role
       name:
         ru: Дополнительный участник
