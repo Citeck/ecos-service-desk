@@ -11,8 +11,8 @@ dispNameTemplate:
   ru: Заявка SD-${_docNum}
 numTemplateRef: emodel/num-template@sd-reg-number-template
 associations:
-  "id": "webLinks",
-  "journalsFromTarget": false
+  id: webLinks
+  journalsFromTarget: false
 defaultCreateVariant: true
 model:
   roles:
