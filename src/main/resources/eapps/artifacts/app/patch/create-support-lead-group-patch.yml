@@ -1,0 +1,15 @@
+---
+id: create-support-lead-group
+date: 2022-12-29T00:00:00Z
+type: mutate
+targetApp: emodel
+config:
+  records:
+    - id: emodel/authority-group@
+      attributes:
+        id: support-lead
+        name:
+          ru: Руководитель ТП
+          en: Support lead
+        authorityGroups:
+          - emodel/authority-group@_orgstruct_home_
