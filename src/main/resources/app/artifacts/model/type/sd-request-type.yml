@@ -10,6 +10,9 @@ inheritForm: false
 dispNameTemplate:
   ru: Заявка №${_docNum}
 numTemplateRef: emodel/num-template@sd-reg-number-template
+associations:
+  "id": "webLinks",
+  "journalsFromTarget": false
 defaultCreateVariant: true
 model:
   roles:
@@ -188,7 +191,15 @@ model:
       name:
         ru: Исполнитель
         en: Implementer
-
+    - id: webLinks
+      name:
+        ru: Ссылка
+        en: Link
+      type: ASSOC
+      config:
+        typeRef: emodel/type@web-url
+        child: true
+      multiple: true
     - id: comment
       name:
         ru: Комментарий

@@ -1,0 +1,17 @@
+---
+id: web-url
+name:
+  ru: Веб ссылка
+  en: Web URL
+storageType: ECOS_MODEL
+parentRef: emodel/type@user-base
+formRef: uiserv/form@DEFAULT_FORM
+dispNameTemplate:
+  ru: '${url}'
+  en: '${url}'
+model:
+  attributes:
+    - id: url
+      name:
+        ru: Ссылка
+        en: URL
