@@ -1,0 +1,68 @@
+---
+id: sd-sla-type
+name:
+  ru: SLA
+  en: SLA
+storageType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@sd-sla-form
+journalRef: uiserv/journal@sd-sla-journal
+inheritForm: false
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: client
+      name:
+        ru: Клиент
+        en: Client
+      type: ASSOC
+      config:
+        typeRef: emodel/type@clients-type
+        child: false
+    - id: priority
+      name:
+        ru: Приоритет
+        en: Priority
+      mandatory: true
+    - id: timeZone
+      name:
+        ru: Часовой пояс
+        en: Timezone
+      mandatory: true
+    - id: timeFirstReaction
+      name:
+        ru: Время реакции
+        en: Reaction time
+      mandatory: true
+    - id: timeResolve
+      name:
+        ru: Время решения
+        en: Resolve time
+      mandatory: true
+    - id: notificationToExecutorTimeReaction
+      name:
+        ru: Время уведомления о просрочке реакции (Исполнителю)
+        en: Time of notification of delayed reaction (Executor)
+    - id: notificationToExecutorTimeResolve
+      name:
+        ru: Время уведомления о просрочке решения (Исполнителю)
+        en: Time of notification of delayed resolve (Executor)
+    - id: notificationToSupervisorTime
+      name:
+        ru: Время уведомления о просрочке (Руководителю)
+        en: Time of notification of delay (Supervisor)
+    - id: timeToAutoClose
+      name:
+        ru: Срок автоматического закрытия
+        en: Auto close time
+      mandatory: true
+    - id: timeToSendFirstLineFromClarify
+      name:
+        ru: Срок отправки на 1-ую линию с уточнения
+        en: The term of sending to the 1st line from clarify
+      mandatory: true
+    - id: penalties
+      name:
+        ru: Штрафные санкции (% от стоимости за час просрочки)
+        en: Penalties (% of the cost per hour of delay)
+      type: NUMBER

@@ -175,11 +175,6 @@ model:
         en: Mark
       type: ASSOC
       mandatory: true
-    - id: sla
-      name:
-        ru: SLA
-        en: SLA
-      type: ASSOC
     - id: firstReactionTimestamp
       name:
         ru: Дата/Время первой реакции
@@ -532,4 +527,92 @@ model:
     - id: createdAutomatically
       name:
         ru: Создано автоматически
+        en: Created automatically
       type: BOOLEAN
+    - id: sla_1_state
+      name:
+        ru: Состояние SLA 1
+        en: SLA 1 state
+    - id: sla_1_due_date
+      name:
+        ru: Время SLA 1
+        en: SLA 1 time
+      type: DATETIME
+    - id: sla_1_start_time
+      name:
+        ru: Время старта SLA 1
+        en: SLA 1 start time
+      type: DATETIME
+    - id: sla_1_info
+      name:
+        ru: SLA 1
+        en: SLA 1
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var info = Records.query({
+                sourceId: "service-desk/sd-sla",
+                query: {
+                    record: value.getRef()
+                }
+            }, {
+                sla1Info: "sla1Info"
+            });
+
+            if (info.records.length === 0) {
+                throw new Error("SLA 1 информация не найдена для: " + value.getRef());
+            }
+
+            return info.records[0].sla1Info;
+        storingType: NONE
+    - id: sla_2_state
+      name:
+        ru: Состояние SLA 2
+        en: SLA 2 state
+    - id: sla_2_due_date
+      name:
+        ru: Время SLA 2
+        en: SLA 2 time
+      type: DATETIME
+    - id: sla_2_start_time
+      name:
+        ru: Время старта SLA 2
+        en: SLA 2 start time
+    - id: sla_2_last_resume_time
+      name:
+        ru: Время последнего возобновления SLA 2
+        en: SLA 2 last resume time
+    - id: sla_2_pause_time
+      name:
+        ru: SLA 2 время паузы
+        en: SLA 2 pause time
+      type: DATETIME
+    - id: sla_2_spent_time
+      name:
+        ru: SLA 2 потраченное время
+        en: SLA 2 spent time
+      type: NUMBER
+    - id: sla_2_info
+      name:
+        ru: SLA 2
+        en: SLA 2
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var info = Records.query({
+                sourceId: "service-desk/sd-sla",
+                query: {
+                    record: value.getRef()
+                }
+            }, {
+                sla2Info: "sla2Info"
+            });
+
+            if (info.records.length === 0) {
+                throw new Error("SLA 2 информация не найдена для: " + value.getRef());
+            }
+
+            return info.records[0].sla2Info;
+        storingType: NONE

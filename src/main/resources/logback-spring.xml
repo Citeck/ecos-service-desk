@@ -2,4 +2,7 @@
 <!DOCTYPE configuration>
 <configuration>
     <include resource="ecos/logback-base.xml" />
+
+    <!--TODO: remove-->
+    <logger name="ru.citeck.ecos.webapp.servicedesk" level="DEBUG" />
 </configuration>
