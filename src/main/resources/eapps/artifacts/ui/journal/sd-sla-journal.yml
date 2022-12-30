@@ -1,0 +1,52 @@
+---
+id: sd-sla-journal
+name:
+  ru: SLA
+  en: SLA
+typeRef: emodel/type@sd-sla-type
+editable: false
+columns:
+  - id: client
+    name:
+      ru: Клиент
+    type: ASSOC
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+  - id: timeZone
+    name:
+      ru: Часовой пояс
+      en: Timezone
+  - id: timeFirstReaction
+    name:
+      ru: Время реакции
+      en: Reaction time
+  - id: timeResolve
+    name:
+      ru: Время решения
+      en: Resolve time
+  - id: notificationToExecutorTimeReaction
+    name:
+      ru: Время уведомления о просрочке реакции (Исполнителю)
+      en: Time of notification of delayed reaction (Executor)
+  - id: notificationToExecutorTimeResolve
+    name:
+      ru: Время уведомления о просрочке решения (Исполнителю)
+      en: Time of notification of delayed resolve (Executor)
+  - id: notificationToSupervisorTime
+    name:
+      ru: Время уведомления о просрочке (Руководителю)
+      en: Time of notification of delay (Supervisor)
+  - id: timeToAutoClose
+    name:
+      ru: Срок автоматического закрытия
+      en: Auto close time
+  - id: timeToSendFirstLineFromClarify
+    name:
+      ru: Срок отправки на 1-ую линию с уточнения
+      en: The term of sending to the 1st line from clarify
+  - id: penalties
+    name:
+      ru: Штрафные санкции (% от стоимости за час просрочки)
+      en: Penalties (% of the cost per hour of delay)

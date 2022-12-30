@@ -14,186 +14,201 @@
     "components": [
       {
         "label": {
-          "ru": "Columns"
+          "ru": "Panel"
         },
-        "key": "columns3",
-        "columns": [
+        "key": "ska-panel",
+        "title": {
+          "ru": "SLAs",
+          "en": "SLAs"
+        },
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "panel",
+        "input": false,
+        "components": [
           {
-            "components": [
-              {
-                "label": {
-                  "ru": "Номер"
-                },
-                "key": "_docNum",
-                "disabled": true,
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "textfield",
-                "input": true
-              }
-            ],
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "index": 0
+            "label": {
+              "ru": "Первая реакция",
+              "en": "First response"
+            },
+            "key": "sla_1_info",
+            "disabled": true,
+            "defaultValue": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "textfield",
+            "input": true,
+            "inputMasks": [
+              {}
+            ]
           },
           {
-            "index": 1,
-            "type": "column",
+            "label": {
+              "en": "Resolve",
+              "ru": "Выполнение"
+            },
+            "key": "sla_2_info",
+            "disabled": true,
+            "defaultValue": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "textfield",
+            "input": true,
+            "inputMasks": [
+              {}
+            ]
+          },
+          {
+            "input": true,
+            "key": "horizontalLine",
+            "type": "horizontalLine"
+          },
+          {
+            "label": {
+              "ru": "Panel"
+            },
+            "key": "details-panel",
+            "title": {
+              "ru": "Детали",
+              "en": "Details"
+            },
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "panel",
             "input": false,
-            "key": "column",
             "components": [
               {
                 "label": {
-                  "ru": "Приоритет",
-                  "en": "Priority"
+                  "ru": "Columns"
                 },
-                "key": "priority",
-                "dataSrc": "values",
-                "data": {
-                  "values": [
-                    {
-                      "label": "Low",
-                      "value": "low"
-                    },
-                    {
-                      "label": "Medium",
-                      "value": "medium"
-                    },
-                    {
-                      "label": "High",
-                      "value": "high"
-                    },
-                    {
-                      "label": "Urgent",
-                      "value": "urgent"
-                    }
-                  ]
-                },
-                "searchEnabled": false,
-                "defaultValue": "medium",
-                "optionalWhenDisabled": false,
-                "type": "ecosSelect",
-                "input": true
+                "key": "columns",
+                "columns": [
+                  {
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Номер"
+                        },
+                        "key": "_docNum",
+                        "disabled": true,
+                        "defaultValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "textfield",
+                        "input": true
+                      },
+                      {
+                        "label": {
+                          "ru": "Инициатор"
+                        },
+                        "key": "initiator",
+                        "defaultValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "selectOrgstruct",
+                        "input": true
+                      },
+                      {
+                        "label": {
+                          "ru": "Дата/Время создания"
+                        },
+                        "key": "_created",
+                        "disabled": true,
+                        "format": "yyyy-MM-dd HH:mm",
+                        "datePicker": {
+                          "minDate": "",
+                          "maxDate": ""
+                        },
+                        "timePicker": {
+                          "showMeridian": false
+                        },
+                        "defaultValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "datetime",
+                        "input": true,
+                        "suffix": true
+                      }
+                    ],
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "index": 0
+                  },
+                  {
+                    "index": 1,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Приоритет",
+                          "en": "Priority"
+                        },
+                        "key": "priority",
+                        "dataSrc": "values",
+                        "data": {
+                          "values": [
+                            {
+                              "label": "Low",
+                              "value": "low"
+                            },
+                            {
+                              "label": "Medium",
+                              "value": "medium"
+                            },
+                            {
+                              "label": "High",
+                              "value": "high"
+                            },
+                            {
+                              "label": "Urgent",
+                              "value": "urgent"
+                            }
+                          ]
+                        },
+                        "searchEnabled": false,
+                        "defaultValue": "medium",
+                        "optionalWhenDisabled": false,
+                        "type": "ecosSelect",
+                        "input": true
+                      },
+                      {
+                        "label": {
+                          "ru": " Автор"
+                        },
+                        "key": "author",
+                        "defaultValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "textfield",
+                        "input": true
+                      },
+                      {
+                        "label": {
+                          "ru": "Клиент"
+                        },
+                        "key": "client",
+                        "disabled": true,
+                        "modalTitle": "",
+                        "journalId": "sd-clients-journal",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "selectJournal",
+                        "input": true,
+                        "queryData": ""
+                      }
+                    ]
+                  }
+                ],
+                "oneColumnInViewMode": false,
+                "type": "columns",
+                "input": false
               }
             ]
           }
-        ],
-        "oneColumnInViewMode": false,
-        "type": "columns",
-        "input": false
-      },
-      {
-        "label": {
-          "ru": "Columns"
-        },
-        "key": "columns4",
-        "columns": [
-          {
-            "components": [
-              {
-                "label": {
-                  "ru": "Инициатор"
-                },
-                "key": "initiator",
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "selectOrgstruct",
-                "input": true
-              }
-            ],
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "index": 0
-          },
-          {
-            "index": 1,
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "components": [
-              {
-                "label": {
-                  "ru": " Автор"
-                },
-                "key": "author",
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "textfield",
-                "input": true
-              }
-            ]
-          }
-        ],
-        "oneColumnInViewMode": false,
-        "type": "columns",
-        "input": false
-      },
-      {
-        "label": {
-          "ru": "Columns"
-        },
-        "key": "columns6",
-        "columns": [
-          {
-            "components": [
-              {
-                "label": {
-                  "ru": "Дата/Время создания"
-                },
-                "key": "_created",
-                "disabled": true,
-                "format": "yyyy-MM-dd HH:mm",
-                "datePicker": {
-                  "minDate": "",
-                  "maxDate": ""
-                },
-                "timePicker": {
-                  "showMeridian": false
-                },
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "datetime",
-                "input": true,
-                "suffix": true
-              }
-            ],
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "index": 0
-          },
-          {
-            "index": 1,
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "components": [
-              {
-                "label": {
-                  "ru": "Клиент"
-                },
-                "key": "client",
-                "disabled": true,
-                "modalTitle": "",
-                "journalId": "sd-clients-journal",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "selectJournal",
-                "input": true,
-                "queryData": ""
-              }
-            ]
-          }
-        ],
-        "oneColumnInViewMode": false,
-        "type": "columns",
-        "input": false
+        ]
       },
       {
         "label": {
