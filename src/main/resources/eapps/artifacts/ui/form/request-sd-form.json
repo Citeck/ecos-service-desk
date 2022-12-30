@@ -210,323 +210,85 @@
         "input": false
       },
       {
-        "key": "table2",
-        "numRows": 1,
-        "type": "table",
-        "input": false,
-        "rows": [
-          [
-            {
-              "components": [
-                {
-                  "label": {
-                    "ru": "Тип обращения",
-                    "en": "Type of petition"
-                  },
-                  "key": "petitionType",
-                  "tableView": true,
-                  "modalTitle": "",
-                  "journalId": "petition-types-journal",
-                  "displayColumns": [],
-                  "source": {
-                    "type": "journal",
-                    "custom": {
-                      "columns": []
-                    },
-                    "viewMode": "default"
-                  },
-                  "refreshOn": [],
-                  "displayColumnsAsyncData": [],
-                  "optionalWhenDisabled": false,
-                  "logic": [],
-                  "type": "selectJournal",
-                  "input": true,
-                  "tags": [],
-                  "queryData": "",
-                  "customActionRefs": [],
-                  "placeholder": "",
-                  "prefix": "",
-                  "customClass": "",
-                  "suffix": "",
-                  "multiple": false,
-                  "defaultValue": "",
-                  "protected": false,
-                  "unique": false,
-                  "persistent": true,
-                  "hidden": false,
-                  "clearOnHide": true,
-                  "dataGridLabel": false,
-                  "labelPosition": "top",
-                  "labelWidth": 30,
-                  "labelMargin": 3,
-                  "description": "",
-                  "errorLabel": "",
-                  "tooltip": "",
-                  "hideLabel": false,
-                  "tabindex": "",
-                  "disabled": false,
-                  "autofocus": false,
-                  "dbIndex": false,
-                  "customDefaultValue": "",
-                  "calculateValue": "",
-                  "allowCalculateOverride": false,
-                  "widget": null,
-                  "clearOnRefresh": false,
-                  "validateOn": "change",
-                  "validate": {
-                    "required": false,
-                    "custom": "",
-                    "customPrivate": false,
-                    "customMessage": "",
-                    "json": ""
-                  },
-                  "conditional": {
-                    "show": "",
-                    "when": "",
-                    "eq": "",
-                    "json": ""
-                  },
-                  "alwaysEnabled": false,
-                  "attributes": {},
-                  "customConditional": "",
-                  "disableInlineEdit": false,
-                  "encrypted": false,
-                  "mask": false,
-                  "properties": {},
-                  "shortcut": "",
-                  "triggerChangeWhenCalculate": false,
-                  "addAnother": "Добавить ещё",
-                  "customPredicateJs": "",
-                  "queryDataJs": "",
-                  "presetFilterPredicatesJs": "",
-                  "hideCreateButton": false,
-                  "hideEditRowButton": false,
-                  "hideDeleteRowButton": false,
-                  "enableCreateButton": false,
-                  "isFullScreenWidthModal": false,
-                  "isSelectedValueAsText": false,
-                  "isTableMode": false,
-                  "sortAttribute": "",
-                  "sortAscending": "desc",
-                  "computed": {
-                    "valueDisplayName": ""
-                  },
-                  "searchField": "",
-                  "ecos": {
-                    "dataType": "assoc"
-                  },
-                  "id": "ex76vgl"
-                }
-              ]
-            },
-            {
-              "components": [
-                {
-                  "label": {
-                    "ru": "Вид сервиса",
-                    "en": "Type of service"
-                  },
-                  "key": "serviceType",
-                  "tableView": true,
-                  "modalTitle": "",
-                  "journalId": "service-types-journal",
-                  "displayColumns": [],
-                  "source": {
-                    "type": "journal",
-                    "custom": {
-                      "columns": []
-                    },
-                    "viewMode": "default"
-                  },
-                  "refreshOn": [],
-                  "displayColumnsAsyncData": [],
-                  "optionalWhenDisabled": false,
-                  "logic": [],
-                  "type": "selectJournal",
-                  "input": true,
-                  "tags": [],
-                  "queryData": "",
-                  "customActionRefs": [],
-                  "placeholder": "",
-                  "prefix": "",
-                  "customClass": "",
-                  "suffix": "",
-                  "multiple": false,
-                  "defaultValue": "",
-                  "protected": false,
-                  "unique": false,
-                  "persistent": true,
-                  "hidden": false,
-                  "clearOnHide": true,
-                  "dataGridLabel": false,
-                  "labelPosition": "top",
-                  "labelWidth": 30,
-                  "labelMargin": 3,
-                  "description": "",
-                  "errorLabel": "",
-                  "tooltip": "",
-                  "hideLabel": false,
-                  "tabindex": "",
-                  "disabled": false,
-                  "autofocus": false,
-                  "dbIndex": false,
-                  "customDefaultValue": "",
-                  "calculateValue": "",
-                  "allowCalculateOverride": false,
-                  "widget": null,
-                  "clearOnRefresh": false,
-                  "validateOn": "change",
-                  "validate": {
-                    "required": false,
-                    "custom": "",
-                    "customPrivate": false,
-                    "customMessage": "",
-                    "json": ""
-                  },
-                  "conditional": {
-                    "show": "",
-                    "when": "",
-                    "eq": "",
-                    "json": ""
-                  },
-                  "alwaysEnabled": false,
-                  "attributes": {},
-                  "customConditional": "",
-                  "disableInlineEdit": false,
-                  "encrypted": false,
-                  "mask": false,
-                  "properties": {},
-                  "shortcut": "",
-                  "triggerChangeWhenCalculate": false,
-                  "addAnother": "Добавить ещё",
-                  "customPredicateJs": "",
-                  "queryDataJs": "",
-                  "presetFilterPredicatesJs": "",
-                  "hideCreateButton": false,
-                  "hideEditRowButton": false,
-                  "hideDeleteRowButton": false,
-                  "enableCreateButton": false,
-                  "isFullScreenWidthModal": false,
-                  "isSelectedValueAsText": false,
-                  "isTableMode": false,
-                  "sortAttribute": "",
-                  "sortAscending": "desc",
-                  "computed": {
-                    "valueDisplayName": ""
-                  },
-                  "searchField": "",
-                  "ecos": {
-                    "dataType": "assoc"
-                  },
-                  "id": "er4jr07"
-                }
-              ]
-            },
-            {
-              "components": [
-                {
-                  "label": {
-                    "ru": "Модуль системы",
-                    "en": "System module"
-                  },
-                  "key": "systemModule",
-                  "tableView": true,
-                  "modalTitle": "",
-                  "journalId": "system-module-journal",
-                  "displayColumns": [],
-                  "source": {
-                    "type": "journal",
-                    "custom": {
-                      "columns": []
-                    },
-                    "viewMode": "default"
-                  },
-                  "refreshOn": [],
-                  "displayColumnsAsyncData": [],
-                  "optionalWhenDisabled": false,
-                  "logic": [],
-                  "type": "selectJournal",
-                  "input": true,
-                  "tags": [],
-                  "queryData": "",
-                  "customActionRefs": [],
-                  "placeholder": "",
-                  "prefix": "",
-                  "customClass": "",
-                  "suffix": "",
-                  "multiple": false,
-                  "defaultValue": "",
-                  "protected": false,
-                  "unique": false,
-                  "persistent": true,
-                  "hidden": false,
-                  "clearOnHide": true,
-                  "dataGridLabel": false,
-                  "labelPosition": "top",
-                  "labelWidth": 30,
-                  "labelMargin": 3,
-                  "description": "",
-                  "errorLabel": "",
-                  "tooltip": "",
-                  "hideLabel": false,
-                  "tabindex": "",
-                  "disabled": false,
-                  "autofocus": false,
-                  "dbIndex": false,
-                  "customDefaultValue": "",
-                  "calculateValue": "",
-                  "allowCalculateOverride": false,
-                  "widget": null,
-                  "clearOnRefresh": false,
-                  "validateOn": "change",
-                  "validate": {
-                    "required": false,
-                    "custom": "",
-                    "customPrivate": false,
-                    "customMessage": "",
-                    "json": ""
-                  },
-                  "conditional": {
-                    "show": "",
-                    "when": "",
-                    "eq": "",
-                    "json": ""
-                  },
-                  "alwaysEnabled": false,
-                  "attributes": {},
-                  "customConditional": "",
-                  "disableInlineEdit": false,
-                  "encrypted": false,
-                  "mask": false,
-                  "properties": {},
-                  "shortcut": "",
-                  "triggerChangeWhenCalculate": false,
-                  "addAnother": "Добавить ещё",
-                  "customPredicateJs": "",
-                  "queryDataJs": "",
-                  "presetFilterPredicatesJs": "",
-                  "hideCreateButton": false,
-                  "hideEditRowButton": false,
-                  "hideDeleteRowButton": false,
-                  "enableCreateButton": false,
-                  "isFullScreenWidthModal": false,
-                  "isSelectedValueAsText": false,
-                  "isTableMode": false,
-                  "sortAttribute": "",
-                  "sortAscending": "desc",
-                  "computed": {
-                    "valueDisplayName": ""
-                  },
-                  "searchField": "",
-                  "ecos": {
-                    "dataType": "assoc"
-                  },
-                  "id": "en2tacg"
-                }
-              ]
-            }
-          ]
-        ]
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns6",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Тип обращения",
+                  "en": "Type of petition"
+                },
+                "key": "petitionType",
+                "modalTitle": "",
+                "journalId": "petition-types-journal",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 0,
+            "md": 4
+          },
+          {
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Вид сервиса",
+                  "en": "Type of service"
+                },
+                "key": "serviceType",
+                "clearOnHide": false,
+                "modalTitle": "",
+                "journalId": "service-types-journal",
+                "queryData": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true
+              }
+            ],
+            "md": 4
+          },
+          {
+            "index": 2,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Модуль системы",
+                  "en": "System module"
+                },
+                "key": "systemModule",
+                "modalTitle": "",
+                "journalId": "system-module-journal",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              }
+            ],
+            "md": 4
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
       },
       {
         "label": {
