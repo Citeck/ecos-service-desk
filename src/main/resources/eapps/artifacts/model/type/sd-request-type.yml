@@ -527,7 +527,7 @@ model:
         storingType: NONE
     - id: implementerThirdLineSupport
       name:
-        ru: Исполнитель
+        ru: Исполнитель 3-ей линии ТП
       type: PERSON
     - id: createdAutomatically
       name:
