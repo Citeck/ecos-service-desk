@@ -3,11 +3,14 @@ package ru.citeck.ecos.webapp.servicedesk.domain.sla.api
 import mu.KotlinLogging
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.records3.RecordsService
+import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.servicedesk.domain.request.SdPriority
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SdDueDateService
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaParametersProvider
 import java.time.Instant
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 import kotlin.time.toJavaDuration
 
 @Component
@@ -36,9 +39,45 @@ class SlaManager(
 
         val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose)
 
+        val timeToResolveFromPause = let {
+            val sla2Duration = slaDurations.timeResolve
+            val spentDuration = sdAtts.sla2SpentTime.toDuration(DurationUnit.MILLISECONDS)
+
+            log.debug { "Spent time SLA 2 of $sdRequest: $spentDuration" }
+
+            val remainingDuration = sla2Duration - spentDuration
+
+            return@let dueDateService.getDueDate(remainingDuration)
+        }
+        val notificationToExecutorTimeResolveFromPause = let {
+            val notificationTime = timeToResolveFromPause.minus(
+                slaDurations.notificationToExecutorTimeResolve.toJavaDuration()
+            )
+            return@let if (notificationTime.isAfter(Instant.now())) {
+                notificationTime
+            } else {
+                null
+            }
+        }
+        val notificationToSupervisorTimeResolveFromPause = let {
+            val notificationTime = timeToResolveFromPause.minus(
+                slaDurations.notificationToSupervisorTime.toJavaDuration()
+            )
+            return@let if (notificationTime.isAfter(Instant.now())) {
+                notificationTime
+            } else {
+                null
+            }
+        }
+
         val dueDates = SlaDueDates(
             timeFirstReaction = timeFirstReaction,
             timeToResolve = timeToResolve,
+
+            timeToResolveFromPause = timeToResolveFromPause,
+            notificationToExecutorTimeResolveFromPause = notificationToExecutorTimeResolveFromPause,
+            notificationToSupervisorTimeResolveFromPause = notificationToSupervisorTimeResolveFromPause,
+
             notificationToExecutorTimeReaction = timeFirstReaction.minus(
                 slaDurations.notificationToExecutorTimeReaction.toJavaDuration()
             ),
@@ -51,7 +90,7 @@ class SlaManager(
             notificationToSupervisorTimeResolve = timeToResolve.minus(
                 slaDurations.notificationToSupervisorTime.toJavaDuration()
             ),
-            notificationToInitiatorCloseReminder= timeToAutoClose.minus(
+            notificationToInitiatorCloseReminder = timeToAutoClose.minus(
                 slaDurations.notificationToInitiatorCloseReminder.toJavaDuration()
             ),
             timeToAutoClose = timeToAutoClose,
@@ -65,7 +104,10 @@ class SlaManager(
 
     private data class SdRequestAtts(
         val client: EntityRef,
-        val priority: String
+        val priority: String,
+
+        @AttName("sla_2_spent_time")
+        val sla2SpentTime: Long = 0
     )
 
 }
@@ -73,6 +115,11 @@ class SlaManager(
 data class SlaDueDates(
     val timeFirstReaction: Instant,
     val timeToResolve: Instant,
+
+    val timeToResolveFromPause: Instant? = null,
+    val notificationToExecutorTimeResolveFromPause: Instant? = null,
+    val notificationToSupervisorTimeResolveFromPause: Instant? = null,
+
     val notificationToExecutorTimeReaction: Instant,
     val notificationToExecutorTimeResolve: Instant,
     val notificationToSupervisorTimeReaction: Instant,
