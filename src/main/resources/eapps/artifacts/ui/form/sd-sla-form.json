@@ -393,7 +393,7 @@
                       "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                     },
                     "placeholder": {
-                      "ru": "60m"
+                      "ru": "1h"
                     },
                     "defaultValue": "",
                     "refreshOn": [],
@@ -476,7 +476,7 @@
                           "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
                         },
                         "placeholder": {
-                          "ru": "60m"
+                          "ru": "1h"
                         },
                         "defaultValue": "",
                         "refreshOn": [],

@@ -34,6 +34,8 @@ class SlaManager(
         val timeFirstReaction = dueDateService.getDueDate(slaDurations.timeFirstReaction)
         val timeToResolve = dueDateService.getDueDate(slaDurations.timeResolve)
 
+        val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose)
+
         val dueDates = SlaDueDates(
             timeFirstReaction = timeFirstReaction,
             timeToResolve = timeToResolve,
@@ -49,7 +51,10 @@ class SlaManager(
             notificationToSupervisorTimeResolve = timeToResolve.minus(
                 slaDurations.notificationToSupervisorTime.toJavaDuration()
             ),
-            timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose),
+            notificationToInitiatorCloseReminder= timeToAutoClose.minus(
+                slaDurations.notificationToInitiatorCloseReminder.toJavaDuration()
+            ),
+            timeToAutoClose = timeToAutoClose,
             timeToSendFirstLineFromClarify = dueDateService.getDueDate(slaDurations.timeToSendFirstLineFromClarify)
         )
 
@@ -72,6 +77,7 @@ data class SlaDueDates(
     val notificationToExecutorTimeResolve: Instant,
     val notificationToSupervisorTimeReaction: Instant,
     val notificationToSupervisorTimeResolve: Instant,
+    val notificationToInitiatorCloseReminder: Instant,
     val timeToAutoClose: Instant,
     val timeToSendFirstLineFromClarify: Instant
 )
