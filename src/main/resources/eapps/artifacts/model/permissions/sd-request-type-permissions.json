@@ -980,6 +980,95 @@
       },
       "rules": []
     },
+    "webLinks": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "add-partic-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        }
+      },
+      "rules": []
+    },
     "sla": {
       "matrix": {
         "initiator-role": {
