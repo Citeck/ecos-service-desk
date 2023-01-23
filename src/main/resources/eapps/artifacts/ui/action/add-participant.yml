@@ -1,0 +1,47 @@
+---
+id: add-participant
+name:
+  ru: Добавить участника
+type: create
+config:
+  typeRef: emodel/type@additional-participant
+  attributes:
+    _parent: ${?id}
+    _parentAtt: additionalParticipant
+predicate:
+  t: or
+  val:
+    - t: and
+      val:
+        - t: eq
+          att: _status?str
+          val: request-first-line-work
+        - t: eq
+          att: _roles.isCurrentUserMemberOf.impl-first-line-role?bool
+          val: true
+    - t: and
+      val:
+        - t: eq
+          att: _status?str
+          val: request-second-line-work
+        - t: eq
+          att: _roles.isCurrentUserMemberOf.impl-second-line-role?bool
+          val: true
+    - t: and
+      val:
+        - t: eq
+          att: _status?str
+          val: request-third-line-work
+        - t: eq
+          att: _roles.isCurrentUserMemberOf.impl-third-line-role?bool
+          val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.lead-tech-role?bool
+      val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.tech-role?bool
+      val: true
+features:
+  forRecord: true
+  forRecords: true
+  forQuery: false

@@ -1,0 +1,14 @@
+{
+  "id" : "sd-new-participant",
+  "name" : "Шаблон \"О добавлении доп. участника\"",
+  "notificationTitle" : {
+    "ru" : "Вас привлекли к заявке SD-${docNum}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "docRef" : ".id",
+    "comments" : "additionalParticipant[].comment?str"
+  },
+  "multiTemplateConfig" : [ ]
+}
