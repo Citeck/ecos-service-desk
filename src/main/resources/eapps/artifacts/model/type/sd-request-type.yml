@@ -10,6 +10,10 @@ inheritForm: false
 dispNameTemplate:
   ru: Заявка SD-${_docNum}
 numTemplateRef: emodel/num-template@sd-reg-number-template
+actions:
+  - uiserv/action@add-participant
+  - uiserv/action@return-to-work-from-hold
+  - uiserv/action@return-to-work-from-close
 associations:
   - id: webLinks
     journalsFromTarget: false
@@ -50,6 +54,12 @@ model:
       name:
         ru: Дополнительный участник
         en: Additional participant
+      attributes:
+        - additionalParticipant
+      computed:
+        type: ATTRIBUTE
+        config:
+          attribute: additionalParticipant[].additionalParticipant?str
     - id: tech-role
       name:
         ru: Технолог ТП
@@ -616,3 +626,12 @@ model:
 
             return info.records[0].sla2Info;
         storingType: NONE
+    - id: additionalParticipant
+      name:
+        ru: Доп. участник
+      type: ASSOC
+      config:
+        typeRef: emodel/type@additional-participant
+        child: true
+      multiple: true
+

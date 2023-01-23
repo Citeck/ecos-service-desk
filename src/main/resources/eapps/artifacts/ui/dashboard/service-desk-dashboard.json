@@ -86,6 +86,19 @@
           "description": "Основное"
         },
         {
+          "name": "record-actions",
+          "label": "dashboard-settings.widget.actions",
+          "dndId": "585ceb01-a315-4371-9ee4-0a115eb1941a",
+          "id": "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
+          "props": {
+            "id": "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
+            "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {}
+            }
+          }
+        },
+        {
           "name": "current-tasks",
           "label": "dashboard-settings.widget.current-tasks",
           "dndId": "5b148141-d649-420b-a840-b39a89b8fac7",
@@ -96,7 +109,8 @@
               "widgetDisplayCondition": null,
               "elementsDisplayCondition": {}
             }
-          }
+          },
+          "description": "Основное"
         },
         {
           "name": "properties",
@@ -207,6 +221,7 @@
             {
               "widgets": [
                 "b4bcb077-ed4f-498a-b152-97798fddd8fb",
+                "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
                 "adafd908-9ac5-4d0e-80f0-8592db978a4f",
                 "27c7b7da-9856-406a-a600-54751e21c49b"
               ],

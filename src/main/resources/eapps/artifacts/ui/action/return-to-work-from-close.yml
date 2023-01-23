@@ -1,0 +1,21 @@
+---
+id: return-to-work-from-close
+name:
+  ru: Вернуть в работу
+type: mutate
+config:
+  record:
+    id: eproc/bpmn-proc@sd-process
+    attributes:
+      document: ${?id}
+predicate:
+  t: and
+  val:
+    - t: and
+      val:
+        - t: eq
+          att: _status?str
+          val: request-closes
+        - t: eq
+          att: _roles.isCurrentUserMemberOf.impl-first-line-role?bool
+          val: true
