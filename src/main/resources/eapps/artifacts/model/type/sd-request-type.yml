@@ -553,29 +553,6 @@ model:
         ru: Время старта SLA 1
         en: SLA 1 start time
       type: DATETIME
-    - id: sla_1_info
-      name:
-        ru: SLA 1
-        en: SLA 1
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            var info = Records.query({
-                sourceId: "service-desk/sd-sla",
-                query: {
-                    record: value.getRef()
-                }
-            }, {
-                sla1Info: "sla1Info"
-            });
-
-            if (info.records.length === 0) {
-                throw new Error("SLA 1 информация не найдена для: " + value.getRef());
-            }
-
-            return info.records[0].sla1Info;
-        storingType: NONE
     - id: sla_2_state
       name:
         ru: Состояние SLA 2
@@ -603,29 +580,6 @@ model:
         ru: SLA 2 потраченное время
         en: SLA 2 spent time
       type: NUMBER
-    - id: sla_2_info
-      name:
-        ru: SLA 2
-        en: SLA 2
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            var info = Records.query({
-                sourceId: "service-desk/sd-sla",
-                query: {
-                    record: value.getRef()
-                }
-            }, {
-                sla2Info: "sla2Info"
-            });
-
-            if (info.records.length === 0) {
-                throw new Error("SLA 2 информация не найдена для: " + value.getRef());
-            }
-
-            return info.records[0].sla2Info;
-        storingType: NONE
     - id: additionalParticipant
       name:
         ru: Доп. участник
@@ -634,4 +588,3 @@ model:
         typeRef: emodel/type@additional-participant
         child: true
       multiple: true
-

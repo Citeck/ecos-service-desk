@@ -27,38 +27,6 @@
         "input": false,
         "components": [
           {
-            "label": {
-              "ru": "Первая реакция",
-              "en": "First response"
-            },
-            "key": "sla_1_info",
-            "disabled": true,
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true,
-            "inputMasks": [
-              {}
-            ]
-          },
-          {
-            "label": {
-              "en": "Resolve",
-              "ru": "Выполнение"
-            },
-            "key": "sla_2_info",
-            "disabled": true,
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true,
-            "inputMasks": [
-              {}
-            ]
-          },
-          {
             "input": true,
             "key": "horizontalLine",
             "type": "horizontalLine"
@@ -306,5 +274,6 @@
     ],
     "formId": "request-sd-additional-widget-form"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }
