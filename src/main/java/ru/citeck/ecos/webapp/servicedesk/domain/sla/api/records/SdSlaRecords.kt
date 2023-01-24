@@ -184,7 +184,7 @@ class SdSlaRecords(
                         val slaDurations = slaParametersProvider.get(client, priority)
 
                         val sla2Duration = slaDurations.timeResolve
-                        val spentDuration = sla2SpentTime.toDuration(DurationUnit.MILLISECONDS)
+                        val spentDuration = sla2SpentTime!!.toDuration(DurationUnit.MILLISECONDS)
 
                         val remainingDuration = sla2Duration - spentDuration
 
@@ -208,30 +208,30 @@ class SdSlaRecords(
         }
     }
 
-    data class RequestInfo(
-        val client: EntityRef = EntityRef.EMPTY,
-        val priority: String? = null,
+    class RequestInfo(
+        var client: EntityRef = EntityRef.EMPTY,
+        var priority: String? = null,
 
         @AttName("sla_1_state")
-        val sla1State: SlaState? = null,
+        var sla1State: SlaState? = null,
 
         @AttName("sla_2_state")
-        val sla2State: SlaState? = null,
+        var sla2State: SlaState? = null,
 
         @AttName("firstReactionTimestamp")
-        val sla1CompletedAt: Instant? = null,
+        var sla1CompletedAt: Instant? = null,
 
         @AttName("sla_1_due_date")
-        val sla1DueDate: Instant? = null,
+        var sla1DueDate: Instant? = null,
 
         @AttName("closedTimestamp")
-        val sla2CompletedAt: Instant? = null,
+        var sla2CompletedAt: Instant? = null,
 
         @AttName("sla_2_spent_time")
-        val sla2SpentTime: Long? = null,
+        var sla2SpentTime: Long? = null,
 
         @AttName("sla_2_due_date")
-        val sla2DueDate: Instant? = null
+        var sla2DueDate: Instant? = null
     )
 
     private data class SlaRecord(
