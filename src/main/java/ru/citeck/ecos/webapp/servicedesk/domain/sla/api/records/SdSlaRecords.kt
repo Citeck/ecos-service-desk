@@ -62,6 +62,9 @@ class SdSlaRecords(
         }
 
         val req = recordsService.getAtts(record, RequestInfo::class.java)
+        if (req.client == EntityRef.EMPTY || req.priority == null) {
+            return null
+        }
 
         val sla1 = req.toSlaInfo(SlaType.SLA1)
         val sla2 = req.toSlaInfo(SlaType.SLA2)
@@ -177,7 +180,7 @@ class SdSlaRecords(
                             return@run SlaInfo.UNDEFINED
                         }
 
-                        val priority = SdPriority.from(priority)
+                        val priority = SdPriority.from(priority!!)
                         val slaDurations = slaParametersProvider.get(client, priority)
 
                         val sla2Duration = slaDurations.timeResolve
@@ -206,8 +209,8 @@ class SdSlaRecords(
     }
 
     data class RequestInfo(
-        val client: EntityRef,
-        val priority: String,
+        val client: EntityRef = EntityRef.EMPTY,
+        val priority: String? = null,
 
         @AttName("sla_1_state")
         val sla1State: SlaState? = null,
