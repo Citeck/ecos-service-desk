@@ -96,7 +96,8 @@
               "widgetDisplayCondition": null,
               "elementsDisplayCondition": {}
             }
-          }
+          },
+          "description": "Основное"
         },
         {
           "name": "current-tasks",
@@ -127,6 +128,19 @@
             }
           },
           "description": "Основное"
+        },
+        {
+          "name": "properties",
+          "label": "dashboard-settings.widget.properties",
+          "dndId": "eb9d7da9-6387-45a7-83e0-82099a0ed14e",
+          "id": "c6b6d37b-04f2-4a37-a322-4d9084f0782f",
+          "props": {
+            "id": "c6b6d37b-04f2-4a37-a322-4d9084f0782f",
+            "config": {
+              "formId": "uiserv/form@request-sd-more-fields-widget-form",
+              "titleAsFormName": true
+            }
+          }
         },
         {
           "name": "doc-preview",
@@ -223,7 +237,8 @@
                 "b4bcb077-ed4f-498a-b152-97798fddd8fb",
                 "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
                 "adafd908-9ac5-4d0e-80f0-8592db978a4f",
-                "27c7b7da-9856-406a-a600-54751e21c49b"
+                "27c7b7da-9856-406a-a600-54751e21c49b",
+                "c6b6d37b-04f2-4a37-a322-4d9084f0782f"
               ],
               "width": "25%"
             }

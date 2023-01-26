@@ -1,0 +1,218 @@
+{
+  "id": "request-sd-more-fields-widget-form",
+  "formKey": "request-sd-more-fields-widget-form",
+  "title": {
+    "en": "Больше полей"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "emodel/type@sd-request-type",
+  "width": "lg",
+  "system": false,
+  "i18n": {
+    "ru": {
+      "resolution_done": "Готово",
+      "resolution_notRelevant": "Не актуально",
+      "resolution_knownError": "Известная ошибка",
+      "resolution_duplicate": "Дубликат",
+      "resolution_notReproducible": "Не воспроизводится",
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
+    },
+    "en": {
+      "resolution_done": "Done",
+      "resolution_notRelevant": "Not relevant",
+      "resolution_knownError": "Known error",
+      "resolution_duplicate": "Duplicate",
+      "resolution_notReproducible": "Not reproducible",
+      "sd_priority_low": "Low",
+      "sd_priority_medium": "Medium",
+      "sd_priority_high": "High",
+      "sd_priority_urgent": "Urgent"
+    }
+  },
+  "definition": {
+    "components": [
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns7",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Тип обращения",
+                  "en": "Type of petition"
+                },
+                "key": "petitionType",
+                "modalTitle": "",
+                "journalId": "petition-types-journal",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 0,
+            "md": 4
+          },
+          {
+            "md": 4,
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Вид сервиса",
+                  "en": "Type of service"
+                },
+                "key": "serviceType",
+                "clearOnHide": false,
+                "modalTitle": "",
+                "journalId": "service-types-journal",
+                "queryData": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true
+              }
+            ]
+          },
+          {
+            "md": 4,
+            "index": 2,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Модуль системы",
+                  "en": "System module"
+                },
+                "key": "systemModule",
+                "modalTitle": "",
+                "journalId": "system-module-journal",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Отмена",
+                  "en": "Cancel"
+                },
+                "key": "submit2",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "request-sd-more-fields-widget-form"
+  },
+  "attributes": {},
+  "notExists": false
+}
