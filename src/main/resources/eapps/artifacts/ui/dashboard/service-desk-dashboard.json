@@ -137,25 +137,13 @@
           "props": {
             "id": "c6b6d37b-04f2-4a37-a322-4d9084f0782f",
             "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {},
               "formId": "uiserv/form@request-sd-more-fields-widget-form",
               "titleAsFormName": true
             }
-          }
-        },
-        {
-          "name": "doc-preview",
-          "label": "dashboard-settings.widget.preview",
-          "dndId": "f13d2acd-fc25-4fce-9901-e4b8e7c60f6f",
-          "id": "579e37df-8dae-4f08-abb0-da6bb5f57bf1",
-          "props": {
-            "id": "579e37df-8dae-4f08-abb0-da6bb5f57bf1",
-            "config": {
-              "widgetDisplayCondition": "",
-              "elementsDisplayCondition": {},
-              "link": ""
-            }
           },
-          "description": "Предпросмотр"
+          "description": "Основное"
         },
         {
           "name": "events-history",
@@ -245,21 +233,6 @@
           ]
         },
         {
-          "id": "layout_bf4ddf5b-d22d-40aa-afc3-1ddebe28cfba",
-          "tab": {
-            "label": "Предпросмотр",
-            "idLayout": "layout_bf4ddf5b-d22d-40aa-afc3-1ddebe28cfba"
-          },
-          "type": "1-column",
-          "columns": [
-            {
-              "widgets": [
-                "579e37df-8dae-4f08-abb0-da6bb5f57bf1"
-              ]
-            }
-          ]
-        },
-        {
           "id": "layout_18a3a08f-e70d-476b-911e-0730c58f97ed",
           "tab": {
             "label": "История",
@@ -323,9 +296,7 @@
           "type": "mobile",
           "columns": [
             {
-              "widgets": [
-                "579e37df-8dae-4f08-abb0-da6bb5f57bf1"
-              ]
+              "widgets": []
             }
           ]
         },
@@ -424,9 +395,7 @@
           "type": "mobile",
           "columns": [
             {
-              "widgets": [
-                "579e37df-8dae-4f08-abb0-da6bb5f57bf1"
-              ]
+              "widgets": []
             }
           ]
         }
