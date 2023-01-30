@@ -135,6 +135,52 @@
             "label": {
               "ru": "HTML"
             },
+            "key": "html10",
+            "tag": "h6",
+            "className": "err",
+            "attrs": [
+              {
+                "attr": "",
+                "value": ""
+              }
+            ],
+            "content": {
+              "ru": "<style>\n    .err {\n        margin-top: 20px;\n        margin-left: 10px;\n    }\n</style>\n<div>\n    <p>\n    Произошла ошибка    \n</p>\n</div>\n"
+            },
+            "refreshOnChange": false,
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "customConditional": "show  = _.get(data, 'sla.sla1Info.state') === null",
+            "type": "htmlelement",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "HTML"
+            },
+            "key": "html9",
+            "tag": "h6",
+            "className": "err",
+            "attrs": [
+              {
+                "attr": "",
+                "value": ""
+              }
+            ],
+            "content": {
+              "ru": "<div>\n    <p>\n    Таймер не запущен \n</p>\n</div>\n"
+            },
+            "refreshOnChange": false,
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "customConditional": "show = _.get(data, 'sla.sla1Info.state') === \"CREATED\";",
+            "type": "htmlelement",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "HTML"
+            },
             "key": "html8",
             "tag": "div",
             "className": "sla_2_ext",
@@ -334,8 +380,8 @@
               "ru": "HTML"
             },
             "key": "html3",
-            "tag": "h3",
-            "className": "",
+            "tag": "h6",
+            "className": "err",
             "attrs": [
               {
                 "attr": "",
@@ -343,12 +389,12 @@
               }
             ],
             "content": {
-              "ru": "Произошла ошибка"
+              "ru": "<div>\n    <p>\n    Произошла ошибка    \n</p>\n</div>\n"
             },
             "refreshOnChange": false,
             "refreshOn": [],
             "optionalWhenDisabled": false,
-            "customConditional": "show  = _.get(data, 'sla.sla1Info.duration') === null;",
+            "customConditional": "show  = _.get(data, 'sla.sla2Info.state') === null",
             "type": "htmlelement",
             "input": false
           },
@@ -356,9 +402,9 @@
             "label": {
               "ru": "HTML"
             },
-            "key": "html9",
-            "tag": "h3",
-            "className": "",
+            "key": "html11",
+            "tag": "h6",
+            "className": "err",
             "attrs": [
               {
                 "attr": "",
@@ -366,12 +412,12 @@
               }
             ],
             "content": {
-              "ru": "Таймер не запущен"
+              "ru": "<div>\n    <p>\n    Таймер не запущен \n</p>\n</div>\n"
             },
             "refreshOnChange": false,
             "refreshOn": [],
             "optionalWhenDisabled": false,
-            "customConditional": "show = _.get(data, 'sla.sla1Info.state') === \"CREATED\";",
+            "customConditional": "show = _.get(data, 'sla.sla2Info.state') === \"CREATED\";",
             "type": "htmlelement",
             "input": false
           },
