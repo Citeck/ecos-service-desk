@@ -116,6 +116,19 @@
         {
           "name": "properties",
           "label": "dashboard-settings.widget.properties",
+          "dndId": "e87d0cfd-71b0-482f-ac21-a600a39746f8",
+          "id": "1719d424-3ea6-4e82-beb9-69e2950dd88c",
+          "props": {
+            "id": "1719d424-3ea6-4e82-beb9-69e2950dd88c",
+            "config": {
+              "formId": "uiserv/form@sd-request-sla-formatter-form",
+              "titleAsFormName": true
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "label": "dashboard-settings.widget.properties",
           "dndId": "074f5da9-0e45-456b-941e-e47e7c5a9b73",
           "id": "27c7b7da-9856-406a-a600-54751e21c49b",
           "props": {
@@ -225,6 +238,7 @@
                 "b4bcb077-ed4f-498a-b152-97798fddd8fb",
                 "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
                 "adafd908-9ac5-4d0e-80f0-8592db978a4f",
+                "1719d424-3ea6-4e82-beb9-69e2950dd88c",
                 "27c7b7da-9856-406a-a600-54751e21c49b",
                 "c6b6d37b-04f2-4a37-a322-4d9084f0782f"
               ],
