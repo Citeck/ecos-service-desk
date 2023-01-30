@@ -14,6 +14,7 @@ actions:
   - uiserv/action@add-participant
   - uiserv/action@return-to-work-from-hold
   - uiserv/action@return-to-work-from-close
+  - uiserv/action@tasks-actions
 associations:
   - id: webLinks
     journalsFromTarget: false

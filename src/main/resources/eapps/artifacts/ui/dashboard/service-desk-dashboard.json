@@ -10,20 +10,6 @@
     "v2": {
       "widgets": [
         {
-          "dndId": "077bcf0e-5f7e-4f6d-abca-f996d243ea1d",
-          "name": "tasks",
-          "label": "dashboard-settings.widget.tasks",
-          "id": "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
-          "props": {
-            "id": "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
-            "config": {
-              "widgetDisplayCondition": "",
-              "elementsDisplayCondition": {}
-            }
-          },
-          "description": "Основное"
-        },
-        {
           "dndId": "9b8f6180-1a68-4c8f-9e21-249ef2f1143d",
           "name": "properties",
           "label": "dashboard-settings.widget.properties",
@@ -121,10 +107,13 @@
           "props": {
             "id": "1719d424-3ea6-4e82-beb9-69e2950dd88c",
             "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {},
               "formId": "uiserv/form@sd-request-sla-formatter-form",
               "titleAsFormName": true
             }
-          }
+          },
+          "description": "Основное"
         },
         {
           "name": "properties",
@@ -227,7 +216,6 @@
           "columns": [
             {
               "widgets": [
-                "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
                 "ecbede90-a55d-423a-9b6b-3ac523600335",
                 "115fa7a7-d2e1-4fdb-937a-a995eccf832a",
                 "291afa3a-50c1-4a3a-9700-8b85767926af"
@@ -294,7 +282,6 @@
           "columns": [
             {
               "widgets": [
-                "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
                 "ecbede90-a55d-423a-9b6b-3ac523600335",
                 "b4bcb077-ed4f-498a-b152-97798fddd8fb"
               ]
