@@ -80,7 +80,11 @@
             "id": "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
             "config": {
               "widgetDisplayCondition": null,
-              "elementsDisplayCondition": {}
+              "elementsDisplayCondition": {},
+              "v2": {},
+              "version": "v2",
+              "collapsed": true,
+              "formMode": "VIEW"
             }
           },
           "description": "Основное"
@@ -91,10 +95,15 @@
           "dndId": "5b148141-d649-420b-a840-b39a89b8fac7",
           "id": "adafd908-9ac5-4d0e-80f0-8592db978a4f",
           "props": {
+            "maxHeightByContent": true,
             "id": "adafd908-9ac5-4d0e-80f0-8592db978a4f",
             "config": {
               "widgetDisplayCondition": null,
-              "elementsDisplayCondition": {}
+              "elementsDisplayCondition": {},
+              "v2": {},
+              "version": "v2",
+              "collapsed": true,
+              "formMode": "VIEW"
             }
           },
           "description": "Основное"
