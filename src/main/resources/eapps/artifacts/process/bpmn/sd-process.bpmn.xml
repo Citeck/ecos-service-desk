@@ -319,7 +319,7 @@
             <bpmn:outgoing >Flow_139do4u</bpmn:outgoing>
             <bpmn:signalEventDefinition  signalRef="Signal_Cy7hmse" id="SignalEventDefinition_1byydkr"/>
         </bpmn:intermediateThrowEvent>
-        <bpmn:task name="" id="Activity_1prs3s3" ecos:asyncConfig="{&quot;asyncBefore&quot;:true,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:taskType="setStatus" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:&quot;&quot;}" ecos:status="request-first-line">
+        <bpmn:task name="" id="Activity_1prs3s3" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:taskType="setStatus" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:&quot;&quot;}" ecos:status="request-first-line">
             <bpmn:incoming >Flow_0p2g4j7</bpmn:incoming>
             <bpmn:outgoing >Flow_00tzpex</bpmn:outgoing>
         </bpmn:task>
