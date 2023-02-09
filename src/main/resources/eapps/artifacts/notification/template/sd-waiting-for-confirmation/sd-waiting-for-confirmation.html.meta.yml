@@ -1,0 +1,13 @@
+{
+  "id" : "sd-waiting-for-confirmation",
+  "name" : "Об ожидании подтверждения выполнения",
+  "notificationTitle" : {
+    "ru" : "Ожидание подтверждения выполнения заявки"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "docRef" : ".id"
+  },
+  "multiTemplateConfig" : [ ]
+}
