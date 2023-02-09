@@ -2,8 +2,8 @@
   "id" : "sd-input-comment",
   "name" : "О вводе комментария",
   "notificationTitle" : {
-    "ru" : "Заявка ${docNum}: ${letterTopic}",
-    "en" : "Request ${docNum}: ${letterTopic}"
+    "ru" : "Заявка SD-${docNum}: ${letterTopic}",
+    "en" : "Request SD-${docNum}: ${letterTopic}"
   },
   "tags" : [ ],
   "model" : {
