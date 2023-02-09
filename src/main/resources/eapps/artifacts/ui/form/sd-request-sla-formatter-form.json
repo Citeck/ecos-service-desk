@@ -317,7 +317,7 @@
                 "name": "Change color soon expired",
                 "trigger": {
                   "type": "javascript",
-                  "javascript": "var durationISO8601 = _.get(data, \"sla.sla2Info.duration\");\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours >=0 && minutes <= 30);"
+                  "javascript": "var durationISO8601 = _.get(data, \"sla.sla2Info.duration\");\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours ===0 && minutes <= 30);"
                 },
                 "actions": [
                   {
