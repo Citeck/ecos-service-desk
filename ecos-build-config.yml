@@ -1,4 +1,4 @@
 ---
-type: 'maven-webapp'
+type: 'maven-webapp-multiplatform'
 properties:
   jdk: JDK17
