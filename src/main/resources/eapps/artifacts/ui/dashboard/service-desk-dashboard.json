@@ -10,20 +10,6 @@
     "v2": {
       "widgets": [
         {
-          "dndId": "077bcf0e-5f7e-4f6d-abca-f996d243ea1d",
-          "name": "tasks",
-          "label": "dashboard-settings.widget.tasks",
-          "id": "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
-          "props": {
-            "id": "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
-            "config": {
-              "widgetDisplayCondition": "",
-              "elementsDisplayCondition": {}
-            }
-          },
-          "description": "Основное"
-        },
-        {
           "dndId": "9b8f6180-1a68-4c8f-9e21-249ef2f1143d",
           "name": "properties",
           "label": "dashboard-settings.widget.properties",
@@ -86,17 +72,57 @@
           "description": "Основное"
         },
         {
+          "name": "record-actions",
+          "label": "dashboard-settings.widget.actions",
+          "dndId": "585ceb01-a315-4371-9ee4-0a115eb1941a",
+          "id": "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
+          "props": {
+            "id": "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
+            "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {},
+              "v2": {},
+              "version": "v2",
+              "collapsed": true,
+              "formMode": "VIEW"
+            }
+          },
+          "description": "Основное"
+        },
+        {
           "name": "current-tasks",
           "label": "dashboard-settings.widget.current-tasks",
           "dndId": "5b148141-d649-420b-a840-b39a89b8fac7",
           "id": "adafd908-9ac5-4d0e-80f0-8592db978a4f",
           "props": {
+            "maxHeightByContent": true,
             "id": "adafd908-9ac5-4d0e-80f0-8592db978a4f",
             "config": {
               "widgetDisplayCondition": null,
-              "elementsDisplayCondition": {}
+              "elementsDisplayCondition": {},
+              "v2": {},
+              "version": "v2",
+              "collapsed": true,
+              "formMode": "VIEW"
             }
-          }
+          },
+          "description": "Основное"
+        },
+        {
+          "name": "properties",
+          "label": "dashboard-settings.widget.properties",
+          "dndId": "e87d0cfd-71b0-482f-ac21-a600a39746f8",
+          "id": "1719d424-3ea6-4e82-beb9-69e2950dd88c",
+          "props": {
+            "id": "1719d424-3ea6-4e82-beb9-69e2950dd88c",
+            "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {},
+              "formId": "uiserv/form@sd-request-sla-formatter-form",
+              "titleAsFormName": true
+            }
+          },
+          "description": "Основное"
         },
         {
           "name": "properties",
@@ -115,19 +141,20 @@
           "description": "Основное"
         },
         {
-          "name": "doc-preview",
-          "label": "dashboard-settings.widget.preview",
-          "dndId": "f13d2acd-fc25-4fce-9901-e4b8e7c60f6f",
-          "id": "579e37df-8dae-4f08-abb0-da6bb5f57bf1",
+          "name": "properties",
+          "label": "dashboard-settings.widget.properties",
+          "dndId": "eb9d7da9-6387-45a7-83e0-82099a0ed14e",
+          "id": "c6b6d37b-04f2-4a37-a322-4d9084f0782f",
           "props": {
-            "id": "579e37df-8dae-4f08-abb0-da6bb5f57bf1",
+            "id": "c6b6d37b-04f2-4a37-a322-4d9084f0782f",
             "config": {
-              "widgetDisplayCondition": "",
+              "widgetDisplayCondition": null,
               "elementsDisplayCondition": {},
-              "link": ""
+              "formId": "uiserv/form@request-sd-more-fields-widget-form",
+              "titleAsFormName": true
             }
           },
-          "description": "Предпросмотр"
+          "description": "Основное"
         },
         {
           "name": "events-history",
@@ -198,7 +225,6 @@
           "columns": [
             {
               "widgets": [
-                "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
                 "ecbede90-a55d-423a-9b6b-3ac523600335",
                 "115fa7a7-d2e1-4fdb-937a-a995eccf832a",
                 "291afa3a-50c1-4a3a-9700-8b85767926af"
@@ -207,25 +233,13 @@
             {
               "widgets": [
                 "b4bcb077-ed4f-498a-b152-97798fddd8fb",
+                "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
                 "adafd908-9ac5-4d0e-80f0-8592db978a4f",
-                "27c7b7da-9856-406a-a600-54751e21c49b"
+                "1719d424-3ea6-4e82-beb9-69e2950dd88c",
+                "27c7b7da-9856-406a-a600-54751e21c49b",
+                "c6b6d37b-04f2-4a37-a322-4d9084f0782f"
               ],
               "width": "25%"
-            }
-          ]
-        },
-        {
-          "id": "layout_bf4ddf5b-d22d-40aa-afc3-1ddebe28cfba",
-          "tab": {
-            "label": "Предпросмотр",
-            "idLayout": "layout_bf4ddf5b-d22d-40aa-afc3-1ddebe28cfba"
-          },
-          "type": "1-column",
-          "columns": [
-            {
-              "widgets": [
-                "579e37df-8dae-4f08-abb0-da6bb5f57bf1"
-              ]
             }
           ]
         },
@@ -277,7 +291,6 @@
           "columns": [
             {
               "widgets": [
-                "d5b4372a-cb41-4370-b66e-5580a52aaa6f",
                 "ecbede90-a55d-423a-9b6b-3ac523600335",
                 "b4bcb077-ed4f-498a-b152-97798fddd8fb"
               ]
@@ -293,9 +306,7 @@
           "type": "mobile",
           "columns": [
             {
-              "widgets": [
-                "579e37df-8dae-4f08-abb0-da6bb5f57bf1"
-              ]
+              "widgets": []
             }
           ]
         },
@@ -394,9 +405,7 @@
           "type": "mobile",
           "columns": [
             {
-              "widgets": [
-                "579e37df-8dae-4f08-abb0-da6bb5f57bf1"
-              ]
+              "widgets": []
             }
           ]
         }

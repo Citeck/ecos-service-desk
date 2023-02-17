@@ -1,0 +1,21 @@
+---
+id: return-to-work-from-hold
+name:
+  ru: Вернуть в работу
+type: mutate
+config:
+  record:
+    id: ${?id}
+    attributes:
+      _status: request-first-line
+predicate:
+  t: and
+  val:
+    - t: and
+      val:
+        - t: eq
+          att: _status?str
+          val: request-hold
+        - t: eq
+          att: _roles.isCurrentUserMemberOf.impl-first-line-role?bool
+          val: true

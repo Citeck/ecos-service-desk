@@ -1,0 +1,13 @@
+{
+  "id" : "sd-request-sla-1-overdue",
+  "name" : "Шаблон \"О просрочке SLA 1\"",
+  "notificationTitle" : {
+    "ru" : "Истекает срок SLA 1 по заявке SD-${docNum}"
+  },
+  "tags" : [ ],
+  "model" : {
+    "docNum" : "_docNum",
+    "docRef" : ".id"
+  },
+  "multiTemplateConfig" : [ ]
+}

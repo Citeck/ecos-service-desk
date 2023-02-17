@@ -46,9 +46,12 @@
         "defaultValue": "",
         "refreshOn": [],
         "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, 'options.formMode')\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+        "customConditional": "const formMode = _.get(instance, 'options.formMode');\nconst type = _.get(instance, 'options.initiator.type');\n\nif(formMode === \"CREATE\" || type === \"widget\") {\n  show = false;\n}",
         "type": "textfield",
-        "input": true
+        "input": true,
+        "inputMasks": [
+          {}
+        ]
       },
       {
         "label": {
@@ -106,51 +109,22 @@
             "components": [
               {
                 "label": {
-                  "ru": "Клиент",
-                  "en": "Client"
+                  "ru": "Автор",
+                  "en": "Author"
                 },
-                "key": "client",
-                "disabled": true,
-                "validate": {
-                  "required": true
-                },
+                "key": "author",
                 "clearOnHide": false,
-                "modalTitle": "",
-                "journalId": "sd-clients-journal",
-                "queryData": "",
-                "refreshOn": [
-                  "defaultClient"
-                ],
-                "customDefaultValue": "const formMode = _.get(instance, \"options.formMode\");\nconst defClient = _.get(data, 'defaultClient.client') || null;\nconsole.log(defClient);\n\nif(formMode === \"CREATE\" && defClient !== null) {\n  value = defClient;\n}",
+                "defaultValue": "",
+                "refreshOn": [],
                 "optionalWhenDisabled": false,
-                "logic": [
-                  {
-                    "name": "Hasn't default client",
-                    "trigger": {
-                      "type": "javascript",
-                      "javascript": "const defClient = _.get(data, 'defaultClient.client') || null;\n\nresult = defClient === null;"
-                    },
-                    "actions": [
-                      {
-                        "name": "Disable off",
-                        "type": "property",
-                        "property": {
-                          "label": "Disabled",
-                          "value": "disabled",
-                          "type": "boolean"
-                        },
-                        "state": "false"
-                      }
-                    ]
-                  }
-                ],
-                "type": "selectJournal",
+                "type": "textfield",
                 "input": true
               }
             ]
           }
         ],
         "oneColumnInViewMode": false,
+        "customConditional": "const type = _.get(instance, 'options.initiator.type');\n\nif(type === \"widget\") {\n  show = false;\n}",
         "type": "columns",
         "input": false
       },
@@ -187,21 +161,7 @@
             "type": "column",
             "input": false,
             "key": "column",
-            "components": [
-              {
-                "label": {
-                  "ru": "Автор",
-                  "en": "Author"
-                },
-                "key": "author",
-                "clearOnHide": false,
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "textfield",
-                "input": true
-              }
-            ]
+            "components": []
           }
         ],
         "oneColumnInViewMode": false,
@@ -210,120 +170,7 @@
         "input": false
       },
       {
-        "label": {
-          "ru": "Columns"
-        },
-        "key": "columns6",
-        "columns": [
-          {
-            "components": [
-              {
-                "label": {
-                  "ru": "Тип обращения",
-                  "en": "Type of petition"
-                },
-                "key": "petitionType",
-                "modalTitle": "",
-                "journalId": "petition-types-journal",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "selectJournal",
-                "input": true,
-                "queryData": ""
-              }
-            ],
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "index": 0,
-            "md": 4
-          },
-          {
-            "index": 1,
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "components": [
-              {
-                "label": {
-                  "ru": "Вид сервиса",
-                  "en": "Type of service"
-                },
-                "key": "serviceType",
-                "clearOnHide": false,
-                "modalTitle": "",
-                "journalId": "service-types-journal",
-                "queryData": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "selectJournal",
-                "input": true
-              }
-            ],
-            "md": 4
-          },
-          {
-            "index": 2,
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "components": [
-              {
-                "label": {
-                  "ru": "Модуль системы",
-                  "en": "System module"
-                },
-                "key": "systemModule",
-                "modalTitle": "",
-                "journalId": "system-module-journal",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "selectJournal",
-                "input": true,
-                "queryData": ""
-              }
-            ],
-            "md": 4
-          }
-        ],
-        "oneColumnInViewMode": false,
-        "type": "columns",
-        "input": false
-      },
-      {
-        "label": {
-          "ru": "Исполнитель 3-линии ТП"
-        },
-        "key": "implementerThirdLineSupport",
-        "defaultValue": "",
-        "refreshOn": [],
-        "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
-        "logic": [
-          {
-            "name": "log",
-            "trigger": {
-              "type": "javascript",
-              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
-            },
-            "actions": [
-              {
-                "name": "act",
-                "type": "property",
-                "property": {
-                  "label": "Disabled",
-                  "value": "disabled",
-                  "type": "boolean"
-                },
-                "state": "true"
-              }
-            ]
-          }
-        ],
-        "type": "selectOrgstruct",
-        "input": true
-      },
-      {
+        "customConditional": "const type = _.get(instance, \"options.initiator.type\");\n\nif(type === \"widget\") {\n  show = false;\n}",
         "input": true,
         "key": "horizontalLine3",
         "type": "horizontalLine"
@@ -364,6 +211,165 @@
       },
       {
         "label": {
+          "ru": "Исполнитель 3-линии ТП"
+        },
+        "key": "implementerThirdLineSupport",
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
+        "logic": [
+          {
+            "name": "log",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
+            },
+            "actions": [
+              {
+                "name": "act",
+                "type": "property",
+                "property": {
+                  "label": "Disabled",
+                  "value": "disabled",
+                  "type": "boolean"
+                },
+                "state": "true"
+              }
+            ]
+          }
+        ],
+        "type": "selectOrgstruct",
+        "input": true
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns7",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "Тип обращения",
+                  "en": "Type of petition"
+                },
+                "key": "petitionType",
+                "modalTitle": "",
+                "journalId": "petition-types-journal",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 0,
+            "md": 4
+          },
+          {
+            "md": 4,
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Вид сервиса",
+                  "en": "Type of service"
+                },
+                "key": "serviceType",
+                "clearOnHide": false,
+                "modalTitle": "",
+                "journalId": "service-types-journal",
+                "queryData": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true
+              }
+            ]
+          },
+          {
+            "md": 4,
+            "index": 2,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Модуль системы",
+                  "en": "System module"
+                },
+                "key": "systemModule",
+                "modalTitle": "",
+                "journalId": "system-module-journal",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "customConditional": "const type = _.get(instance, \"options.initiator.type\");\n\nif(type === \"widget\") {\n  show = false;\n}",
+        "type": "columns",
+        "input": false
+      },
+      {
+        "label": {
+          "ru": "Клиент",
+          "en": "Client"
+        },
+        "key": "client",
+        "disabled": true,
+        "validate": {
+          "required": true
+        },
+        "clearOnHide": false,
+        "modalTitle": "",
+        "journalId": "sd-clients-journal",
+        "queryData": "",
+        "refreshOn": [
+          "defaultClient"
+        ],
+        "customDefaultValue": "const formMode = _.get(instance, \"options.formMode\");\nconst defClient = _.get(data, 'defaultClient.client') || null;\nconsole.log(defClient);\n\nif(formMode === \"CREATE\" && defClient !== null) {\n  value = defClient;\n}",
+        "optionalWhenDisabled": false,
+        "customConditional": "const type = _.get(instance, \"options.initiator.type\");\n\nif(type === \"widget\") {\n  show = false;\n}",
+        "logic": [
+          {
+            "name": "Hasn't default client",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "const defClient = _.get(data, 'defaultClient.client') || null;\n\nresult = defClient === null;"
+            },
+            "actions": [
+              {
+                "name": "Disable off",
+                "type": "property",
+                "property": {
+                  "label": "Disabled",
+                  "value": "disabled",
+                  "type": "boolean"
+                },
+                "state": "false"
+              }
+            ]
+          }
+        ],
+        "type": "selectJournal",
+        "input": true
+      },
+      {
+        "label": {
           "ru": "Резолюция",
           "en": "Resolution"
         },
@@ -392,6 +398,9 @@
               "label": "resolution_knownError",
               "value": "knownError"
             }
+          ],
+          "headers": [
+            {}
           ]
         },
         "searchEnabled": false,
@@ -689,5 +698,6 @@
     ],
     "formId": "request-sd-form"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }

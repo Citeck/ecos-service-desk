@@ -11,9 +11,11 @@ import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.servicedesk.domain.request.SdPriority
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaParametersProvider
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaState
+import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaType
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaDueDates
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaManager
 import java.time.Instant
+import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 import kotlin.time.toKotlinDuration
@@ -46,8 +48,6 @@ class SdSlaRecords(
 
     companion object {
         private val log = KotlinLogging.logger {}
-
-        private const val UNDEFINED_STATUS = "неизвестный статус"
     }
 
     override fun getId(): String {
@@ -62,143 +62,155 @@ class SdSlaRecords(
         }
 
         val req = recordsService.getAtts(record, RequestInfo::class.java)
-
-        val sla1Info: String = when (req.sla1State) {
-            SlaState.CREATED -> "еще не запущен"
-            SlaState.RUNNING -> run {
-                if (req.sla1DueDate == null) {
-                    log.warn { "SLA 1 is running, but due date is null. Query=$recsQuery, Info=$req" }
-                    return@run UNDEFINED_STATUS
-                }
-
-                val now = Instant.now()
-                val isOverdue = now.isAfter(req.sla1DueDate)
-
-                val diffDuration = java.time.Duration.between(now, req.sla1DueDate).toKotlinDuration()
-                var result = "запущен, "
-                result += if (isOverdue) {
-                    "просрочен на $diffDuration"
-                } else {
-                    "осталось $diffDuration"
-                }
-
-                result
-            }
-
-            SlaState.COMPLETE -> run {
-                if (req.sla1DueDate == null) {
-                    log.warn { "SLA 1 is complete, but due date is null. Query=$recsQuery, Info=$req" }
-                    return@run UNDEFINED_STATUS
-                }
-
-                if (req.sla1CompletedAt == null) {
-                    log.warn { "SLA 1 is complete, but complete date is null. Query=$recsQuery, Info=$req" }
-                    return@run UNDEFINED_STATUS
-                }
-
-                val isOverdue = req.sla1CompletedAt.isAfter(req.sla1DueDate)
-                val diffDuration = java.time.Duration.between(req.sla1CompletedAt, req.sla1DueDate).toKotlinDuration()
-                var result = "завершен, "
-                result += if (isOverdue) {
-                    "просрочен на $diffDuration"
-                } else {
-                    "осталось $diffDuration"
-                }
-
-                result
-            }
-
-            else -> {
-                log.warn { "SLA 1 unsupported state. Query=$recsQuery, Info=$req" }
-                UNDEFINED_STATUS
-            }
+        if (req.client == EntityRef.EMPTY || req.priority == null) {
+            return null
         }
 
-        val sla2Info = when (req.sla2State) {
-            SlaState.CREATED -> "еще не запущен"
-            SlaState.RUNNING -> run {
-                if (req.sla2DueDate == null) {
-                    log.warn { "SLA 2 is running, but due date is null. Query=$recsQuery, Info=$req" }
-                    return@run UNDEFINED_STATUS
-                }
+        val sla1 = req.toSlaInfo(SlaType.SLA1)
+        val sla2 = req.toSlaInfo(SlaType.SLA2)
 
-                val now = Instant.now()
-                val isOverdue = now.isAfter(req.sla2DueDate)
+        log.debug { "SLA info for $record: \nsla1: $sla1 \nsla2:$sla2" }
 
-                val diffDuration = java.time.Duration.between(now, req.sla2DueDate).toKotlinDuration()
-                var result = "запущен, "
-                result += if (isOverdue) {
-                    "просрочен на $diffDuration"
-                } else {
-                    "осталось $diffDuration"
-                }
-
-                result
-            }
-
-            SlaState.COMPLETE -> run {
-                if (req.sla2DueDate == null) {
-                    log.warn { "SLA 2 is complete, but due date is null. Query=$recsQuery, Info=$req" }
-                    return@run UNDEFINED_STATUS
-                }
-
-                if (req.sla2CompletedAt == null) {
-                    log.warn { "SLA 2 is complete, but complete date is null. Query=$recsQuery, Info=$req" }
-                    return@run UNDEFINED_STATUS
-                }
-
-                val isOverdue = req.sla2CompletedAt.isAfter(req.sla2DueDate)
-                val diffDuration = java.time.Duration.between(req.sla2CompletedAt, req.sla2DueDate).toKotlinDuration()
-                var result = "завершен, "
-                result += if (isOverdue) {
-                    "просрочен на $diffDuration"
-                } else {
-                    "осталось $diffDuration"
-                }
-
-                result
-            }
-
-            SlaState.PAUSE -> run {
-                if (req.sla2SpentTime == null) {
-                    log.warn { "SLA 2 on pause, but spent time is null. Query=$recsQuery, Info=$req" }
-                    return@run UNDEFINED_STATUS
-                }
-
-                val priority = SdPriority.from(req.priority)
-                val slaDurations = slaParametersProvider.get(req.client, priority)
-
-                val sla2Duration = slaDurations.timeResolve
-                val spentDuration = req.sla2SpentTime.toDuration(DurationUnit.MILLISECONDS)
-
-                val remainingDuration = sla2Duration - spentDuration
-                val isOverdue = remainingDuration.isNegative()
-
-                var result = "пауза, "
-                result += if (isOverdue) {
-                    "просрочен на $remainingDuration"
-                } else {
-                    "осталось $remainingDuration"
-                }
-
-                result
-            }
-
-            else -> {
-                log.warn { "SLA 2 unsupported state. Query=$recsQuery, Info=$req" }
-                UNDEFINED_STATUS
-            }
-        }
-
-        val result = RecsQueryRes<SlaInfo>()
-        result.setRecords(listOf(SlaInfo(sla1Info, sla2Info)))
-
+        val result = RecsQueryRes<SlaRecord>()
+        result.setRecords(
+            listOf(
+                SlaRecord(
+                    sla1Info = sla1,
+                    sla2Info = sla2
+                )
+            )
+        )
         return result
     }
 
-    private data class RequestInfo(
-        val client: EntityRef,
-        val priority: String,
+    private fun RequestInfo.toSlaInfo(type: SlaType): SlaInfo {
+        return when (type) {
+            SlaType.SLA1 -> {
+                return when (sla1State) {
+                    SlaState.CREATED -> SlaInfo(
+                        state = SlaState.CREATED,
+                        duration = Duration.ZERO.toIsoString()
+                    )
+
+                    SlaState.RUNNING -> run {
+                        if (sla1DueDate == null) {
+                            log.warn { "SLA 1 is running, but due date is null. $this" }
+                            return@run SlaInfo.UNDEFINED
+                        }
+
+                        val now = Instant.now()
+                        val diffDuration = java.time.Duration.between(now, sla1DueDate).toKotlinDuration()
+
+                        SlaInfo(
+                            state = SlaState.RUNNING,
+                            duration = diffDuration.toIsoString()
+                        )
+                    }
+
+                    SlaState.COMPLETE -> run {
+                        if (sla1DueDate == null) {
+                            log.warn { "SLA 1 is complete, but due date is null. $this" }
+                            return@run SlaInfo.UNDEFINED
+                        }
+
+                        if (sla1CompletedAt == null) {
+                            log.warn { "SLA 1 is complete, but complete date is null. $this" }
+                            return@run SlaInfo.UNDEFINED
+                        }
+
+                        val diffDuration = java.time.Duration.between(sla1CompletedAt, sla1DueDate).toKotlinDuration()
+
+                        SlaInfo(
+                            state = SlaState.COMPLETE,
+                            duration = diffDuration.toIsoString()
+                        )
+                    }
+
+                    else -> {
+                        log.warn { "SLA 1 unsupported state. $this" }
+                        SlaInfo.UNDEFINED
+                    }
+                }
+            }
+
+            SlaType.SLA2 -> {
+                return when (sla2State) {
+                    SlaState.CREATED -> SlaInfo(
+                        state = SlaState.CREATED,
+                        duration = Duration.ZERO.toIsoString()
+                    )
+
+                    SlaState.RUNNING -> run {
+                        if (sla2DueDate == null) {
+                            log.warn { "SLA 2 is running, but due date is null. $this" }
+                            return@run SlaInfo.UNDEFINED
+                        }
+
+                        val now = Instant.now()
+                        val diffDuration = java.time.Duration.between(now, sla2DueDate).toKotlinDuration()
+
+                        SlaInfo(
+                            state = SlaState.RUNNING,
+                            duration = diffDuration.toIsoString()
+                        )
+                    }
+
+                    SlaState.COMPLETE -> run {
+                        if (sla2DueDate == null) {
+                            log.warn { "SLA 2 is complete, but due date is null. $this" }
+                            return@run SlaInfo.UNDEFINED
+                        }
+
+                        if (sla2CompletedAt == null) {
+                            log.warn { "SLA 2 is complete, but complete date is null. $this" }
+                            return@run SlaInfo.UNDEFINED
+                        }
+
+                        val diffDuration = java.time.Duration.between(sla2CompletedAt, sla2DueDate).toKotlinDuration()
+
+                        SlaInfo(
+                            state = SlaState.COMPLETE,
+                            duration = diffDuration.toIsoString()
+                        )
+                    }
+
+                    SlaState.PAUSE -> run {
+                        if (sla2SpentTime == null) {
+                            log.warn { "SLA 2 on pause, but spent time is null. $this" }
+                            return@run SlaInfo.UNDEFINED
+                        }
+
+                        val priority = SdPriority.from(priority!!)
+                        val slaDurations = slaParametersProvider.get(client, priority)
+
+                        val sla2Duration = slaDurations.timeResolve
+                        val spentDuration = sla2SpentTime.toDuration(DurationUnit.MILLISECONDS)
+
+                        val remainingDuration = sla2Duration - spentDuration
+
+                        SlaInfo(
+                            state = SlaState.PAUSE,
+                            duration = remainingDuration.toIsoString()
+                        )
+                    }
+
+                    else -> {
+                        log.warn { "SLA 2 unsupported state. $this" }
+                        SlaInfo.UNDEFINED
+                    }
+                }
+            }
+
+            else -> {
+                log.warn { "Unsupported SLA type $type" }
+                SlaInfo.UNDEFINED
+            }
+        }
+    }
+
+    data class RequestInfo(
+        val client: EntityRef = EntityRef.EMPTY,
+        val priority: String? = null,
 
         @AttName("sla_1_state")
         val sla1State: SlaState? = null,
@@ -222,10 +234,20 @@ class SdSlaRecords(
         val sla2DueDate: Instant? = null
     )
 
-    private data class SlaInfo(
-        val sla1Info: String,
-        val sla2Info: String
+    private data class SlaRecord(
+        val sla1Info: SlaInfo,
+        val sla2Info: SlaInfo
     )
+
+    data class SlaInfo(
+        val state: SlaState?,
+        //iso 8601 duration
+        val duration: String
+    ) {
+        companion object {
+            val UNDEFINED = SlaInfo(null, Duration.ZERO.toIsoString())
+        }
+    }
 }
 
 private data class SlaQuery(

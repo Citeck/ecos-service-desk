@@ -1,0 +1,21 @@
+---
+id: additional-participant
+name:
+  ru: Доп. участник
+storageType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@additional-participant
+journalRef: uiserv/journal@DEFAULT_JOURNAL
+inheritForm: false
+dispNameTemplate:
+  ru: '${additionalParticipant}'
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: additionalParticipant
+      name:
+        ru: Доп. участник
+      type: PERSON
+    - id: comment
+      name:
+        ru: Комментарий

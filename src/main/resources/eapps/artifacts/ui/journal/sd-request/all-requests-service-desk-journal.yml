@@ -16,6 +16,7 @@ columns:
       ru: Приоритет
       en: Priority
     type: TEXT
+    sortable: false
     formatter:
       type: colored
       config:
