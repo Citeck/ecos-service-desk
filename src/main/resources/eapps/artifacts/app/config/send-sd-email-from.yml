@@ -3,4 +3,4 @@ id: send-sd-email-from
 name:
   ru: Отправлять Service Desk емейлы с адреса
   en: Send Service Desk mails from
-value:
+value: ""
