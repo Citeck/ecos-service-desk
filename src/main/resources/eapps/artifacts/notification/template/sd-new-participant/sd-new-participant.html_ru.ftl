@@ -1,6 +1,11 @@
+<#import "sd-template-lib" as lib>
+
 <p>Добрый день!</p>
-<p>Вас привлекли к заявке SD-${docNum} c комментарием:</p>
-<br/>
-<p>${comments?last!''}</p>
-<br/>
-<a href="${link.getRecordLink(docRef)}">Просмотреть заявку</a>
+<p>Вас привлекли к заявке <a href="${link.getRecordLink(docRef)}" target="_blank">SD-${docNum}</a> c комментарием:</p>
+
+<blockquote>
+    ${additionalParticipantComments?last!''}
+</blockquote>
+
+<@lib.reply_message/>
+

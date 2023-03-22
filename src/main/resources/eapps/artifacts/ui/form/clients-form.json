@@ -71,6 +71,21 @@
             "optionalWhenDisabled": false,
             "type": "textfield",
             "input": true
+          },
+          {
+            "label": {
+              "ru": "Пользователи",
+              "en": "Users"
+            },
+            "key": "users",
+            "multiple": true,
+            "modalTitle": "",
+            "journalId": "persons",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "selectJournal",
+            "input": true,
+            "queryData": ""
           }
         ]
       },
@@ -170,5 +185,6 @@
     ],
     "formId": "clients-form"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }

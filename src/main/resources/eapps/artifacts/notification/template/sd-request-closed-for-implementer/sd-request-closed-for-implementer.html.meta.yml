@@ -2,8 +2,8 @@
   "id" : "sd-request-closed-for-implementer",
   "name" : "О закрытии заявки для Исполнителя",
   "notificationTitle" : {
-    "ru" : "Заявка SD-${docNum}: ${letterTopic}",
-    "en" : "Request SD-${docNum}: ${letterTopic}"
+    "ru" : "(SD-${docNum}) ${letterTopic}",
+    "en" : "(SD-${docNum}) ${letterTopic}"
   },
   "tags" : [ ],
   "model" : {

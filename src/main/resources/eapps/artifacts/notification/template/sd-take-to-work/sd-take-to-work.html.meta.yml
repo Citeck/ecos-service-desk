@@ -2,8 +2,8 @@
   "id" : "sd-take-to-work",
   "name" : "О взятии в работу",
   "notificationTitle" : {
-    "ru" : "Заявка SD-${docNum}: ${letterTopic}",
-    "en" : "Request SD-${docNum}: ${letterTopic}"
+    "ru" : "(SD-${docNum}) ${letterTopic}",
+    "en" : "(SD-${docNum}) ${letterTopic}"
   },
   "tags" : [ ],
   "model" : {

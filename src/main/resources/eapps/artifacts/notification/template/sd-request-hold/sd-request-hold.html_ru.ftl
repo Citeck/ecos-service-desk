@@ -1,5 +1,6 @@
+<#import "sd-template-lib" as lib>
+
 <p>Добрый день!</p>
-<p>Обращению SD-${docNum} присвоен статус "На удержании"</p>
-<p>
-<a href="${link.getRecordLink(docRef)}" target="_blank"> Просмотреть заявку </a>
-</p>
+<p>Обращению <a href="${link.getRecordLink(docRef)}" target="_blank">SD-${docNum}</a> присвоен статус "На удержании"</p>
+
+<@lib.reply_message/>

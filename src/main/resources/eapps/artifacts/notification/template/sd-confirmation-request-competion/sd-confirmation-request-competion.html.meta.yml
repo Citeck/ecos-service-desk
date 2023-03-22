@@ -2,8 +2,8 @@
   "id" : "sd-confirmation-request-competion",
   "name" : "О выполнении заявки",
   "notificationTitle" : {
-    "ru" : "Заявка SD-${docNum}: ${letterTopic}",
-    "en" : "Request SD-${docNum}: ${letterTopic}"
+    "ru" : "(SD-${docNum}) ${letterTopic}",
+    "en" : "(SD-${docNum}) ${letterTopic}"
   },
   "tags" : [ ],
   "model" : {

@@ -2,7 +2,8 @@
   "id" : "sd-request-sla-2-overdue",
   "name" : "Шаблон \"О просрочке SLA 2\" ",
   "notificationTitle" : {
-    "ru" : "Истекает срок SLA 2 по заявке SD-${docNum}"
+    "ru" : "(SD-${docNum}) Истекает срок SLA 2",
+    "en" : "(SD-${docNum}) SLA 2 is overdue soon"
   },
   "tags" : [ ],
   "model" : {

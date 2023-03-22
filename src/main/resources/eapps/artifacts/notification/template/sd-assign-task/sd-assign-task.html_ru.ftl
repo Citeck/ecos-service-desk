@@ -1,6 +1,7 @@
+<#import "sd-template-lib" as lib>
+
 <p>Добрый день!</p>
-<p>Вам назначена задача в заявке SD-${docNum}.</p>
-<p>Предыдущий статус заявки ${stat}.</p>
-<p>
-<a href="${link.getRecordLink(docRef)}" target="_blank"> Просмотреть заявку </a>
-</p>
+<p>Вам назначена задача в заявке <a href="${link.getRecordLink(docRef)}" target="_blank">SD-${docNum}</a>.</p>
+<p>Предыдущий статус заявки: <i>${stat}</i>.</p>
+
+<@lib.reply_message/>
