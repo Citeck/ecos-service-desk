@@ -407,27 +407,6 @@
         "defaultValue": "",
         "optionalWhenDisabled": false,
         "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst stat = _.get(data, \"statusInfo.status\");\nif(formMode !== \"CREATE\") {\n  show = stat !== \"request-first-line\";\n} else {\n  show = false;\n}",
-        "logic": [
-          {
-            "name": "logic",
-            "trigger": {
-              "type": "javascript",
-              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
-            },
-            "actions": [
-              {
-                "name": "act",
-                "type": "property",
-                "property": {
-                  "label": "Disabled",
-                  "value": "disabled",
-                  "type": "boolean"
-                },
-                "state": "true"
-              }
-            ]
-          }
-        ],
         "type": "ecosSelect",
         "input": true
       },
