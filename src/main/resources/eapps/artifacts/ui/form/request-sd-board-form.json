@@ -14,173 +14,109 @@
     "components": [
       {
         "label": {
-          "ru": "Columns"
+          "ru": "Приоритет",
+          "en": "Priority"
         },
-        "key": "columns3",
-        "columns": [
-          {
-            "components": [],
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "index": 0
-          },
-          {
-            "index": 1,
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "components": [
-              {
-                "label": {
-                  "ru": "Приоритет",
-                  "en": "Priority"
-                },
-                "key": "priority",
-                "dataSrc": "values",
-                "data": {
-                  "values": [
-                    {
-                      "label": "Low",
-                      "value": "low"
-                    },
-                    {
-                      "label": "Medium",
-                      "value": "medium"
-                    },
-                    {
-                      "label": "High",
-                      "value": "high"
-                    },
-                    {
-                      "label": "Urgent",
-                      "value": "urgent"
-                    }
-                  ]
-                },
-                "searchEnabled": false,
-                "defaultValue": "medium",
-                "optionalWhenDisabled": false,
-                "type": "ecosSelect",
-                "input": true
-              }
-            ]
-          }
-        ],
-        "oneColumnInViewMode": false,
-        "type": "columns",
-        "input": false
+        "key": "priority",
+        "dataSrc": "values",
+        "data": {
+          "values": [
+            {
+              "label": "Low",
+              "value": "low"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "High",
+              "value": "high"
+            },
+            {
+              "label": "Urgent",
+              "value": "urgent"
+            }
+          ]
+        },
+        "searchEnabled": false,
+        "defaultValue": "medium",
+        "optionalWhenDisabled": false,
+        "type": "ecosSelect",
+        "input": true
       },
       {
         "label": {
-          "ru": "Columns"
+          "ru": "Тема письма",
+          "en": "Letter topic"
         },
-        "key": "columns4",
-        "columns": [
+        "key": "letterTopic",
+        "inputMasks": [
           {
-            "components": [
-              {
-                "label": {
-                  "ru": "Инициатор"
-                },
-                "key": "initiator",
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "selectOrgstruct",
-                "input": true
-              }
-            ],
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "index": 0
-          },
+            "label": "",
+            "mask": ""
+          }
+        ],
+        "clearOnHide": false,
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "logic": [
           {
-            "index": 1,
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "components": [
+            "name": "change display value",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "result = _.get(instance, \"parent.data.letterTopic\").length > 50;"
+            },
+            "actions": [
               {
-                "label": {
-                  "ru": " Автор"
-                },
-                "key": "author",
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "textfield",
-                "input": true
+                "name": "change display value",
+                "type": "value",
+                "value": "var topic = _.get(instance, \"parent.data.letterTopic\");\n\nvalue = topic.slice(0, 50).concat(\"...\");"
               }
             ]
           }
         ],
-        "oneColumnInViewMode": false,
-        "type": "columns",
-        "input": false
+        "type": "textfield",
+        "input": true
       },
       {
         "label": {
-          "ru": "Columns"
+          "ru": "Клиент",
+          "en": "Client"
         },
-        "key": "columns6",
-        "columns": [
+        "key": "client",
+        "disabled": true,
+        "modalTitle": "",
+        "journalId": "sd-clients-journal",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectJournal",
+        "input": true,
+        "queryData": ""
+      },
+      {
+        "label": {
+          "ru": "SLA 2",
+          "en": "SLA 2"
+        },
+        "key": "textField",
+        "inputMasks": [
           {
-            "components": [
-              {
-                "label": {
-                  "ru": "Клиент"
-                },
-                "key": "client",
-                "disabled": true,
-                "modalTitle": "",
-                "journalId": "sd-clients-journal",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "selectJournal",
-                "input": true,
-                "queryData": ""
-              }
-            ],
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "index": 0
-          },
-          {
-            "index": 1,
-            "type": "column",
-            "input": false,
-            "key": "column",
-            "components": [
-              {
-                "label": {
-                  "ru": "Дата/Время создания"
-                },
-                "key": "_created",
-                "disabled": true,
-                "format": "yyyy-MM-dd HH:mm",
-                "datePicker": {
-                  "minDate": "",
-                  "maxDate": ""
-                },
-                "timePicker": {
-                  "showMeridian": false
-                },
-                "defaultValue": "",
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "datetime",
-                "input": true,
-                "suffix": true
-              }
-            ]
+            "label": "",
+            "mask": ""
           }
         ],
-        "oneColumnInViewMode": false,
-        "type": "columns",
-        "input": false
+        "clearOnHide": false,
+        "defaultValue": "",
+        "refreshOn": [
+          "sla"
+        ],
+        "calculateValue": "var durationISO8601 = _.get(data, 'sla.sla2Duration') || null;\n\nif(durationISO8601 !== null) {\n  var hours = moment.duration(durationISO8601)._data.hours;\n  var minutes = moment.duration(durationISO8601)._data.minutes;\n  \n  value = hours + \"H \" + minutes + \"M\";\n  \n}",
+        "allowCalculateOverride": true,
+        "optionalWhenDisabled": false,
+        "type": "textfield",
+        "input": true
       },
       {
         "label": {
@@ -219,7 +155,27 @@
             "index": 0
           },
           {
-            "components": [],
+            "components": [
+              {
+                "source": {
+                  "type": "recordsQuery",
+                  "recordsQuery": {
+                    "query": "var rec = _.get(instance, \"parent.data.cardId\");\n\nvar value = {\n    sourceId: \"service-desk/sd-sla\",\n    query: {\n        record: rec\n    }\n};",
+                    "attributes": {
+                      "sla2Duration": "sla2Info.duration"
+                    },
+                    "isSingle": true
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "sla",
+                "type": "asyncData",
+                "input": true
+              }
+            ],
             "type": "column",
             "input": false,
             "key": "column",
@@ -278,5 +234,6 @@
     ],
     "formId": "request-sd-board-form"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }
