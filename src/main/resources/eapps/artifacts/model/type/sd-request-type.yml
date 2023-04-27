@@ -149,24 +149,20 @@ model:
         ru: Тип обращения
         en: Type of petition
       type: ASSOC
-      mandatory: true
     - id: serviceType
       name:
         ru: Вид сервиса
         en: Type of service
       type: ASSOC
-      mandatory: true
     - id: systemModule
       name:
         ru: Модуль системы
         en: System module
       type: ASSOC
-      mandatory: true
     - id: letterTopic
       name:
         ru: Тема письма
         en: Topic of the letter
-      mandatory: true
     - id: letterContent
       name:
         ru: Содержание обращения
@@ -179,13 +175,11 @@ model:
       name:
         ru: Резолюция
         en: Resolution
-      mandatory: true
     - id: mark
       name:
         ru: Метка
         en: Mark
       type: ASSOC
-      mandatory: true
     - id: firstReactionTimestamp
       name:
         ru: Дата/Время первой реакции
@@ -227,7 +221,6 @@ model:
         ru: Исполнители 1-ой линии ТП
         en: Implementer of the 1st line support
       type: AUTHORITY_GROUP
-      mandatory: true
       computed:
         type: SCRIPT
         config:
