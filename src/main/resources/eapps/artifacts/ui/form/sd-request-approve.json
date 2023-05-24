@@ -2,7 +2,8 @@
   "id": "sd-request-approve",
   "formKey": "",
   "title": {
-    "en": "Форма подтверждения выполнения"
+    "ru": "Форма подтверждения выполнения",
+    "en": "Approve form"
   },
   "description": {},
   "customModule": "",

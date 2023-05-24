@@ -2,6 +2,7 @@
 id: petition-channels-journal
 name:
   ru: Канал обращения
+  en: Petition channel
 typeRef: emodel/type@petition-channels-type
 editable: false
 columns:

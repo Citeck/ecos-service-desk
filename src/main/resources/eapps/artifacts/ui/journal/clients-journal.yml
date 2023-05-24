@@ -2,6 +2,7 @@
 id: sd-clients-journal
 name:
   ru: Клиенты
+  en: Clients
 typeRef: emodel/type@clients-type
 editable: false
 columns:

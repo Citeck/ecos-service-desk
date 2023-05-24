@@ -2,6 +2,7 @@
 id: return-to-work-from-hold
 name:
   ru: Вернуть в работу
+  en: Return to work
 type: mutate
 config:
   record:

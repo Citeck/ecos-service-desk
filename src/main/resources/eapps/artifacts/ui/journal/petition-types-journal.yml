@@ -2,6 +2,7 @@
 id: petition-types-journal
 name:
   ru: Типы обращений
+  en: Petition types
 typeRef: emodel/type@petition-types-type
 editable: false
 columns:

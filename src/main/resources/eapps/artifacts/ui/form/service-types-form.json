@@ -2,7 +2,8 @@
   "id": "service-types-form",
   "formKey": "",
   "title": {
-    "en": "Форма видов сервиса"
+    "ru": "Форма видов сервиса",
+    "en": "Service types form"
   },
   "description": {},
   "customModule": "",

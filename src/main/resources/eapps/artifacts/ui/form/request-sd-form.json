@@ -2,7 +2,8 @@
   "id": "request-sd-form",
   "formKey": "",
   "title": {
-    "en": "Заявка SD"
+    "ru": "Заявка SD",
+    "en": "SD request"
   },
   "description": {},
   "customModule": "",
@@ -211,7 +212,8 @@
       },
       {
         "label": {
-          "ru": "Исполнитель 3-линии ТП"
+          "ru": "Исполнитель 3-линии ТП",
+          "en": "3rd line support implementer"
         },
         "key": "implementerThirdLineSupport",
         "defaultValue": "",

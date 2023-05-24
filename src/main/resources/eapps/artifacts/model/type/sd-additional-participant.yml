@@ -2,6 +2,7 @@
 id: additional-participant
 name:
   ru: Доп. участник
+  en: Add'l participant
 storageType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@additional-participant
@@ -15,7 +16,9 @@ model:
     - id: additionalParticipant
       name:
         ru: Доп. участник
+        en: Add'l participant
       type: PERSON
     - id: comment
       name:
         ru: Комментарий
+        en: Comment

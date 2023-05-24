@@ -5,7 +5,7 @@ journalRef: uiserv/journal@all-requests-service-desk-journal
 cardFormRef: uiserv/form@request-sd-board-form
 readOnly: false
 name:
-  en: Board
+  en: Service Desk
   ru: Service Desk
 actions: null
 columns:

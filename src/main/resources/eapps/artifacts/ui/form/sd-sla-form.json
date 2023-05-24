@@ -2,7 +2,8 @@
   "id": "sd-sla-form",
   "formKey": "",
   "title": {
-    "en": "Форма SD SLA"
+    "ru": "Форма SD SLA",
+    "en": "SD SLA form"
   },
   "description": {},
   "customModule": "",

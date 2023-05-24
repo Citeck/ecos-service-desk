@@ -2,7 +2,8 @@
   "id": "petition-types-form",
   "formKey": "",
   "title": {
-    "en": "Форма типов обращений"
+    "en": "Petition types form",
+    "ru": "Форма типов обращений"
   },
   "description": {},
   "customModule": "",

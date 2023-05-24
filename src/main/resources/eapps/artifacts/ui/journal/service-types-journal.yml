@@ -2,6 +2,7 @@
 id: service-types-journal
 name:
   ru: Виды сервиса
+  en: Service types
 typeRef: emodel/type@service-types-type
 editable: false
 columns:

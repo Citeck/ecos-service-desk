@@ -2,7 +2,8 @@
   "id": "clients-mapping-form",
   "formKey": "",
   "title": {
-    "en": "Форма маппинга клиентов"
+    "en": "Clients mapping form",
+    "ru": "Форма маппинга клиентов"
   },
   "description": {},
   "customModule": "",
