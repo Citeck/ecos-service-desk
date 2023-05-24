@@ -2,7 +2,8 @@
   "id": "additional-participant",
   "formKey": "additional-participant",
   "title": {
-    "en": "additional-participant"
+    "ru": "Дополнительный участник",
+    "en": "Additional participant"
   },
   "description": {},
   "customModule": "",
@@ -22,7 +23,8 @@
             "components": [
               {
                 "label": {
-                  "ru": "Привлечь"
+                  "ru": "Привлечь",
+                  "en": "Attract"
                 },
                 "key": "additionalParticipant",
                 "validate": {
@@ -49,7 +51,8 @@
             "components": [
               {
                 "label": {
-                  "ru": "Комментарий:"
+                  "ru": "Комментарий:",
+                  "en": "Comment:"
                 },
                 "key": "comment",
                 "validate": {

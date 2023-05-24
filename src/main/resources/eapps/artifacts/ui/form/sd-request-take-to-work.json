@@ -2,7 +2,8 @@
   "id": "sd-request-take-to-work",
   "formKey": "",
   "title": {
-    "en": "Форма взятия заявки в работу"
+    "ru": "Форма взятия заявки в работу",
+    "en": "Taking to work form"
   },
   "description": {},
   "customModule": "",

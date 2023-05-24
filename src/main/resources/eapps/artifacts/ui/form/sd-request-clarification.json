@@ -2,7 +2,8 @@
   "id": "sd-request-clarification",
   "formKey": "",
   "title": {
-    "en": "Форма уточнения данных"
+    "ru": "Форма уточнения данных",
+    "en": "Clarification form"
   },
   "description": {},
   "customModule": "",
@@ -75,7 +76,7 @@
             "components": [
               {
                 "label": {
-                  "en": "Submit",
+                  "en": "Send",
                   "ru": "Отправить"
                 },
                 "key": "outcome_sent",

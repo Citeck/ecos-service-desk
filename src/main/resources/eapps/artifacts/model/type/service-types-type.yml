@@ -2,6 +2,7 @@
 id: service-types-type
 name:
   ru: Виды сервиса
+  en: Service types
 storageType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@service-types-form

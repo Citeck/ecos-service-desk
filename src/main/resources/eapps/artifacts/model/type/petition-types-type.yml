@@ -2,6 +2,7 @@
 id: petition-types-type
 name:
   ru: Типы обращений
+  en: Petition types
 storageType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@petition-types-form

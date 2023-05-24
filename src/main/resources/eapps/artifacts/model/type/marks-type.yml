@@ -2,6 +2,7 @@
 id: marks-type
 name:
   ru: Метки
+  en: Marks
 sourceType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@marks-form

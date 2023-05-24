@@ -2,7 +2,8 @@
   "id": "request-sd-board-form",
   "formKey": "",
   "title": {
-    "en": "Форма доски Service Desk"
+    "en": "Service Desk board form",
+    "ru": "Форма доски Service Desk"
   },
   "description": {},
   "customModule": "",

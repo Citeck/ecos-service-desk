@@ -2,6 +2,7 @@
 id: system-module-journal
 name:
   ru: Модули системы
+  en: System modules
 typeRef: emodel/type@system-module-type
 editable: false
 columns:

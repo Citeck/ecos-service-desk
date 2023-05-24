@@ -2,7 +2,8 @@
   "id": "sd-request-processing-first-line",
   "formKey": "",
   "title": {
-    "en": "Форма обработки заявки 1-ой линии ТП"
+    "ru": "Форма обработки заявки 1-ой линии ТП",
+    "en": "1st support line request processing form"
   },
   "description": {},
   "customModule": "",
@@ -22,7 +23,7 @@
             "components": [
               {
                 "label": {
-                  "en": "Submit",
+                  "en": "Close",
                   "ru": "Закрыть"
                 },
                 "key": "outcome_closeRequest",
@@ -52,7 +53,7 @@
             "components": [
               {
                 "label": {
-                  "en": "Submit",
+                  "en": "To clarification",
                   "ru": "На уточнение"
                 },
                 "key": "outcome_toClarification",
@@ -87,7 +88,7 @@
             "components": [
               {
                 "label": {
-                  "en": "Submit",
+                  "en": "To 2nd support line",
                   "ru": "Передать 2-ой линии ТП"
                 },
                 "key": "outcome_toSecondSupportLine",
@@ -117,7 +118,7 @@
             "components": [
               {
                 "label": {
-                  "en": "Submit",
+                  "en": "Approve",
                   "ru": "Выполнено"
                 },
                 "key": "outcome_toApprove",
@@ -161,7 +162,7 @@
             "components": [
               {
                 "label": {
-                  "en": "Submit",
+                  "en": "To hold",
                   "ru": "На удержание"
                 },
                 "key": "outcome_toHold",
@@ -196,7 +197,7 @@
             "components": [
               {
                 "label": {
-                  "en": "Submit",
+                  "en": "To 3rd support line",
                   "ru": "Передать 3-ей линии ТП"
                 },
                 "key": "outcome_toThirdSupportLine",

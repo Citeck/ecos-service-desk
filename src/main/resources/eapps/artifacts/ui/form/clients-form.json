@@ -2,7 +2,8 @@
   "id": "clients-form",
   "formKey": "",
   "title": {
-    "en": "Форма клиентов"
+    "en": "Clients form",
+    "ru": "Форма клиентов"
   },
   "description": {},
   "customModule": "",
