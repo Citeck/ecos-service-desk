@@ -2,7 +2,8 @@
   "id": "request-sd-more-fields-widget-form",
   "formKey": "request-sd-more-fields-widget-form",
   "title": {
-    "en": "Больше полей"
+    "ru": "Больше полей",
+    "en": "More fields"
   },
   "description": {},
   "customModule": "",

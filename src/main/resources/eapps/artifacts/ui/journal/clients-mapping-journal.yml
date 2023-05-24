@@ -9,18 +9,22 @@ columns:
   - id: client
     name:
       ru: Клиент
+      en: Client
     type: ASSOC
   - id: implFirstLineSupport
     name:
       ru: Исполнитель 1-ой линии ТП
+      en: 1st support line implementer
     type: AUTHORITY_GROUP
   - id: implSecondLineSupport
     name:
       ru: Исполнитель 2-ой линии ТП
+      en: 2nd support line implementer
     type: AUTHORITY_GROUP
   - id: implThirdLineSupport
     name:
       ru: Исполнитель 3-ей линии ТП
+      en: 3rd support line implementer
     type: AUTHORITY_GROUP
   - id: technologist
     name:

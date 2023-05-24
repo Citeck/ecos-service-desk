@@ -2,7 +2,8 @@
   "id" : "marks-form",
   "formKey" : "",
   "title" : {
-    "en" : "Форма меток"
+    "en": "Marks form",
+    "ru" : "Форма меток"
   },
   "description" : { },
   "customModule" : null,

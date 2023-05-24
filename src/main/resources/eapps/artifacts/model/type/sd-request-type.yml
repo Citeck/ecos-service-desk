@@ -2,6 +2,7 @@
 id: sd-request-type
 name:
   ru: Заявка SD
+  en: SD request
 storageType: ECOS_MODEL
 parentRef: emodel/type@case
 formRef: uiserv/form@request-sd-form
@@ -9,6 +10,7 @@ journalRef: uiserv/journal@all-requests-service-desk-journal
 inheritForm: false
 dispNameTemplate:
   ru: Заявка SD-${_docNum}
+  en: Request SD-${_docNum}
 numTemplateRef: emodel/num-template@sd-reg-number-template
 actions:
   - uiserv/action@add-participant
@@ -577,6 +579,7 @@ model:
     - id: additionalParticipant
       name:
         ru: Доп. участник
+        en: Add'l participant
       type: ASSOC
       config:
         typeRef: emodel/type@additional-participant

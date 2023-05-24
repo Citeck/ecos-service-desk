@@ -2,6 +2,7 @@
 id: system-module-type
 name:
   ru: Модули системы
+  en: System modules
 sourceType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@system-module-form

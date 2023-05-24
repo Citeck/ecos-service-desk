@@ -2,7 +2,8 @@
   "id" : "system-module-form",
   "formKey" : "",
   "title" : {
-    "en" : "Форма модуля системы"
+    "ru" : "Форма модуля системы",
+    "en": "System module form"
   },
   "description" : { },
   "customModule" : null,

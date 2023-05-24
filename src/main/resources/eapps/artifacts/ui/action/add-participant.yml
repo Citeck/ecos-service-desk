@@ -2,6 +2,7 @@
 id: add-participant
 name:
   ru: Добавить участника
+  en: Add participant
 type: create
 config:
   typeRef: emodel/type@additional-participant
