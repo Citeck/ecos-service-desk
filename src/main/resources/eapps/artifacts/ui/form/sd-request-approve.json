@@ -15,6 +15,18 @@
     "components": [
       {
         "label": {
+          "ru": "Комментарий:",
+          "en": "Comment:"
+        },
+        "key": "comment",
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "textarea",
+        "input": true
+      },
+      {
+        "label": {
           "ru": "Columns"
         },
         "key": "columns2",
@@ -107,5 +119,6 @@
     ],
     "formId": "sd-request-approve"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }
