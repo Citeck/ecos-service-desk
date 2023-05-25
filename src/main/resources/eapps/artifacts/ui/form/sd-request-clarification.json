@@ -17,7 +17,21 @@
         "scrollableContent": true,
         "key": "panel2",
         "type": "panel",
-        "input": false
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Комментарий:",
+              "en": "Comment:"
+            },
+            "key": "comment",
+            "defaultValue": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "textarea",
+            "input": true
+          }
+        ]
       },
       {
         "label": {
@@ -99,5 +113,6 @@
     ],
     "formId": "sd-request-clarification"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }
