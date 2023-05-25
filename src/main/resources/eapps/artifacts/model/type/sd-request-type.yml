@@ -594,5 +594,6 @@ model:
       config:
         typeRef: emodel/type@ecos-time-tracking-type
         child: true
+      multiple: true
 aspects:
   - ref: emodel/aspect@task-comments-broadcastable
