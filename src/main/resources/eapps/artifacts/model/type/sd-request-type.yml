@@ -17,6 +17,7 @@ actions:
   - uiserv/action@return-to-work-from-hold
   - uiserv/action@return-to-work-from-close
   - uiserv/action@tasks-actions
+  - uiserv/action@log-work-action
 associations:
   - id: webLinks
     journalsFromTarget: false
@@ -585,5 +586,13 @@ model:
         typeRef: emodel/type@additional-participant
         child: true
       multiple: true
+    - id: timeReports
+      name:
+        ru: Учёт времени
+        en: Time reports
+      type: ASSOC
+      config:
+        typeRef: emodel/type@ecos-time-tracking-type
+        child: true
 aspects:
   - ref: emodel/aspect@task-comments-broadcastable
