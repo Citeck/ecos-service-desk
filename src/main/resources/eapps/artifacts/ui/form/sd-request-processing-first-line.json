@@ -15,6 +15,18 @@
     "components": [
       {
         "label": {
+          "ru": "Комментарий:",
+          "en": "Comment:"
+        },
+        "key": "comment",
+        "defaultValue": "",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "textarea",
+        "input": true
+      },
+      {
+        "label": {
           "ru": "Columns"
         },
         "key": "columns2",
@@ -232,7 +244,8 @@
         "input": false
       }
     ],
-    "formId": "sd-request-processing"
+    "formId": "sd-request-processing-first-line"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }

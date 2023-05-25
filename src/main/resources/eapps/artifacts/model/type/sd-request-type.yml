@@ -585,3 +585,5 @@ model:
         typeRef: emodel/type@additional-participant
         child: true
       multiple: true
+aspects:
+  - ref: emodel/aspect@task-comments-broadcastable
