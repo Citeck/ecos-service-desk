@@ -6,7 +6,6 @@ import java.time.Instant
 import kotlin.time.Duration
 import kotlin.time.toJavaDuration
 
-
 @Component
 class SdDueDateService {
 
@@ -14,7 +13,7 @@ class SdDueDateService {
         private val log = KotlinLogging.logger {}
     }
 
-    //TODO: add support for business days, working hours, holidays, etc.
+    // TODO: add support for business days, working hours, holidays, etc.
     fun getDueDate(duration: Duration): Instant {
         val from = Instant.now()
 
@@ -24,6 +23,4 @@ class SdDueDateService {
 
         return result
     }
-
-
 }

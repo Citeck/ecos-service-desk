@@ -109,7 +109,6 @@ class SlaManager(
         @AttName("sla_2_spent_time")
         val sla2SpentTime: Long = 0
     )
-
 }
 
 data class SlaDueDates(
