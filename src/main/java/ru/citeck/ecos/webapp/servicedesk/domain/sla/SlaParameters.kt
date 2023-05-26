@@ -70,7 +70,6 @@ class SlaParametersProvider(
 
         return foundSla.getRecords().firstOrNull()?.toSlasParameters()
     }
-
 }
 
 private data class SlaParametersData(

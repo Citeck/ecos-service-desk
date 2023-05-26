@@ -37,7 +37,6 @@ class SdSlaParamsRecords(
         result.setRecords(listOf(dueDate))
 
         return result
-
     }
 }
 
@@ -241,7 +240,7 @@ class SdSlaRecords(
 
     data class SlaInfo(
         val state: SlaState?,
-        //iso 8601 duration
+        // iso 8601 duration
         val duration: String
     ) {
         companion object {
@@ -253,5 +252,3 @@ class SdSlaRecords(
 private data class SlaQuery(
     val record: EntityRef
 )
-
-
