@@ -22,16 +22,20 @@ model:
     - id: implFirstLineSupport
       name:
         ru: Исполнитель 1-ой линии ТП
+        en: Implementer of the 1st line support
       type: AUTHORITY_GROUP
     - id: implSecondLineSupport
       name:
         ru: Исполнитель 2-ой линии ТП
+        en: Implementer of the 2nd line support
       type: AUTHORITY_GROUP
     - id: implThirdLineSupport
       name:
         ru: Исполнитель 3-ей линии ТП
+        en: Implementer of the 3rd line support
       type: AUTHORITY_GROUP
     - id: technologist
       name:
         ru: Технолог
+        en: Technologist
       type: AUTHORITY_GROUP

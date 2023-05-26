@@ -29,4 +29,5 @@ columns:
   - id: technologist
     name:
       ru: Технолог
+      en: Technologist
     type: AUTHORITY_GROUP
