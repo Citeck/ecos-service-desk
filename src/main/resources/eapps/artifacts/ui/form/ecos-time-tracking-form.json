@@ -22,33 +22,6 @@
     "components": [
       {
         "label": {
-          "ru": "HTML"
-        },
-        "key": "html2",
-        "hidden": true,
-        "tag": "div",
-        "className": "",
-        "attrs": [
-          {
-            "attr": "",
-            "value": ""
-          }
-        ],
-        "content": {
-          "ru": "<h6>Первоначальная оценка для этой задачи - 24h </h6>",
-          "en": "<h6>Original estimate for this task - 24h</h6>"
-        },
-        "refreshOnChange": true,
-        "clearOnHide": false,
-        "refreshOn": [
-          "hidden"
-        ],
-        "optionalWhenDisabled": false,
-        "type": "htmlelement",
-        "input": false
-      },
-      {
-        "label": {
           "ru": "Columns"
         },
         "key": "columns3",
