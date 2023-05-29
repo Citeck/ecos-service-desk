@@ -1,0 +1,44 @@
+---
+id: ecos-time-tracking-journal
+name:
+  ru: ECOS Time Tracking Journal
+typeRef: emodel/type@ecos-time-tracking-type
+actions:
+  - uiserv/action@view-dashboard
+editable: false
+columns:
+  - id: user
+    name:
+      ru: Пользователь
+      en: User
+    type: PERSON
+  - id: _parent
+    name:
+      ru: Заявка
+      en: Request
+    type: MLTEXT
+    groupable: true
+  - id: duration
+    name:
+      ru: Затраченное время, мин.
+      en: Time spent, min.
+    type: NUMBER
+    formatter:
+      type: script
+      config:
+        fn: return cell/60000
+  - id: workDescription
+    name:
+      ru: Описание работы
+      en: Work description
+    type: TEXT
+  - id: startDate
+    name:
+      ru: Дата начала
+      en: Start date
+    type: DATETIME
+  - id: status
+    name:
+      ru: Статус
+      en: Status
+    type: TEXT
