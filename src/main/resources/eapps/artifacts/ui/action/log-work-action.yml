@@ -9,7 +9,7 @@ config:
   formId: uiserv/form@ecos-time-tracking-form
   attributes:
     _parent: ${?id}
-    _parentAtt: timeReports
+    _parentAtt: time-trackable:timeTracking
   redirectToPage: false
 predicate:
   t: or
