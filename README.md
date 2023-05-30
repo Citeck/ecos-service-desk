@@ -2,11 +2,11 @@
 
 # `ecos-service-desk`
 
-Welcome to the Citeck `ecos-service-desk` repository! The `ecos-service-desk` module provides a comprehensive solution for handling service requests, incidents, and support tickets. It enables organizations to efficiently manage and track customer and employee inquiries, ensuring timely resolution and excellent service delivery.
+Welcome to the Citeck `ecos-service-desk` repository! The `ecos-service-desk` module provides a comprehensive solution for handling service requests, incidents, and support tickets. It allows organizations to efficiently manage and track customer and employee inquiries, ensuring timely resolution and excellent service delivery.
 
 ## Get started
 
-If you are new to ECOS platform and would like to load the software locally, we recommend you download the Dockerized version from [Demo repository](https://github.com/Citeck/ecos-community-demo).
+If you are new to ECOS platform and would like to run the software locally, we recommend you download the Dockerized version from [Demo repository](https://github.com/Citeck/ecos-community-demo).
 
 ## Useful Links
 
@@ -14,7 +14,7 @@ If you are new to ECOS platform and would like to load the software locally, we 
 
 ## Dependencies
 
-This application requires the following applications from ECOS deployment to work:
+To run this application the following applications from ECOS deployment are needed:
 
 * zookeeper
 * rabbitmq
