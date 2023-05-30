@@ -15,15 +15,11 @@
         <version>2.2.1</version>
     </parent>
 
-    <distributionManagement>
+    <repositories>
         <repository>
-            <id>releases</id>
-            <url>${enterprise.releases.distr.url}</url>
+            <id>citeck-public</id>
+            <url>https://nexus.citeck.ru/repository/maven-public</url>
         </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <url>${enterprise.snapshots.distr.url}</url>
-        </snapshotRepository>
-    </distributionManagement>
+    </repositories>
 
 </project>
