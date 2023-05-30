@@ -20,7 +20,8 @@
       "sd_priority_low": "Low",
       "sd_priority_medium": "Medium",
       "sd_priority_high": "High",
-      "sd_priority_urgent": "Urgent"
+      "sd_priority_urgent": "Urgent",
+      "resolution_links_validation": "Необходимо добавить ссылки через виджет \"Связи документа\""
     },
     "en": {
       "resolution_done": "Done",
@@ -31,7 +32,8 @@
       "sd_priority_low": "Low",
       "sd_priority_medium": "Medium",
       "sd_priority_high": "High",
-      "sd_priority_urgent": "Urgent"
+      "sd_priority_urgent": "Urgent",
+      "resolution_links_validation": "Need to add links via the \"Document associations\" widget"
     }
   },
   "definition": {
@@ -376,6 +378,9 @@
           "en": "Resolution"
         },
         "key": "resolution",
+        "validate": {
+          "custom": "if (value === \"knownError\" && data.linksInfo.links === null) {\n  valid = \"resolution_links_validation\";\n}"
+        },
         "clearOnHide": false,
         "dataSrc": "values",
         "data": {
@@ -402,7 +407,10 @@
             }
           ],
           "headers": [
-            {}
+            {
+              "key": "",
+              "value": ""
+            }
           ]
         },
         "searchEnabled": false,
@@ -578,6 +586,31 @@
                   "type": "once"
                 },
                 "key": "statusInfo",
+                "type": "asyncData",
+                "input": true
+              },
+              {
+                "label": "LinksInfo",
+                "source": {
+                  "type": "record",
+                  "forceLoad": true,
+                  "record": {
+                    "id": "{{recordId}}",
+                    "attributes": {
+                      "links": "webLinks"
+                    }
+                  }
+                },
+                "update": {
+                  "type": "once"
+                },
+                "refreshOn": [
+                  {
+                    "label": "resolution",
+                    "value": "resolution"
+                  }
+                ],
+                "key": "linksInfo",
                 "type": "asyncData",
                 "input": true
               },
