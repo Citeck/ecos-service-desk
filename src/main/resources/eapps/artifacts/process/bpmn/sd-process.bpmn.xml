@@ -419,20 +419,20 @@
             <bpmn:sequenceFlow sourceRef="Activity_0ffn4sx" targetRef="Activity_0cultoj" name="" id="Flow_0ok0jcj" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Activity_0cultoj" targetRef="Activity_05y1v0d" name="" id="Flow_1hy8i4t" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Gateway_0i1ywqk" targetRef="Activity_09ny55q" name="" id="Flow_1sw4qp6" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_1vkdmxx:toClarification&quot;}" ecos:conditionType="OUTCOME"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_09ny55q" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof lastTaskComment === &quot;undefined&quot; || lastTaskComment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_09ny55q" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof comment === &quot;undefined&quot; || comment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_1sw4qp6</bpmn:incoming>
                 <bpmn:outgoing >Flow_1gk6qxd</bpmn:outgoing>
-                <bpmn:script>if(typeof lastTaskComment === "undefined" || lastTaskComment === null) {
+                <bpmn:script>if(typeof comment === "undefined" || comment === null) {
                     throw new Error("Поле Комментарий не может быть пустым.");
                     }</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:sequenceFlow sourceRef="Activity_09ny55q" targetRef="Activity_16qeug5" name="" id="Flow_1gk6qxd" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Gateway_0cigs93" targetRef="Activity_1so4opc" name="" id="Flow_0jv9aym" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_1vkdmxx:toHold&quot;}" ecos:conditionType="OUTCOME"/>
             <bpmn:sequenceFlow sourceRef="Activity_1so4opc" targetRef="Activity_0q87krm" name="" id="Flow_0ozqzhy" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_1so4opc" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof lastTaskComment === &quot;undefined&quot; || lastTaskComment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_1so4opc" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof comment === &quot;undefined&quot; || comment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_0jv9aym</bpmn:incoming>
                 <bpmn:outgoing >Flow_0ozqzhy</bpmn:outgoing>
-                <bpmn:script>if(typeof lastTaskComment === "undefined" || lastTaskComment === null) {
+                <bpmn:script>if(typeof comment === "undefined" || comment === null) {
                     throw new Error("Поле Комментарий не может быть пустым.");
                     }</bpmn:script>
             </bpmn:scriptTask>
@@ -583,19 +583,19 @@
             <bpmn:sequenceFlow sourceRef="Activity_0q1ew99" targetRef="Activity_0o9slan" name="" id="Flow_0x3ele7" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Gateway_1ou51nj" targetRef="Activity_0deyxsq" name="" id="Flow_129b5ad" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_1bpanwe:toClarification&quot;}" ecos:conditionType="OUTCOME"/>
             <bpmn:sequenceFlow sourceRef="Activity_0deyxsq" targetRef="Activity_0sr4zsr" name="" id="Flow_03dklbe" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0deyxsq" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof lastTaskComment === &quot;undefined&quot; || lastTaskComment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0deyxsq" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof comment === &quot;undefined&quot; || comment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_129b5ad</bpmn:incoming>
                 <bpmn:outgoing >Flow_03dklbe</bpmn:outgoing>
-                <bpmn:script>if(typeof lastTaskComment === "undefined" || lastTaskComment === null) {
+                <bpmn:script>if(typeof comment === "undefined" || comment === null) {
                     throw new Error("Поле Комментарий не может быть пустым.");
                     }</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:sequenceFlow sourceRef="Gateway_1oxjynk" targetRef="Activity_0dr7pau" name="" id="Flow_0v3g9fn" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_1bpanwe:toHold&quot;}" ecos:conditionType="OUTCOME"/>
             <bpmn:sequenceFlow sourceRef="Activity_0dr7pau" targetRef="Activity_00fhtuh" name="" id="Flow_1nmf8cs" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0dr7pau" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof lastTaskComment === &quot;undefined&quot; || lastTaskComment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0dr7pau" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof comment === &quot;undefined&quot; || comment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_0v3g9fn</bpmn:incoming>
                 <bpmn:outgoing >Flow_1nmf8cs</bpmn:outgoing>
-                <bpmn:script>if(typeof lastTaskComment === "undefined" || lastTaskComment === null) {
+                <bpmn:script>if(typeof comment === "undefined" || comment === null) {
                     throw new Error("Поле Комментарий не может быть пустым.");
                     }</bpmn:script>
             </bpmn:scriptTask>
@@ -754,19 +754,19 @@
             <bpmn:sequenceFlow sourceRef="Activity_0l4h84z" targetRef="Activity_0rv644c" name="" id="Flow_0coum4j" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Gateway_1thkp2k" targetRef="Activity_0ntn9gy" name="" id="Flow_0ujxg72" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_1cedv42:toClarification&quot;}" ecos:conditionType="OUTCOME"/>
             <bpmn:sequenceFlow sourceRef="Activity_0ntn9gy" targetRef="Activity_0e4gpjt" name="" id="Flow_0b1w0tr" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0ntn9gy" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof lastTaskComment === &quot;undefined&quot; || lastTaskComment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0ntn9gy" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof comment === &quot;undefined&quot; || comment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_0ujxg72</bpmn:incoming>
                 <bpmn:outgoing >Flow_0b1w0tr</bpmn:outgoing>
-                <bpmn:script>if(typeof lastTaskComment === "undefined" || lastTaskComment === null) {
+                <bpmn:script>if(typeof comment === "undefined" || comment === null) {
                     throw new Error("Поле Комментарий не может быть пустым.");
                     }</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:sequenceFlow sourceRef="Gateway_1pqbm4e" targetRef="Activity_1aq2go3" name="" id="Flow_013fusr" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_1cedv42:toHold&quot;}" ecos:conditionType="OUTCOME"/>
             <bpmn:sequenceFlow sourceRef="Activity_1aq2go3" targetRef="Activity_0wn91cs" name="" id="Flow_11a8ihf" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_1aq2go3" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof lastTaskComment === &quot;undefined&quot; || lastTaskComment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_1aq2go3" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof comment === &quot;undefined&quot; || comment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_013fusr</bpmn:incoming>
                 <bpmn:outgoing >Flow_11a8ihf</bpmn:outgoing>
-                <bpmn:script>if(typeof lastTaskComment === "undefined" || lastTaskComment === null) {
+                <bpmn:script>if(typeof comment === "undefined" || comment === null) {
                     throw new Error("Поле Комментарий не может быть пустым.");
                     }</bpmn:script>
             </bpmn:scriptTask>
@@ -1033,10 +1033,10 @@
                 <bpmn:sequenceFlow sourceRef="Activity_1wgvp9o" targetRef="Gateway_059gqzu" name="" id="Flow_0hxfghz" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
                 <bpmn:sequenceFlow sourceRef="Gateway_1eoi187" targetRef="Activity_0yctzt8" name="" id="Flow_1iqa6ih" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_08e4sav:returnToWork&quot;}" ecos:conditionType="OUTCOME"/>
                 <bpmn:sequenceFlow sourceRef="Activity_0yctzt8" targetRef="Gateway_1b7zu5l" name="" id="Flow_0m81fo2" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-                <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0yctzt8" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof lastTaskComment === &quot;undefined&quot; || lastTaskComment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+                <bpmn:scriptTask scriptFormat="javascript" name="Проверка комментария" id="Activity_0yctzt8" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="if(typeof comment === &quot;undefined&quot; || comment === null) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                     <bpmn:incoming >Flow_1iqa6ih</bpmn:incoming>
                     <bpmn:outgoing >Flow_0m81fo2</bpmn:outgoing>
-                    <bpmn:script>if(typeof lastTaskComment === "undefined" || lastTaskComment === null) {
+                    <bpmn:script>if(typeof comment === "undefined" || comment === null) {
                         throw new Error("Поле Комментарий не может быть пустым.");
                         }</bpmn:script>
                 </bpmn:scriptTask>
@@ -1192,7 +1192,7 @@
                 <bpmn:outgoing >Flow_0em837z</bpmn:outgoing>
                 <bpmn:signalEventDefinition  signalRef="Signal_a53U7AD" id="SignalEventDefinition_1vuyg58"/>
             </bpmn:intermediateThrowEvent>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_13i85fg" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];&#10;var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;&#10;if (beforeStat.length === 0) {&#10;    throw new Error(&quot;Предудыщий статус не определен&quot;);&#10;}&#10;&#10;if (stats.indexOf(beforeStat) === -1) {&#10;    throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}&#10;&#10;if(typeof lastTaskComment === &quot;undefined&quot;) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_13i85fg" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];&#10;var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;&#10;if (beforeStat.length === 0) {&#10;    throw new Error(&quot;Предудыщий статус не определен&quot;);&#10;}&#10;&#10;if (stats.indexOf(beforeStat) === -1) {&#10;    throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}&#10;&#10;if(typeof comment === &quot;undefined&quot;) {&#10;  throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_1327ljn</bpmn:incoming>
                 <bpmn:outgoing >Flow_1728t50</bpmn:outgoing>
                 <bpmn:script>var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];
@@ -1207,7 +1207,7 @@
                     throw new Error("Условия перехода не соблюдены. Предыдущий статус: "+ beforeStat);
                     }
 
-                    if(typeof lastTaskComment === "undefined") {
+                    if(typeof comment === "undefined") {
                     throw new Error("Поле Комментарий не может быть пустым.");
                     }</bpmn:script>
             </bpmn:scriptTask>
