@@ -27,7 +27,10 @@
               "formMode": "EDIT"
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "name": "doc-associations",
@@ -41,7 +44,10 @@
               "elementsDisplayCondition": {}
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "dndId": "aa0deb44-527e-4244-85cc-89757c0e07eb",
@@ -55,7 +61,10 @@
               "elementsDisplayCondition": {}
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "dndId": "38403ec8-6589-4747-beef-53e182ea14a5",
@@ -69,7 +78,10 @@
               "elementsDisplayCondition": {}
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "name": "record-actions",
@@ -87,7 +99,10 @@
               "formMode": "VIEW"
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "name": "current-tasks",
@@ -106,7 +121,10 @@
               "formMode": "VIEW"
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "name": "properties",
@@ -122,7 +140,10 @@
               "titleAsFormName": true
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "name": "properties",
@@ -138,7 +159,10 @@
               "titleAsFormName": true
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "name": "properties",
@@ -154,7 +178,10 @@
               "titleAsFormName": true
             }
           },
-          "description": "Основное"
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
         },
         {
           "name": "events-history",
@@ -169,7 +196,10 @@
               "selectedJournal": "uiserv/journal@history-records-widget"
             }
           },
-          "description": "История"
+          "description": {
+            "ru": "История",
+            "en": "History"
+          }
         },
         {
           "name": "versions-journal",
@@ -183,7 +213,10 @@
               "elementsDisplayCondition": {}
             }
           },
-          "description": "История"
+          "description": {
+            "ru": "История",
+            "en": "History"
+          }
         },
         {
           "dndId": "9818c1d8-bc41-464f-9824-8d3cd2cf03f2",
@@ -197,21 +230,20 @@
               "elementsDisplayCondition": {},
               "types": [
                 {
-                  "formId": null,
-                  "multiple": false,
-                  "type": "emodel/type@category-document-type/kind-d-scan-documents",
-                  "mandatory": false
-                },
-                {
-                  "formId": null,
-                  "multiple": false,
-                  "type": "emodel/type@category-document-type/kind-d-counterparty-documents",
-                  "mandatory": false
+                  "type": "emodel/type@attachment",
+                  "multiple": true,
+                  "mandatory": false,
+                  "canUpload": true,
+                  "journalId": ""
                 }
-              ]
+              ],
+              "isLoadChecklist": true
             }
           },
-          "description": "Документы"
+          "description": {
+            "ru": "Вложения",
+            "en": "Attachments"
+          }
         }
       ],
       "desktop": [
@@ -274,8 +306,8 @@
           "id": "layout_35cd006c-9ae1-4148-9e25-3a78989fd690",
           "tab": {
             "label": {
-              "ru": "Документы",
-              "en": "Documents"
+              "ru": "Вложения",
+              "en": "Attachments"
             },
             "idLayout": "layout_35cd006c-9ae1-4148-9e25-3a78989fd690"
           },
