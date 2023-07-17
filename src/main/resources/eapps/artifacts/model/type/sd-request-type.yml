@@ -256,6 +256,8 @@ model:
                         "attribute": "_created"
                     }
                 ],
+            }, {
+                id: "?id"
             });
 
             if (mappingClient.records.length > 0) {
@@ -288,6 +290,8 @@ model:
                             "attribute": "_created"
                         }
                     ],
+                }, {
+                    id: "?id"
                 });
                     return Records.get(defaultMappingClient.records[0].id).load("implFirstLineSupport?str");
                 }
@@ -329,6 +333,8 @@ model:
                         "attribute": "_created"
                     }
                 ],
+            }, {
+                id: "?id"
             });
 
             if (mappingClient.records.length > 0) {
@@ -361,6 +367,8 @@ model:
                             "attribute": "_created"
                         }
                     ],
+                }, {
+                    id: "?id"
                 });
                     return Records.get(defaultMappingClient.records[0].id).load("implSecondLineSupport?str");
                 }
@@ -402,6 +410,8 @@ model:
                         "attribute": "_created"
                     }
                 ],
+            }, {
+                id: "?id"
             });
 
             if (mappingClient.records.length > 0) {
@@ -434,6 +444,8 @@ model:
                             "attribute": "_created"
                         }
                     ],
+                }, {
+                    id: "?id"
                 });
                     return Records.get(defaultMappingClient.records[0].id).load("implThirdLineSupport?str");
                 }
@@ -475,6 +487,8 @@ model:
                         "attribute": "_created"
                     }
                 ],
+            }, {
+                id: "?id"
             });
 
             if (mappingClient.records.length > 0) {
@@ -507,6 +521,8 @@ model:
                             "attribute": "_created"
                         }
                     ],
+                }, {
+                    id: "?id"
                 });
                     return Records.get(defaultMappingClient.records[0].id).load("technologist?str");
                 }
