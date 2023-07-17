@@ -40,6 +40,9 @@
               "en": "Client"
             },
             "key": "client",
+            "validate": {
+              "required": true
+            },
             "defaultValue": "",
             "refreshOn": [],
             "optionalWhenDisabled": false,
