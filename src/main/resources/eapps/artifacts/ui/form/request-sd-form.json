@@ -269,7 +269,13 @@
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
                 "input": true,
-                "queryData": ""
+                "queryData": "",
+                "source": {
+                  "custom": {
+                    "columns": []
+                  },
+                  "type": "journal"
+                }
               }
             ],
             "type": "column",
@@ -298,7 +304,13 @@
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
-                "input": true
+                "input": true,
+                "source": {
+                  "custom": {
+                    "columns": []
+                  },
+                  "type": "journal"
+                }
               }
             ]
           },
@@ -321,7 +333,13 @@
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
                 "input": true,
-                "queryData": ""
+                "queryData": "",
+                "source": {
+                  "custom": {
+                    "columns": []
+                  },
+                  "type": "journal"
+                }
               }
             ]
           }
@@ -346,7 +364,8 @@
         "journalId": "sd-clients-journal",
         "queryData": "",
         "refreshOn": [
-          "defaultClient"
+          "defaultClient",
+          "currentUserInfo"
         ],
         "customDefaultValue": "const formMode = _.get(instance, \"options.formMode\");\nconst defClient = _.get(data, 'defaultClient.client') || null;\nconsole.log(defClient);\n\nif(formMode === \"CREATE\" && defClient !== null) {\n  value = defClient;\n}",
         "optionalWhenDisabled": false,
@@ -370,10 +389,35 @@
                 "state": "false"
               }
             ]
+          },
+          {
+            "name": "Current user - Citeck Support",
+            "trigger": {
+              "type": "javascript",
+              "javascript": "const rolesToCheck = [\n  \"currentUserInfo.inFirstLine\",\n  \"currentUserInfo.inTechnologists\", \n  \"currentUserInfo.inLeads\"\n  ];\n\nresult = rolesToCheck.some(role => _.get(data, role) === true);"
+            },
+            "actions": [
+              {
+                "name": "Disable Off",
+                "type": "property",
+                "property": {
+                  "label": "Disabled",
+                  "value": "disabled",
+                  "type": "boolean"
+                },
+                "state": "false"
+              }
+            ]
           }
         ],
         "type": "selectJournal",
-        "input": true
+        "input": true,
+        "source": {
+          "custom": {
+            "columns": []
+          },
+          "type": "journal"
+        }
       },
       {
         "label": {
@@ -665,13 +709,33 @@
                     "attributes": {
                       "time": "firstReactionTimestamp"
                     }
-                  },
-                  "forceLoad": false
+                  }
                 },
                 "update": {
                   "type": "once"
                 },
                 "key": "reactionInfo",
+                "type": "asyncData",
+                "input": true
+              },
+              {
+                "label": "CurrentUserInfo",
+                "source": {
+                  "type": "record",
+                  "forceLoad": true,
+                  "record": {
+                    "id": "{{recordId}}",
+                    "attributes": {
+                      "inFirstLine": "_roles.isCurrentUserMemberOf.impl-first-line-role?bool",
+                      "inTechnologists": "_roles.isCurrentUserMemberOf.tech-role?bool",
+                      "inLeads": "_roles.isCurrentUserMemberOf.lead-tech-role?bool"
+                    }
+                  }
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "currentUserInfo",
                 "type": "asyncData",
                 "input": true
               }

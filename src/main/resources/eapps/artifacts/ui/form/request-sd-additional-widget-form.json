@@ -167,11 +167,34 @@
                         "disabled": true,
                         "modalTitle": "",
                         "journalId": "sd-clients-journal",
-                        "refreshOn": [],
+                        "queryData": "",
+                        "refreshOn": [
+                          "currentUserInfo"
+                        ],
                         "optionalWhenDisabled": false,
+                        "logic": [
+                          {
+                            "name": "Current user - Citeck Support",
+                            "trigger": {
+                              "type": "javascript",
+                              "javascript": "const rolesToCheck = [\n  \"currentUserInfo.inFirstLine\",\n  \"currentUserInfo.inTechnologists\", \n  \"currentUserInfo.inLeads\"\n  ];\n\nresult = rolesToCheck.some(role => _.get(data, role) === true);"
+                            },
+                            "actions": [
+                              {
+                                "name": "Disable Off",
+                                "type": "property",
+                                "property": {
+                                  "label": "Disabled",
+                                  "value": "disabled",
+                                  "type": "boolean"
+                                },
+                                "state": "false"
+                              }
+                            ]
+                          }
+                        ],
                         "type": "selectJournal",
-                        "input": true,
-                        "queryData": ""
+                        "input": true
                       }
                     ]
                   }
@@ -240,7 +263,29 @@
             "input": false,
             "key": "column",
             "label": "Column",
-            "components": [],
+            "components": [
+              {
+                "label": "CurrentUserInfo",
+                "source": {
+                  "type": "record",
+                  "forceLoad": true,
+                  "record": {
+                    "id": "{{recordId}}",
+                    "attributes": {
+                      "inFirstLine": "_roles.isCurrentUserMemberOf.impl-first-line-role?bool",
+                      "inTechnologists": "_roles.isCurrentUserMemberOf.tech-role?bool",
+                      "inLeads": "_roles.isCurrentUserMemberOf.lead-tech-role?bool"
+                    }
+                  }
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "currentUserInfo",
+                "type": "asyncData",
+                "input": true
+              }
+            ],
             "clearOnHide": true,
             "conditional": {
               "show": null,
