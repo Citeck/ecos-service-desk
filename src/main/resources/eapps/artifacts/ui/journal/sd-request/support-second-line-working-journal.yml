@@ -74,7 +74,7 @@ columns:
       ru: Тема письма
       en: Topic of the letter
     type: TEXT
-  - id: letterContent
+  - id: letterContentWithoutTags
     name:
       ru: Содержание обращения
       en: Letter content
