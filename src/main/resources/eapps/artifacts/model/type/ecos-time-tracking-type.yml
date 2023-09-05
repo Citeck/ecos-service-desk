@@ -42,3 +42,16 @@ model:
         ru: Продолжительность
         en: Duration
       type: NUMBER
+    - id: durationInMinutes
+      name:
+        ru: Продолжительность в минутах
+        en: Duration in minutes
+      type: NUMBER
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var duration = value.load("duration");
+            return duration/60000
+        storingType: NONE
+
