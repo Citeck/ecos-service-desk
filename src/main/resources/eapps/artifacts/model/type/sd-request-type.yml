@@ -170,6 +170,10 @@ model:
       name:
         ru: Содержание обращения
         en: Letter content
+    - id: letterContentWithoutTags
+      name:
+        ru: Содержание обращения без тегов
+        en: Letter content without tags
     - id: exampleLink
       name:
         ru: Ссылка на пример
