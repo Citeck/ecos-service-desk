@@ -679,6 +679,18 @@
                 "key": "defaultClient",
                 "type": "asyncData",
                 "input": true
+              },
+              {
+                "key": "letterContentWithoutTags",
+                "clearOnHide": false,
+                "refreshOn": [
+                  "createdAutomaticallyInfo"
+                ],
+                "calculateValue": "const createdAutomatically = _.get(data, \"createdAutomatically.createdAutomatically\");\nconst letterContent = _.get(data, \"letterContent\");\n\nif (createdAutomatically !== true) {\n  value = letterContent.replace(/<[^>]*>/g, \"\");\n}",
+                "allowCalculateOverride": true,
+                "optionalWhenDisabled": false,
+                "type": "hidden",
+                "input": true
               }
             ],
             "type": "column",
@@ -709,7 +721,8 @@
                     "attributes": {
                       "time": "firstReactionTimestamp"
                     }
-                  }
+                  },
+                  "forceLoad": false
                 },
                 "update": {
                   "type": "once"
@@ -736,6 +749,25 @@
                   "type": "once"
                 },
                 "key": "currentUserInfo",
+                "type": "asyncData",
+                "input": true
+              },
+              {
+                "label": "createdAutomaticallyInfo",
+                "source": {
+                  "type": "record",
+                  "forceLoad": true,
+                  "record": {
+                    "id": "{{recordId}}",
+                    "attributes": {
+                      "createdAutomatically": "createdAutomatically?bool"
+                    }
+                  }
+                },
+                "update": {
+                  "type": "disabled"
+                },
+                "key": "createdAutomaticallyInfo",
                 "type": "asyncData",
                 "input": true
               }
