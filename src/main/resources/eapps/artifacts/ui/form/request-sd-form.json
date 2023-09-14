@@ -686,7 +686,7 @@
                 "refreshOn": [
                   "createdAutomaticallyInfo"
                 ],
-                "calculateValue": "const createdAutomatically = _.get(data, \"createdAutomatically.createdAutomatically\");\nconst letterContent = _.get(data, \"letterContent\");\n\nif (createdAutomatically !== true) {\n  value = letterContent.replace(/<[^>]*>/g, \"\");\n}",
+                "calculateValue": "const createdAutomatically = _.get(data, \"createdAutomaticallyInfo.createdAutomatically\");\nconst letterContent = _.get(data, \"letterContent\");\n\nif (createdAutomatically !== true) {\n  value = letterContent.replace(/<[^>]*>/g, \"\");\n}",
                 "allowCalculateOverride": true,
                 "optionalWhenDisabled": false,
                 "type": "hidden",
