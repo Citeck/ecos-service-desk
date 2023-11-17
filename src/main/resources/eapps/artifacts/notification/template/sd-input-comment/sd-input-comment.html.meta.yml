@@ -11,7 +11,8 @@
     "letterTopic" : "letterTopic",
     "commenter" : "$user",
     "comment" : "$process.event.text",
-    "docRef" : ".id"
+    "docRef" : ".id",
+    "_attachments": "$process.event.attachments[]._as.ref._content{bytes, meta:?json}"
   },
   "multiTemplateConfig" : [ ]
 }
