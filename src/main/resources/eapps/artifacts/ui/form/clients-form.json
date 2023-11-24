@@ -90,6 +90,21 @@
             "type": "selectJournal",
             "input": true,
             "queryData": ""
+          },
+          {
+            "label": {
+              "ru": "Проекты",
+              "en": "project"
+            },
+            "key": "projects",
+            "multiple": true,
+            "modalTitle": "",
+            "journalId": "jira-project-journal",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "selectJournal",
+            "input": true,
+            "queryData": ""
           }
         ]
       },

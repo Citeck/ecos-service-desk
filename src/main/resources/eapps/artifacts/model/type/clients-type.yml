@@ -38,3 +38,12 @@ model:
         typeRef: emodel/type@person
         child: false
       multiple: true
+    - id: projects
+      name:
+        ru: Проекты
+        en: Projects
+      type: ASSOC
+      config:
+        typeRef: emodel/type@jira-project
+        child: false
+      multiple: true
