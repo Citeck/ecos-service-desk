@@ -47,3 +47,9 @@ model:
         typeRef: emodel/type@jira-project
         child: false
       multiple: true
+    - id: projectResponsiblePersons
+      name:
+        ru: Ответственные за проект
+        en: Project responsible persons
+      type: PERSON
+      multiple: true

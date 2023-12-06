@@ -25,15 +25,6 @@ config:
 
     - id: emodel/authority-group@
       attributes:
-        id: impl-support-third-line-default
-        name:
-          ru: 3-я линия ТП
-          en: 3rd line support
-        authorityGroups:
-          - emodel/authority-group@_orgstruct_home_
-
-    - id: emodel/authority-group@
-      attributes:
         id: technologists-default
         name:
           ru: Технологи

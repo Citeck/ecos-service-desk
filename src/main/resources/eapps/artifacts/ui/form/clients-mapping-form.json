@@ -55,19 +55,6 @@
       },
       {
         "label": {
-          "ru": "3-ая линия ТП"
-        },
-        "key": "implThirdLineSupport",
-        "modalTitle": "",
-        "journalId": "authority-groups",
-        "refreshOn": [],
-        "optionalWhenDisabled": false,
-        "type": "selectJournal",
-        "input": true,
-        "queryData": ""
-      },
-      {
-        "label": {
           "ru": "Технолог"
         },
         "key": "technologist",

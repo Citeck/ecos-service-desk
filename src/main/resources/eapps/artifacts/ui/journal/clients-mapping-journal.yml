@@ -21,11 +21,6 @@ columns:
       ru: Исполнитель 2-ой линии ТП
       en: 2nd support line implementer
     type: AUTHORITY_GROUP
-  - id: implThirdLineSupport
-    name:
-      ru: Исполнитель 3-ей линии ТП
-      en: 3rd support line implementer
-    type: AUTHORITY_GROUP
   - id: technologist
     name:
       ru: Технолог

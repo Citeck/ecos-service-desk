@@ -14,99 +14,142 @@
   "definition": {
     "components": [
       {
-        "scrollableContent": true,
-        "key": "panel2",
-        "type": "panel",
-        "input": false,
+        "label": {
+          "ru": "Tabs"
+        },
+        "key": "tabs2",
         "components": [
           {
             "label": {
-              "ru": "Код",
-              "en": "Code"
+              "ru": "Основное",
+              "en": "General"
             },
-            "key": "clientCode",
-            "validate": {
-              "required": true
-            },
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true
-          },
-          {
-            "label": {
-              "ru": "Клиент",
-              "en": "Client"
-            },
-            "key": "client",
-            "validate": {
-              "required": true
-            },
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true
+            "key": "generalTab",
+            "components": [
+              {
+                "label": {
+                  "ru": "Код",
+                  "en": "Code"
+                },
+                "key": "clientCode",
+                "validate": {
+                  "required": true
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": "Клиент",
+                  "en": "Client"
+                },
+                "key": "client",
+                "validate": {
+                  "required": true
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": "Почтовый домен",
+                  "en": "E-mail domain"
+                },
+                "key": "emailDomain",
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": "Пользователи",
+                  "en": "Users"
+                },
+                "key": "users",
+                "multiple": true,
+                "modalTitle": "",
+                "journalId": "persons",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              },
+              {
+                "label": {
+                  "ru": "Проекты",
+                  "en": "project"
+                },
+                "key": "projects",
+                "multiple": true,
+                "modalTitle": "",
+                "journalId": "jira-project-journal",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true,
+                "queryData": ""
+              }
+            ]
           },
           {
             "label": {
               "ru": "Проект",
               "en": "Project"
             },
-            "key": "project",
-            "validate": {
-              "required": true
-            },
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true
-          },
-          {
-            "label": {
-              "ru": "Почтовый домен",
-              "en": "E-mail domain"
-            },
-            "key": "emailDomain",
-            "defaultValue": "",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "textfield",
-            "input": true
-          },
-          {
-            "label": {
-              "ru": "Пользователи",
-              "en": "Users"
-            },
-            "key": "users",
-            "multiple": true,
-            "modalTitle": "",
-            "journalId": "persons",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "selectJournal",
-            "input": true,
-            "queryData": ""
-          },
-          {
-            "label": {
-              "ru": "Проекты",
-              "en": "project"
-            },
-            "key": "projects",
-            "multiple": true,
-            "modalTitle": "",
-            "journalId": "jira-project-journal",
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "selectJournal",
-            "input": true,
-            "queryData": ""
+            "key": "projectTab",
+            "components": [
+              {
+                "label": {
+                  "ru": "Проект",
+                  "en": "Project"
+                },
+                "key": "project",
+                "validate": {
+                  "required": true
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": "projectResponsiblePersons",
+                  "en": "projectResponsiblePersons"
+                },
+                "key": "projectResponsiblePersons",
+                "multiple": true,
+                "validate": {
+                  "required": true
+                },
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectOrgstruct",
+                "input": true,
+                "defaultValue": "",
+                "reorder": false
+              }
+            ]
           }
-        ]
+        ],
+        "type": "tabs",
+        "input": false
+      },
+      {
+        "scrollableContent": true,
+        "key": "panel2",
+        "type": "panel",
+        "input": false
       },
       {
         "label": {

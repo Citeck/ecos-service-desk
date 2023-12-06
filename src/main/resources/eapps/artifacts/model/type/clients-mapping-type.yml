@@ -3,7 +3,7 @@ id: clients-mapping-type
 name:
   ru: Маппинг клиентов
   en: Clients mapping
-sourceType: ECOS_MODEL
+storageType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@clients-mapping-form
 journalRef: uiserv/journal@clients-mapping-journal
@@ -28,11 +28,6 @@ model:
       name:
         ru: Исполнитель 2-ой линии ТП
         en: Implementer of the 2nd line support
-      type: AUTHORITY_GROUP
-    - id: implThirdLineSupport
-      name:
-        ru: Исполнитель 3-ей линии ТП
-        en: Implementer of the 3rd line support
       type: AUTHORITY_GROUP
     - id: technologist
       name:

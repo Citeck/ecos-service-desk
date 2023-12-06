@@ -9,5 +9,4 @@ config:
       attributes:
         implFirstLineSupport: emodel/authority-group@impl-support-first-line-default
         implSecondLineSupport: emodel/authority-group@impl-support-second-line-default
-        implThirdLineSupport: emodel/authority-group@impl-support-third-line-default
         technologist: emodel/authority-group@technologists-default

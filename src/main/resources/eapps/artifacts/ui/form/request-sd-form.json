@@ -124,7 +124,10 @@
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "textfield",
-                "input": true
+                "input": true,
+                "inputMasks": [
+                  {}
+                ]
               }
             ]
           }
@@ -217,40 +220,6 @@
       },
       {
         "label": {
-          "ru": "Исполнитель 3-линии ТП",
-          "en": "3rd line support implementer"
-        },
-        "key": "implementerThirdLineSupport",
-        "defaultValue": "",
-        "refreshOn": [],
-        "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\n\nif(formMode === \"CREATE\") {\n  show = false;\n}",
-        "logic": [
-          {
-            "name": "log",
-            "trigger": {
-              "type": "javascript",
-              "javascript": "const initiator = data['initiator'].replace(/.*@/, '');\nconst currentUser = user.replace(/.*@/, '');\n\nresult = currentUser === initiator;"
-            },
-            "actions": [
-              {
-                "name": "act",
-                "type": "property",
-                "property": {
-                  "label": "Disabled",
-                  "value": "disabled",
-                  "type": "boolean"
-                },
-                "state": "true"
-              }
-            ]
-          }
-        ],
-        "type": "selectOrgstruct",
-        "input": true
-      },
-      {
-        "label": {
           "ru": "Columns"
         },
         "key": "columns7",
@@ -269,13 +238,7 @@
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
                 "input": true,
-                "queryData": "",
-                "source": {
-                  "custom": {
-                    "columns": []
-                  },
-                  "type": "journal"
-                }
+                "queryData": ""
               }
             ],
             "type": "column",
@@ -304,13 +267,7 @@
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
-                "input": true,
-                "source": {
-                  "custom": {
-                    "columns": []
-                  },
-                  "type": "journal"
-                }
+                "input": true
               }
             ]
           },
@@ -333,13 +290,7 @@
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
                 "input": true,
-                "queryData": "",
-                "source": {
-                  "custom": {
-                    "columns": []
-                  },
-                  "type": "journal"
-                }
+                "queryData": ""
               }
             ]
           }
@@ -411,13 +362,7 @@
           }
         ],
         "type": "selectJournal",
-        "input": true,
-        "source": {
-          "custom": {
-            "columns": []
-          },
-          "type": "journal"
-        }
+        "input": true
       },
       {
         "label": {
