@@ -14,29 +14,23 @@ config:
 predicate:
   t: or
   val:
-    - t: and
-      val:
-        - t: eq
-          att: _status?str
-          val: request-first-line-work
-        - t: eq
-          att: _roles.isCurrentUserMemberOf.impl-first-line-role?bool
-          val: true
-    - t: and
-      val:
-        - t: eq
-          att: _status?str
-          val: request-second-line-work
-        - t: eq
-          att: _roles.isCurrentUserMemberOf.impl-second-line-role?bool
-          val: true
-    - t: and
-      val:
-        - t: eq
-          att: _status?str
-          val: request-third-line-work
-        - t: eq
-          att: _roles.isCurrentUserMemberOf.impl-third-line-role?bool
-          val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.impl-first-line-role?bool
+      val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.impl-second-line-role?bool
+      val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.impl-third-line-role?bool
+      val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.lead-tech-role?bool
+      val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.add-partic-role?bool
+      val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.tech-role?bool
+      val: true
 
 
