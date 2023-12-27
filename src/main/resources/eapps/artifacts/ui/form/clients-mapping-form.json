@@ -81,6 +81,20 @@
       },
       {
         "label": {
+          "ru": "workingSchedule",
+          "en": "workingSchedule"
+        },
+        "key": "workingSchedule",
+        "modalTitle": "",
+        "journalId": "type$working-schedule",
+        "refreshOn": [],
+        "optionalWhenDisabled": false,
+        "type": "selectJournal",
+        "input": true,
+        "queryData": ""
+      },
+      {
+        "label": {
           "ru": "Columns"
         },
         "key": "columns2",

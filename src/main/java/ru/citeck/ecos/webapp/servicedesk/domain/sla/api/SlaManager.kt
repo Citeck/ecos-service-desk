@@ -34,10 +34,10 @@ class SlaManager(
 
         val slaDurations = slaParametersProvider.get(sdAtts.client, priority)
 
-        val timeFirstReaction = dueDateService.getDueDate(slaDurations.timeFirstReaction)
-        val timeToResolve = dueDateService.getDueDate(slaDurations.timeResolve)
+        val timeFirstReaction = dueDateService.getDueDate(slaDurations.timeFirstReaction, sdRequest)
+        val timeToResolve = dueDateService.getDueDate(slaDurations.timeResolve, sdRequest)
 
-        val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose)
+        val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose, sdRequest)
 
         val timeToResolveFromPause = let {
             val sla2Duration = slaDurations.timeResolve
@@ -47,7 +47,7 @@ class SlaManager(
 
             val remainingDuration = sla2Duration - spentDuration
 
-            return@let dueDateService.getDueDate(remainingDuration)
+            return@let dueDateService.getDueDate(remainingDuration, sdRequest)
         }
         val notificationToExecutorTimeResolveFromPause = let {
             val notificationTime = timeToResolveFromPause.minus(
@@ -94,7 +94,7 @@ class SlaManager(
                 slaDurations.notificationToInitiatorCloseReminder.toJavaDuration()
             ),
             timeToAutoClose = timeToAutoClose,
-            timeToSendFirstLineFromClarify = dueDateService.getDueDate(slaDurations.timeToSendFirstLineFromClarify)
+            timeToSendFirstLineFromClarify = dueDateService.getDueDate(slaDurations.timeToSendFirstLineFromClarify, sdRequest)
         )
 
         log.debug { "SLA due dates for request $sdRequest, with atts $sdAtts: $dueDates" }
