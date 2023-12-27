@@ -438,7 +438,7 @@
             "key": "hidden",
             "clearOnHide": false,
             "refreshOn": [],
-            "calculateValue": "var durationISO8601 = _.get(data, 'sla.sla1Info.duration') || null;\nvar state = _.get(data, 'sla.sla1Info.state');\n\nif(durationISO8601 !== null) {\n  var hours = moment.duration(durationISO8601)._data.hours;\n  var minutes = moment.duration(durationISO8601)._data.minutes;\n  if(hours < 10) {\n    value = \"  \" + hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \" + minutes + \"M\";\n  }\n}",
+            "calculateValue": "var durationISO8601 = _.get(data, 'sla.sla1Info.duration') || null;\n\nif(durationISO8601 !== null) {\n  var daysInHours = moment.duration(durationISO8601)._data.days * 24;\n  var hours = moment.duration(durationISO8601)._data.hours + daysInHours;\n  var minutes = moment.duration(durationISO8601)._data.minutes;\n  if(hours < 10) {\n    value = \"  \" + hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \" + minutes + \"M\";\n  }\n}",
             "optionalWhenDisabled": false,
             "type": "hidden",
             "input": true
@@ -450,7 +450,7 @@
             "key": "hidden2",
             "clearOnHide": false,
             "refreshOn": [],
-            "calculateValue": "var durationISO8601 = _.get(data, 'sla.sla2Info.duration') || null;\n\nif(durationISO8601 !== null) {\n  var hours = moment.duration(durationISO8601)._data.hours;\n  var minutes = moment.duration(durationISO8601)._data.minutes;\n  if(hours < 10) {\n    value = \"  \" + hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \" + minutes + \"M\";\n  }\n}",
+            "calculateValue": "var durationISO8601 = _.get(data, 'sla.sla2Info.duration') || null;\n\nif(durationISO8601 !== null) {\n  var daysInHours = moment.duration(durationISO8601)._data.days * 24;\n  var hours = moment.duration(durationISO8601)._data.hours + daysInHours;\n  var minutes = moment.duration(durationISO8601)._data.minutes;\n  if(hours < 10) {\n    value = \"  \" + hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \" + minutes + \"M\";\n  }\n}",
             "optionalWhenDisabled": false,
             "type": "hidden",
             "input": true

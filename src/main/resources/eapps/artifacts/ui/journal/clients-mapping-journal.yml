@@ -31,3 +31,8 @@ columns:
       ru: Технолог
       en: Technologist
     type: AUTHORITY_GROUP
+  - id: workingSchedule
+    name:
+      ru: Рабочее расписание
+      en: Working schedule
+    type: ASSOC
