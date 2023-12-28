@@ -9,8 +9,6 @@ import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.entity.toEntityRef
 import ru.citeck.ecos.wkgsch.lib.schedule.WorkingScheduleService
 import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneOffset
 import kotlin.time.Duration
 import kotlin.time.toJavaDuration
 
@@ -28,7 +26,7 @@ class SdDueDateService(
     }
 
     fun getDueDate(duration: Duration, record: EntityRef): Instant {
-        val currentDateTime = LocalDateTime.now().withNano(0)
+        val now = Instant.now()
         val client = recordsService.getAtts(record, SdRequestAtts::class.java).client
 
         val scheduleMappingId = recordsService.queryOne(
@@ -46,10 +44,9 @@ class SdDueDateService(
         val scheduleId = getScheduleIdOrDefault(scheduleMappingId)
 
         val result = workingScheduleService.getScheduleById(scheduleId)
-            .addWorkingTime(currentDateTime, duration.toJavaDuration())
-            .toInstant(ZoneOffset.UTC)
+            .addWorkingTime(now, duration.toJavaDuration())
 
-        log.debug { "Due date for from=$currentDateTime, duration=$duration, result=$result" }
+        log.debug { "Due date for from=$now, duration=$duration, result=$result" }
 
         return result
     }
