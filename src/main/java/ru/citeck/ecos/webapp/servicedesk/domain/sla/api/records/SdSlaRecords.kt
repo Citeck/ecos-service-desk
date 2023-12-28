@@ -15,8 +15,9 @@ import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaType
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaDueDates
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaManager
 import java.time.Instant
-import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.ZoneOffset
+import java.time.ZonedDateTime
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
@@ -85,6 +86,8 @@ class SdSlaRecords(
     }
 
     private fun RequestInfo.toSlaInfo(type: SlaType): SlaInfo {
+        val moscowTimeZone = ZoneId.of("Europe/Moscow")
+
         return when (type) {
             SlaType.SLA1 -> {
                 return when (sla1State) {
@@ -99,7 +102,10 @@ class SdSlaRecords(
                             return@run SlaInfo.UNDEFINED
                         }
 
-                        val now = LocalDateTime.now().toInstant(ZoneOffset.UTC)
+                        val now = ZonedDateTime.now(moscowTimeZone)
+                            .toLocalDateTime()
+                            .withNano(0)
+                            .toInstant(ZoneOffset.UTC)
                         val diffDuration = java.time.Duration.between(now, sla1DueDate).toKotlinDuration()
 
                         SlaInfo(
@@ -147,7 +153,10 @@ class SdSlaRecords(
                             return@run SlaInfo.UNDEFINED
                         }
 
-                        val now = LocalDateTime.now().toInstant(ZoneOffset.UTC)
+                        val now = ZonedDateTime.now(moscowTimeZone)
+                            .toLocalDateTime()
+                            .withNano(0)
+                            .toInstant(ZoneOffset.UTC)
                         val diffDuration = java.time.Duration.between(now, sla2DueDate).toKotlinDuration()
 
                         SlaInfo(
