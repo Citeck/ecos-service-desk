@@ -43,10 +43,10 @@ class SdDueDateService(
 
         val scheduleId = getScheduleIdOrDefault(scheduleMappingId)
 
-        val result = try {
+        val result = if (duration.isPositive()) {
             workingScheduleService.getScheduleById(scheduleId)
                 .addWorkingTime(now, duration.toJavaDuration())
-        } catch (e: Exception) {
+        } else {
             now.plus(duration.toJavaDuration())
         }
 
