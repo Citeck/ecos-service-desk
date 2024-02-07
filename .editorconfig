@@ -17,7 +17,16 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.md]
+
 trim_trailing_whitespace = false
 
-[{*.json,*.yaml,*.yml,*.sh}]
+[{*.json, *.yaml, *.yml}]
+
 indent_size = 2
+
+[*.{kt,kts}]
+
+ktlint_standard_no-wildcard-imports = disabled
+ktlint_standard_no-empty-first-line-in-method-block = disabled
+ktlint_standard_trailing-comma-on-declaration-site = disabled
+ktlint_standard_trailing-comma-on-call-site = disabled
