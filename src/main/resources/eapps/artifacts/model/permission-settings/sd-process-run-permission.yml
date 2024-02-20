@@ -1,0 +1,10 @@
+id: sd-process-run-permission
+
+recordRef: eproc/bpmn-def@sd-process
+inherit: false
+
+settings:
+  - authorities:
+      - GROUP_EVERYONE
+    permissions:
+      - emodel/permission-def@bpmn-process-instance-run
