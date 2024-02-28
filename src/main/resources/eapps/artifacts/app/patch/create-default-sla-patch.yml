@@ -15,20 +15,20 @@ config:
         notificationToExecutorTimeReaction: 30m
         notificationToExecutorTimeResolve: 1h
         notificationToSupervisorTime: 25m
-        timeToAutoClose: 6d
-        timeToSendFirstLineFromClarify: 3d
+        timeToAutoClose: 48h
+        timeToSendFirstLineFromClarify: 24h
     - id: emodel/sd-sla-type@
       attributes:
         id: default-medium
         priority: medium
         timeZone: GMT+3
         timeFirstReaction: 8h
-        timeResolve: 1d
+        timeResolve: 8h
         notificationToExecutorTimeReaction: 30m
         notificationToExecutorTimeResolve: 1h
         notificationToSupervisorTime: 25m
-        timeToAutoClose: 6d
-        timeToSendFirstLineFromClarify: 3d
+        timeToAutoClose: 48h
+        timeToSendFirstLineFromClarify: 24h
     - id: emodel/sd-sla-type@
       attributes:
         id: default-high
@@ -39,8 +39,8 @@ config:
         notificationToExecutorTimeReaction: 30m
         notificationToExecutorTimeResolve: 1h
         notificationToSupervisorTime: 25m
-        timeToAutoClose: 6d
-        timeToSendFirstLineFromClarify: 3d
+        timeToAutoClose: 48h
+        timeToSendFirstLineFromClarify: 24h
     - id: emodel/sd-sla-type@
       attributes:
         id: default-urgent
@@ -51,5 +51,5 @@ config:
         notificationToExecutorTimeReaction: 30m
         notificationToExecutorTimeResolve: 1h
         notificationToSupervisorTime: 25m
-        timeToAutoClose: 6d
-        timeToSendFirstLineFromClarify: 3d
+        timeToAutoClose: 48h
+        timeToSendFirstLineFromClarify: 24h

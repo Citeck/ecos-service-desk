@@ -313,8 +313,8 @@
           }
         ],
         "content": {
-          "ru": "Продолжительность времени указывается в формате d, h, m:\n\n<li><i>1d 3h 10m</i> - 1 день 3 часа 10 минут</li>\n<li><i>1d</i> - 1 день</li>\n<li><i>1h 15m</i> - 1 час 15 минут</li>\n<li><i>30m</i> - 30 минут</li>\n",
-          "en": "The duration time is specified in the format d, h, m:\n\n<li><i>1d 3h 10m</i> - 1 day 3 hours 10 minutes</li>\n<li><i>1d</i> - 1 day</li>\n<li><i>1h 15m</i> - 1 hour 15 minutes</li>\n<li><i>30m</i> - 30 minutes</li>"
+          "ru": "Продолжительность времени указывается в формате h, m:\n\n<li><i>1h 15m</i> - 1 час 15 минут</li>\n<li><i>30m</i> - 30 минут</li>\n",
+          "en": "The duration time is specified in the format h, m:\n\n<li><i>1h 15m</i> - 1 hour 15 minutes</li>\n<li><i>30m</i> - 30 minutes</li>"
         },
         "refreshOnChange": false,
         "refreshOn": [],
@@ -356,7 +356,7 @@
                     },
                     "validate": {
                       "required": true,
-                      "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
+                      "pattern": "^((\\d+)h)?\\s*((\\d+)m)?$"
                     },
                     "placeholder": {
                       "ru": "20m"
@@ -365,7 +365,10 @@
                     "refreshOn": [],
                     "optionalWhenDisabled": false,
                     "type": "textfield",
-                    "input": true
+                    "input": true,
+                    "inputMasks": [
+                      {}
+                    ]
                   }
                 ],
                 "type": "column",
@@ -391,7 +394,7 @@
                     },
                     "validate": {
                       "required": true,
-                      "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
+                      "pattern": "^((\\d+)h)?\\s*((\\d+)m)?$"
                     },
                     "placeholder": {
                       "ru": "1h"
@@ -400,7 +403,10 @@
                     "refreshOn": [],
                     "optionalWhenDisabled": false,
                     "type": "textfield",
-                    "input": true
+                    "input": true,
+                    "inputMasks": [
+                      {}
+                    ]
                   }
                 ]
               }
@@ -439,7 +445,7 @@
                         "key": "notificationToExecutorTimeReaction",
                         "validate": {
                           "required": true,
-                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
+                          "pattern": "^((\\d+)h)?\\s*((\\d+)m)?$"
                         },
                         "placeholder": {
                           "ru": "30m"
@@ -448,7 +454,10 @@
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
                         "type": "textfield",
-                        "input": true
+                        "input": true,
+                        "inputMasks": [
+                          {}
+                        ]
                       }
                     ],
                     "sm": 8,
@@ -474,7 +483,7 @@
                         "key": "notificationToExecutorTimeResolve",
                         "validate": {
                           "required": true,
-                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
+                          "pattern": "^((\\d+)h)?\\s*((\\d+)m)?$"
                         },
                         "placeholder": {
                           "ru": "1h"
@@ -483,7 +492,10 @@
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
                         "type": "textfield",
-                        "input": true
+                        "input": true,
+                        "inputMasks": [
+                          {}
+                        ]
                       }
                     ]
                   },
@@ -503,7 +515,7 @@
                         "key": "notificationToSupervisorTime",
                         "validate": {
                           "required": true,
-                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
+                          "pattern": "^((\\d+)h)?\\s*((\\d+)m)?$"
                         },
                         "placeholder": {
                           "ru": "25m"
@@ -512,7 +524,10 @@
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
                         "type": "textfield",
-                        "input": true
+                        "input": true,
+                        "inputMasks": [
+                          {}
+                        ]
                       }
                     ]
                   }
@@ -552,21 +567,24 @@
                         },
                         "key": "timeToAutoClose",
                         "tooltip": {
-                          "ru": "Заявка будет автоматически закрыта, если превышен заданный срок (Рабочие дни)",
-                          "en": "The request will be automatically closed if the specified period is exceeded (Work days)"
+                          "ru": "Заявка будет автоматически закрыта, если превышен заданный срок (Рабочее время)",
+                          "en": "The request will be automatically closed if the specified period is exceeded (Working time)"
                         },
                         "validate": {
                           "required": true,
-                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
+                          "pattern": "^((\\d+)h)?\\s*((\\d+)m)?$"
                         },
                         "placeholder": {
-                          "ru": "6d"
+                          "ru": "48h"
                         },
                         "defaultValue": "",
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
                         "type": "textfield",
-                        "input": true
+                        "input": true,
+                        "inputMasks": [
+                          {}
+                        ]
                       }
                     ],
                     "type": "column",
@@ -587,21 +605,24 @@
                         },
                         "key": "timeToSendFirstLineFromClarify",
                         "tooltip": {
-                          "ru": "Заявка, которая находится на уточнении, будет автоматически передана на 1-ую линию, если превышен заданный срок (Рабочие дни)",
-                          "en": "An request that is being clarified will be automatically transferred to the 1st line if the specified period is exceeded (Work days)"
+                          "ru": "Заявка, которая находится на уточнении, будет автоматически передана на 1-ую линию, если превышен заданный срок (Рабочее время)",
+                          "en": "An request that is being clarified will be automatically transferred to the 1st line if the specified period is exceeded (Working  time)"
                         },
                         "validate": {
                           "required": true,
-                          "pattern": "^(\\d+d)?\\s*((?:[01]?\\d|2[0-3])h)?\\s*((?:[0-5]?\\d)m)?$"
+                          "pattern": "^((\\d+)h)?\\s*((\\d+)m)?$"
                         },
                         "placeholder": {
-                          "ru": "3d"
+                          "ru": "24h"
                         },
                         "defaultValue": "",
                         "refreshOn": [],
                         "optionalWhenDisabled": false,
                         "type": "textfield",
-                        "input": true
+                        "input": true,
+                        "inputMasks": [
+                          {}
+                        ]
                       }
                     ]
                   }
@@ -710,5 +731,6 @@
     ],
     "formId": "sd-sla-form"
   },
-  "attributes": {}
+  "attributes": {},
+  "notExists": false
 }
