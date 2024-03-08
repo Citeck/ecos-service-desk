@@ -1,8 +1,8 @@
 ---
 id: clients-mapping-journal
 name:
-  ru: Маппинг клиентов
-  en: Clients mapping
+  ru: Маппинг заказчиков
+  en: Customers mapping
 typeRef: emodel/type@clients-mapping-type
 editable: false
 columns:
