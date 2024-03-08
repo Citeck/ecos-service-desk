@@ -47,3 +47,12 @@ model:
         typeRef: emodel/type@jira-project
         child: false
       multiple: true
+    - id: counterparty
+      name:
+        ru: Контрагенты
+        en: Counterparties
+      type: ASSOC
+      config:
+        typeRef: emodel/type@ecos-counterparty
+        child: false
+      multiple: true

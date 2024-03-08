@@ -26,3 +26,8 @@ columns:
       ru: Почтовый домен
       en: E-mail domain
     type: TEXT
+  - id: counterparty
+    name:
+      ru: Контрагент
+      en: Counterparty
+    type: TEXT

@@ -105,6 +105,20 @@
             "type": "selectJournal",
             "input": true,
             "queryData": ""
+          },
+          {
+            "label": {
+              "ru": "counterparty"
+            },
+            "key": "counterparty",
+            "multiple": true,
+            "modalTitle": "",
+            "journalId": "ecos-counterparty",
+            "queryData": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "selectJournal",
+            "input": true
           }
         ]
       },
