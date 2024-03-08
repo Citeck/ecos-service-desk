@@ -49,7 +49,7 @@
         "addAnother" : "ecos.forms.btn.add-another"
       }, {
         "label" : {
-          "ru" : "Клиент"
+          "ru" : "Заказчик"
         },
         "key" : "selectJournal",
         "validate" : {

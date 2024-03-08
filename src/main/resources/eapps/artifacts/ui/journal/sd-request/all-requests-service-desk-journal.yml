@@ -37,8 +37,8 @@ columns:
     type: NUMBER
   - id: client
     name:
-      ru: Клиент
-      en: Client
+      ru: Заказчик
+      en: Customer
     type: ASSOC
   - id: initiator
     name:

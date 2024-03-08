@@ -8,8 +8,8 @@ editable: false
 columns:
   - id: client
     name:
-      ru: Клиент
-      en: Client
+      ru: Заказчик
+      en: Customer
     type: ASSOC
   - id: implFirstLineSupport
     name:

@@ -36,8 +36,8 @@
           },
           {
             "label": {
-              "ru": "Клиент",
-              "en": "Client"
+              "ru": "Заказчик",
+              "en": "Customer"
             },
             "key": "client",
             "validate": {
