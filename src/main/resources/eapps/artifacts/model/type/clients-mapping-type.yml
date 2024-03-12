@@ -1,7 +1,7 @@
 ---
 id: clients-mapping-type
 name:
-  ru: Маппинг клиентов
+  ru: Маппинг Заказчиков
   en: Clients mapping
 sourceType: ECOS_MODEL
 parentRef: emodel/type@data-list
@@ -13,8 +13,8 @@ model:
   attributes:
     - id: client
       name:
-        ru: Клиент
-        en: Client
+        ru: Заказчик
+        en: Customer
       type: ASSOC
       config:
         typeRef: emodel/type@clients-type

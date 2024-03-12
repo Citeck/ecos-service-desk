@@ -1,15 +1,15 @@
 ---
 id: clients-mapping-journal
 name:
-  ru: Маппинг клиентов
-  en: Clients mapping
+  ru: Маппинг заказчиков
+  en: Customers mapping
 typeRef: emodel/type@clients-mapping-type
 editable: false
 columns:
   - id: client
     name:
-      ru: Клиент
-      en: Client
+      ru: Заказчик
+      en: Customer
     type: ASSOC
   - id: implFirstLineSupport
     name:

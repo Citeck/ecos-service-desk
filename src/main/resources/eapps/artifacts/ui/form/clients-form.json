@@ -2,8 +2,8 @@
   "id": "clients-form",
   "formKey": "",
   "title": {
-    "en": "Clients form",
-    "ru": "Форма клиентов"
+    "en": "Customers form",
+    "ru": "Форма Заказчиков"
   },
   "description": {},
   "customModule": "",
@@ -36,8 +36,8 @@
           },
           {
             "label": {
-              "ru": "Клиент",
-              "en": "Client"
+              "ru": "Заказчик",
+              "en": "Customer"
             },
             "key": "client",
             "validate": {
@@ -105,6 +105,20 @@
             "type": "selectJournal",
             "input": true,
             "queryData": ""
+          },
+          {
+            "label": {
+              "ru": "counterparty"
+            },
+            "key": "counterparty",
+            "multiple": true,
+            "modalTitle": "",
+            "journalId": "ecos-counterparty",
+            "queryData": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "selectJournal",
+            "input": true
           }
         ]
       },

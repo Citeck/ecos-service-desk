@@ -2,8 +2,8 @@
   "id": "clients-mapping-form",
   "formKey": "",
   "title": {
-    "en": "Clients mapping form",
-    "ru": "Форма маппинга клиентов"
+    "en": "Customers mapping form",
+    "ru": "Форма маппинга заказчиков"
   },
   "description": {},
   "customModule": "",
@@ -15,7 +15,7 @@
     "components": [
       {
         "label": {
-          "ru": "Клиент"
+          "ru": "Заказчик"
         },
         "key": "client",
         "modalTitle": "",
