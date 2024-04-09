@@ -47,7 +47,7 @@
                 "name": "Change background-color expired",
                 "trigger": {
                   "type": "javascript",
-                  "javascript": "result = _.get(data, 'hidden').startsWith('-');"
+                  "javascript" : "var durationISO8601 = _.get(data, 'sla.sla1Info.duration');\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nif(hours <= 0 && minutes < 0) {\n  result = true;\n} else {\n  result = false;\n}"
                 },
                 "actions": [
                   {
@@ -66,7 +66,7 @@
                 "name": "Change background-color soon expired",
                 "trigger": {
                   "type": "javascript",
-                  "javascript": "var durationISO8601 = _.get(data, 'sla.sla1Info.duration');\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours === 0 && minutes <= 30);"
+                  "javascript": "var durationISO8601 = _.get(data, 'sla.sla1Info.duration');\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours === 0 && minutes <= 30 && minutes >= 0);"
                 },
                 "actions": [
                   {
@@ -228,7 +228,7 @@
                 "name": "Change background-color soon expired",
                 "trigger": {
                   "type": "javascript",
-                  "javascript": "var durationISO8601 = _.get(data, 'sla.sla1Info.duration');\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours === 0 && minutes <= 30);"
+                  "javascript": "var durationISO8601 = _.get(data, 'sla.sla1Info.duration');\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours === 0 && minutes <= 30 && minutes >= 0);"
                 },
                 "actions": [
                   {
@@ -325,7 +325,7 @@
                 "name": "Change color soon expired",
                 "trigger": {
                   "type": "javascript",
-                  "javascript": "var durationISO8601 = _.get(data, \"sla.sla2Info.duration\");\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours ===0 && minutes <= 30);"
+                  "javascript": "var durationISO8601 = _.get(data, \"sla.sla2Info.duration\");\n\nvar hours = moment.duration(durationISO8601)._data.hours;\nvar minutes = moment.duration(durationISO8601)._data.minutes;\n\nresult = (hours ===0 && minutes <= 30 && minutes >= 0);"
                 },
                 "actions": [
                   {
