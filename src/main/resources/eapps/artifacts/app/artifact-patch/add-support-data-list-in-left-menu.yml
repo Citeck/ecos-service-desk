@@ -44,7 +44,7 @@ config:
           {
             "id": "working-first-line-support",
             "label": {
-              "en": "В работе на 1-ой линии ТП"
+              "en": "В работе на 1-й линии ТП"
             },
             "icon": "",
             "hidden": false,
@@ -63,7 +63,7 @@ config:
           {
             "id": "working-second-line-support",
             "label": {
-              "en": "В работе на 2-ой линии ТП"
+              "en": "В работе на 2-й линии ТП"
             },
             "icon": "",
             "hidden": false,
@@ -82,7 +82,7 @@ config:
           {
             "id": "working-third-line-support",
             "label": {
-              "en": "В работе на 3-ей линии ТП"
+              "en": "В работе на 3-й линии ТП"
             },
             "icon": "",
             "hidden": false,
