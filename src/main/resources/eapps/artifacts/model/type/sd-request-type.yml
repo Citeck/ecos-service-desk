@@ -4,6 +4,7 @@ name:
   ru: Заявка SD
   en: SD request
 storageType: DEFAULT
+sourceId: emodel/task-tracker
 parentRef: emodel/type@task-tracker
 formRef: uiserv/form@request-sd-form
 inheritForm: false
