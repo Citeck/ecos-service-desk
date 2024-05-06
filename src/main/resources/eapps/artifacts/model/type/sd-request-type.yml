@@ -3,7 +3,6 @@ id: sd-request-type
 name:
   ru: Заявка SD
   en: SD request
-storageType: DEFAULT
 sourceId: emodel/task-tracker
 parentRef: emodel/type@task-tracker
 formRef: uiserv/form@request-sd-form
@@ -612,5 +611,10 @@ model:
         typeRef: emodel/type@additional-participant
         child: true
       multiple: true
+    - id: closingLine
+      name:
+        ru: Линия закрытия
+        en: Closing line
+      type: NUMBER
 aspects:
   - ref: emodel/aspect@task-comments-broadcastable

@@ -100,3 +100,8 @@ columns:
       ru: Исполнитель
       en: Implementer
     type: TEXT
+  - id: closingLine
+    name:
+      ru: Линия закрытия
+      en: Closing line
+    type: NUMBER
