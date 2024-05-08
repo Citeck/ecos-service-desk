@@ -31,19 +31,19 @@ model:
         - initiator
     - id: impl-first-line-role
       name:
-        ru: Исполнитель 1-ой линии ТП
+        ru: Исполнитель 1-й линии ТП
         en: 1st support line implementer
       attributes:
         - implFirstLineSupport
     - id: impl-second-line-role
       name:
-        ru: Исполнители 2-ой линии ТП
+        ru: Исполнители 2-й линии ТП
         en: 2nd support line implementer
       attributes:
         - implSecondLineSupport
     - id: impl-third-line-role
       name:
-        ru: Исполнители 3-ей линии ТП
+        ru: Исполнители 3-й линии ТП
         en: 3rd support line implementers
       attributes:
         - implThirdLineSupport
@@ -72,27 +72,27 @@ model:
   statuses:
     - id: request-first-line
       name:
-        ru: Передано 1-ой линии ТП
+        ru: Передано 1-й линии ТП
         en: Transferred on 1st support line
     - id: request-first-line-work
       name:
-        ru: В работе на 1-ой линии ТП
+        ru: В работе на 1-й линии ТП
         en: Working on 1st support line
     - id: request-second-line
       name:
-        ru: Передано 2-ой линии ТП
+        ru: Передано 2-й линии ТП
         en: Transferred on 2nd support line
     - id: request-second-line-work
       name:
-        ru: В работе на 2-ой линии ТП
+        ru: В работе на 2-й линии ТП
         en: Working on 2nd support line
     - id: request-third-line
       name:
-        ru: Передано 3-ей линии ТП
+        ru: Передано 3-й линии ТП
         en: Transferred on 3rd support line
     - id: request-third-line-work
       name:
-        ru: В работе на 3-ей линии ТП
+        ru: В работе на 3-й линии ТП
         en: Working on 3rd support line
     - id: request-approve
       name:
@@ -246,7 +246,7 @@ model:
         en: Priority
     - id: implFirstLineSupport
       name:
-        ru: Исполнители 1-ой линии ТП
+        ru: Исполнители 1-й линии ТП
         en: Implementer of the 1st line support
       type: AUTHORITY_GROUP
       computed:
@@ -323,7 +323,7 @@ model:
         storingType: NONE
     - id: implSecondLineSupport
       name:
-        ru: Исполнители 2-ой линии ТП
+        ru: Исполнители 2-й линии ТП
         en: Implementer of the 2nd line support
       type: AUTHORITY_GROUP
       computed:
@@ -400,7 +400,7 @@ model:
         storingType: NONE
     - id: implThirdLineSupport
       name:
-        ru: Исполнители 3-ей линии ТП
+        ru: Исполнители 3-й линии ТП
         en: Implementer of the 3rd line support
       type: AUTHORITY_GROUP
       computed:
@@ -554,7 +554,7 @@ model:
         storingType: NONE
     - id: implementerThirdLineSupport
       name:
-        ru: Исполнитель 3-ей линии ТП
+        ru: Исполнитель 3-й линии ТП
       type: PERSON
     - id: createdAutomatically
       name:
