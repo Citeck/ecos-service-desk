@@ -2,7 +2,7 @@
   "id": "sd-request-processing-second-line",
   "formKey": "",
   "title": {
-    "ru": "Форма обработки заявки 2-ой линии ТП",
+    "ru": "Форма обработки заявки 2-й линии ТП",
     "en": "2nd support line request processing form"
   },
   "description": {},
@@ -101,7 +101,7 @@
               {
                 "label": {
                   "en": "To 1st support line",
-                  "ru": "Передать 1-ой линии ТП"
+                  "ru": "Передать 1-й линии ТП"
                 },
                 "key": "outcome_toFirstSupportLine",
                 "state": "",
@@ -210,7 +210,7 @@
               {
                 "label": {
                   "en": "To 3rd support line",
-                  "ru": "Передать 3-ей линии ТП"
+                  "ru": "Передать 3-й линии ТП"
                 },
                 "key": "outcome_toThirdSupportLine",
                 "state": "",

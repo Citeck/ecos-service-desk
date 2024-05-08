@@ -1,7 +1,7 @@
 ---
 id: support-first-line-working-journal
 name:
-  ru: В работе на 1-ой линии ТП
+  ru: В работе на 1-й линии ТП
   en: Working on 1st support line
 predicate:
   att: _status

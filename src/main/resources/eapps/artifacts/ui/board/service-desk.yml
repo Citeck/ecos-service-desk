@@ -11,27 +11,27 @@ actions: null
 columns:
   - id: request-first-line
     name:
-      ru: Передано 1-ой линии ТП
+      ru: Передано 1-й линии ТП
       en: Transferred on 1st support line
   - id: request-first-line-work
     name:
-      ru: В работе на 1-ой линии ТП
+      ru: В работе на 1-й линии ТП
       en: Working on 1st support line
   - id: request-second-line
     name:
-      ru: Передано 2-ой линии ТП
+      ru: Передано 2-й линии ТП
       en: Transferred on 2nd support line
   - id: request-second-line-work
     name:
-      ru: В работе на 2-ой линии ТП
+      ru: В работе на 2-й линии ТП
       en: Working on 2nd support line
   - id: request-third-line
     name:
-      ru: Передано 3-ей линии ТП
+      ru: Передано 3-й линии ТП
       en: Transferred on 3rd support line
   - id: request-third-line-work
     name:
-      ru: В работе на 3-ей линии ТП
+      ru: В работе на 3-й линии ТП
       en: Working on 3rd support line
   - id: request-clarification
     name:
