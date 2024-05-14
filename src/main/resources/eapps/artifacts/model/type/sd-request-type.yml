@@ -20,6 +20,10 @@ actions:
 associations:
   - id: webLinks
     journalsFromTarget: false
+  - id: time-trackable:timeTracking
+    journalsFromTarget: false
+    journals:
+      - uiserv/journal@ecos-sd-time-tracking-journal
 defaultCreateVariant: true
 model:
   roles:
@@ -616,5 +620,16 @@ model:
         ru: Линия закрытия
         en: Closing line
       type: NUMBER
+    - id: time-trackable:timeTracking
+      name:
+        ru: Журнал работ
+        en: Work log
+      type: ASSOC
+      config:
+        typeRef: emodel/type@ecos-time-tracking-type
+        child: false
+      multiple: true
+
 aspects:
   - ref: emodel/aspect@task-comments-broadcastable
+  - ref: emodel/aspect@time-trackable
