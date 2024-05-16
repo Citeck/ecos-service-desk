@@ -18,10 +18,6 @@
           "ru": "Panel"
         },
         "key": "ska-panel",
-        "title": {
-          "ru": "SLAs",
-          "en": "SLAs"
-        },
         "refreshOn": [],
         "optionalWhenDisabled": false,
         "type": "panel",
