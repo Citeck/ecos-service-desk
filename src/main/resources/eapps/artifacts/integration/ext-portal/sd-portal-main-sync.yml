@@ -1,6 +1,6 @@
 ---
 id: sd-portal-main-sync
-syncEnabled: true
+syncEnabled: false
 name:
   ru: SD портал
   en: SD portal
