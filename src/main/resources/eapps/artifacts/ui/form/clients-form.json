@@ -93,6 +93,21 @@
           },
           {
             "label": {
+              "ru": "Группы",
+              "en": "Groups"
+            },
+            "key": "authGroups",
+            "multiple": true,
+            "modalTitle": "",
+            "journalId": "authority-groups",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "selectJournal",
+            "input": true,
+            "queryData": ""
+          },
+          {
+            "label": {
               "ru": "Проекты",
               "en": "project"
             },
