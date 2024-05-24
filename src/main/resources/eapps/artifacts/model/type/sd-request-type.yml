@@ -633,3 +633,4 @@ model:
 aspects:
   - ref: emodel/aspect@task-comments-broadcastable
   - ref: emodel/aspect@time-trackable
+  - ref: emodel/aspect@has-internal-comments
