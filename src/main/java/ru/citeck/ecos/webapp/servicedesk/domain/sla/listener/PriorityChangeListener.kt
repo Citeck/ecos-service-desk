@@ -41,6 +41,11 @@ class PriorityChangeListener(
             withTransactional(true)
             withAction { document ->
 
+                val documentProcess = document.ref.getActiveProcess()
+                if (documentProcess.isEmpty()) {
+                    return@withAction
+                }
+
                 AuthContext.runAsSystem {
                     recordsService.mutate(document.ref, mapOf(PRIORITY_CHANGED_ATT to true))
                 }
@@ -54,11 +59,6 @@ class PriorityChangeListener(
                             SLA_2_DUE_DATE_ATT to recordSla.timeToResolve
                         )
                     )
-                }
-
-                val documentProcess = document.ref.getActiveProcess()
-                if (documentProcess.isEmpty()) {
-                    return@withAction
                 }
 
                 val timersRefs = documentProcess.getJobs()
