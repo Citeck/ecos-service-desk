@@ -3,8 +3,8 @@ id: sd-request-type
 name:
   ru: Заявка SD
   en: SD request
-sourceId: emodel/task-tracker
-parentRef: emodel/type@task-tracker
+storageType: ECOS_MODEL
+parentRef: emodel/type@case
 formRef: uiserv/form@request-sd-form
 inheritForm: false
 dispNameTemplate:
