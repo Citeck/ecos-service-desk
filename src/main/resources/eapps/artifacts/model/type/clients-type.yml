@@ -36,7 +36,14 @@ model:
       type: ASSOC
       config:
         typeRef: emodel/type@person
-        child: false
+      multiple: true
+    - id: authGroups
+      name:
+        ru: Группы
+        en: Groups
+      type: ASSOC
+      config:
+        typeRef: emodel/type@authority-group
       multiple: true
     - id: projects
       name:
