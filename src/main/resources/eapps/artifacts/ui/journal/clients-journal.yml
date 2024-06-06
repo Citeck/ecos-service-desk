@@ -4,6 +4,8 @@ name:
   ru: Заказчики
   en: Customers
 typeRef: emodel/type@clients-type
+actions:
+  - uiserv/action@edit
 editable: false
 columns:
   - id: clientCode
