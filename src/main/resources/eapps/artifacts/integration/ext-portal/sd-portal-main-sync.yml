@@ -89,6 +89,7 @@ exportConfig:
       attributesToSync:
         - name
         - content
+        - _parent
 importConfig:
   endpoint:
     type: rabbitmq
