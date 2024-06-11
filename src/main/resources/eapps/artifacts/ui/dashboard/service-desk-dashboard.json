@@ -333,21 +333,11 @@
             {
               "widgets": [
                 "ecbede90-a55d-423a-9b6b-3ac523600335",
-                "b4bcb077-ed4f-498a-b152-97798fddd8fb"
+                "b4bcb077-ed4f-498a-b152-97798fddd8fb",
+                "1719d424-3ea6-4e82-beb9-69e2950dd88c",
+                "27c7b7da-9856-406a-a600-54751e21c49b",
+                "c6b6d37b-04f2-4a37-a322-4d9084f0782f"
               ]
-            }
-          ]
-        },
-        {
-          "id": "layout_4e345aef-8b21-47cb-a653-26e3e897bb5c",
-          "tab": {
-            "label": "Просмотр",
-            "idLayout": "layout_4e345aef-8b21-47cb-a653-26e3e897bb5c"
-          },
-          "type": "mobile",
-          "columns": [
-            {
-              "widgets": []
             }
           ]
         },
@@ -434,19 +424,6 @@
               "widgets": [
                 "52f3656c-1c8e-48f6-873c-04f14881fc70"
               ]
-            }
-          ]
-        },
-        {
-          "id": "layout_0fe2383d-bce5-4003-b795-9eb284884932",
-          "tab": {
-            "label": "Предпросмотр",
-            "idLayout": "layout_0fe2383d-bce5-4003-b795-9eb284884932"
-          },
-          "type": "mobile",
-          "columns": [
-            {
-              "widgets": []
             }
           ]
         }
