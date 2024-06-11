@@ -350,7 +350,9 @@
           "type": "mobile",
           "columns": [
             {
-              "widgets": []
+              "widgets": [
+                "4b84d125-5b84-49d5-b1cc-46b1257f5b19"
+              ]
             }
           ]
         },
