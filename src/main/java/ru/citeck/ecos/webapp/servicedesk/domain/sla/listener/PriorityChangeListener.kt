@@ -12,13 +12,17 @@ import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
 import ru.citeck.ecos.records3.record.dao.query.dto.query.SortBy
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.entity.toEntityRef
+import ru.citeck.ecos.webapp.servicedesk.domain.request.SdPriority
+import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaParametersProvider
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaManager
+import java.time.ZoneOffset
 
 @Component
 class PriorityChangeListener(
     eventsService: EventsService,
     private val slaManager: SlaManager,
-    private val recordsService: RecordsService
+    private val recordsService: RecordsService,
+    private val slaParameters: SlaParametersProvider
 ) {
     companion object {
         private const val PRIORITY_CHANGED_ATT = "priorityHasBeenChanged"
@@ -63,6 +67,8 @@ class PriorityChangeListener(
 
                 val timersRefs = documentProcess.getJobs()
 
+                val slaTimeZone = getSlaTimeZone(document.client, document.priority)
+
                 val timersToValue = mapOf(
                     "Event_1oke406" to recordSla.notificationToSupervisorTimeResolve,
                     "Event_0mvrxmh" to recordSla.notificationToExecutorTimeResolve,
@@ -71,7 +77,9 @@ class PriorityChangeListener(
                     "Event_0mgqtus" to recordSla.timeToAutoClose,
                     "Event_1q9mnfb" to recordSla.notificationToSupervisorTimeReaction,
                     "Event_0zz32r2" to recordSla.notificationToExecutorTimeReaction
-                )
+                ).mapValues {
+                    it.value.atZone(slaTimeZone).toInstant()
+                }
 
                 for ((elementId, value) in timersToValue) {
                     timersRefs.find { it.getActivityId() == elementId }?.let { timer ->
@@ -82,6 +90,11 @@ class PriorityChangeListener(
                 }
             }
         }
+    }
+
+    private fun getSlaTimeZone(client: EntityRef, priority: String): ZoneOffset {
+        val slaTimeZone = slaParameters.get(client, SdPriority.from(priority)).timeZone
+        return ZoneOffset.of(slaTimeZone.substring(3))
     }
 
     private fun EntityRef.getActivityId(): String {
@@ -129,7 +142,9 @@ data class EventData(
     @AttName("record?id")
     val ref: EntityRef,
     @AttName("record.priority?str")
-    val priority: String
+    val priority: String,
+    @AttName("record.client?str")
+    val client: EntityRef
 )
 
 data class TimerAtts(
