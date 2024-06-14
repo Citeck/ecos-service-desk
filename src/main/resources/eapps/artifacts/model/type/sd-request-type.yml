@@ -73,6 +73,28 @@ model:
         en: Support technologist
       attributes:
         - technologist
+    - id: client-support
+      name:
+        ru: Support организации
+        en: Organization support
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var result = [];
+            var users = value.load('client.users[]?id');
+            if (users && users.length) {
+                for (var idx in users) {
+                    result.push(users[idx]);
+                }
+            }
+            var groups = value.load('client.authGroups[]?id');
+            if (groups && groups.length) {
+                for (var idx in groups) {
+                    result.push(groups[idx]);
+                }
+            }
+            return result;
   statuses:
     - id: request-first-line
       name:
