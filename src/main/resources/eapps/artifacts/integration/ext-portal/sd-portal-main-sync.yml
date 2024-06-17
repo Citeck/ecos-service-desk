@@ -10,7 +10,7 @@ exportConfig:
     config:
       queue: export-from-main-sd-portal
       dataSource: main-rabbitmq
-  defaultInitDate: 2024-05-22T05:00:00Z
+  defaultInitDate: 2024-06-15T05:00:00Z
   typesToSync:
     - typeRef: emodel/type@sd-request-type
       initDate: null
