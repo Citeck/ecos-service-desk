@@ -6,6 +6,7 @@ name:
 storageType: ECOS_MODEL
 parentRef: emodel/type@case
 formRef: uiserv/form@request-sd-form
+journalRef: uiserv/journal@all-requests-service-desk-journal
 inheritForm: false
 dispNameTemplate:
   ru: Заявка SD-${_docNum}
@@ -142,27 +143,6 @@ model:
         ru: Регистрационный номер
         en: Registration number
       type: NUMBER
-    - id: issueNumber
-      name:
-        ru: Номер задачи
-        en: Issue number
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            var _docNum = value.load('_docNum');
-            return "SD" + '-' + _docNum;
-        storingType: ON_EMPTY
-    - id: issueType
-      name:
-        ru: Тип задачи
-        en: Task type
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            return "support";
-        storingType: ON_EMPTY
     - id: client
       name:
         ru: Заказчик
@@ -252,7 +232,6 @@ model:
       name:
         ru: Исполнитель
         en: Implementer
-      type: PERSON
     - id: webLinks
       name:
         ru: Ссылка
