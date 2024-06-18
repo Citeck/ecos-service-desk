@@ -82,9 +82,19 @@ exportConfig:
         }
       filterPredicate: |-
         {
-          "t": "eq",
-          "a": "_parent._type?localId",
-          "v": "sd-request-type"
+          "t": "and",
+          "v": [
+            {
+                "t": "like",
+                "a": "_parent?id",
+                "v": "emodel/sd-request-type@%"
+            },
+            {
+              "t": "eq",
+              "a": "_parent._type?localId",
+              "v": "sd-request-type"
+            }
+          ]
         }
       attributesToSync:
         - name
