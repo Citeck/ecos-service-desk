@@ -79,8 +79,7 @@ private data class SlaParametersData(
     val notificationToExecutorTimeResolve: String,
     val notificationToSupervisorTime: String,
     val timeToAutoClose: String,
-    val timeToSendFirstLineFromClarify: String,
-    val timeZone: String
+    val timeToSendFirstLineFromClarify: String
 )
 
 private fun SlaParametersData.toSlasParameters(): SlaParameters {
@@ -95,8 +94,7 @@ private fun SlaParametersData.toSlasParameters(): SlaParameters {
         notificationToSupervisorTime = Duration.parse(notificationToSupervisorTime),
         timeToAutoClose = autoCloseDuration,
         notificationToInitiatorCloseReminder = notificationToInitiatorCloseReminder,
-        timeToSendFirstLineFromClarify = Duration.parse(timeToSendFirstLineFromClarify),
-        timeZone = timeZone
+        timeToSendFirstLineFromClarify = Duration.parse(timeToSendFirstLineFromClarify)
     )
 }
 
@@ -108,6 +106,5 @@ data class SlaParameters(
     val notificationToSupervisorTime: Duration,
     val notificationToInitiatorCloseReminder: Duration,
     val timeToAutoClose: Duration,
-    val timeToSendFirstLineFromClarify: Duration,
-    val timeZone: String
+    val timeToSendFirstLineFromClarify: Duration
 )
