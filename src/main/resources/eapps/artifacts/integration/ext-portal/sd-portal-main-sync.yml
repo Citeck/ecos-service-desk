@@ -44,7 +44,7 @@ exportConfig:
         - stoppingTimestamp
       customAttributes: {}
     - typeRef: emodel/type@clients-type
-      initDate: null
+      initDate: 1970-01-01T00:00:00Z
       queryPredicate: '{}'
       filterPredicate: '{}'
       attributesToSync:
