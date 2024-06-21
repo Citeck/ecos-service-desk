@@ -27,7 +27,9 @@ exportConfig:
         - closedTimestamp
         - letterTopic
         - letterContent
+        - letterContentWithoutTags
         - resolution
+        - petitionChannel
         - author
         - observers
         - priority
