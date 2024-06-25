@@ -9,7 +9,7 @@
   "model" : {
     "docNum" : "_docNum",
     "letterTopic" : "letterTopic",
-    "commenter" : "$user",
+    "commenter" : "$process.event.commentAuthorRef._as.ref?disp!$user",
     "comment" : "$process.event.text",
     "docRef" : ".id",
     "_attachments": "$process.event.attachments[]._as.ref._content{bytes, meta:?json}"
