@@ -5,7 +5,7 @@ name:
 type: create
 config:
   typeRef: emodel/type@cr-type
-  redirectToPage: false
+  redirectToPage: true
   attributes:
     ticketLink: "${?id}"
     client: "${client?id}"

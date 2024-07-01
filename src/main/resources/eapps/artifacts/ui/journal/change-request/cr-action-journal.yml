@@ -5,8 +5,8 @@ name:
   en: Action plan
 typeRef: emodel/type@cr-action-type
 actions:
-  - uiserv/action@edit
   - uiserv/action@create-cr-assignment
+  - uiserv/action@request-an-extension
   - uiserv/action@view-dashboard
 editable: false
 columns:
@@ -14,6 +14,8 @@ columns:
     name:
       ru: Наименование мероприятия
       en: Action name
+    formatter:
+      type: link
   - id: expertGroup
     name:
       ru: Экспертная группа

@@ -1,0 +1,19 @@
+---
+id: request-an-extension
+name:
+  en: Request an extension
+  ru: Запросить продление сроков
+confirm:
+  title:
+    ru: Запросить
+    en: Request
+  message: {}
+  formRef: uiserv/form@request-an-extension-form
+  formAttributes: {}
+  attributesMapping:
+    record.attributes.dueDate: dueDate
+type: mutate
+config:
+  record:
+    id: "${recordRef}"
+    attributes: {}

@@ -72,39 +72,10 @@ model:
         config:
           fn: |-
             var result = [];
-            var actions = Records.query({
-                "sourceId": "emodel/cr-action-type",
-                "consistency": "EVENTUAL",
-                "language": "predicate",
-                "query": {
-                    "t": "and",
-                    "val": [
-                        {
-                            "att": "_type",
-                            "t": "eq",
-                            "val": "emodel/type@cr-action-type"
-                        },
-                        {
-                            "att": "crRequest",
-                            "t": "eq",
-                            "val": value.load("?id")
-                        }
-                    ]
-                },
-                "sortBy": [
-                    {
-                        "ascending": false,
-                        "attribute": "_created"
-                    }
-                ],
-            }, {
-                id: "?id"
-            });
+            var actions = value.load("assoc_src_crRequest[]?id");
             
-            var records = (actions || {}).records;
-            
-            (records || []).forEach(function(record) {
-              var expertGroup = Records.get(record.id).load("expertGroup?id");
+            (actions || []).forEach(function(action) {
+              var expertGroup = Records.get(action).load("expertGroup?id");
               if (!!expertGroup) {
                 result.push(expertGroup);
               }

@@ -1,7 +1,7 @@
 id: create-cr-assignment
 name:
-  en: Create CR
-  ru: Создать CR
+  en: Create assignment
+  ru: Создать поручение
 type: create
 config:
   typeRef: emodel/type@cr-assignment-type
@@ -9,3 +9,4 @@ config:
   attributes:
     actionLink: "${?id}"
     assoc:associatedWith: "${crRequest?id}"
+    dueDate: "${dueDate}"
