@@ -1,0 +1,259 @@
+{
+  "id": "cr-action-form",
+  "formKey": "cr-action-form",
+  "title": {
+    "en": "cr-action-form"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "emodel/type@cr-action-type",
+  "width": "",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "scrollableContent": true,
+        "key": "panel2",
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "actionName",
+                      "en": "actionName"
+                    },
+                    "key": "actionName",
+                    "defaultValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "textfield",
+                    "input": true,
+                    "inputMasks": [
+                      {}
+                    ]
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "expertGroup",
+                      "en": "expertGroup"
+                    },
+                    "key": "expertGroup",
+                    "allowedAuthorityType": "GROUP",
+                    "allowedGroupType": "GROUP",
+                    "defaultValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectOrgstruct",
+                    "input": true
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns3",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "responsible",
+                      "en": "responsible"
+                    },
+                    "key": "responsible",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectOrgstruct",
+                    "input": true,
+                    "defaultValue": ""
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "dueDate",
+                      "en": "dueDate"
+                    },
+                    "key": "dueDate",
+                    "format": "dd.MM.yyyy HH:mm",
+                    "placeholder": {
+                      "ru": "дд.мм.гггг чч:мм"
+                    },
+                    "datePicker": {
+                      "minDate": "moment().add(1, 'days');",
+                      "maxDate": ""
+                    },
+                    "timePicker": {
+                      "showMeridian": false
+                    },
+                    "defaultValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "datetime",
+                    "input": true,
+                    "suffix": true
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "type": "button",
+                "input": true,
+                "key": "submit2",
+                "conditional": {
+                  "show": null,
+                  "when": null
+                }
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [
+              {
+                "label": {
+                  "ru": "crRequest",
+                  "en": "crRequest"
+                },
+                "key": "crRequest",
+                "disabled": true,
+                "hidden": true,
+                "clearOnHide": false,
+                "modalTitle": "",
+                "journalId": "cr-journal",
+                "queryData": "",
+                "refreshOn": [],
+                "customDefaultValue": "const type = _.get(instance, \"options.initiator.type\", \"\");\nlet parentRecordId = null;\n\nif (type === \"modal\") {\n  parentRecordId = _.get(instance, \"options.parentForm.data._id\", null);\n} else {\n  parentRecordId = _.get(instance, \"options.initiator.dashboardRecordRef\", null);\n}\n\nvalue = parentRecordId;",
+                "optionalWhenDisabled": false,
+                "type": "selectJournal",
+                "input": true
+              }
+            ],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "cr-action-plan-entry-form"
+  },
+  "attributes": {},
+  "notExists": false
+}

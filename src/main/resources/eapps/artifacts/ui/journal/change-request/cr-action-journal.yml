@@ -1,0 +1,33 @@
+---
+id: cr-action-journal
+name:
+  ru: План мероприятий
+  en: Action plan
+typeRef: emodel/type@cr-action-type
+actions:
+  - uiserv/action@edit
+  - uiserv/action@create-cr-assignment
+  - uiserv/action@view-dashboard
+editable: false
+columns:
+  - id: actionName
+    name:
+      ru: Наименование мероприятия
+      en: Action name
+  - id: expertGroup
+    name:
+      ru: Экспертная группа
+      en: Expert group
+  - id: responsible
+    name:
+      ru: Ответственный
+      en: Responsible
+  - id: dueDate
+    name:
+      ru: Срок выполнения
+      en: Due date
+  - id: crRequest
+    name:
+      ru: Ссылка на CR (техническое поле)
+    type: ASSOC
+    visible: false

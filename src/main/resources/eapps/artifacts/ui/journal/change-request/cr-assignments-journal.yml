@@ -1,0 +1,48 @@
+---
+id: cr-assignments-journal
+name:
+  ru: Поручения
+  en: Assignments
+typeRef: emodel/type@cr-assignment-type
+editable: false
+actions:
+  - uiserv/action@delete
+columns:
+  - id: _created
+    name:
+      ru: Дата создания
+      en: Created
+    type: DATE
+  - id: _disp
+    name:
+      ru: Имя
+      en: Name
+  - id: title
+    name:
+      ru: Название
+      en: Title
+    type: TEXT
+  - id: _status
+    name:
+      ru: Статус
+      en: Status
+  - id: initiator
+    name:
+      ru: Инициатор
+      en: Initiator
+    type: AUTHORITY
+  - id: actionLink
+    name:
+      ru: Связанное мероприятие
+      en: Linked action
+    type: ASSOC
+    formatter:
+      type: assoc
+  - id: dueDate
+    name:
+      ru: Срок
+      en: Deadline
+    type: DATETIME
+  - id: assoc:associatedWith
+    type: ASSOC
+    visible: false

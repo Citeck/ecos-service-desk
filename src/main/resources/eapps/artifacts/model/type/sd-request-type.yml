@@ -18,6 +18,7 @@ actions:
   - uiserv/action@return-to-work-from-close
   - uiserv/action@tasks-actions
   - uiserv/action@log-work-action
+  - uiserv/action@create-cr
 associations:
   - id: webLinks
     journalsFromTarget: false

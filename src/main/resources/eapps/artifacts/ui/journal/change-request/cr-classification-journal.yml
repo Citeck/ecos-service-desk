@@ -1,0 +1,15 @@
+---
+id: cr-classification-journal
+name:
+  ru: Классификации
+  en: Classifications
+typeRef: emodel/type@cr-classification-type
+actions:
+  - uiserv/action@edit
+editable: false
+columns:
+  - id: classificationName
+    name:
+      ru: Наименование классификации
+      en: Classification name
+    type: TEXT

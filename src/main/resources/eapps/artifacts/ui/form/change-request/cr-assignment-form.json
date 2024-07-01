@@ -1,0 +1,508 @@
+{
+  "id": "cr-assignment-form",
+  "formKey": "cr-assignment-form",
+  "title": {
+    "ru": "Поручение",
+    "en": "Assignment"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "",
+  "width": "",
+  "system": true,
+  "i18n": {
+    "en": {
+      "required": "{{field}} is required",
+      "High_priority": "High",
+      "Middle_priority": "Middle",
+      "Low_priority": "Low"
+    },
+    "ru": {
+      "required": "Поле {{field}} не может быть пустым",
+      "High_priority": "Высокий",
+      "Middle_priority": "Средний",
+      "Low_priority": "Низкий"
+    }
+  },
+  "definition": {
+    "components": [
+      {
+        "scrollableContent": true,
+        "key": "panel4",
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Panel"
+            },
+            "key": "panel2",
+            "title": {
+              "ru": "Общее",
+              "en": "Common"
+            },
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "panel",
+            "input": false,
+            "components": [
+              {
+                "label": {
+                  "ru": "Название",
+                  "en": "Title"
+                },
+                "key": "title",
+                "validate": {
+                  "required": true
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true,
+                "inputMasks": [
+                  {}
+                ]
+              },
+              {
+                "label": {
+                  "ru": "Описание",
+                  "en": "Description"
+                },
+                "key": "description",
+                "validate": {
+                  "required": true
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textarea",
+                "input": true
+              },
+              {
+                "columns": [
+                  {
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Срок",
+                          "en": "Deadline"
+                        },
+                        "key": "dueDate",
+                        "format": "yyyy-MM-dd HH:mm",
+                        "clearOnHide": false,
+                        "datePicker": {
+                          "minDate": "",
+                          "maxDate": ""
+                        },
+                        "timePicker": {
+                          "showMeridian": false
+                        },
+                        "defaultValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "datetime",
+                        "input": true,
+                        "suffix": true
+                      }
+                    ],
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "label": "Column",
+                    "index": 0,
+                    "clearOnHide": true,
+                    "conditional": {
+                      "show": null,
+                      "when": null
+                    }
+                  },
+                  {
+                    "index": 1,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "label": "Column",
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Приоритет",
+                          "en": "Priority"
+                        },
+                        "key": "priority",
+                        "clearOnHide": false,
+                        "dataSrc": "values",
+                        "data": {
+                          "values": [
+                            {
+                              "label": "High_priority",
+                              "value": "1"
+                            },
+                            {
+                              "label": "Middle_priority",
+                              "value": "2"
+                            },
+                            {
+                              "label": "Low_priority",
+                              "value": "3"
+                            }
+                          ],
+                          "headers": [
+                            {}
+                          ]
+                        },
+                        "searchEnabled": false,
+                        "defaultValue": "2",
+                        "optionalWhenDisabled": false,
+                        "type": "ecosSelect",
+                        "input": true
+                      }
+                    ],
+                    "clearOnHide": true,
+                    "conditional": {
+                      "show": null,
+                      "when": null
+                    }
+                  }
+                ],
+                "key": "columns",
+                "type": "columns",
+                "input": false
+              },
+              {
+                "label": {
+                  "ru": "Инициатор",
+                  "en": "Initiator"
+                },
+                "key": "initiator",
+                "disabled": true,
+                "currentUserByDefault": true,
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectOrgstruct",
+                "input": true
+              }
+            ]
+          },
+          {
+            "label": {
+              "ru": "Panel"
+            },
+            "key": "panel",
+            "title": {
+              "ru": "Исполнитель",
+              "en": "Performer"
+            },
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "panel",
+            "input": false,
+            "components": [
+              {
+                "columns": [
+                  {
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Исполнитель",
+                          "en": "Performer"
+                        },
+                        "key": "performer",
+                        "multiple": true,
+                        "validate": {
+                          "required": true
+                        },
+                        "reorder": false,
+                        "clearOnHide": false,
+                        "defaultValue": [],
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "selectOrgstruct",
+                        "input": true
+                      }
+                    ],
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "label": "Column",
+                    "index": 0,
+                    "clearOnHide": true,
+                    "conditional": {
+                      "show": null,
+                      "when": null
+                    }
+                  },
+                  {
+                    "index": 1,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "label": "Column",
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Проверять результаты",
+                          "en": "Verify"
+                        },
+                        "key": "verify",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "type": "checkbox",
+                        "input": true
+                      },
+                      {
+                        "label": {
+                          "ru": "Проверяющий",
+                          "en": "Verifier"
+                        },
+                        "key": "verifier",
+                        "validate": {
+                          "required": true
+                        },
+                        "clearOnHide": false,
+                        "allowedAuthorityType": "USER",
+                        "currentUserByDefault": true,
+                        "defaultValue": "",
+                        "refreshOn": [],
+                        "optionalWhenDisabled": false,
+                        "conditional": {
+                          "show": "true",
+                          "when": "verify",
+                          "eq": "true"
+                        },
+                        "type": "selectOrgstruct",
+                        "input": true
+                      }
+                    ],
+                    "clearOnHide": true,
+                    "conditional": {
+                      "show": null,
+                      "when": null
+                    }
+                  }
+                ],
+                "key": "columns3",
+                "type": "columns",
+                "input": false
+              }
+            ]
+          },
+          {
+            "label": {
+              "ru": "Panel"
+            },
+            "key": "panel3",
+            "title": {
+              "ru": "Связанные элементы",
+              "en": "Links"
+            },
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "customConditional": "show = instance.options.formMode === 'CREATE';",
+            "type": "panel",
+            "input": false,
+            "components": [
+              {
+                "label": {
+                  "ru": "Columns"
+                },
+                "key": "columns5",
+                "columns": [
+                  {
+                    "components": [
+                      {
+                        "label": {
+                          "en": "Select type",
+                          "ru": "Выбрать тип"
+                        },
+                        "key": "caseType",
+                        "persistent": false,
+                        "clearOnHide": false,
+                        "dataSrc": "custom",
+                        "data": {
+                          "headers": [
+                            {
+                              "key": "",
+                              "value": ""
+                            }
+                          ],
+                          "custom": "const {caseTypes} = data || {};\nconst {records} = caseTypes || [];\nvalues = records;"
+                        },
+                        "defaultValue": "",
+                        "refreshOn": [
+                          "caseTypes"
+                        ],
+                        "optionalWhenDisabled": false,
+                        "type": "ecosSelect",
+                        "input": true
+                      }
+                    ],
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "index": 0
+                  },
+                  {
+                    "index": 1,
+                    "type": "column",
+                    "input": false,
+                    "key": "column",
+                    "components": [
+                      {
+                        "label": {
+                          "ru": "Выбрать связанные элементы",
+                          "en": "Select linked elements"
+                        },
+                        "key": "assoc:associatedWith",
+                        "multiple": true,
+                        "clearOnHide": false,
+                        "modalTitle": "",
+                        "journalId": "${caseType}",
+                        "queryData": "",
+                        "defaultValue": [],
+                        "refreshOn": [
+                          "caseType"
+                        ],
+                        "calculateValue": "const { assocRecordRef = \"\" } = data || \"\";\nvalue = assocRecordRef;",
+                        "allowCalculateOverride": true,
+                        "optionalWhenDisabled": false,
+                        "type": "selectJournal",
+                        "input": true,
+                        "source": {
+                          "custom": {
+                            "columns": []
+                          },
+                          "type": "journal"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "oneColumnInViewMode": false,
+                "type": "columns",
+                "input": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "key": "submit2",
+                "type": "button",
+                "input": true
+              }
+            ],
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "index": 0,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            }
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "index": 1,
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            }
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "index": 2,
+            "components": [],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            }
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Create"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true,
+                "headers": [
+                  {}
+                ]
+              }
+            ],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            }
+          }
+        ],
+        "key": "columns2",
+        "type": "columns",
+        "input": false
+      },
+      {
+        "label": "Запрос данных",
+        "source": {
+          "type": "recordsQuery",
+          "recordsQuery": {
+            "query": "value = {\n    sourceId: 'emodel/type',\n    query: {'att': 'parentRef?str', 't':'eq', 'val':'emodel/type@case'},\n    language: 'predicate'\n};",
+            "attributes": {
+              "value": "journalRef?str",
+              "label": "journalRef"
+            }
+          }
+        },
+        "update": {
+          "type": "once"
+        },
+        "key": "caseTypes",
+        "type": "asyncData",
+        "input": true
+      }
+    ],
+    "formId": "assignment-form"
+  },
+  "attributes": {},
+  "notExists": false
+}

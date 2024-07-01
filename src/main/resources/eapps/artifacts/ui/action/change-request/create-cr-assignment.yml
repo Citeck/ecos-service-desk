@@ -1,0 +1,11 @@
+id: create-cr-assignment
+name:
+  en: Create CR
+  ru: Создать CR
+type: create
+config:
+  typeRef: emodel/type@cr-assignment-type
+  redirectToPage: false
+  attributes:
+    actionLink: "${?id}"
+    assoc:associatedWith: "${crRequest?id}"

@@ -1,0 +1,23 @@
+---
+id: create-cr-groups
+date: 2024-07-01T00:00:00Z
+type: mutate
+targetApp: emodel
+config:
+  records:
+    - id: emodel/authority-group@
+      attributes:
+        id: cr-inspectors
+        name:
+          ru: Проверяющие (CR module)
+          en: Inspectors (CR module)
+        authorityGroups:
+          - emodel/authority-group@_orgstruct_home_
+    - id: emodel/authority-group@
+      attributes:
+        id: cr-registrars
+        name:
+          ru: Регистраторы (CR module)
+          en: Registrars (CR module)
+        authorityGroups:
+          - emodel/authority-group@_orgstruct_home_

@@ -1,0 +1,11 @@
+id: create-cr
+name:
+  en: Create CR
+  ru: Создать CR
+type: create
+config:
+  typeRef: emodel/type@cr-type
+  redirectToPage: false
+  attributes:
+    ticketLink: "${?id}"
+    client: "${client?id}"

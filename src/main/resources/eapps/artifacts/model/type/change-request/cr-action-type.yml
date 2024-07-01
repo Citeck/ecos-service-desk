@@ -1,0 +1,41 @@
+---
+id: cr-action-type
+name:
+  ru: Мероприятие
+  en: Action
+sourceType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@cr-action-form
+journalRef: uiserv/journal@cr-action-journal
+inheritForm: false
+defaultCreateVariant: true
+dispNameTemplate:
+  ru: Мероприятие ${actionName} к ${crRequest}
+  en: Action ${actionName} to ${crRequest}
+model:
+  attributes:
+    - id: actionName
+      name:
+        ru: Наименование мероприятия
+        en: Action name
+    - id: expertGroup
+      name:
+        ru: Экспертная группа
+        en: Expert group
+      type: AUTHORITY_GROUP
+    - id: responsible
+      name:
+        ru: Ответственный
+        en: Responsible
+      type: PERSON
+    - id: dueDate
+      name:
+        ru: Срок выполнения
+        en: Due date
+      type: DATETIME
+    - id: crRequest
+      name:
+        ru: Ссылка на CR (техническое поле)
+      type: ASSOC
+      config:
+        typeRef: emodel/type@cr-type

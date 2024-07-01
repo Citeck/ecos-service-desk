@@ -1,0 +1,219 @@
+---
+id: cr-type
+name:
+  ru: Заявка на изменение
+  en: Change request
+storageType: ECOS_MODEL
+parentRef: emodel/type@case
+formRef: uiserv/form@cr-form
+journalRef: uiserv/journal@cr-journal
+inheritForm: false
+inheritActions: false
+dispNameTemplate:
+  ru: Заявка на изменение №${_docNum} от ${client}
+  en: 'Change request #${_docNum} from ${client}'
+numTemplateRef: emodel/num-template@change-request-number-template
+defaultCreateVariant: true
+actions:
+  - uiserv/action@edit
+model:
+  roles:
+    - id: initiator-role
+      name:
+        ru: Инициатор
+        en: Initiator
+      attributes:
+        - initiator
+    - id: initiator-leader-role
+      name:
+        ru: Руководитель инициатора
+        en: Initiator's leader
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var result = [];
+            var initiator = value.load('initiator?id');
+            var lineManager = Records.get(initiator).load("manager?id");
+            if (!!lineManager) {
+              result.push(lineManager);
+            }
+            return result;
+    - id: department-leader-role
+      name:
+        ru: Руководитель подразделения
+        en: Department leader
+      attributes:
+        - departmentLeader
+    - id: additional-approvers-role
+      name:
+        ru: Дополнительные согласующие
+        en: Additional approvers
+      attributes:
+        - additionalApprovers
+    - id: inspector-role
+      name:
+        ru: Проверяющий
+        en: Inspector
+      assignees:
+        - GROUP_cr-inspectors
+    - id: registrar-role
+      name:
+        ru: Регистратор
+        en: Registrar
+      assignees:
+        - GROUP_cr-registrars
+    - id: expert-team-role
+      name:
+        ru: Экспертная группа
+        en: Expert team
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var result = [];
+            var actions = Records.query({
+                "sourceId": "emodel/cr-action-type",
+                "consistency": "EVENTUAL",
+                "language": "predicate",
+                "query": {
+                    "t": "and",
+                    "val": [
+                        {
+                            "att": "_type",
+                            "t": "eq",
+                            "val": "emodel/type@cr-action-type"
+                        },
+                        {
+                            "att": "crRequest",
+                            "t": "eq",
+                            "val": value.load("?id")
+                        }
+                    ]
+                },
+                "sortBy": [
+                    {
+                        "ascending": false,
+                        "attribute": "_created"
+                    }
+                ],
+            }, {
+                id: "?id"
+            });
+            
+            var records = (actions || {}).records;
+            
+            (records || []).forEach(function(record) {
+              var expertGroup = Records.get(record.id).load("expertGroup?id");
+              if (!!expertGroup) {
+                result.push(expertGroup);
+              }
+            })
+            
+            return result;
+  statuses:
+    - id: cr-approving
+      name:
+        ru: Согласование
+        en: Approving
+    - id: cr-checking
+      name:
+        ru: Проверка
+        en: Checking
+    - id: cr-registration
+      name:
+        ru: Регистрация
+        en: Registration
+    - id: cr-action-plan-creating
+      name:
+        ru: Формирование плана мероприятий
+        en: Creating of the action plan
+    - id: cr-action-plan-approving
+      name:
+        ru: Согласование плана мероприятий
+        en: Approving of the action plan
+    - id: cr-assigning-commissions
+      name:
+        ru: Назначение поручений
+        en: Assigning commissions
+    - id: cr-acceptance
+      name:
+        ru: Приемка
+        en: Acceptance
+    - id: cr-evaluation
+      name:
+        ru: Оценка
+        en: Evaluation
+    - id: cr-rework
+      name:
+        ru: Доработка
+        en: Rework
+    - id: cr-complete
+      name:
+        ru: Завершено
+        en: Complete
+  attributes:
+    - id: _docNum
+      name:
+        ru: Регистрационный номер
+        en: Registration number
+      type: NUMBER
+    - id: client
+      name:
+        ru: Заказчик
+        en: Customer
+      type: ASSOC
+      config:
+        typeRef: emodel/type@clients-type
+      mandatory: true
+    - id: initiator
+      name:
+        ru: Инициатор
+        en: Initiator
+      type: PERSON
+      mandatory: true
+    - id: description
+      name:
+        ru: Описание
+        en: Description
+    - id: result
+      name:
+        ru: Результат
+        en: Result
+    - id: efficiencyMark
+      name:
+        ru: Оценка эффективности
+        en: Efficiency mark
+      type: NUMBER
+    - id: project
+      name:
+        ru: Проект
+        en: Project
+      type: ASSOC
+      config:
+        typeRef: emodel/type@jira-project
+    - id: ticketLink
+      name:
+        ru: Ссылка на тикет SD
+        en: SD ticket link
+      type: ASSOC
+      config:
+        typeRef: emodel/type@sd-request-type
+    - id: additionalApprovers
+      name:
+        ru: Дополнительные согласующие
+        en: Additional approvers
+      type: AUTHORITY
+      multiple: true
+    - id: departmentLeader
+      name:
+        ru: Руководитель подразделения
+        en: Department leader
+      type: PERSON
+    - id: changeClassification
+      name:
+        ru: Классификация изменения
+        en: Change classification
+      type: ASSOC
+      config:
+        typeRef: emodel/type@cr-classification-type

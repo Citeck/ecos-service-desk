@@ -1,0 +1,35 @@
+---
+id: cr-journal
+name:
+  ru: Заявки на изменение
+  en: Change requests
+typeRef: emodel/type@cr-type
+actions:
+  - uiserv/action@edit
+  - uiserv/action@view-dashboard
+editable: false
+columns:
+  - id: _docNum
+    name:
+      ru: Регистрационный номер
+      en: Registration number
+  - id: client
+    name:
+      ru: Заказчик
+      en: Customer
+  - id: initiator
+    name:
+      ru: Инициатор
+      en: Initiator
+  - id: description
+    name:
+      ru: Описание
+      en: Description
+  - id: result
+    name:
+      ru: Результат
+      en: Result
+  - id: efficiencyMark
+    name:
+      ru: Оценка эффективности
+      en: Efficiency mark

@@ -1,0 +1,20 @@
+---
+id: cr-classification-type
+name:
+  ru: Классификация
+  en: Classification
+sourceType: ECOS_MODEL
+parentRef: emodel/type@data-list
+formRef: uiserv/form@cr-classification-form
+journalRef: uiserv/journal@cr-classification-journal
+inheritForm: false
+dispNameTemplate:
+  ru: ${classificationName}
+  en: ${classificationName}
+defaultCreateVariant: true
+model:
+  attributes:
+    - id: classificationName
+      name:
+        ru: Наименование классификации
+        en: Classification name

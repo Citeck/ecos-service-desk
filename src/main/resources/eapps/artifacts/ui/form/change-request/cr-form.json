@@ -1,0 +1,449 @@
+{
+  "id": "cr-form",
+  "formKey": "cr-form",
+  "title": {
+    "en": "cr-form"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "emodel/type@cr-type",
+  "width": "",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "scrollableContent": true,
+        "key": "panel2",
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns6",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "changeClassification",
+                      "en": "changeClassification"
+                    },
+                    "key": "changeClassification",
+                    "clearOnHide": false,
+                    "dataSrc": "custom",
+                    "data": {
+                      "custom": "values = _.get(data, \"changeClassifications.records\");",
+                      "headers": [
+                        {}
+                      ]
+                    },
+                    "searchEnabled": false,
+                    "defaultValue": "",
+                    "refreshOn": [
+                      "changeClassifications"
+                    ],
+                    "optionalWhenDisabled": false,
+                    "type": "ecosSelect",
+                    "input": true
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "initiator",
+                      "en": "initiator"
+                    },
+                    "key": "initiator",
+                    "currentUserByDefault": true,
+                    "defaultValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectOrgstruct",
+                    "input": true
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns3",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "departmentLeader",
+                      "en": "departmentLeader"
+                    },
+                    "key": "departmentLeader",
+                    "allowedAuthorityType": "USER",
+                    "defaultValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectOrgstruct",
+                    "input": true
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "ticketLink",
+                      "en": "ticketLink"
+                    },
+                    "key": "ticketLink",
+                    "disabled": true,
+                    "modalTitle": "",
+                    "journalId": "all-requests-service-desk-journal",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectJournal",
+                    "input": true,
+                    "queryData": ""
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "client",
+                      "en": "client"
+                    },
+                    "key": "client",
+                    "modalTitle": "",
+                    "journalId": "sd-clients-journal",
+                    "queryData": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectJournal",
+                    "input": true
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "project",
+                      "en": "project"
+                    },
+                    "key": "project",
+                    "modalTitle": "",
+                    "journalId": "jira-project-journal",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectJournal",
+                    "input": true,
+                    "queryData": ""
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns5",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "additionalApprovers",
+                      "en": "additionalApprovers"
+                    },
+                    "key": "additionalApprovers",
+                    "multiple": true,
+                    "allowedGroupType": "ROLE, BRANCH, GROUP",
+                    "defaultValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "selectOrgstruct",
+                    "input": true,
+                    "reorder": false
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": []
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "description",
+              "en": "description"
+            },
+            "key": "description",
+            "defaultValue": "",
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "textarea",
+            "input": true
+          },
+          {
+            "label": {
+              "ru": "Columns"
+            },
+            "key": "columns4",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": {
+                      "ru": "result",
+                      "en": "result"
+                    },
+                    "key": "result",
+                    "defaultValue": "",
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "type": "textfield",
+                    "input": true,
+                    "inputMasks": [
+                      {}
+                    ]
+                  }
+                ],
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "index": 0
+              },
+              {
+                "index": 1,
+                "type": "column",
+                "input": false,
+                "key": "column",
+                "components": [
+                  {
+                    "label": {
+                      "ru": "efficiencyMark",
+                      "en": "efficiencyMark"
+                    },
+                    "key": "efficiencyMark",
+                    "validate": {
+                      "integer": false,
+                      "min": 0,
+                      "max": 10
+                    },
+                    "isBigNumber": false,
+                    "delimiterValue": " ",
+                    "requireDecimal": true,
+                    "refreshOn": [],
+                    "optionalWhenDisabled": false,
+                    "decimalLimit": 1,
+                    "defaultValue": "",
+                    "type": "number",
+                    "input": true
+                  }
+                ]
+              }
+            ],
+            "oneColumnInViewMode": false,
+            "type": "columns",
+            "input": false
+          }
+        ]
+      },
+      {
+        "label": {
+          "ru": "Columns"
+        },
+        "key": "columns2",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Cancel",
+                "action": "event",
+                "state": "",
+                "showValidations": false,
+                "event": "cancel",
+                "block": true,
+                "type": "button",
+                "input": true,
+                "key": "submit2",
+                "conditional": {
+                  "show": null,
+                  "when": null
+                }
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "md": 3,
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 0
+          },
+          {
+            "components": [
+              {
+                "label": {
+                  "ru": "recordRef"
+                },
+                "key": "_id",
+                "disabled": true,
+                "hidden": true,
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true,
+                "inputMasks": [
+                  {}
+                ]
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 1,
+            "md": 3
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "label": "Column",
+            "components": [
+              {
+                "label": "Async Data (changeClassifications)",
+                "source": {
+                  "type": "recordsQuery",
+                  "recordsQuery": {
+                    "query": "value = {\n  sourceId: \"emodel/cr-classification-type\",\n  language: \"predicate\",\n  consistency: \"EVENTUAL\",\n  query: {\n      t: \"and\",\n      val: [\n          {\n              t: \"eq\",\n              att: \"_type\",\n              val: \"emodel/type@cr-classification-type\"\n          }\n      ]\n  }\n}",
+                    "attributes": {
+                      "label": "classificationName",
+                      "value": "?id"
+                    },
+                    "isSingle": false
+                  },
+                  "forceLoad": false
+                },
+                "update": {
+                  "type": "once"
+                },
+                "key": "changeClassifications",
+                "type": "asyncData",
+                "input": true
+              }
+            ],
+            "clearOnHide": true,
+            "conditional": {
+              "show": null,
+              "when": null
+            },
+            "index": 2
+          },
+          {
+            "md": 3,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 3,
+            "components": [
+              {
+                "label": {
+                  "ru": "Создать",
+                  "en": "Submit"
+                },
+                "key": "submit",
+                "state": "",
+                "theme": "primary",
+                "block": true,
+                "disableOnInvalid": true,
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "button",
+                "input": true
+              }
+            ]
+          }
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
+      }
+    ],
+    "formId": "cr-form"
+  },
+  "attributes": {},
+  "notExists": false
+}

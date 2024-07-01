@@ -1,0 +1,23 @@
+---
+id: cr-assignment-type
+name:
+  ru: Поручение
+  en: Assignment
+sourceType: ECOS_MODEL
+parentRef: emodel/type@assignment-type
+formRef: uiserv/form@cr-assignment-form
+journalRef: uiserv/journal@cr-assignments-journal
+inheritForm: false
+defaultCreateVariant: false
+dispNameTemplate:
+  ru: "Поручение: ${title}"
+  en: "Assignment: ${title}"
+model:
+  attributes:
+    - id: actionLink
+      name:
+        ru: Связанное мероприятие
+        en: Linked action
+      type: ASSOC
+      config:
+        typeRef: emodel/type@cr-action-type
