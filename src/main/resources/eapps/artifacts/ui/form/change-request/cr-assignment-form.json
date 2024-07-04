@@ -299,7 +299,6 @@
             },
             "refreshOn": [],
             "optionalWhenDisabled": false,
-            "customConditional": "show = instance.options.formMode === 'CREATE';",
             "type": "panel",
             "input": false,
             "components": [
@@ -313,28 +312,18 @@
                     "components": [
                       {
                         "label": {
-                          "en": "Select type",
-                          "ru": "Выбрать тип"
+                          "ru": "Связанное мероприятие",
+                          "en": "Linked action"
                         },
-                        "key": "caseType",
-                        "persistent": false,
+                        "key": "actionLink",
+                        "disabled": true,
                         "clearOnHide": false,
-                        "dataSrc": "custom",
-                        "data": {
-                          "headers": [
-                            {
-                              "key": "",
-                              "value": ""
-                            }
-                          ],
-                          "custom": "const {caseTypes} = data || {};\nconst {records} = caseTypes || [];\nvalues = records;"
-                        },
-                        "defaultValue": "",
-                        "refreshOn": [
-                          "caseTypes"
-                        ],
+                        "modalTitle": "",
+                        "journalId": "cr-action-journal",
+                        "queryData": "",
+                        "refreshOn": [],
                         "optionalWhenDisabled": false,
-                        "type": "ecosSelect",
+                        "type": "selectJournal",
                         "input": true
                       }
                     ],
@@ -351,30 +340,19 @@
                     "components": [
                       {
                         "label": {
-                          "ru": "Выбрать связанные элементы",
-                          "en": "Select linked elements"
+                          "en": "Linked CR",
+                          "ru": "Связанная заявка на изменение"
                         },
                         "key": "assoc:associatedWith",
-                        "multiple": true,
+                        "disabled": true,
                         "clearOnHide": false,
                         "modalTitle": "",
-                        "journalId": "${caseType}",
+                        "journalId": "cr-journal",
                         "queryData": "",
-                        "defaultValue": [],
-                        "refreshOn": [
-                          "caseType"
-                        ],
-                        "calculateValue": "const { assocRecordRef = \"\" } = data || \"\";\nvalue = assocRecordRef;",
-                        "allowCalculateOverride": true,
+                        "refreshOn": [],
                         "optionalWhenDisabled": false,
                         "type": "selectJournal",
-                        "input": true,
-                        "source": {
-                          "custom": {
-                            "columns": []
-                          },
-                          "type": "journal"
-                        }
+                        "input": true
                       }
                     ]
                   }
@@ -480,25 +458,6 @@
         "key": "columns2",
         "type": "columns",
         "input": false
-      },
-      {
-        "label": "Запрос данных",
-        "source": {
-          "type": "recordsQuery",
-          "recordsQuery": {
-            "query": "value = {\n    sourceId: 'emodel/type',\n    query: {'att': 'parentRef?str', 't':'eq', 'val':'emodel/type@case'},\n    language: 'predicate'\n};",
-            "attributes": {
-              "value": "journalRef?str",
-              "label": "journalRef"
-            }
-          }
-        },
-        "update": {
-          "type": "once"
-        },
-        "key": "caseTypes",
-        "type": "asyncData",
-        "input": true
       }
     ],
     "formId": "assignment-form"
