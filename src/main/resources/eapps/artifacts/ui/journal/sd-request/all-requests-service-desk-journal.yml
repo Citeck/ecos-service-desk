@@ -37,8 +37,8 @@ columns:
     type: NUMBER
   - id: client
     name:
-      ru: Клиент
-      en: Client
+      ru: Заказчик
+      en: Customer
     type: ASSOC
   - id: initiator
     name:
@@ -100,3 +100,8 @@ columns:
       ru: Исполнитель
       en: Implementer
     type: TEXT
+  - id: closingLine
+    name:
+      ru: Линия закрытия
+      en: Closing line
+    type: NUMBER

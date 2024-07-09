@@ -1,0 +1,110 @@
+---
+id: sd-portal-main-sync
+syncEnabled: false
+name:
+  ru: SD портал
+  en: SD portal
+exportConfig:
+  endpoint:
+    type: rabbitmq
+    config:
+      queue: export-from-main-sd-portal
+      dataSource: main-rabbitmq
+  defaultInitDate: 2024-06-15T05:00:00Z
+  typesToSync:
+    - typeRef: emodel/type@sd-request-type
+      initDate: null
+      queryPredicate: '{}'
+      filterPredicate: '{}'
+      attributesToSync:
+        - issueNumber
+        - _status
+        - _docNum
+        - initiator
+        - client
+        - creationDate
+        - updateDate
+        - closedTimestamp
+        - letterTopic
+        - letterContent
+        - letterContentWithoutTags
+        - resolution
+        - petitionChannel
+        - author
+        - observers
+        - priority
+        - sla_1_state
+        - sla_1_due_date
+        - sla_1_start_time
+        - sla_2_state
+        - sla_2_due_date
+        - sla_2_start_time
+        - sla_2_pause_time
+        - sla_2_spent_time
+        - sla_2_last_resume_time
+        - firstReactionTimestamp
+        - stoppingTimestamp
+      customAttributes: {}
+    - typeRef: emodel/type@clients-type
+      initDate: 1970-01-01T00:00:00Z
+      queryPredicate: '{}'
+      filterPredicate: '{}'
+      attributesToSync:
+        - clientCode
+        - client
+        - project
+        - emailDomain
+        - users
+        - authGroups
+        - projects
+        - counterparty
+      customAttributes: {}
+    - typeRef: emodel/type@ecos-comment
+      initDate: null
+      queryPredicate: |-
+        {
+          "t": "empty",
+          "a": "ext-portal-sync:importSyncId"
+        }
+      filterPredicate: "{\n  \"t\": \"and\",\n  \"v\": [\n    {\n      \"t\": \"eq\"\
+        ,\n      \"a\": \"record._type?localId\", \n      \"v\": \"sd-request-type\"\
+        \n    },\n    {\n      \"t\": \"not-contains\",\n      \"a\": \"tags[].type\"\
+        ,\n      \"v\": \"INTERNAL\"\n    }\n  ]\n}"
+      attributesToSync:
+        - record
+        - text
+        - tags
+      customAttributes: {}
+    - typeRef: emodel/type@attachment
+      initDate: null
+      queryPredicate: |-
+        {
+          "t": "empty",
+          "a": "ext-portal-sync:importSyncId"
+        }
+      filterPredicate: |-
+        {
+          "t": "and",
+          "v": [
+            {
+                "t": "like",
+                "a": "_parent?id",
+                "v": "emodel/sd-request-type@%"
+            },
+            {
+              "t": "eq",
+              "a": "_parent._type?localId",
+              "v": "sd-request-type"
+            }
+          ]
+        }
+      attributesToSync:
+        - name
+        - content
+        - _parent
+importConfig:
+  endpoint:
+    type: rabbitmq
+    config:
+      queue: export-from-external-sd-portal
+      dataSource: sd-ext-instance-rmq

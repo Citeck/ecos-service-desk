@@ -15,197 +15,160 @@
     "components": [
       {
         "label": {
-          "ru": "Panel"
+          "ru": "Columns"
         },
-        "key": "ska-panel",
-        "title": {
-          "ru": "SLAs",
-          "en": "SLAs"
-        },
-        "refreshOn": [],
-        "optionalWhenDisabled": false,
-        "type": "panel",
-        "input": false,
-        "components": [
+        "key": "columns",
+        "columns": [
           {
-            "input": true,
-            "key": "horizontalLine",
-            "type": "horizontalLine"
-          },
-          {
-            "label": {
-              "ru": "Panel"
-            },
-            "key": "details-panel",
-            "title": {
-              "ru": "Детали",
-              "en": "Details"
-            },
-            "refreshOn": [],
-            "optionalWhenDisabled": false,
-            "type": "panel",
-            "input": false,
             "components": [
               {
                 "label": {
-                  "ru": "Columns"
+                  "ru": "Номер",
+                  "en": "Number"
                 },
-                "key": "columns",
-                "columns": [
+                "key": "_docNum",
+                "disabled": true,
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": "Инициатор",
+                  "en": "Initiator"
+                },
+                "key": "initiator",
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "selectOrgstruct",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": "Дата/Время создания",
+                  "en": "Create date/time"
+                },
+                "key": "_created",
+                "disabled": true,
+                "format": "yyyy-MM-dd HH:mm",
+                "datePicker": {
+                  "minDate": "",
+                  "maxDate": ""
+                },
+                "timePicker": {
+                  "showMeridian": false
+                },
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "datetime",
+                "input": true,
+                "suffix": true
+              }
+            ],
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "index": 0
+          },
+          {
+            "index": 1,
+            "type": "column",
+            "input": false,
+            "key": "column",
+            "components": [
+              {
+                "label": {
+                  "ru": "Приоритет",
+                  "en": "Priority"
+                },
+                "key": "priority",
+                "dataSrc": "values",
+                "data": {
+                  "values": [
+                    {
+                      "label": "Low",
+                      "value": "low"
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium"
+                    },
+                    {
+                      "label": "High",
+                      "value": "high"
+                    },
+                    {
+                      "label": "Urgent",
+                      "value": "urgent"
+                    }
+                  ]
+                },
+                "searchEnabled": false,
+                "defaultValue": "medium",
+                "optionalWhenDisabled": false,
+                "type": "ecosSelect",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": " Автор",
+                  "en": "Author"
+                },
+                "key": "author",
+                "defaultValue": "",
+                "refreshOn": [],
+                "optionalWhenDisabled": false,
+                "type": "textfield",
+                "input": true
+              },
+              {
+                "label": {
+                  "ru": "Заказчик",
+                  "en": "Customer"
+                },
+                "key": "client",
+                "disabled": true,
+                "modalTitle": "",
+                "journalId": "sd-clients-journal",
+                "queryData": "",
+                "refreshOn": [
+                  "currentUserInfo"
+                ],
+                "optionalWhenDisabled": false,
+                "logic": [
                   {
-                    "components": [
+                    "name": "Current user - Citeck Support",
+                    "trigger": {
+                      "type": "javascript",
+                      "javascript": "const rolesToCheck = [\n  \"currentUserInfo.inFirstLine\",\n  \"currentUserInfo.inTechnologists\", \n  \"currentUserInfo.inLeads\"\n  ];\n\nresult = rolesToCheck.some(role => _.get(data, role) === true);"
+                    },
+                    "actions": [
                       {
-                        "label": {
-                          "ru": "Номер",
-                          "en": "Number"
+                        "name": "Disable Off",
+                        "type": "property",
+                        "property": {
+                          "label": "Disabled",
+                          "value": "disabled",
+                          "type": "boolean"
                         },
-                        "key": "_docNum",
-                        "disabled": true,
-                        "defaultValue": "",
-                        "refreshOn": [],
-                        "optionalWhenDisabled": false,
-                        "type": "textfield",
-                        "input": true
-                      },
-                      {
-                        "label": {
-                          "ru": "Инициатор",
-                          "en": "Initiator"
-                        },
-                        "key": "initiator",
-                        "defaultValue": "",
-                        "refreshOn": [],
-                        "optionalWhenDisabled": false,
-                        "type": "selectOrgstruct",
-                        "input": true
-                      },
-                      {
-                        "label": {
-                          "ru": "Дата/Время создания",
-                          "en": "Create date/time"
-                        },
-                        "key": "_created",
-                        "disabled": true,
-                        "format": "yyyy-MM-dd HH:mm",
-                        "datePicker": {
-                          "minDate": "",
-                          "maxDate": ""
-                        },
-                        "timePicker": {
-                          "showMeridian": false
-                        },
-                        "defaultValue": "",
-                        "refreshOn": [],
-                        "optionalWhenDisabled": false,
-                        "type": "datetime",
-                        "input": true,
-                        "suffix": true
-                      }
-                    ],
-                    "type": "column",
-                    "input": false,
-                    "key": "column",
-                    "index": 0
-                  },
-                  {
-                    "index": 1,
-                    "type": "column",
-                    "input": false,
-                    "key": "column",
-                    "components": [
-                      {
-                        "label": {
-                          "ru": "Приоритет",
-                          "en": "Priority"
-                        },
-                        "key": "priority",
-                        "dataSrc": "values",
-                        "data": {
-                          "values": [
-                            {
-                              "label": "Low",
-                              "value": "low"
-                            },
-                            {
-                              "label": "Medium",
-                              "value": "medium"
-                            },
-                            {
-                              "label": "High",
-                              "value": "high"
-                            },
-                            {
-                              "label": "Urgent",
-                              "value": "urgent"
-                            }
-                          ]
-                        },
-                        "searchEnabled": false,
-                        "defaultValue": "medium",
-                        "optionalWhenDisabled": false,
-                        "type": "ecosSelect",
-                        "input": true
-                      },
-                      {
-                        "label": {
-                          "ru": " Автор",
-                          "en": "Author"
-                        },
-                        "key": "author",
-                        "defaultValue": "",
-                        "refreshOn": [],
-                        "optionalWhenDisabled": false,
-                        "type": "textfield",
-                        "input": true
-                      },
-                      {
-                        "label": {
-                          "ru": "Клиент",
-                          "en": "Client"
-                        },
-                        "key": "client",
-                        "disabled": true,
-                        "modalTitle": "",
-                        "journalId": "sd-clients-journal",
-                        "queryData": "",
-                        "refreshOn": [
-                          "currentUserInfo"
-                        ],
-                        "optionalWhenDisabled": false,
-                        "logic": [
-                          {
-                            "name": "Current user - Citeck Support",
-                            "trigger": {
-                              "type": "javascript",
-                              "javascript": "const rolesToCheck = [\n  \"currentUserInfo.inFirstLine\",\n  \"currentUserInfo.inTechnologists\", \n  \"currentUserInfo.inLeads\"\n  ];\n\nresult = rolesToCheck.some(role => _.get(data, role) === true);"
-                            },
-                            "actions": [
-                              {
-                                "name": "Disable Off",
-                                "type": "property",
-                                "property": {
-                                  "label": "Disabled",
-                                  "value": "disabled",
-                                  "type": "boolean"
-                                },
-                                "state": "false"
-                              }
-                            ]
-                          }
-                        ],
-                        "type": "selectJournal",
-                        "input": true
+                        "state": "false"
                       }
                     ]
                   }
                 ],
-                "oneColumnInViewMode": false,
-                "type": "columns",
-                "input": false
+                "type": "selectJournal",
+                "input": true
               }
             ]
           }
-        ]
+        ],
+        "oneColumnInViewMode": false,
+        "type": "columns",
+        "input": false
       },
       {
         "label": {

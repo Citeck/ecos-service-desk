@@ -21,6 +21,10 @@ actions:
 associations:
   - id: webLinks
     journalsFromTarget: false
+  - id: time-trackable:timeTracking
+    journalsFromTarget: false
+    journals:
+      - uiserv/journal@ecos-sd-time-tracking-journal
 defaultCreateVariant: true
 model:
   roles:
@@ -32,19 +36,19 @@ model:
         - initiator
     - id: impl-first-line-role
       name:
-        ru: Исполнитель 1-ой линии ТП
+        ru: Исполнитель 1-й линии ТП
         en: 1st support line implementer
       attributes:
         - implFirstLineSupport
     - id: impl-second-line-role
       name:
-        ru: Исполнители 2-ой линии ТП
+        ru: Исполнители 2-й линии ТП
         en: 2nd support line implementer
       attributes:
         - implSecondLineSupport
     - id: impl-third-line-role
       name:
-        ru: Исполнители 3-ей линии ТП
+        ru: Исполнители 3-й линии ТП
         en: 3rd support line implementers
       attributes:
         - implThirdLineSupport
@@ -70,30 +74,52 @@ model:
         en: Support technologist
       attributes:
         - technologist
+    - id: client-support
+      name:
+        ru: Support организации
+        en: Organization support
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var result = [];
+            var users = value.load('client.users[]?id');
+            if (users && users.length) {
+                for (var idx in users) {
+                    result.push(users[idx]);
+                }
+            }
+            var groups = value.load('client.authGroups[]?id');
+            if (groups && groups.length) {
+                for (var idx in groups) {
+                    result.push(groups[idx]);
+                }
+            }
+            return result;
   statuses:
     - id: request-first-line
       name:
-        ru: Передано 1-ой линии ТП
+        ru: Передано 1-й линии ТП
         en: Transferred on 1st support line
     - id: request-first-line-work
       name:
-        ru: В работе на 1-ой линии ТП
+        ru: В работе на 1-й линии ТП
         en: Working on 1st support line
     - id: request-second-line
       name:
-        ru: Передано 2-ой линии ТП
+        ru: Передано 2-й линии ТП
         en: Transferred on 2nd support line
     - id: request-second-line-work
       name:
-        ru: В работе на 2-ой линии ТП
+        ru: В работе на 2-й линии ТП
         en: Working on 2nd support line
     - id: request-third-line
       name:
-        ru: Передано 3-ей линии ТП
+        ru: Передано 3-й линии ТП
         en: Transferred on 3rd support line
     - id: request-third-line-work
       name:
-        ru: В работе на 3-ей линии ТП
+        ru: В работе на 3-й линии ТП
         en: Working on 3rd support line
     - id: request-approve
       name:
@@ -119,8 +145,8 @@ model:
       type: NUMBER
     - id: client
       name:
-        ru: Клиент
-        en: Client
+        ru: Заказчик
+        en: Customer
       type: ASSOC
       config:
         typeRef: emodel/type@clients-type
@@ -225,7 +251,7 @@ model:
         en: Priority
     - id: implFirstLineSupport
       name:
-        ru: Исполнители 1-ой линии ТП
+        ru: Исполнители 1-й линии ТП
         en: Implementer of the 1st line support
       type: AUTHORITY_GROUP
       computed:
@@ -302,7 +328,7 @@ model:
         storingType: NONE
     - id: implSecondLineSupport
       name:
-        ru: Исполнители 2-ой линии ТП
+        ru: Исполнители 2-й линии ТП
         en: Implementer of the 2nd line support
       type: AUTHORITY_GROUP
       computed:
@@ -379,7 +405,7 @@ model:
         storingType: NONE
     - id: implThirdLineSupport
       name:
-        ru: Исполнители 3-ей линии ТП
+        ru: Исполнители 3-й линии ТП
         en: Implementer of the 3rd line support
       type: AUTHORITY_GROUP
       computed:
@@ -533,7 +559,7 @@ model:
         storingType: NONE
     - id: implementerThirdLineSupport
       name:
-        ru: Исполнитель 3-ей линии ТП
+        ru: Исполнитель 3-й линии ТП
       type: PERSON
     - id: createdAutomatically
       name:
@@ -590,5 +616,22 @@ model:
         typeRef: emodel/type@additional-participant
         child: true
       multiple: true
+    - id: closingLine
+      name:
+        ru: Линия закрытия
+        en: Closing line
+      type: NUMBER
+    - id: time-trackable:timeTracking
+      name:
+        ru: Журнал работ
+        en: Work log
+      type: ASSOC
+      config:
+        typeRef: emodel/type@ecos-time-tracking-type
+        child: false
+      multiple: true
+
 aspects:
   - ref: emodel/aspect@task-comments-broadcastable
+  - ref: emodel/aspect@time-trackable
+  - ref: emodel/aspect@has-internal-comments

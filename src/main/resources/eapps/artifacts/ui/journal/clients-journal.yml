@@ -1,20 +1,22 @@
 ---
 id: sd-clients-journal
 name:
-  ru: Клиенты
-  en: Clients
+  ru: Заказчики
+  en: Customers
 typeRef: emodel/type@clients-type
+actions:
+  - uiserv/action@edit
 editable: false
 columns:
   - id: clientCode
     name:
-      ru: Код клиента
-      en: Client code
+      ru: Код закачика
+      en: Customer code
     type: TEXT
   - id: client
     name:
-      ru: Клиент
-      en: Client
+      ru: Заказчик
+      en: Customer
     type: TEXT
   - id: project
     name:
@@ -25,4 +27,9 @@ columns:
     name:
       ru: Почтовый домен
       en: E-mail domain
+    type: TEXT
+  - id: counterparty
+    name:
+      ru: Контрагент
+      en: Counterparty
     type: TEXT

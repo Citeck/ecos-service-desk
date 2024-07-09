@@ -1,6 +1,6 @@
 ---
 id: create-groups
-date: 2022-11-25T00:00:00Z
+date: 2024-05-08T00:00:00Z
 type: mutate
 targetApp: emodel
 config:
@@ -9,7 +9,7 @@ config:
       attributes:
         id: impl-support-first-line-default
         name:
-          ru: 1-ая линия ТП
+          ru: 1-я линия ТП
           en: 1st line support
         authorityGroups:
           - emodel/authority-group@_orgstruct_home_
@@ -18,7 +18,7 @@ config:
       attributes:
         id: impl-support-second-line-default
         name:
-          ru: 2-ая линия ТП
+          ru: 2-я линия ТП
           en: 2nd line support
         authorityGroups:
           - emodel/authority-group@_orgstruct_home_

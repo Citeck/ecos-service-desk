@@ -15,6 +15,18 @@
         "request-hold": "WRITE",
         "request-closes": "WRITE"
       },
+      "client-support": {
+        "request-first-line": "WRITE",
+        "request-first-line-work": "WRITE",
+        "request-second-line": "WRITE",
+        "request-second-line-work": "WRITE",
+        "request-third-line": "WRITE",
+        "request-third-line-work": "WRITE",
+        "request-approve": "WRITE",
+        "request-clarification": "WRITE",
+        "request-hold": "WRITE",
+        "request-closes": "WRITE"
+      },
       "impl-first-line-role": {
         "request-first-line": "WRITE",
         "request-first-line-work": "WRITE",
@@ -90,9 +102,122 @@
     }
   },
   "attributes": {
+    "time-trackable:timeTracking": {
+      "matrix": {
+        "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "impl-first-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "impl-second-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "impl-third-line-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "lead-tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "add-partic-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        },
+        "tech-role": {
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
+          "request-approve": "WRITE",
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
+        }
+      },
+      "rules": []
+    },
     "_docNum": {
       "matrix": {
         "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
           "request-first-line": "READ",
           "request-first-line-work": "READ",
           "request-second-line": "READ",
@@ -193,6 +318,18 @@
           "request-hold": "READ",
           "request-closes": "READ"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "WRITE",
           "request-first-line-work": "WRITE",
@@ -271,6 +408,18 @@
     "initiator": {
       "matrix": {
         "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
           "request-first-line": "READ",
           "request-first-line-work": "READ",
           "request-second-line": "READ",
@@ -371,6 +520,18 @@
           "request-hold": "READ",
           "request-closes": "READ"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "WRITE",
           "request-first-line-work": "WRITE",
@@ -450,6 +611,18 @@
       "matrix": {
         "initiator-role": {
           "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
+          "request-first-line": "READ",
           "request-first-line-work": "READ",
           "request-second-line": "READ",
           "request-second-line-work": "READ",
@@ -549,6 +722,18 @@
           "request-hold": "READ",
           "request-closes": "READ"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "WRITE",
           "request-first-line-work": "WRITE",
@@ -628,6 +813,18 @@
       "matrix": {
         "initiator-role": {
           "request-first-line": "WRITE",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
+          "request-first-line": "READ",
           "request-first-line-work": "READ",
           "request-second-line": "READ",
           "request-second-line-work": "READ",
@@ -727,6 +924,18 @@
           "request-hold": "READ",
           "request-closes": "READ"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "WRITE",
           "request-first-line-work": "WRITE",
@@ -816,6 +1025,18 @@
           "request-hold": "READ",
           "request-closes": "READ"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "WRITE",
           "request-first-line-work": "WRITE",
@@ -894,6 +1115,18 @@
     "resolution": {
       "matrix": {
         "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
           "request-first-line": "READ",
           "request-first-line-work": "READ",
           "request-second-line": "READ",
@@ -994,6 +1227,18 @@
           "request-hold": "WRITE",
           "request-closes": "WRITE"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "WRITE",
           "request-first-line-work": "WRITE",
@@ -1072,6 +1317,18 @@
     "priority": {
       "matrix": {
         "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
           "request-first-line": "READ",
           "request-first-line-work": "READ",
           "request-second-line": "READ",
@@ -1172,6 +1429,18 @@
           "request-hold": "READ",
           "request-closes": "READ"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "READ",
           "request-first-line-work": "READ",
@@ -1255,6 +1524,18 @@
           "request-second-line": "READ",
           "request-second-line-work": "READ",
           "request-third-line": "WRITE",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
           "request-third-line-work": "READ",
           "request-approve": "READ",
           "request-clarification": "READ",
@@ -1350,6 +1631,18 @@
           "request-hold": "READ",
           "request-closes": "READ"
         },
+        "client-support": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
         "impl-first-line-role": {
           "request-first-line": "WRITE",
           "request-first-line-work": "WRITE",
@@ -1428,6 +1721,18 @@
     "additionalParticipant": {
       "matrix": {
         "initiator-role": {
+          "request-first-line": "READ",
+          "request-first-line-work": "READ",
+          "request-second-line": "READ",
+          "request-second-line-work": "READ",
+          "request-third-line": "READ",
+          "request-third-line-work": "READ",
+          "request-approve": "READ",
+          "request-clarification": "READ",
+          "request-hold": "READ",
+          "request-closes": "READ"
+        },
+        "client-support": {
           "request-first-line": "READ",
           "request-first-line-work": "READ",
           "request-second-line": "READ",

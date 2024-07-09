@@ -1,8 +1,8 @@
 ---
 id: clients-type
 name:
-  ru: Клиенты
-  en: Clients
+  ru: Заказчик
+  en: Customer
 storageType: ECOS_MODEL
 parentRef: emodel/type@data-list
 formRef: uiserv/form@clients-form
@@ -15,12 +15,12 @@ model:
   attributes:
     - id: clientCode
       name:
-        ru: Код клиента
-        en: Client code
+        ru: Код заказчика
+        en: Customer code
     - id: client
       name:
-        ru: Клиент
-        en: Client
+        ru: Заказчик
+        en: Customer
     - id: project
       name:
         ru: Проект
@@ -36,7 +36,14 @@ model:
       type: ASSOC
       config:
         typeRef: emodel/type@person
-        child: false
+      multiple: true
+    - id: authGroups
+      name:
+        ru: Группы
+        en: Groups
+      type: ASSOC
+      config:
+        typeRef: emodel/type@authority-group
       multiple: true
     - id: projects
       name:
@@ -45,5 +52,14 @@ model:
       type: ASSOC
       config:
         typeRef: emodel/type@jira-project
+        child: false
+      multiple: true
+    - id: counterparty
+      name:
+        ru: Контрагенты
+        en: Counterparties
+      type: ASSOC
+      config:
+        typeRef: emodel/type@ecos-counterparty
         child: false
       multiple: true

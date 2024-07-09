@@ -2,8 +2,8 @@
   "id": "clients-mapping-form",
   "formKey": "",
   "title": {
-    "en": "Clients mapping form",
-    "ru": "Форма маппинга клиентов"
+    "en": "Customers mapping form",
+    "ru": "Форма маппинга заказчиков"
   },
   "description": {},
   "customModule": "",
@@ -15,7 +15,7 @@
     "components": [
       {
         "label": {
-          "ru": "Клиент"
+          "ru": "Заказчик"
         },
         "key": "client",
         "modalTitle": "",
@@ -28,7 +28,7 @@
       },
       {
         "label": {
-          "ru": "1-ая линия ТП"
+          "ru": "1-я линия ТП"
         },
         "key": "implFirstLineSupport",
         "clearOnHide": false,
@@ -42,7 +42,7 @@
       },
       {
         "label": {
-          "ru": "2-ая линия ТП"
+          "ru": "2-я линия ТП"
         },
         "key": "implSecondLineSupport",
         "modalTitle": "",
@@ -55,7 +55,7 @@
       },
       {
         "label": {
-          "ru": "3-ая линия ТП"
+          "ru": "3-я линия ТП"
         },
         "key": "implThirdLineSupport",
         "modalTitle": "",

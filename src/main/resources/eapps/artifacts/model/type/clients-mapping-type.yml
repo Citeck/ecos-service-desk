@@ -1,7 +1,7 @@
 ---
 id: clients-mapping-type
 name:
-  ru: Маппинг клиентов
+  ru: Маппинг Заказчиков
   en: Clients mapping
 sourceType: ECOS_MODEL
 parentRef: emodel/type@data-list
@@ -13,25 +13,25 @@ model:
   attributes:
     - id: client
       name:
-        ru: Клиент
-        en: Client
+        ru: Заказчик
+        en: Customer
       type: ASSOC
       config:
         typeRef: emodel/type@clients-type
         childAssociationFlag: false
     - id: implFirstLineSupport
       name:
-        ru: Исполнитель 1-ой линии ТП
+        ru: Исполнитель 1-й линии ТП
         en: Implementer of the 1st line support
       type: AUTHORITY_GROUP
     - id: implSecondLineSupport
       name:
-        ru: Исполнитель 2-ой линии ТП
+        ru: Исполнитель 2-й линии ТП
         en: Implementer of the 2nd line support
       type: AUTHORITY_GROUP
     - id: implThirdLineSupport
       name:
-        ru: Исполнитель 3-ей линии ТП
+        ru: Исполнитель 3-й линии ТП
         en: Implementer of the 3rd line support
       type: AUTHORITY_GROUP
     - id: technologist
