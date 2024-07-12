@@ -43,12 +43,8 @@ class SdDueDateService(
 
         val scheduleId = getScheduleIdOrDefault(scheduleMappingId)
 
-        val result = if (duration.isPositive()) {
-            workingScheduleService.getScheduleById(scheduleId)
-                .addWorkingTime(now, duration.toJavaDuration())
-        } else {
-            now.plus(duration.toJavaDuration())
-        }
+        val result = workingScheduleService.getScheduleById(scheduleId)
+            .addWorkingTime(now, duration.toJavaDuration())
 
         log.debug { "Due date for from=$now, duration=$duration, result=$result" }
 
