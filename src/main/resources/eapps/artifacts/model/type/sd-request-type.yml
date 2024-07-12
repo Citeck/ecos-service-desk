@@ -607,6 +607,70 @@ model:
         ru: SLA 2 потраченное время
         en: SLA 2 spent time
       type: NUMBER
+    - id: sla_1_text
+      name:
+        ru: SLA 1
+        en: SLA 1
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+              var sla = Records.query({
+                "sourceId": "service-desk/sd-sla",
+                "query": {
+                  "record": value.load(".id")
+                }
+              }, {
+                formatDuration: "sla1Info.formatDuration"
+              });
+
+              return sla.records[0].formatDuration;
+        storingType: NONE
+    - id: sla_2_text
+      name:
+        ru: SLA 2
+        en: SLA 2
+      computed:
+          type: SCRIPT
+          config:
+              fn: |-
+                  var sla = Records.query({
+                    "sourceId": "service-desk/sd-sla",
+                    "query": {
+                      "record": value.load(".id")
+                    }
+                  }, {
+                    formatDuration: "sla2Info.formatDuration"
+                  });
+
+                  return sla.records[0].formatDuration;
+          storingType: NONE
+    - id: sla_1_expired
+      name:
+        ru: SLA 1 истёк
+        en: SLA 1 expired
+      type: BOOLEAN
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+                  var sla = value.load("sla_1_text");
+
+                  return sla.trim().startsWith("-");
+        storingType: NONE
+    - id: sla_2_expired
+      name:
+        ru: SLA 2 истёк
+        en: SLA 2 expired
+      type: BOOLEAN
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+                  var sla = value.load("sla_2_text");
+
+                  return sla.trim().startsWith("-");
+        storingType: NONE
     - id: additionalParticipant
       name:
         ru: Доп. участник

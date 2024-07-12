@@ -105,3 +105,27 @@ columns:
       ru: Линия закрытия
       en: Closing line
     type: NUMBER
+  - id: sla_1_text
+    name:
+      ru: SLA 1
+      en: SLA 1
+    type: TEXT
+    hidden: true
+  - id: sla_2_text
+    name:
+      ru: SLA 2
+      en: SLA 2
+    type: TEXT
+    hidden: true
+  - id: sla_1_expired
+    name:
+      ru: SLA 1 истёк
+      en: SLA 1 expired
+    type: BOOLEAN
+    hidden: true
+  - id: sla_2_expired
+    name:
+      ru: SLA 2 истёк
+      en: SLA 2 expired
+    type: BOOLEAN
+    hidden: true
