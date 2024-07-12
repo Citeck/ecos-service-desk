@@ -43,6 +43,7 @@ class SdDueDateService(
 
         val scheduleId = getScheduleIdOrDefault(scheduleMappingId)
 
+        // negative durations will work only with ecos-model 2.26.2+
         val result = workingScheduleService.getScheduleById(scheduleId)
             .addWorkingTime(now, duration.toJavaDuration())
 
