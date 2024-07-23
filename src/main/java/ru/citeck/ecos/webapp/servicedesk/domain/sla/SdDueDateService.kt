@@ -47,12 +47,9 @@ class SdDueDateService(
 
         val scheduleId = getScheduleIdOrDefault(scheduleMappingId)
 
-        val result = if (duration.isPositive()) {
-            workingScheduleService.getScheduleById(scheduleId)
-                .addWorkingTime(startTime, duration.toJavaDuration())
-        } else {
-            startTime.plus(duration.toJavaDuration())
-        }
+        // negative durations will work only with ecos-model 2.26.2+
+        val result = workingScheduleService.getScheduleById(scheduleId)
+            .addWorkingTime(startTime, duration.toJavaDuration())
 
         log.debug { "Due date for from=$startTime, duration=$duration, result=$result" }
 
