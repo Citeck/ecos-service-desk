@@ -7,7 +7,7 @@
 
     <groupId>ru.citeck.ecos.webapp.service-desk</groupId>
     <artifactId>ecos-service-desk</artifactId>
-    <version>1.11.0-cr-proto-SNAPSHOT</version>
+    <version>1.11.0_cr_proto</version>
 
     <parent>
         <groupId>ru.citeck.ecos.webapp</groupId>
