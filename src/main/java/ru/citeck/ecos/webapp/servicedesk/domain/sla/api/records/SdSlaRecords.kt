@@ -75,7 +75,13 @@ class SdSlaRecords(
                 workingSchedule = loadedSchedule
                 loadedSchedule
             }
-            return schedule.getWorkingTime(date0, date1).toKotlinDuration()
+            // todo: negative diff should be calculated in WorkingSchedule, but now it is not supported
+            val duration = if (date0.isAfter(date1)) {
+                schedule.getWorkingTime(date1, date0).negated()
+            } else {
+                schedule.getWorkingTime(date0, date1)
+            }
+            return duration.toKotlinDuration()
         }
 
         val sla1 = req.toSlaInfo(SlaType.SLA1) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
