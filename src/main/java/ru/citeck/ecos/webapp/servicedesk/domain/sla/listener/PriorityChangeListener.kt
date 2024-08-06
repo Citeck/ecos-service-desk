@@ -54,7 +54,8 @@ class PriorityChangeListener(
 
                 AuthContext.runAsSystem {
                     recordsService.mutate(
-                        document.ref, mapOf(
+                        document.ref,
+                        mapOf(
                             SLA_1_DUE_DATE_ATT to recordSla.timeFirstReaction,
                             SLA_2_DUE_DATE_ATT to recordSla.timeToResolve
                         )
