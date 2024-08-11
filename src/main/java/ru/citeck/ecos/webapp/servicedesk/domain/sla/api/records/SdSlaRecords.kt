@@ -1,6 +1,6 @@
 package ru.citeck.ecos.webapp.servicedesk.domain.sla.api.records
 
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.AbstractRecordsDao

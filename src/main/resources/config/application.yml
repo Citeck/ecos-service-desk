@@ -1,3 +1,10 @@
 ---
 server:
   port: 8014
+
+ecos:
+  webapp:
+    x509:
+      keys:
+        application:
+          location: classpath:ecos/x509/keys/application.key
