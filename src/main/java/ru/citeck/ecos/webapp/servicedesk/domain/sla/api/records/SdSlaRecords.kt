@@ -94,8 +94,9 @@ class SdSlaRecords(
             listOf(
                 SlaRecord(
                     sla1Info = sla1,
-                    sla2Info = sla2
-                )
+                    sla2Info = sla2,
+                    req
+                ) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
             )
         )
         return result
@@ -248,14 +249,25 @@ class SdSlaRecords(
         @AttName("sla_2_spent_time")
         val sla2SpentTime: Long? = null,
 
+        @AttName("sla_2_last_resume_time!sla_2_start_time")
+        val sla2LastResumeTime: Instant? = null,
+
         @AttName("sla_2_due_date")
         val sla2DueDate: Instant? = null
     )
 
     private data class SlaRecord(
         val sla1Info: SlaInfo,
-        val sla2Info: SlaInfo
-    )
+        val sla2Info: SlaInfo,
+        val requestInfo: RequestInfo,
+        val getDiff: (date0: Instant, date1: Instant) -> Duration
+    ) {
+        fun getSla2CurrentSpentTimeMs(): Long {
+            val lastResumeTime = requestInfo.sla2LastResumeTime ?: Instant.now()
+            val diff = getDiff(lastResumeTime, Instant.now())
+            return (requestInfo.sla2SpentTime ?: 0L) + diff.toLong(DurationUnit.MILLISECONDS)
+        }
+    }
 
     data class SlaInfo(
         val state: SlaState?,
