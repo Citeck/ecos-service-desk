@@ -73,6 +73,7 @@
             "defaultValue": "",
             "refreshOn": [],
             "optionalWhenDisabled": false,
+            "multiple": true,
             "type": "textfield",
             "input": true
           },
