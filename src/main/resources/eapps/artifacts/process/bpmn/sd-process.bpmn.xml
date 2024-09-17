@@ -1285,27 +1285,28 @@ execution.setVariable("additionalParticipant", additionalParticipant[additionalP
             <bpmn:endEvent name="" id="Event_1fu2ni7" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_12ky37s</bpmn:incoming>
             </bpmn:endEvent>
-            <bpmn:scriptTask scriptFormat="javascript" name="Обработка паузы" id="Activity_1h3yhza" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Обработка паузы&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var msg = &quot;Sla 2 pause processing&quot;;&#10;&#10;var lastResumeTime = document.load(&quot;sla_2_last_resume_time&quot;);&#10;var lastResumeDate = new Date(lastResumeTime);&#10;&#10;var now = new Date();&#10;msg += &quot;\nnow: &quot; + now;&#10;msg += &quot;\nlastResumeTime: &quot; + lastResumeTime;&#10;msg += &quot;\nlastResumeDate: &quot; + lastResumeDate;&#10;&#10;var diff = now.getTime() - lastResumeDate.getTime();&#10;msg += &quot;\ndiff: &quot; + diff;&#10;&#10;var currentSpentTime = document.load(&quot;sla_2_spent_time?num&quot;);&#10;msg += &quot;\ncurrentSpentTime original: &quot; + currentSpentTime;&#10;&#10;currentSpentTime = currentSpentTime + diff;&#10;&#10;msg += &quot;\ncurrentSpentTime new: &quot; + currentSpentTime;&#10;log.debug(msg);&#10;&#10;document.att(&quot;sla_2_spent_time&quot;, currentSpentTime);&#10;document.att(&quot;sla_2_state&quot;, &quot;PAUSE&quot;);&#10;document.att(&quot;sla_2_pause_time&quot;, now.toISOString());&#10;&#10;document.save();&#10;">
+            <bpmn:scriptTask scriptFormat="javascript" name="Обработка паузы" id="Activity_1h3yhza" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Обработка паузы&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var msg = &quot;Sla 2 pause processing&quot;;&#10;&#10;var slaInfo = Records.query({&#10;    sourceId: &quot;service-desk/sd-sla&quot;,&#10;    query: {&#10;        record: document.getRef()&#10;    }&#10;}, {&#10;    sla2CurrentSpentTimeMs: &quot;sla2CurrentSpentTimeMs?num&quot;&#10;}).records[0] || {};&#10;&#10;var currentSpentTime = slaInfo['sla2CurrentSpentTimeMs'];&#10;&#10;if (currentSpentTime == null) {&#10;  throw &quot;Current spent time is null for &quot; + document.getRef();&#10;}&#10;&#10;var now = new Date();&#10;msg += &quot;\nnow: &quot; + now;&#10;msg += &quot;\ncurrentSpentTime new: &quot; + currentSpentTime;&#10;log.debug(msg);&#10;&#10;document.att(&quot;sla_2_spent_time&quot;, currentSpentTime);&#10;document.att(&quot;sla_2_state&quot;, &quot;PAUSE&quot;);&#10;document.att(&quot;sla_2_pause_time&quot;, now.toISOString());&#10;&#10;document.save();">
                 <bpmn:incoming >Flow_1cfx7jp</bpmn:incoming>
                 <bpmn:outgoing >Flow_12ky37s</bpmn:outgoing>
                 <bpmn:script>var msg = "Sla 2 pause processing";
 
-var lastResumeTime = document.load("sla_2_last_resume_time");
-var lastResumeDate = new Date(lastResumeTime);
+var slaInfo = Records.query({
+    sourceId: "service-desk/sd-sla",
+    query: {
+        record: document.getRef()
+    }
+}, {
+    sla2CurrentSpentTimeMs: "sla2CurrentSpentTimeMs?num"
+}).records[0] || {};
+
+var currentSpentTime = slaInfo['sla2CurrentSpentTimeMs'];
+
+if (currentSpentTime == null) {
+  throw "Current spent time is null for " + document.getRef();
+}
 
 var now = new Date();
 msg += "\nnow: " + now;
-msg += "\nlastResumeTime: " + lastResumeTime;
-msg += "\nlastResumeDate: " + lastResumeDate;
-
-var diff = now.getTime() - lastResumeDate.getTime();
-msg += "\ndiff: " + diff;
-
-var currentSpentTime = document.load("sla_2_spent_time?num");
-msg += "\ncurrentSpentTime original: " + currentSpentTime;
-
-currentSpentTime = currentSpentTime + diff;
-
 msg += "\ncurrentSpentTime new: " + currentSpentTime;
 log.debug(msg);
 

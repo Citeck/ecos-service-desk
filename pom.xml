@@ -7,12 +7,12 @@
 
     <groupId>ru.citeck.ecos.webapp.service-desk</groupId>
     <artifactId>ecos-service-desk</artifactId>
-    <version>1.11.0_cr_proto</version>
+    <version>1.12.0_cr_proto</version>
 
     <parent>
         <groupId>ru.citeck.ecos.webapp</groupId>
         <artifactId>ecos-webapp-spring-simple-parent</artifactId>
-        <version>2.33.4</version>
+        <version>3.3.3</version>
     </parent>
 
     <repositories>

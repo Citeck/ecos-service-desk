@@ -29,6 +29,7 @@ model:
       name:
         ru: Почтовый домен
         en: E-mail domain
+      multiple: true
     - id: users
       name:
         ru: Пользователи

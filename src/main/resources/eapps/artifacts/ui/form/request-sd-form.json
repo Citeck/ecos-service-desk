@@ -367,7 +367,7 @@
           "defaultClient",
           "currentUserInfo"
         ],
-        "customDefaultValue": "const formMode = _.get(instance, \"options.formMode\");\nconst defClient = _.get(data, 'defaultClient.client') || null;\nconsole.log(defClient);\n\nif(formMode === \"CREATE\" && defClient !== null) {\n  value = defClient;\n}",
+        "customDefaultValue": "const formMode = _.get(instance, \"options.formMode\");\nconst defClient = _.get(data, 'defaultClient.client') || null;\n\nif (formMode === \"CREATE\" && defClient !== null) {\n    value = defClient;\n}",
         "optionalWhenDisabled": false,
         "customConditional": "const type = _.get(instance, \"options.initiator.type\");\n\nif(type === \"widget\") {\n  show = false;\n}",
         "logic": [

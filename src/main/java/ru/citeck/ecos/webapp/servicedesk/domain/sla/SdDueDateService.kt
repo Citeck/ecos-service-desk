@@ -1,6 +1,6 @@
 package ru.citeck.ecos.webapp.servicedesk.domain.sla
 
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.records2.predicate.model.Predicates
 import ru.citeck.ecos.records3.RecordsService
@@ -8,6 +8,7 @@ import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.entity.toEntityRef
+import ru.citeck.ecos.wkgsch.lib.schedule.WorkingSchedule
 import ru.citeck.ecos.wkgsch.lib.schedule.WorkingScheduleService
 import java.time.Instant
 import kotlin.time.Duration
@@ -27,11 +28,23 @@ class SdDueDateService(
     }
 
     fun getDueDate(duration: Duration, record: EntityRef): Instant {
+
         val sdAtts = recordsService.getAtts(record, SdRequestAtts::class.java)
         val priorityIsChanged = sdAtts.priorityHasBeenChanged
-        val client = sdAtts.client
-
         val startTime = if (priorityIsChanged) sdAtts.created else Instant.now()
+
+        val workingSchedule = getWorkingScheduleForClient(sdAtts.client)
+
+        // negative durations will work only with ecos-model 2.26.2+
+        val result = workingSchedule
+            .addWorkingTime(startTime, duration.toJavaDuration())
+
+        log.debug { "Due date for from=$startTime, duration=$duration, result=$result" }
+
+        return result
+    }
+
+    fun getWorkingScheduleForClient(client: EntityRef): WorkingSchedule {
 
         val scheduleMappingId = recordsService.queryOne(
             RecordsQuery.create()
@@ -45,15 +58,7 @@ class SdDueDateService(
                 .build()
         ).toEntityRef()
 
-        val scheduleId = getScheduleIdOrDefault(scheduleMappingId)
-
-        // negative durations will work only with ecos-model 2.26.2+
-        val result = workingScheduleService.getScheduleById(scheduleId)
-            .addWorkingTime(startTime, duration.toJavaDuration())
-
-        log.debug { "Due date for from=$startTime, duration=$duration, result=$result" }
-
-        return result
+        return workingScheduleService.getScheduleById(getScheduleIdOrDefault(scheduleMappingId))
     }
 
     private fun getScheduleIdOrDefault(scheduleMapping: EntityRef): String {

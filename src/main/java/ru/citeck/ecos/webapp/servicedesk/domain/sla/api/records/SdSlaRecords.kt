@@ -1,6 +1,6 @@
 package ru.citeck.ecos.webapp.servicedesk.domain.sla.api.records
 
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.AbstractRecordsDao
@@ -9,11 +9,13 @@ import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
 import ru.citeck.ecos.records3.record.dao.query.dto.res.RecsQueryRes
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.servicedesk.domain.request.SdPriority
+import ru.citeck.ecos.webapp.servicedesk.domain.sla.SdDueDateService
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaParametersProvider
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaState
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaType
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaDueDates
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaManager
+import ru.citeck.ecos.wkgsch.lib.schedule.WorkingSchedule
 import java.time.Instant
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
@@ -42,7 +44,8 @@ class SdSlaParamsRecords(
 
 @Component
 class SdSlaRecords(
-    private val slaParametersProvider: SlaParametersProvider
+    private val slaParametersProvider: SlaParametersProvider,
+    private val sdDueDateService: SdDueDateService
 ) : AbstractRecordsDao(), RecordsQueryDao {
 
     companion object {
@@ -65,8 +68,24 @@ class SdSlaRecords(
             return null
         }
 
-        val sla1 = req.toSlaInfo(SlaType.SLA1)
-        val sla2 = req.toSlaInfo(SlaType.SLA2)
+        var workingSchedule: WorkingSchedule? = null
+        fun getWorkingTimeDiff(date0: Instant, date1: Instant): Duration {
+            val schedule = workingSchedule ?: run {
+                val loadedSchedule = sdDueDateService.getWorkingScheduleForClient(req.client)
+                workingSchedule = loadedSchedule
+                loadedSchedule
+            }
+            // todo: negative diff should be calculated in WorkingSchedule, but now it is not supported
+            val duration = if (date0.isAfter(date1)) {
+                schedule.getWorkingTime(date1, date0).negated()
+            } else {
+                schedule.getWorkingTime(date0, date1)
+            }
+            return duration.toKotlinDuration()
+        }
+
+        val sla1 = req.toSlaInfo(SlaType.SLA1) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
+        val sla2 = req.toSlaInfo(SlaType.SLA2) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
 
         log.debug { "SLA info for $record: \nsla1: $sla1 \nsla2:$sla2" }
 
@@ -75,14 +94,15 @@ class SdSlaRecords(
             listOf(
                 SlaRecord(
                     sla1Info = sla1,
-                    sla2Info = sla2
-                )
+                    sla2Info = sla2,
+                    req
+                ) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
             )
         )
         return result
     }
 
-    private fun RequestInfo.toSlaInfo(type: SlaType): SlaInfo {
+    private fun RequestInfo.toSlaInfo(type: SlaType, getDiff: (date0: Instant, date1: Instant) -> Duration): SlaInfo {
         return when (type) {
             SlaType.SLA1 -> {
                 return when (sla1State) {
@@ -98,7 +118,7 @@ class SdSlaRecords(
                         }
 
                         val now = Instant.now()
-                        val diffDuration = java.time.Duration.between(now, sla1DueDate).toKotlinDuration()
+                        val diffDuration = getDiff(now, sla1DueDate)
 
                         SlaInfo(
                             state = SlaState.RUNNING,
@@ -117,7 +137,7 @@ class SdSlaRecords(
                             return@run SlaInfo.UNDEFINED
                         }
 
-                        val diffDuration = java.time.Duration.between(sla1CompletedAt, sla1DueDate).toKotlinDuration()
+                        val diffDuration = getDiff(sla1CompletedAt, sla1DueDate)
 
                         SlaInfo(
                             state = SlaState.COMPLETE,
@@ -146,7 +166,7 @@ class SdSlaRecords(
                         }
 
                         val now = Instant.now()
-                        val diffDuration = java.time.Duration.between(now, sla2DueDate).toKotlinDuration()
+                        val diffDuration = getDiff(now, sla2DueDate)
 
                         SlaInfo(
                             state = SlaState.RUNNING,
@@ -165,7 +185,7 @@ class SdSlaRecords(
                             return@run SlaInfo.UNDEFINED
                         }
 
-                        val diffDuration = java.time.Duration.between(sla2CompletedAt, sla2DueDate).toKotlinDuration()
+                        val diffDuration = getDiff(sla2CompletedAt, sla2DueDate)
 
                         SlaInfo(
                             state = SlaState.COMPLETE,
@@ -229,14 +249,25 @@ class SdSlaRecords(
         @AttName("sla_2_spent_time")
         val sla2SpentTime: Long? = null,
 
+        @AttName("sla_2_last_resume_time!sla_2_start_time")
+        val sla2LastResumeTime: Instant? = null,
+
         @AttName("sla_2_due_date")
         val sla2DueDate: Instant? = null
     )
 
     private data class SlaRecord(
         val sla1Info: SlaInfo,
-        val sla2Info: SlaInfo
-    )
+        val sla2Info: SlaInfo,
+        val requestInfo: RequestInfo,
+        val getDiff: (date0: Instant, date1: Instant) -> Duration
+    ) {
+        fun getSla2CurrentSpentTimeMs(): Long {
+            val lastResumeTime = requestInfo.sla2LastResumeTime ?: Instant.now()
+            val diff = getDiff(lastResumeTime, Instant.now())
+            return (requestInfo.sla2SpentTime ?: 0L) + diff.toLong(DurationUnit.MILLISECONDS)
+        }
+    }
 
     data class SlaInfo(
         val state: SlaState?,
