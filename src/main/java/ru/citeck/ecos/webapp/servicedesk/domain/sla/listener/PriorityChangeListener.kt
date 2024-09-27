@@ -48,25 +48,25 @@ class PriorityChangeListener(
         }
     }
 
-    private fun updateSlaAndTimersDueDates(document: EventData) {
-        val documentProcess = document.ref.getActiveProcess()
-        if (documentProcess.isEmpty()) {
+    private fun updateSlaAndTimersDueDates(sdRequestEvent: EventData) {
+        val sdProcesses = sdRequestEvent.ref.getActiveProcess()
+        if (sdProcesses.isEmpty()) {
             return
         }
 
-        recordsService.mutate(document.ref, mapOf(PRIORITY_CHANGED_ATT to true))
+        recordsService.mutate(sdRequestEvent.ref, mapOf(PRIORITY_CHANGED_ATT to true))
 
-        val recordSla = slaManager.getDueDates(document.ref)
+        val recordSla = slaManager.getDueDates(sdRequestEvent.ref)
 
         recordsService.mutate(
-            document.ref,
+            sdRequestEvent.ref,
             mapOf(
                 SLA_1_DUE_DATE_ATT to recordSla.timeFirstReaction,
                 SLA_2_DUE_DATE_ATT to recordSla.timeToResolve
             )
         )
 
-        val jobActivityIds = documentProcess.getJobsActivityIds()
+        val timersAtts = sdProcesses.getTimerAtts()
 
         // It's important to keep Timers IDs in sync with the BPMN sd-process.bpmn.xml
         val timersIdToNewDueDates = mapOf(
@@ -80,8 +80,8 @@ class PriorityChangeListener(
         )
 
         for ((timerActivityId, newDueDate) in timersIdToNewDueDates) {
-            jobActivityIds.find { it == timerActivityId }?.let { timerRef ->
-                recordsService.mutate(timerRef, mapOf("dueDate" to newDueDate))
+            timersAtts.find { it.activityId == timerActivityId }?.let { timerRef ->
+                recordsService.mutate(timerRef.ref, mapOf("dueDate" to newDueDate))
             }
         }
     }
@@ -104,7 +104,7 @@ class PriorityChangeListener(
         ).toEntityRef()
     }
 
-    private fun EntityRef.getJobsActivityIds(): List<String> {
+    private fun EntityRef.getTimerAtts(): List<TimerAtts> {
         return recordsService.query(
             RecordsQuery.create()
                 .withSourceId(BPMN_JOB_SOURCE_ID)
@@ -121,7 +121,6 @@ class PriorityChangeListener(
                 .build(),
             TimerAtts::class.java
         ).getRecords()
-            .map { it.activityId }
     }
 }
 
@@ -133,6 +132,9 @@ private data class EventData(
 )
 
 private data class TimerAtts(
+    @AttName(".id")
+    val ref: EntityRef,
+
     @AttName("jobDefinition.activityId")
     val activityId: String
 )
