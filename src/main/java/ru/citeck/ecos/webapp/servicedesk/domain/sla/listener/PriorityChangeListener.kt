@@ -39,54 +39,51 @@ class PriorityChangeListener(
                 )
             )
             withTransactional(true)
-            withAction { document ->
-
-                val documentProcess = document.ref.getActiveProcess()
-                if (documentProcess.isEmpty()) {
-                    return@withAction
-                }
-
+            withAction { sdRequest ->
                 AuthContext.runAsSystem {
-                    recordsService.mutate(document.ref, mapOf(PRIORITY_CHANGED_ATT to true))
+                    updateSlaAndTimersDueDates(sdRequest)
                 }
 
-                val recordSla = slaManager.getDueDates(document.ref)
-
-                AuthContext.runAsSystem {
-                    recordsService.mutate(
-                        document.ref,
-                        mapOf(
-                            SLA_1_DUE_DATE_ATT to recordSla.timeFirstReaction,
-                            SLA_2_DUE_DATE_ATT to recordSla.timeToResolve
-                        )
-                    )
-                }
-
-                val timersRefs = documentProcess.getJobs()
-
-                val timersToValue = mapOf(
-                    "Event_1oke406" to recordSla.notificationToSupervisorTimeResolve,
-                    "Event_0mvrxmh" to recordSla.notificationToExecutorTimeResolve,
-                    "Event_0j6gdz4" to recordSla.timeToSendFirstLineFromClarify,
-                    "Event_0td1d3a" to recordSla.notificationToInitiatorCloseReminder,
-                    "Event_0mgqtus" to recordSla.timeToAutoClose,
-                    "Event_1q9mnfb" to recordSla.notificationToSupervisorTimeReaction,
-                    "Event_0zz32r2" to recordSla.notificationToExecutorTimeReaction
-                )
-
-                for ((elementId, value) in timersToValue) {
-                    timersRefs.find { it.getActivityId() == elementId }?.let { timer ->
-                        AuthContext.runAsSystem {
-                            recordsService.mutate(timer, mapOf("dueDate" to value))
-                        }
-                    }
-                }
             }
         }
     }
 
-    private fun EntityRef.getActivityId(): String {
-        return recordsService.getAtts(this, TimerAtts::class.java).activityId
+    private fun updateSlaAndTimersDueDates(sdRequestEvent: EventData) {
+        val sdProcesses = sdRequestEvent.ref.getActiveProcess()
+        if (sdProcesses.isEmpty()) {
+            return
+        }
+
+        recordsService.mutate(sdRequestEvent.ref, mapOf(PRIORITY_CHANGED_ATT to true))
+
+        val recordSla = slaManager.getDueDates(sdRequestEvent.ref)
+
+        recordsService.mutate(
+            sdRequestEvent.ref,
+            mapOf(
+                SLA_1_DUE_DATE_ATT to recordSla.timeFirstReaction,
+                SLA_2_DUE_DATE_ATT to recordSla.timeToResolve
+            )
+        )
+
+        val timersAtts = sdProcesses.getTimerAtts()
+
+        // It's important to keep Timers IDs in sync with the BPMN sd-process.bpmn.xml
+        val timersIdToNewDueDates = mapOf(
+            "Event_1oke406" to recordSla.notificationToSupervisorTimeResolve,
+            "Event_0mvrxmh" to recordSla.notificationToExecutorTimeResolve,
+            "Event_0j6gdz4" to recordSla.timeToSendFirstLineFromClarify,
+            "Event_0td1d3a" to recordSla.notificationToInitiatorCloseReminder,
+            "Event_0mgqtus" to recordSla.timeToAutoClose,
+            "Event_1q9mnfb" to recordSla.notificationToSupervisorTimeReaction,
+            "Event_0zz32r2" to recordSla.notificationToExecutorTimeReaction
+        )
+
+        for ((timerActivityId, newDueDate) in timersIdToNewDueDates) {
+            timersAtts.find { it.activityId == timerActivityId }?.let { timerRef ->
+                recordsService.mutate(timerRef.ref, mapOf("dueDate" to newDueDate))
+            }
+        }
     }
 
     private fun EntityRef.getActiveProcess(): EntityRef {
@@ -107,7 +104,7 @@ class PriorityChangeListener(
         ).toEntityRef()
     }
 
-    private fun EntityRef.getJobs(): List<EntityRef> {
+    private fun EntityRef.getTimerAtts(): List<TimerAtts> {
         return recordsService.query(
             RecordsQuery.create()
                 .withSourceId(BPMN_JOB_SOURCE_ID)
@@ -117,23 +114,27 @@ class PriorityChangeListener(
                 .withSortBy(SortBy("dueDate", false))
                 .withPage(
                     QueryPage.create()
-                        .withMaxItems(30)
+                        .withMaxItems(50)
                         .withSkipCount(0)
                         .build()
                 )
-                .build()
+                .build(),
+            TimerAtts::class.java
         ).getRecords()
     }
 }
 
-data class EventData(
+private data class EventData(
     @AttName("record?id")
     val ref: EntityRef,
     @AttName("record.priority?str")
     val priority: String
 )
 
-data class TimerAtts(
+private data class TimerAtts(
+    @AttName(".id")
+    val ref: EntityRef,
+
     @AttName("jobDefinition.activityId")
     val activityId: String
 )
