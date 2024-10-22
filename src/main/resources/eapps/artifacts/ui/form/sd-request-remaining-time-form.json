@@ -1,0 +1,170 @@
+{
+  "id": "sd-request-remaining-time-widget-form",
+  "formKey": "sd-request-remaining-time-widget-form",
+  "title": {
+    "en": "Оставшееся время"
+  },
+  "description": {},
+  "customModule": "",
+  "typeRef": "emodel/type@sd-request-type",
+  "width": "",
+  "system": false,
+  "i18n": {},
+  "definition": {
+    "components": [
+      {
+        "scrollableContent": true,
+        "key": "panel2",
+        "type": "panel",
+        "input": false,
+        "components": [
+          {
+            "source": {
+              "type": "record",
+              "record": {
+                "id": "{{recordId}}",
+                "attributes": {
+                  "clientRef": "client?id"
+                }
+              }
+            },
+            "update": {
+              "type": "once"
+            },
+            "key": "client",
+            "type": "asyncData",
+            "input": true
+          },
+          {
+            "source": {
+              "type": "recordsQuery",
+              "recordsQuery": {
+                "query": "const client = _.get(instance, \"data.client\");\n\nvar value = {\n    sourceId: \"emodel/clients-mapping-type\",\n    query: {\n      \"t\": \"eq\",\n      \"att\": \"client\",\n      \"val\": client\n    }\n};",
+                "attributes": {
+                  "remainingTimeFirstLineSupport": "remainingTimeFirstLineSupport?num",
+                  "remainingTimeSecondLineSupport": "remainingTimeSecondLineSupport?num",
+                  "remainingTimeThirdLineSupport": "remainingTimeThirdLineSupport?num"
+                },
+                "isSingle": true
+              }
+            },
+            "update": {
+              "type": "once"
+            },
+            "key": "remainingTime",
+            "type": "asyncData",
+            "input": true
+          },
+          {
+            "label": {
+              "ru": "HTML"
+            },
+            "key": "html4",
+            "tag": "h5",
+            "className": "",
+            "attrs": [
+              {
+                "attr": "",
+                "value": ""
+              }
+            ],
+            "content": {
+              "ru": "<div>\n    <b>\n        1-я линии ТП: {{data.remainingTimeFirstLine}}\n    </b>\n</div>\n",
+            },
+            "refreshOnChange": true,
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "htmlelement",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "HTML"
+            },
+            "key": "html6",
+            "tag": "h5",
+            "className": "",
+            "attrs": [
+              {
+                "attr": "",
+                "value": ""
+              }
+            ],
+            "content": {
+              "ru": "<div>\n    <b>\n        2-я линии ТП: {{data.remainingTimeSecondLine}}\n    </b>\n</div>\n",
+            },
+            "refreshOnChange": true,
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "htmlelement",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "HTML"
+            },
+            "key": "html5",
+            "tag": "h5",
+            "className": "",
+            "attrs": [
+              {
+                "attr": "",
+                "value": ""
+              }
+            ],
+            "content": {
+              "ru": "<div>\n    <b>\n        3-я линии ТП: {{data.remainingTimeThirdLine}}\n    </b>\n</div>\n",
+            },
+            "refreshOnChange": true,
+            "refreshOn": [],
+            "optionalWhenDisabled": false,
+            "type": "htmlelement",
+            "input": false
+          },
+          {
+            "label": {
+              "ru": "remainingTimeFirstLineInfoParse"
+            },
+            "key": "remainingTimeFirstLine",
+            "persistent": false,
+            "clearOnHide": false,
+            "refreshOn": [],
+            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeFirstLineSupport;\n\nif(remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
+            "optionalWhenDisabled": false,
+            "type": "hidden",
+            "input": true
+          },
+          {
+            "label": {
+              "ru": "remainingTimeSecondLineInfoParse"
+            },
+            "key": "remainingTimeSecondLine",
+            "persistent": false,
+            "clearOnHide": false,
+            "refreshOn": [],
+            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeSecondLineSupport;\n\nif(remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
+            "optionalWhenDisabled": false,
+            "type": "hidden",
+            "input": true
+          },
+          {
+            "label": {
+              "ru": "remainingTimeThirdLineInfoParse"
+            },
+            "key": "remainingTimeThirdLine",
+            "persistent": false,
+            "clearOnHide": false,
+            "refreshOn": [],
+            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeThirdLineSupport;\n\nif(remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
+            "optionalWhenDisabled": false,
+            "type": "hidden",
+            "input": true
+          }
+        ]
+      }
+    ],
+    "formId": "sd-request-remaining-time-widget-form"
+  },
+  "attributes": {},
+  "notExists": false
+}

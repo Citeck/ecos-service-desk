@@ -1,0 +1,18 @@
+---
+id: reset-remaining-time
+name:
+  ru: Сбросить оставшееся время
+  en: Reset remaining time
+type: mutate
+config:
+  record:
+    id: ${?id}
+    attributes:
+      remainingTimeFirstLineSupport: null
+      remainingTimeSecondLineSupport: null
+      remainingTimeThirdLineSupport: null
+features:
+  execForQuery: false
+  execForRecord: true
+  execForRecords: false
+

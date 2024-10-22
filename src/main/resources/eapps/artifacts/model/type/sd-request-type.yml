@@ -18,6 +18,7 @@ actions:
   - uiserv/action@return-to-work-from-close
   - uiserv/action@tasks-actions
   - uiserv/action@log-work-action
+  - uiserv/action@sla-start
 associations:
   - id: webLinks
     journalsFromTarget: false
@@ -607,6 +608,11 @@ model:
         ru: SLA 2 потраченное время
         en: SLA 2 spent time
       type: NUMBER
+    - id: slaPaused
+      name:
+        ru: SLA приостановлен
+        en: SLA paused
+      type: BOOLEAN
     - id: additionalParticipant
       name:
         ru: Доп. участник

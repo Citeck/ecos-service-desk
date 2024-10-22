@@ -1,0 +1,11 @@
+---
+id: sd-support-line
+name:
+  ru: Линия ТП
+  en: Support line
+attributes:
+  - id: line
+    name:
+      en: Support line
+      ru: Линия ТП
+    type: TEXT

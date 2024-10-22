@@ -9,6 +9,8 @@ formRef: uiserv/form@clients-mapping-form
 journalRef: uiserv/journal@clients-mapping-journal
 inheritForm: false
 defaultCreateVariant: true
+actions:
+  - uiserv/action@reset-remaining-time
 model:
   attributes:
     - id: client
@@ -47,3 +49,54 @@ model:
       config:
         typeRef: emodel/type@working-schedule
         child: false
+    - id: timeLimitFirstLineSupport
+      name:
+        ru: Лимит часов 1-й линии ТП
+        en: 1st support line time limit
+      type: NUMBER
+    - id: timeLimitSecondLineSupport
+      name:
+        ru: Лимит часов 2-й линии ТП
+        en: 2st support line time limit
+      type: NUMBER
+    - id: timeLimitThirdLineSupport
+      name:
+        ru: Лимит часов 3-й линии ТП
+        en: 3st support line time limit
+      type: NUMBER
+    - id: remainingTimeFirstLineSupport
+      name:
+        ru: Оставшееся время 1-й линии ТП
+        en: 1st support line remaining time
+      type: NUMBER
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var timeLimit = value.load("timeLimitFirstLineSupport");
+            return timeLimit*60;
+        storingType: ON_EMPTY
+    - id: remainingTimeSecondLineSupport
+      name:
+        ru: Оставшееся время 2-й линии ТП
+        en: 2st support line remaining time
+      type: NUMBER
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var timeLimit = value.load("timeLimitSecondLineSupport");
+            return timeLimit*60;
+        storingType: ON_EMPTY
+    - id: remainingTimeThirdLineSupport
+      name:
+        ru: Оставшееся время 3-й линии ТП
+        en: 3st support line remaining time
+      type: NUMBER
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var timeLimit = value.load("timeLimitThirdLineSupport");
+            return timeLimit*60;
+        storingType: ON_EMPTY
