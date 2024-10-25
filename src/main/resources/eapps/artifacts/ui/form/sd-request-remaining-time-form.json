@@ -26,7 +26,8 @@
                 "attributes": {
                   "clientRef": "client?id"
                 }
-              }
+              },
+              "forceLoad": false
             },
             "update": {
               "type": "once"
@@ -46,7 +47,8 @@
                   "remainingTimeThirdLineSupport": "remainingTimeThirdLineSupport?num"
                 },
                 "isSingle": true
-              }
+              },
+              "forceLoad": false
             },
             "update": {
               "type": "once"
@@ -60,8 +62,8 @@
               "ru": "HTML"
             },
             "key": "html4",
-            "tag": "h5",
-            "className": "",
+            "tag": "div",
+            "className": "remaining_time_ext",
             "attrs": [
               {
                 "attr": "",
@@ -69,11 +71,32 @@
               }
             ],
             "content": {
-              "ru": "<div>\n    <b>\n        1-я линии ТП: {{data.remainingTimeFirstLine}}\n    </b>\n</div>\n",
+              "ru": "<style>\n\n    .remaining_time_ext, .remaining_time_ext_soon_expired, .remaining_time_ext_expired {\n        position: relative;\n        height: 30px;\n        width: 100%;\n        margin-top: 20px;\n        border-radius: 40px;\n    }\n\n    .background_block {\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        width: 110px;\n        border-radius: 40px;\n        z-index: 0;\n    }\n\n    .remaining_time_ext_expired .background_block {\n        background-color: red;\n    }\n    \n    .remaining_time_ext_soon_expired .background_block {\n        background-color: #ff5442;\n    }\n\n    .remaining_time_int {\n        display: flex;\n        align-items: center;\n        line-height: 30px;\n        color: #b7b7b7;\n        position: relative;\n        z-index: 1;\n        margin-left: 10px;\n    }\n\n\n    .remaining_time_ext .icon-small-clock {\n        color: #b7b7b7;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_soon_expired .icon-small-clock {\n        color: white;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_soon_expired .remaining_time_int {\n        color: white;\n    }\n    \n    .remaining_time_ext_soon_expired .remaining_time_text_time {\n        color: white;\n    }\n\n    .remaining_time_ext_expired .icon-small-clock {\n        color: white;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_expired .remaining_time_int {\n        color: white;\n    }\n    \n    .remaining_time_ext_expired .remaining_time_text_time {\n        color: white;\n    }\n\n    .remaining_time_text_time {\n        white-space: nowrap;\n        margin-right: 3px;\n    }\n    \n    #text_info {\n        color: #b7b7b7;\n        position: absolute;\n        margin-left: 105px;\n        width: calc(100% - 105px);\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n    }\n\n</style>\n    \n\n<div>\n    <div class=\"background_block\"></div>\n    <p class=\"remaining_time_int\">\n        <strong class=\"remaining_time_text_time\">\n            {{data.remainingTimeFirstLine}}\n        </strong>\n        <b id=\"text_info\" title=\"1-я линии ТП\">| 1-я линии ТП</b>\n    </p>\n</div>\n"
             },
             "refreshOnChange": true,
             "refreshOn": [],
             "optionalWhenDisabled": false,
+            "logic": [
+              {
+                "name": "Change background-color expired",
+                "trigger": {
+                  "type": "javascript",
+                  "javascript": "var remainingTimeInMinutes = data.remainingTime.remainingTimeFirstLineSupport;\n\nif (remainingTimeInMinutes !== undefined &&\n    remainingTimeInMinutes !== null &&\n    remainingTimeInMinutes <= 0) {\n  result = true;\n} else {\n  result = false;\n}"
+                },
+                "actions": [
+                  {
+                    "name": "Change CSS-class expired",
+                    "type": "property",
+                    "property": {
+                      "label": "CSS Class",
+                      "value": "className",
+                      "type": "string"
+                    },
+                    "text": "remaining_time_ext_expired"
+                  }
+                ]
+              }
+            ],
             "type": "htmlelement",
             "input": false
           },
@@ -82,8 +105,8 @@
               "ru": "HTML"
             },
             "key": "html6",
-            "tag": "h5",
-            "className": "",
+            "tag": "div",
+            "className": "remaining_time_ext",
             "attrs": [
               {
                 "attr": "",
@@ -91,11 +114,32 @@
               }
             ],
             "content": {
-              "ru": "<div>\n    <b>\n        2-я линии ТП: {{data.remainingTimeSecondLine}}\n    </b>\n</div>\n",
+              "ru": "<style>\n\n    .remaining_time_ext, .remaining_time_ext_soon_expired, .remaining_time_ext_expired {\n        position: relative;\n        height: 30px;\n        width: 100%;\n        margin-top: 20px;\n        border-radius: 40px;\n    }\n\n    .background_block {\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        width: 110px;\n        border-radius: 40px;\n        z-index: 0;\n    }\n\n    .remaining_time_ext_expired .background_block {\n        background-color: red;\n    }\n    \n    .remaining_time_ext_soon_expired .background_block {\n        background-color: #ff5442;\n    }\n\n    .remaining_time_int {\n        display: flex;\n        align-items: center;\n        line-height: 30px;\n        color: #b7b7b7;\n        position: relative;\n        z-index: 1;\n        margin-left: 10px;\n    }\n\n\n    .remaining_time_ext .icon-small-clock {\n        color: #b7b7b7;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_soon_expired .icon-small-clock {\n        color: white;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_soon_expired .remaining_time_int {\n        color: white;\n    }\n    \n    .remaining_time_ext_soon_expired .remaining_time_text_time {\n        color: white;\n    }\n\n    .remaining_time_ext_expired .icon-small-clock {\n        color: white;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_expired .remaining_time_int {\n        color: white;\n    }\n    \n    .remaining_time_ext_expired .remaining_time_text_time {\n        color: white;\n    }\n\n    .remaining_time_text_time {\n        white-space: nowrap;\n        margin-right: 3px;\n    }\n    \n    #text_info {\n        color: #b7b7b7;\n        position: absolute;\n        margin-left: 105px;\n        width: calc(100% - 105px);\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n    }\n\n</style>\n    \n\n<div>\n    <div class=\"background_block\"></div>\n    <p class=\"remaining_time_int\">\n        <strong class=\"remaining_time_text_time\">\n            {{data.remainingTimeSecondLine}}\n        </strong>\n        <b id=\"text_info\" title=\"2-я линии ТП\">| 2-я линии ТП</b>\n    </p>\n</div>"
             },
             "refreshOnChange": true,
             "refreshOn": [],
             "optionalWhenDisabled": false,
+            "logic": [
+              {
+                "name": "Change background-color expired",
+                "trigger": {
+                  "type": "javascript",
+                  "javascript": "var remainingTimeInMinutes = data.remainingTime.remainingTimeSecondLineSupport;\n\nif (remainingTimeInMinutes !== undefined &&\n    remainingTimeInMinutes !== null &&\n    remainingTimeInMinutes <= 0) {\n  result = true;\n} else {\n  result = false;\n}"
+                },
+                "actions": [
+                  {
+                    "name": "Change CSS-class expired",
+                    "type": "property",
+                    "property": {
+                      "label": "CSS Class",
+                      "value": "className",
+                      "type": "string"
+                    },
+                    "text": "remaining_time_ext_expired"
+                  }
+                ]
+              }
+            ],
             "type": "htmlelement",
             "input": false
           },
@@ -104,8 +148,8 @@
               "ru": "HTML"
             },
             "key": "html5",
-            "tag": "h5",
-            "className": "",
+            "tag": "div",
+            "className": "remaining_time_ext",
             "attrs": [
               {
                 "attr": "",
@@ -113,11 +157,32 @@
               }
             ],
             "content": {
-              "ru": "<div>\n    <b>\n        3-я линии ТП: {{data.remainingTimeThirdLine}}\n    </b>\n</div>\n",
+              "ru": "<style>\n\n    .remaining_time_ext, .remaining_time_ext_soon_expired, .remaining_time_ext_expired {\n        position: relative;\n        height: 30px;\n        width: 100%;\n        margin-top: 20px;\n        border-radius: 40px;\n    }\n\n    .background_block {\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        width: 110px;\n        border-radius: 40px;\n        z-index: 0;\n    }\n\n    .remaining_time_ext_expired .background_block {\n        background-color: red;\n    }\n    \n    .remaining_time_ext_soon_expired .background_block {\n        background-color: #ff5442;\n    }\n\n    .remaining_time_int {\n        display: flex;\n        align-items: center;\n        line-height: 30px;\n        color: #b7b7b7;\n        position: relative;\n        z-index: 1;\n        margin-left: 10px;\n    }\n\n\n    .remaining_time_ext .icon-small-clock {\n        color: #b7b7b7;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_soon_expired .icon-small-clock {\n        color: white;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_soon_expired .remaining_time_int {\n        color: white;\n    }\n    \n    .remaining_time_ext_soon_expired .remaining_time_text_time {\n        color: white;\n    }\n\n    .remaining_time_ext_expired .icon-small-clock {\n        color: white;\n        margin-top: 3px;\n    }\n\n    .remaining_time_ext_expired .remaining_time_int {\n        color: white;\n    }\n    \n    .remaining_time_ext_expired .remaining_time_text_time {\n        color: white;\n    }\n\n    .remaining_time_text_time {\n        white-space: nowrap;\n        margin-right: 3px;\n    }\n    \n    #text_info {\n        color: #b7b7b7;\n        position: absolute;\n        margin-left: 105px;\n        width: calc(100% - 105px);\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n    }\n\n</style>\n    \n\n<div>\n    <div class=\"background_block\"></div>\n    <p class=\"remaining_time_int\">\n        <strong class=\"remaining_time_text_time\">\n            {{data.remainingTimeThirdLine}}\n        </strong>\n        <b id=\"text_info\" title=\"3-я линии ТП\">| 3-я линии ТП</b>\n    </p>\n</div>"
             },
             "refreshOnChange": true,
             "refreshOn": [],
             "optionalWhenDisabled": false,
+            "logic": [
+              {
+                "name": "Change background-color expired",
+                "trigger": {
+                  "type": "javascript",
+                  "javascript": "var remainingTimeInMinutes = data.remainingTime.remainingTimeThirdLineSupport;\n\nif (remainingTimeInMinutes !== undefined &&\n    remainingTimeInMinutes !== null &&\n    remainingTimeInMinutes <= 0) {\n  result = true;\n} else {\n  result = false;\n}"
+                },
+                "actions": [
+                  {
+                    "name": "Change CSS-class expired",
+                    "type": "property",
+                    "property": {
+                      "label": "CSS Class",
+                      "value": "className",
+                      "type": "string"
+                    },
+                    "text": "remaining_time_ext_expired"
+                  }
+                ]
+              }
+            ],
             "type": "htmlelement",
             "input": false
           },
@@ -129,7 +194,7 @@
             "persistent": false,
             "clearOnHide": false,
             "refreshOn": [],
-            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeFirstLineSupport;\n\nif(remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
+            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeFirstLineSupport;\n\nif (remainingTimeInMinutes !== undefined && remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n\n  if(minutes !== 0) {\n    if (minutes < 0 && hours !== 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
             "optionalWhenDisabled": false,
             "type": "hidden",
             "input": true
@@ -142,7 +207,7 @@
             "persistent": false,
             "clearOnHide": false,
             "refreshOn": [],
-            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeSecondLineSupport;\n\nif(remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
+            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeSecondLineSupport;\n\nif (remainingTimeInMinutes !== undefined && remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0 && hours !== 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
             "optionalWhenDisabled": false,
             "type": "hidden",
             "input": true
@@ -155,7 +220,7 @@
             "persistent": false,
             "clearOnHide": false,
             "refreshOn": [],
-            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeThirdLineSupport;\n\nif(remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
+            "calculateValue": "var remainingTimeInMinutes = data.remainingTime.remainingTimeThirdLineSupport;\n\nif (remainingTimeInMinutes !== undefined && remainingTimeInMinutes !== null) {\n  var hours = Math.trunc(remainingTimeInMinutes / 60);\n  var minutes = remainingTimeInMinutes % 60;\n  if(minutes !== 0) {\n    if (minutes < 0 && hours !== 0) {\n      minutes = Math.abs(minutes);\n    }\n    value = hours + \"H \" + minutes + \"M\";  \n  } else {\n    value = hours + \"H \";\n  }\n}",
             "optionalWhenDisabled": false,
             "type": "hidden",
             "input": true

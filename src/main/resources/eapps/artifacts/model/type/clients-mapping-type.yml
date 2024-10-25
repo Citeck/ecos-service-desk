@@ -12,6 +12,16 @@ defaultCreateVariant: true
 actions:
   - uiserv/action@reset-remaining-time
 model:
+  roles:
+    - id: lead-tech-role
+      name:
+        ru: Руководитель ТП
+        en: Support lead
+      assignees:
+        - GROUP_support-lead
+    - id: tech-role
+      attributes:
+        - technologist
   attributes:
     - id: client
       name:
@@ -69,34 +79,13 @@ model:
         ru: Оставшееся время 1-й линии ТП
         en: 1st support line remaining time
       type: NUMBER
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            var timeLimit = value.load("timeLimitFirstLineSupport");
-            return timeLimit*60;
-        storingType: ON_EMPTY
     - id: remainingTimeSecondLineSupport
       name:
         ru: Оставшееся время 2-й линии ТП
         en: 2st support line remaining time
       type: NUMBER
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            var timeLimit = value.load("timeLimitSecondLineSupport");
-            return timeLimit*60;
-        storingType: ON_EMPTY
     - id: remainingTimeThirdLineSupport
       name:
         ru: Оставшееся время 3-й линии ТП
         en: 3st support line remaining time
       type: NUMBER
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            var timeLimit = value.load("timeLimitThirdLineSupport");
-            return timeLimit*60;
-        storingType: ON_EMPTY

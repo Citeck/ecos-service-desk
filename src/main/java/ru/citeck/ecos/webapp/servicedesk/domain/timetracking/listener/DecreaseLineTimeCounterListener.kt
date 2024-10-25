@@ -1,5 +1,6 @@
 package ru.citeck.ecos.webapp.servicedesk.domain.timetracking.listener
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.context.lib.auth.AuthContext
 import ru.citeck.ecos.events2.EventsService
@@ -9,8 +10,8 @@ import ru.citeck.ecos.records2.predicate.model.Predicates
 import ru.citeck.ecos.records3.RecordsService
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
-import ru.citeck.ecos.webapp.api.constants.AppName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
+import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.job.ResetRemainingTimeAndStartSlaJob
 
 @Component
 class DecreaseLineTimeCounterListener(
@@ -19,8 +20,9 @@ class DecreaseLineTimeCounterListener(
 ) {
 
     companion object {
-        private const val TYPE_ID = "ecos-time-tracking-type"
-        private const val CLIENT_MAPPING_SOURCE_ID = "${AppName.EMODEL}/clients-mapping-type"
+        private val log = KotlinLogging.logger {}
+
+        private const val TIME_TRACKING_TYPE_ID = "ecos-time-tracking-type"
     }
 
     private val lineCounterMap = mapOf(
@@ -34,7 +36,12 @@ class DecreaseLineTimeCounterListener(
             withTransactional(true)
             withEventType(RecordCreatedEvent.TYPE)
             withDataClass(EventData::class.java)
-            withFilter(Predicates.eq("typeDef.id", TYPE_ID))
+            withFilter(
+                Predicates.and(
+                    Predicates.eq("typeDef.id", TIME_TRACKING_TYPE_ID),
+                    Predicates.eq("record._aspects._has.sd-support-line?bool!", true)
+                )
+            )
             withAction { event ->
                 AuthContext.runAsSystem {
                     processDecreaseLineTimeCounter(event)
@@ -45,24 +52,33 @@ class DecreaseLineTimeCounterListener(
 
     private fun processDecreaseLineTimeCounter(event: EventData) {
         val clientMappingRef = findClientMappingRef(event.clientRef)
-        val attRemainingTime =
-            lineCounterMap[event.supportLine] ?: error("Support line ${event.supportLine} does not supported")
-        val remainingTimeInMinutes = recordsService.getAtt(clientMappingRef, "$attRemainingTime?num!").asLong()
-        val newRemainingTimeInMinutes = remainingTimeInMinutes - event.timeSpentInMinutes
-        recordsService.mutate(
-            clientMappingRef,
-            mapOf(attRemainingTime to newRemainingTimeInMinutes)
-        )
+        if (clientMappingRef == null) {
+            log.warn { "Client mapping ref not found by clientRef: ${event.clientRef}. Time counter doesn't decrease" }
+        } else {
+            val attRemainingTime = lineCounterMap[event.supportLine]
+                ?: error("Support line ${event.supportLine} does not supported")
+            val remainingTime = recordsService.getAtt(clientMappingRef, "$attRemainingTime?num")
+            if (remainingTime.isNull()) {
+                log.warn { "Time limit for line=${event.supportLine} are not set in the client ${event.clientRef}" }
+            } else {
+                val remainingTimeInMinutes = remainingTime.asLong()
+                val newRemainingTimeInMinutes = remainingTimeInMinutes - event.timeSpentInMinutes
+                recordsService.mutate(
+                    clientMappingRef,
+                    mapOf(attRemainingTime to newRemainingTimeInMinutes)
+                )
+            }
+        }
     }
 
-    private fun findClientMappingRef(clientRef: EntityRef): EntityRef {
+    private fun findClientMappingRef(clientRef: EntityRef): EntityRef? {
         return recordsService.queryOne(
             RecordsQuery.create {
-                withSourceId(CLIENT_MAPPING_SOURCE_ID)
+                withSourceId(ResetRemainingTimeAndStartSlaJob.CLIENTS_MAPPING_SOURCE_ID)
                 withLanguage(PredicateService.LANGUAGE_PREDICATE)
                 withQuery(Predicates.eq("client", clientRef))
             }
-        ) ?: error("Client mapping ref not found by clientRef: $clientRef")
+        )
     }
 
     private data class EventData(

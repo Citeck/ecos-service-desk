@@ -1,7 +1,6 @@
 package ru.citeck.ecos.webapp.servicedesk.domain.sla.api.records
 
 import org.springframework.stereotype.Component
-import ru.citeck.ecos.context.lib.auth.AuthContext
 import ru.citeck.ecos.records3.record.dao.AbstractRecordsDao
 import ru.citeck.ecos.records3.record.dao.mutate.ValueMutateDao
 import ru.citeck.ecos.webapp.api.entity.EntityRef
@@ -14,7 +13,7 @@ class SlaStartActionRecordsDao(
 
     companion object {
         private const val ID = "sla-start"
-        private const val SLA_PAUSED_ATT = "slaPaused"
+        const val ATT_SLA_PAUSED = "slaPaused"
     }
 
     override fun getId(): String {
@@ -22,20 +21,18 @@ class SlaStartActionRecordsDao(
     }
 
     override fun mutate(value: ActionDto): Any? {
-        AuthContext.runAsSystem {
-            recordsService.mutate(
-                value.recordRef,
-                mapOf(
-                    SLA_PAUSED_ATT to false
-                )
+        recordsService.mutate(
+            value.recordRef,
+            mapOf(
+                ATT_SLA_PAUSED to false
             )
+        )
 
-            slaEventEmitter.emitStartSla2Event(
-                SlaEventEmitter.SlaEvent(
-                    value.recordRef
-                )
+        slaEventEmitter.emitStartSla2Event(
+            SlaEventEmitter.SlaEvent(
+                value.recordRef
             )
-        }
+        )
         return ""
     }
 

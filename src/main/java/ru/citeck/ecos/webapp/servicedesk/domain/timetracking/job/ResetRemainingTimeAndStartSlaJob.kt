@@ -1,5 +1,6 @@
 package ru.citeck.ecos.webapp.servicedesk.domain.timetracking.job
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.annotation.PostConstruct
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -12,11 +13,12 @@ import ru.citeck.ecos.records3.RecordsService
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
 import ru.citeck.ecos.records3.record.dao.query.dto.query.SortBy
+import ru.citeck.ecos.txn.lib.TxnContext
 import ru.citeck.ecos.webapp.api.constants.AppName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.task.scheduler.EcosTaskSchedulerApi
 import ru.citeck.ecos.webapp.lib.lock.EcosAppLockService
-import java.time.Duration
+import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.records.SlaStartActionRecordsDao
 
 @Component
 class ResetRemainingTimeAndStartSlaJob(
@@ -26,11 +28,20 @@ class ResetRemainingTimeAndStartSlaJob(
 ) {
 
     companion object {
+        private val log = KotlinLogging.logger {}
+
         private const val MAX_ITERATION = 10_000
-        private const val CLIENTS_MAPPING_SOURCE_ID = "${AppName.EMODEL}/clients-mapping-type"
+        const val CLIENTS_MAPPING_SOURCE_ID = "${AppName.EMODEL}/clients-mapping-type"
         private const val SD_REQUESTS_SOURCE_ID = "${AppName.EMODEL}/sd-request-type"
         private const val ATT_CLIENT = "client"
-        private const val ATT_SLA_PAUSED = "slaPaused"
+
+        private const val ATT_TIME_LIMIT_FIRST_LINE_SUPPORT = "timeLimitFirstLineSupport"
+        private const val ATT_TIME_LIMIT_SECOND_LINE_SUPPORT = "timeLimitSecondLineSupport"
+        private const val ATT_TIME_LIMIT_THIRD_LINE_SUPPORT = "timeLimitThirdLineSupport"
+
+        private const val ATT_REMAINING_TIME_FIRST_LINE_SUPPORT = "remainingTimeFirstLineSupport"
+        private const val ATT_REMAINING_TIME_SECOND_LINE_SUPPORT = "remainingTimeSecondLineSupport"
+        private const val ATT_REMAINING_TIME_THIRD_LINE_SUPPORT = "remainingTimeThirdLineSupport"
     }
 
     @Value("\${ecos.job.time-tracking.resetRemainingTimeAndStartSla.cron}")
@@ -42,10 +53,13 @@ class ResetRemainingTimeAndStartSlaJob(
             "ResetRemainingTimeAndStartSlaJob",
             Schedules.cron(cron)
         ) {
-            appLockService.doInSyncOrSkip(
-                "ResetRemainingTimeAndStartSlaJob",
-                Duration.ofSeconds(10)
+            val isExecuted = appLockService.doInSyncOrSkip(
+                "ResetRemainingTimeAndStartSlaJob"
             ) { sync() }
+
+            if (!isExecuted) {
+                log.error { "ResetRemainingTimeAndStartSlaJob failed to lock app and was skipped" }
+            }
         }
     }
 
@@ -54,13 +68,25 @@ class ResetRemainingTimeAndStartSlaJob(
         var clients = getClients()
         while (clients.isNotEmpty() && iter < MAX_ITERATION) {
             for (client in clients) {
+                val attsToMutate = mutableMapOf<String, Long?>(
+                    ATT_REMAINING_TIME_FIRST_LINE_SUPPORT to null,
+                    ATT_REMAINING_TIME_SECOND_LINE_SUPPORT to null,
+                    ATT_REMAINING_TIME_THIRD_LINE_SUPPORT to null,
+                )
+
+                if (client.timeLimitFirstLineSupport != null) {
+                    attsToMutate[ATT_REMAINING_TIME_FIRST_LINE_SUPPORT] = client.timeLimitFirstLineSupport * 60
+                }
+                if (client.timeLimitSecondLineSupport != null) {
+                    attsToMutate[ATT_REMAINING_TIME_SECOND_LINE_SUPPORT] = client.timeLimitSecondLineSupport * 60
+                }
+                if (client.timeLimitThirdLineSupport != null) {
+                    attsToMutate[ATT_REMAINING_TIME_THIRD_LINE_SUPPORT] = client.timeLimitThirdLineSupport * 60
+                }
+
                 recordsService.mutate(
                     client.clientMapping,
-                    mapOf(
-                        "remainingTimeFirstLineSupport" to null,
-                        "remainingTimeSecondLineSupport" to null,
-                        "remainingTimeThirdLineSupport" to null,
-                    )
+                    attsToMutate
                 )
                 startSlaForSdRequests(client.clientRef)
             }
@@ -74,6 +100,16 @@ class ResetRemainingTimeAndStartSlaJob(
             RecordsQuery.create {
                 withSourceId(CLIENTS_MAPPING_SOURCE_ID)
                 withLanguage(PredicateService.LANGUAGE_PREDICATE)
+                withQuery(
+                    Predicates.and(
+                        Predicates.notEmpty(ATT_CLIENT),
+                        Predicates.or(
+                            Predicates.notEmpty(ATT_TIME_LIMIT_FIRST_LINE_SUPPORT),
+                            Predicates.notEmpty(ATT_TIME_LIMIT_SECOND_LINE_SUPPORT),
+                            Predicates.notEmpty(ATT_TIME_LIMIT_THIRD_LINE_SUPPORT)
+                        )
+                    )
+                )
                 addSort(SortBy(RecordConstants.ATT_CREATED, true))
                 withSkipCount(skipCount)
                 withMaxItems(100)
@@ -83,17 +119,21 @@ class ResetRemainingTimeAndStartSlaJob(
     }
 
     private fun startSlaForSdRequests(clientRef: EntityRef) {
+        var iter = 0
         var sdRequestRefs = getSdRequestRefs(clientRef)
-        while (sdRequestRefs.isNotEmpty()) {
-            for (sdRequestRef in sdRequestRefs) {
-                recordsService.mutate(
-                    "service-desk/sla-start@",
-                    mapOf(
-                        "recordRef" to sdRequestRef
+        while (sdRequestRefs.isNotEmpty() && iter < MAX_ITERATION) {
+            TxnContext.doInNewTxn {
+                for (sdRequestRef in sdRequestRefs) {
+                    recordsService.mutate(
+                        "service-desk/sla-start@",
+                        mapOf(
+                            "recordRef" to sdRequestRef
+                        )
                     )
-                )
+                }
             }
             sdRequestRefs = getSdRequestRefs(clientRef)
+            iter++
         }
     }
 
@@ -105,20 +145,26 @@ class ResetRemainingTimeAndStartSlaJob(
                 withQuery(
                     Predicates.and(
                         Predicates.eq(ATT_CLIENT, clientRef),
-                        Predicates.eq(ATT_SLA_PAUSED, true),
+                        Predicates.eq(SlaStartActionRecordsDao.ATT_SLA_PAUSED, true),
                         Predicates.notEq(StatusConstants.ATT_STATUS, "request-closes")
                     )
                 )
                 addSort(SortBy(RecordConstants.ATT_CREATED, true))
-                withMaxItems(100)
+                withMaxItems(5)
             }
         ).getRecords()
     }
 
     private data class ClientData(
-        @AttName("id")
+        @AttName("?id")
         val clientMapping: EntityRef,
         @AttName("client?id")
-        val clientRef: EntityRef
+        val clientRef: EntityRef,
+        @AttName("$ATT_TIME_LIMIT_FIRST_LINE_SUPPORT?num")
+        val timeLimitFirstLineSupport: Long?,
+        @AttName("$ATT_TIME_LIMIT_SECOND_LINE_SUPPORT?num")
+        val timeLimitSecondLineSupport: Long?,
+        @AttName("$ATT_TIME_LIMIT_THIRD_LINE_SUPPORT?num")
+        val timeLimitThirdLineSupport: Long?
     )
 }
