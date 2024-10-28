@@ -109,3 +109,6 @@ columns:
     name:
       ru: SLA2
       en: SLA2
+    searchable: false
+    searchableByText: false
+    sortable: false

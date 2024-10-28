@@ -49,10 +49,14 @@ class Sla2DurationMixinConfigurer(
             val hours = duration.toHoursPart()
             var minutes = duration.toMinutesPart()
 
+            var result = ""
+            if (hours == 0 && minutes < 0) {
+                result += "-"
+            }
             if (minutes < 0) {
                 minutes = -minutes
             }
-            val result = "${hours}H ${minutes}M"
+            result += "${hours}H ${minutes}M"
             log.debug { "SLA2 info SD=$recordRef result=$result" }
             return result
         }
