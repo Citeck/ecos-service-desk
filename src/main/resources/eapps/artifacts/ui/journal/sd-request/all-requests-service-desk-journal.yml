@@ -105,3 +105,7 @@ columns:
       ru: Линия закрытия
       en: Closing line
     type: NUMBER
+  - id: sla2Duration
+    name:
+      ru: SLA2
+      en: SLA2
