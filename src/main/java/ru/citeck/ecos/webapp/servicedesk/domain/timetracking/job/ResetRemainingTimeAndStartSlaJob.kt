@@ -44,7 +44,7 @@ class ResetRemainingTimeAndStartSlaJob(
         private const val ATT_REMAINING_TIME_THIRD_LINE_SUPPORT = "remainingTimeThirdLineSupport"
     }
 
-    @Value("\${ecos.job.time-tracking.resetRemainingTimeAndStartSla.cron}")
+    @Value("\${service-desk.job.time-tracking.resetRemainingTimeAndStartSla.cron}")
     private lateinit var cron: String
 
     private val recordsService = recordsServiceFactory.recordsService
@@ -62,7 +62,7 @@ class ResetRemainingTimeAndStartSlaJob(
             ) { sync() }
 
             if (!isExecuted) {
-                log.error { "ResetRemainingTimeAndStartSlaJob failed to lock app and was skipped" }
+                log.info { "ResetRemainingTimeAndStartSlaJob was skipped as a lock was not acquired." }
             }
         }
     }

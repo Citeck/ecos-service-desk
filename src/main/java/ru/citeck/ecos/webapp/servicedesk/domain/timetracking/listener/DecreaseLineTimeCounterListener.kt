@@ -54,21 +54,21 @@ class DecreaseLineTimeCounterListener(
         val clientMappingRef = findClientMappingRef(event.clientRef)
         if (clientMappingRef == null) {
             log.warn { "Client mapping ref not found by clientRef: ${event.clientRef}. Time counter doesn't decrease" }
-        } else {
-            val attRemainingTime = lineCounterMap[event.supportLine]
-                ?: error("Support line ${event.supportLine} does not supported")
-            val remainingTime = recordsService.getAtt(clientMappingRef, "$attRemainingTime?num")
-            if (remainingTime.isNull()) {
-                log.warn { "Time limit for line=${event.supportLine} are not set in the client ${event.clientRef}" }
-            } else {
-                val remainingTimeInMinutes = remainingTime.asLong()
-                val newRemainingTimeInMinutes = remainingTimeInMinutes - event.timeSpentInMinutes
-                recordsService.mutate(
-                    clientMappingRef,
-                    mapOf(attRemainingTime to newRemainingTimeInMinutes)
-                )
-            }
+            return
         }
+        val attRemainingTime = lineCounterMap[event.supportLine]
+            ?: error("Support line ${event.supportLine} does not supported")
+        val remainingTime = recordsService.getAtt(clientMappingRef, "$attRemainingTime?num")
+        if (remainingTime.isNull()) {
+            log.warn { "Time limit for line = ${event.supportLine} are not set in the client ${event.clientRef}" }
+            return
+        }
+        val remainingTimeInMinutes = remainingTime.asLong()
+        val newRemainingTimeInMinutes = remainingTimeInMinutes - event.timeSpentInMinutes
+        recordsService.mutate(
+            clientMappingRef,
+            mapOf(attRemainingTime to newRemainingTimeInMinutes)
+        )
     }
 
     private fun findClientMappingRef(clientRef: EntityRef): EntityRef? {
