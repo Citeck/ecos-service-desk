@@ -1,6 +1,6 @@
 {
-  "id": "ecos-time-tracking-form",
-  "formKey": "ecos-time-tracking-form",
+  "id": "ecos-time-tracking-sd-form",
+  "formKey": "ecos-time-tracking-sd-form",
   "title": {
     "ru": "Форма учёта времени",
     "en": "ECOS Time Tracking Form"
@@ -105,6 +105,49 @@
                 "optionalWhenDisabled": false,
                 "type": "textfield",
                 "input": true
+              },
+              {
+                "label": {
+                  "ru": "Линия ТП",
+                  "en": "Support line"
+                },
+                "key": "sd-support-line:line",
+                "validate": {
+                  "required": true
+                },
+                "dataSrc": "values",
+                "data": {
+                  "values": [
+                    {
+                      "label": {
+                        "ru": "1-я линия ТП",
+                        "en": "1st support line"
+                      },
+                      "value": "first-line"
+                    },
+                    {
+                      "label": {
+                        "ru": "2-я линия ТП",
+                        "en": "2st support line"
+                      },
+                      "value": "second-line"
+                    },
+                    {
+                      "label": {
+                        "ru": "3-я линия ТП",
+                        "en": "3rd support line"
+                      },
+                      "value": "third-line"
+                    }
+                  ],
+                  "headers": [
+                    {}
+                  ]
+                },
+                "defaultValue": "",
+                "optionalWhenDisabled": false,
+                "type": "ecosSelect",
+                "input": true
               }
             ]
           }
@@ -171,7 +214,7 @@
             "refreshOn": [
               "timeSpent"
             ],
-            "calculateValue": "let rowSpentTime = _.get(data, \"timeSpent\").replace(/ /g,'').toLowerCase();\n\nconst UNIT_MAPPING = createUnitMapping();\n  \nfunction createUnitMapping() {\n  const mapping = new Map();\n  mapping.set('w', 'weeks');\n  mapping.set('d', 'days');\n  mapping.set('h', 'hours');\n  mapping.set('m', 'minutes');\n  return mapping;\n}\n\nfunction parseWorkDuration(durationString) {\n  const pattern = /(\\d+)([wdhm])/g;\n  const matcher = durationString.matchAll(pattern);\n  \n  let duration = 0;\n    \n  for (const matchResult of matcher) {\n    const amount = parseInt(matchResult[1]);\n    const unitChar = matchResult[2];\n    const unit = UNIT_MAPPING.get(unitChar);\n    \n    if (unit) {\n      switch (unit) {\n        case 'weeks':\n          duration += amount * 5 * 24 * 60 * 60000;\n          break;\n        case 'days':\n          duration += amount * 8 * 60 * 60000;\n          break;\n        case 'hours':\n          duration += amount * 60000;\n          break;\n        case 'minutes':\n          duration += amount * 60000;\n          break;\n      }\n    }\n  }\n  return duration;\n}\n\nvalue = parseWorkDuration(rowSpentTime);\ninstance.setValue(value);",
+            "calculateValue": "let rowSpentTime = _.get(data, \"timeSpent\").replace(/ /g,'').toLowerCase();\n\nconst UNIT_MAPPING = createUnitMapping();\n  \nfunction createUnitMapping() {\n  const mapping = new Map();\n  mapping.set('w', 'weeks');\n  mapping.set('d', 'days');\n  mapping.set('h', 'hours');\n  mapping.set('m', 'minutes');\n  return mapping;\n}\n\nfunction parseWorkDuration(durationString) {\n  const pattern = /(\\d+)([wdhm])/g;\n  const matcher = durationString.matchAll(pattern);\n  \n  let duration = 0;\n    \n  for (const matchResult of matcher) {\n    const amount = parseInt(matchResult[1]);\n    const unitChar = matchResult[2];\n    const unit = UNIT_MAPPING.get(unitChar);\n    \n    if (unit) {\n      switch (unit) {\n        case 'weeks':\n          duration += amount * 5 * 24 * 60 * 60000;\n          break;\n        case 'days':\n          duration += amount * 8 * 60 * 60000;\n          break;\n        case 'hours':\n          duration += amount * 60 * 60000;\n          break;\n        case 'minutes':\n          duration += amount * 60000;\n          break;\n      }\n    }\n  }\n  return duration;\n}\n\nvalue = parseWorkDuration(rowSpentTime);\ninstance.setValue(value);",
             "allowCalculateOverride": true,
             "triggerChangeWhenCalculate": true,
             "optionalWhenDisabled": false,
@@ -182,7 +225,7 @@
             "label": {
               "ru": "Status"
             },
-            "key": "status",
+            "key": "documentStatus",
             "refreshOn": [],
             "calculateValue": "value = _.get(data, \"parentInfo.status\")",
             "allowCalculateOverride": true,
@@ -207,9 +250,10 @@
                 "key": "user",
                 "hidden": true,
                 "clearOnHide": false,
-                "currentUserByDefault": true,
+                "dataType": "authority",
                 "defaultValue": "",
                 "refreshOn": [],
+                "customDefaultValue": "value = Citeck.constants.USERNAME;",
                 "optionalWhenDisabled": false,
                 "type": "selectOrgstruct",
                 "input": true
@@ -236,7 +280,7 @@
                   "record": {
                     "id": "{{data._parent}}",
                     "attributes": {
-                      "status": "_status"
+                      "status": "_status.name?json"
                     }
                   },
                   "forceLoad": false
@@ -327,7 +371,7 @@
         "input": false
       }
     ],
-    "formId": "ecos-time-tracking-form"
+    "formId": "ecos-time-tracking-sd-form"
   },
   "attributes": {},
   "notExists": false

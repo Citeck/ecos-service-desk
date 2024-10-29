@@ -36,3 +36,18 @@ columns:
       ru: Рабочее расписание
       en: Working schedule
     type: ASSOC
+  - id: timeLimitFirstLineSupport
+    name:
+      ru: Лимит часов 1-й линии ТП
+      en: 1st support line time limit
+    type: NUMBER
+  - id: timeLimitSecondLineSupport
+    name:
+      ru: Лимит часов 2-й линии ТП
+      en: 2st support line time limit
+    type: NUMBER
+  - id: timeLimitThirdLineSupport
+    name:
+      ru: Лимит часов 3-й линии ТП
+      en: 3st support line time limit
+    type: NUMBER

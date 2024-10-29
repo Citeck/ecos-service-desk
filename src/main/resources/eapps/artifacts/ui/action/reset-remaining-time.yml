@@ -1,0 +1,31 @@
+---
+id: reset-remaining-time
+name:
+  ru: Сбросить оставшееся время
+  en: Reset remaining time
+type: mutate
+confirm:
+  title:
+    ru: Сбросить оставшееся время
+    en: Reset remaining time
+config:
+  record:
+    id: ${?id}
+    attributes:
+      remainingTimeFirstLineSupport: ${(timeLimitFirstLineSupport * 60)?num}
+      remainingTimeSecondLineSupport: ${(timeLimitSecondLineSupport * 60)?num}
+      remainingTimeThirdLineSupport: ${(timeLimitThirdLineSupport * 60)?num}
+features:
+  execForQuery: false
+  execForRecord: true
+  execForRecords: false
+predicate:
+  t: or
+  val:
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.tech-role?bool
+      val: true
+    - t: eq
+      att: _roles.isCurrentUserMemberOf.lead-tech-role?bool
+      val: true
+
