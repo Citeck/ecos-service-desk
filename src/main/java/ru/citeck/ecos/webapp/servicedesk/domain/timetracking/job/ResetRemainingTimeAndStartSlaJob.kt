@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.commons.task.schedule.Schedules
 import ru.citeck.ecos.model.lib.status.constants.StatusConstants
-import ru.citeck.ecos.records2.RecordConstants
 import ru.citeck.ecos.records2.predicate.PredicateService
 import ru.citeck.ecos.records2.predicate.model.Predicates
-import ru.citeck.ecos.records3.RecordsService
+import ru.citeck.ecos.records3.RecordsServiceFactory
+import ru.citeck.ecos.records3.iter.IterableRecords
+import ru.citeck.ecos.records3.iter.IterableRecordsConfig
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
-import ru.citeck.ecos.records3.record.dao.query.dto.query.SortBy
 import ru.citeck.ecos.txn.lib.TxnContext
 import ru.citeck.ecos.webapp.api.constants.AppName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
@@ -22,7 +22,7 @@ import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.records.SlaStartActionRe
 
 @Component
 class ResetRemainingTimeAndStartSlaJob(
-    private val recordsService: RecordsService,
+    recordsServiceFactory: RecordsServiceFactory,
     private val taskScheduler: EcosTaskSchedulerApi,
     private val appLockService: EcosAppLockService
 ) {
@@ -47,6 +47,10 @@ class ResetRemainingTimeAndStartSlaJob(
     @Value("\${ecos.job.time-tracking.resetRemainingTimeAndStartSla.cron}")
     private lateinit var cron: String
 
+    private val recordsService = recordsServiceFactory.recordsService
+    private val dtoSchemaReader = recordsServiceFactory.dtoSchemaReader
+    private val dtoSchemaWriter = recordsServiceFactory.attSchemaWriter
+
     @PostConstruct
     fun init() {
         taskScheduler.schedule(
@@ -64,39 +68,8 @@ class ResetRemainingTimeAndStartSlaJob(
     }
 
     private fun sync() {
-        var iter = 0
-        var clients = getClients()
-        while (clients.isNotEmpty() && iter < MAX_ITERATION) {
-            for (client in clients) {
-                val attsToMutate = mutableMapOf<String, Long?>(
-                    ATT_REMAINING_TIME_FIRST_LINE_SUPPORT to null,
-                    ATT_REMAINING_TIME_SECOND_LINE_SUPPORT to null,
-                    ATT_REMAINING_TIME_THIRD_LINE_SUPPORT to null,
-                )
 
-                if (client.timeLimitFirstLineSupport != null) {
-                    attsToMutate[ATT_REMAINING_TIME_FIRST_LINE_SUPPORT] = client.timeLimitFirstLineSupport * 60
-                }
-                if (client.timeLimitSecondLineSupport != null) {
-                    attsToMutate[ATT_REMAINING_TIME_SECOND_LINE_SUPPORT] = client.timeLimitSecondLineSupport * 60
-                }
-                if (client.timeLimitThirdLineSupport != null) {
-                    attsToMutate[ATT_REMAINING_TIME_THIRD_LINE_SUPPORT] = client.timeLimitThirdLineSupport * 60
-                }
-
-                recordsService.mutate(
-                    client.clientMapping,
-                    attsToMutate
-                )
-                startSlaForSdRequests(client.clientRef)
-            }
-            clients = getClients(clients.size)
-            iter++
-        }
-    }
-
-    private fun getClients(skipCount: Int = 0): List<ClientData> {
-        return recordsService.query(
+        forEachRecord(
             RecordsQuery.create {
                 withSourceId(CLIENTS_MAPPING_SOURCE_ID)
                 withLanguage(PredicateService.LANGUAGE_PREDICATE)
@@ -110,35 +83,36 @@ class ResetRemainingTimeAndStartSlaJob(
                         )
                     )
                 )
-                addSort(SortBy(RecordConstants.ATT_CREATED, true))
-                withSkipCount(skipCount)
-                withMaxItems(100)
             },
-            ClientData::class.java
-        ).getRecords()
-    }
+            ClientData::class.java,
+            MAX_ITERATION
+        ) { client ->
+            val attsToMutate = mutableMapOf<String, Long?>(
+                ATT_REMAINING_TIME_FIRST_LINE_SUPPORT to null,
+                ATT_REMAINING_TIME_SECOND_LINE_SUPPORT to null,
+                ATT_REMAINING_TIME_THIRD_LINE_SUPPORT to null,
+            )
 
-    private fun startSlaForSdRequests(clientRef: EntityRef) {
-        var iter = 0
-        var sdRequestRefs = getSdRequestRefs(clientRef)
-        while (sdRequestRefs.isNotEmpty() && iter < MAX_ITERATION) {
-            TxnContext.doInNewTxn {
-                for (sdRequestRef in sdRequestRefs) {
-                    recordsService.mutate(
-                        "service-desk/sla-start@",
-                        mapOf(
-                            "recordRef" to sdRequestRef
-                        )
-                    )
-                }
+            if (client.timeLimitFirstLineSupport != null) {
+                attsToMutate[ATT_REMAINING_TIME_FIRST_LINE_SUPPORT] = client.timeLimitFirstLineSupport * 60
             }
-            sdRequestRefs = getSdRequestRefs(clientRef)
-            iter++
+            if (client.timeLimitSecondLineSupport != null) {
+                attsToMutate[ATT_REMAINING_TIME_SECOND_LINE_SUPPORT] = client.timeLimitSecondLineSupport * 60
+            }
+            if (client.timeLimitThirdLineSupport != null) {
+                attsToMutate[ATT_REMAINING_TIME_THIRD_LINE_SUPPORT] = client.timeLimitThirdLineSupport * 60
+            }
+
+            recordsService.mutate(
+                client.clientMapping,
+                attsToMutate
+            )
+            startSlaForSdRequests(client.clientRef)
         }
     }
 
-    private fun getSdRequestRefs(clientRef: EntityRef): List<EntityRef> {
-        return recordsService.query(
+    private fun startSlaForSdRequests(clientRef: EntityRef) {
+        forEachRecord(
             RecordsQuery.create {
                 withSourceId(SD_REQUESTS_SOURCE_ID)
                 withLanguage(PredicateService.LANGUAGE_PREDICATE)
@@ -149,10 +123,58 @@ class ResetRemainingTimeAndStartSlaJob(
                         Predicates.notEq(StatusConstants.ATT_STATUS, "request-closes")
                     )
                 )
-                addSort(SortBy(RecordConstants.ATT_CREATED, true))
-                withMaxItems(5)
+            },
+            EntityRef::class.java,
+            MAX_ITERATION
+        ) {
+            TxnContext.doInNewTxn {
+                recordsService.mutate(
+                    "service-desk/sla-start@",
+                    mapOf("recordRef" to it)
+                )
             }
-        ).getRecords()
+        }
+    }
+
+    /**
+     * Executes the specified action on each record that matches the given query, up to the specified iteration limit.
+     *
+     * @param query the query defining the records to be processed
+     * @param recordType the class type of the record attributes
+     * @param iterationsLimit the maximum number of records on which to execute the action
+     * @param action a function to be executed for each record
+     */
+    private fun <T : Any> forEachRecord(
+        query: RecordsQuery,
+        recordType: Class<T>,
+        iterationsLimit: Int,
+        action: (T) -> Unit
+    ) {
+
+        val attsToLoadSchema = if (EntityRef::class.java.isAssignableFrom(recordType)) {
+            emptyMap()
+        } else {
+            dtoSchemaWriter.writeToMap(dtoSchemaReader.read(recordType))
+        }
+
+        val records = IterableRecords(
+            query, IterableRecordsConfig.create()
+                .withAttsToLoad(attsToLoadSchema)
+                .build(),
+            recordsService
+        ).iterator()
+
+        var iterationsCount = 0
+        while (records.hasNext() && iterationsCount++ < iterationsLimit) {
+            val record = records.next()
+            val attsInstance = if (EntityRef::class.java.isAssignableFrom(recordType)) {
+                @Suppress("UNCHECKED_CAST")
+                record.getId() as T
+            } else {
+                dtoSchemaReader.instantiateNotNull(recordType, record.getAtts())
+            }
+            action.invoke(attsInstance)
+        }
     }
 
     private data class ClientData(
