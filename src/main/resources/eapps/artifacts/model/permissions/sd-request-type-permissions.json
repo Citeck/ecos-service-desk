@@ -1516,7 +1516,7 @@
       },
       "rules": []
     },
-    "slaPaused": {
+    "slaStopped": {
       "matrix": {
         "initiator-role": {
           "request-first-line": "READ",

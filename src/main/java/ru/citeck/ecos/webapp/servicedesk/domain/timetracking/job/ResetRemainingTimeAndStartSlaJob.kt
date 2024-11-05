@@ -68,19 +68,13 @@ class ResetRemainingTimeAndStartSlaJob(
     }
 
     private fun sync() {
-
         forEachRecord(
             RecordsQuery.create {
                 withSourceId(CLIENTS_MAPPING_SOURCE_ID)
                 withLanguage(PredicateService.LANGUAGE_PREDICATE)
                 withQuery(
                     Predicates.and(
-                        Predicates.notEmpty(ATT_CLIENT),
-                        Predicates.or(
-                            Predicates.notEmpty(ATT_TIME_LIMIT_FIRST_LINE_SUPPORT),
-                            Predicates.notEmpty(ATT_TIME_LIMIT_SECOND_LINE_SUPPORT),
-                            Predicates.notEmpty(ATT_TIME_LIMIT_THIRD_LINE_SUPPORT)
-                        )
+                        Predicates.notEmpty(ATT_CLIENT)
                     )
                 )
             },
@@ -119,7 +113,7 @@ class ResetRemainingTimeAndStartSlaJob(
                 withQuery(
                     Predicates.and(
                         Predicates.eq(ATT_CLIENT, clientRef),
-                        Predicates.eq(SlaStartActionRecordsDao.ATT_SLA_PAUSED, true),
+                        Predicates.eq(SlaStartActionRecordsDao.ATT_SLA_STOPPED, true),
                         Predicates.notEq(StatusConstants.ATT_STATUS, "request-closes")
                     )
                 )
@@ -150,7 +144,6 @@ class ResetRemainingTimeAndStartSlaJob(
         iterationsLimit: Int,
         action: (T) -> Unit
     ) {
-
         val attsToLoadSchema = if (EntityRef::class.java.isAssignableFrom(recordType)) {
             emptyMap()
         } else {
