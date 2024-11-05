@@ -3,29 +3,13 @@ id: log-work-action
 name:
   ru: Записать работу
   en: Log work
-type: mutate
-confirm:
-  title:
-    ru: Записать работу
-    en: Log work
-  formRef: uiserv/form@ecos-time-tracking-sd-form
-  formAttributes:
-    _parent: ${?id}
-  attributesMapping:
-    record.attributes.duration: duration
-    record.attributes.startDate: startDate
-    record.attributes.timeLeft: timeLeft
-    record.attributes.timeSpent: timeSpent
-    record.attributes.user: user
-    record.attributes.workDescription: workDescription
-    record.attributes.documentStatus: documentStatus
-    record.attributes.sd-support-line:line: sd-support-line:line
+type: create
 config:
-  record:
-    id: emodel/ecos-time-tracking-type@
-    attributes:
-      _parent: ${?id}
-      _parentAtt: time-trackable:timeTracking
+  typeRef: emodel/type@ecos-time-tracking-sd-type
+  attributes:
+    _parent: ${?id}
+    _parentAtt: time-trackable:timeTracking
+  redirectToPage: false
 predicate:
   t: or
   val:
