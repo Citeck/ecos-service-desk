@@ -21,8 +21,17 @@ predicate:
   t: and
   val:
     - t: eq
-      att: slaPaused?bool!
+      att: slaStopped?bool!
       val: true
+    - t: not-eq
+      att: _status?str
+      val: request-clarification
+    - t: not-eq
+      att: _status?str
+      val: request-hold
+    - t: not-eq
+      att: _status?str
+      val: request-closes
     - t: or
       val:
         - t: eq

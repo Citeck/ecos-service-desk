@@ -3,7 +3,7 @@ package ru.citeck.ecos.webapp.servicedesk.domain.timetracking.listener
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.context.lib.auth.AuthContext
 import ru.citeck.ecos.events2.EventsService
-import ru.citeck.ecos.events2.type.RecordCreatedEvent
+import ru.citeck.ecos.events2.type.RecordDeletedEvent
 import ru.citeck.ecos.records2.predicate.model.Predicates
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
@@ -11,7 +11,7 @@ import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service.SdTimeTrack
 import java.time.Instant
 
 @Component
-class DecreaseLineTimeCounterListener(
+class DeleteTimeTrackingRecordListener(
     private val sdTimeTrackingService: SdTimeTrackingService,
     eventsService: EventsService
 ) {
@@ -19,11 +19,12 @@ class DecreaseLineTimeCounterListener(
     init {
         eventsService.addListener<EventData> {
             withTransactional(true)
-            withEventType(RecordCreatedEvent.TYPE)
+            withEventType(RecordDeletedEvent.TYPE)
             withDataClass(EventData::class.java)
             withFilter(
                 Predicates.and(
-                    Predicates.eq("typeDef.id", SdTimeTrackingService.TIME_TRACKING_SD_TYPE_ID)
+                    Predicates.eq("typeDef.id", SdTimeTrackingService.TIME_TRACKING_SD_TYPE_ID),
+                    Predicates.notEmpty("record._parent.client")
                 )
             )
             withAction { event ->
@@ -32,7 +33,7 @@ class DecreaseLineTimeCounterListener(
                         event.clientRef,
                         event.supportLine,
                         event.startDate,
-                        -event.timeSpentInMinutes
+                        event.timeSpentInMinutes
                     )
                 }
             }

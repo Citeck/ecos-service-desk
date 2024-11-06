@@ -608,10 +608,10 @@ model:
         ru: SLA 2 потраченное время
         en: SLA 2 spent time
       type: NUMBER
-    - id: slaPaused
+    - id: slaStopped
       name:
-        ru: SLA приостановлен
-        en: SLA paused
+        ru: SLA остановлен
+        en: SLA stopped
       type: BOOLEAN
     - id: additionalParticipant
       name:

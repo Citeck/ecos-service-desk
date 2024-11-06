@@ -111,7 +111,7 @@
                   "ru": "Линия ТП",
                   "en": "Support line"
                 },
-                "key": "sd-support-line:line",
+                "key": "line",
                 "validate": {
                   "required": true
                 },
@@ -214,7 +214,7 @@
             "refreshOn": [
               "timeSpent"
             ],
-            "calculateValue": "let rowSpentTime = _.get(data, \"timeSpent\").replace(/ /g,'').toLowerCase();\n\nconst UNIT_MAPPING = createUnitMapping();\n  \nfunction createUnitMapping() {\n  const mapping = new Map();\n  mapping.set('w', 'weeks');\n  mapping.set('d', 'days');\n  mapping.set('h', 'hours');\n  mapping.set('m', 'minutes');\n  return mapping;\n}\n\nfunction parseWorkDuration(durationString) {\n  const pattern = /(\\d+)([wdhm])/g;\n  const matcher = durationString.matchAll(pattern);\n  \n  let duration = 0;\n    \n  for (const matchResult of matcher) {\n    const amount = parseInt(matchResult[1]);\n    const unitChar = matchResult[2];\n    const unit = UNIT_MAPPING.get(unitChar);\n    \n    if (unit) {\n      switch (unit) {\n        case 'weeks':\n          duration += amount * 5 * 24 * 60 * 60000;\n          break;\n        case 'days':\n          duration += amount * 8 * 60 * 60000;\n          break;\n        case 'hours':\n          duration += amount * 60 * 60000;\n          break;\n        case 'minutes':\n          duration += amount * 60000;\n          break;\n      }\n    }\n  }\n  return duration;\n}\n\nvalue = parseWorkDuration(rowSpentTime);\ninstance.setValue(value);",
+            "calculateValue": "let rowSpentTime = _.get(data, \"timeSpent\").replace(/ /g,'').toLowerCase();\n\nconst UNIT_MAPPING = createUnitMapping();\n  \nfunction createUnitMapping() {\n  const mapping = new Map();\n  mapping.set('w', 'weeks');\n  mapping.set('d', 'days');\n  mapping.set('h', 'hours');\n  mapping.set('m', 'minutes');\n  return mapping;\n}\n\nfunction parseWorkDuration(durationString) {\n  const pattern = /(\\d+)([wdhm])/g;\n  const matcher = durationString.matchAll(pattern);\n  \n  let duration = 0;\n    \n  for (const matchResult of matcher) {\n    const amount = parseInt(matchResult[1]);\n    const unitChar = matchResult[2];\n    const unit = UNIT_MAPPING.get(unitChar);\n    \n    if (unit) {\n      switch (unit) {\n        case 'weeks':\n          duration += amount * 5 * 8 * 60 * 60000;\n          break;\n        case 'days':\n          duration += amount * 8 * 60 * 60000;\n          break;\n        case 'hours':\n          duration += amount * 60 * 60000;\n          break;\n        case 'minutes':\n          duration += amount * 60000;\n          break;\n      }\n    }\n  }\n  return duration;\n}\n\nvalue = parseWorkDuration(rowSpentTime);\ninstance.setValue(value);",
             "allowCalculateOverride": true,
             "triggerChangeWhenCalculate": true,
             "optionalWhenDisabled": false,

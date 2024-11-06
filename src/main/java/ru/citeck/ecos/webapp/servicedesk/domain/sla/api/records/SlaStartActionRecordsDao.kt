@@ -22,7 +22,7 @@ class SlaStartActionRecordsDao(
 
     companion object {
         private const val ID = "sla-start"
-        const val ATT_SLA_PAUSED = "slaPaused"
+        const val ATT_SLA_STOPPED = "slaStopped"
 
         private val SD_TYPE_REF = ModelUtils.getTypeRef("sd-request-type")
         private val ACTION_ALLOWED_FOR_ROLES = listOf(
@@ -42,7 +42,7 @@ class SlaStartActionRecordsDao(
         recordsService.mutate(
             value.recordRef,
             mapOf(
-                ATT_SLA_PAUSED to false
+                ATT_SLA_STOPPED to false
             )
         )
 
