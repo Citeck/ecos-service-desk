@@ -634,7 +634,7 @@ model:
       type: ASSOC
       config:
         typeRef: emodel/type@ecos-time-tracking-type
-        child: false
+        child: true
       multiple: true
     - id: priorityHasBeenChanged
       name:
