@@ -7,6 +7,7 @@ storageType: DEFAULT
 parentRef: emodel/type@ecos-time-tracking-type
 formRef: uiserv/form@ecos-time-tracking-sd-form
 journalRef: uiserv/journal@ecos-sd-time-tracking-journal
+inheritForm: false
 model:
   attributes:
     - id: line
