@@ -1,8 +1,7 @@
-package ru.citeck.ecos.webapp.servicedesk.domain.timetracking.listener
+package ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 import ru.citeck.ecos.records2.predicate.PredicateService
 import ru.citeck.ecos.records2.predicate.model.Predicates
 import ru.citeck.ecos.records3.RecordsService
@@ -13,8 +12,10 @@ import java.time.Instant
 import java.time.YearMonth
 import java.time.ZoneId
 
-@Component
-abstract class AbstractTimeTrackingListener<T : Any> {
+@Service
+class SdTimeTrackingService(
+    private var recordsService: RecordsService
+) {
 
     companion object {
         private val log = KotlinLogging.logger {}
@@ -28,14 +29,11 @@ abstract class AbstractTimeTrackingListener<T : Any> {
         "third-line" to "remainingTimeThirdLineSupport",
     )
 
-    @Autowired
-    private lateinit var recordsService: RecordsService
-
-    protected fun processUpdateRemainingTime(
+    fun processUpdateRemainingTime(
         clientRef: EntityRef,
         supportLine: String,
         timeTrackingDate: Instant,
-        event: T
+        diff: Long
     ) {
         val zoneId = ZoneId.systemDefault()
         val startYearMonth = YearMonth.from(timeTrackingDate.atZone(zoneId))
@@ -50,7 +48,7 @@ abstract class AbstractTimeTrackingListener<T : Any> {
             val attRemainingTime = getAttRemainingTime(supportLine)
             val remainingTimeInMinutes = getRemainingTime(clientMappingRef, attRemainingTime)
             remainingTimeInMinutes?.let {
-                val newRemainingTimeInMinutes = processCalculateRemainingTime(event, remainingTimeInMinutes)
+                val newRemainingTimeInMinutes = remainingTimeInMinutes + diff
                 recordsService.mutate(
                     clientMappingRef,
                     mapOf(attRemainingTime to newRemainingTimeInMinutes)
@@ -58,8 +56,6 @@ abstract class AbstractTimeTrackingListener<T : Any> {
             }
         }
     }
-
-    protected abstract fun processCalculateRemainingTime(event: T, remainingTimeInMinutes: Long): Long
 
     private fun findClientMappingRef(clientRef: EntityRef): EntityRef? {
         val clientMappingRef = recordsService.queryOne(

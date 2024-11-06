@@ -7,12 +7,14 @@ import ru.citeck.ecos.events2.type.RecordChangedEvent
 import ru.citeck.ecos.records2.predicate.model.Predicates
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
+import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service.SdTimeTrackingService
 import java.time.Instant
 
 @Component
 class UpdateTimeTrackingRecordListener(
+    private val sdTimeTrackingService: SdTimeTrackingService,
     eventsService: EventsService
-) : AbstractTimeTrackingListener<UpdateTimeTrackingRecordListener.EventData>() {
+) {
 
     init {
         eventsService.addListener<EventData> {
@@ -21,24 +23,26 @@ class UpdateTimeTrackingRecordListener(
             withDataClass(EventData::class.java)
             withFilter(
                 Predicates.and(
-                    Predicates.eq("typeDef.id", TIME_TRACKING_SD_TYPE_ID),
+                    Predicates.eq("typeDef.id", SdTimeTrackingService.TIME_TRACKING_SD_TYPE_ID),
                     Predicates.eq("diff._has.duration?bool", true),
                     Predicates.notEmpty("record._parent.client")
                 )
             )
             withAction { event ->
                 AuthContext.runAsSystem {
-                    processUpdateRemainingTime(event.clientRef, event.supportLine, event.startDate, event)
+                    val timeSpentBeforeInMinutes = event.beforeDuration / 60000
+                    val timeSpentAfterInMinutes = event.afterDuration / 60000
+                    val diff = timeSpentBeforeInMinutes - timeSpentAfterInMinutes
+
+                    sdTimeTrackingService.processUpdateRemainingTime(
+                        event.clientRef,
+                        event.supportLine,
+                        event.startDate,
+                        diff
+                    )
                 }
             }
         }
-    }
-
-    override fun processCalculateRemainingTime(event: EventData, remainingTimeInMinutes: Long): Long {
-        val timeSpentBeforeInMinutes = event.beforeDuration / 60000
-        val timeSpentAfterInMinutes = event.afterDuration / 60000
-
-        return remainingTimeInMinutes + timeSpentBeforeInMinutes - timeSpentAfterInMinutes
     }
 
     data class EventData(
