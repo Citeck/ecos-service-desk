@@ -21,12 +21,15 @@ class SdTimeTrackingService(
         private val log = KotlinLogging.logger {}
 
         const val TIME_TRACKING_SD_TYPE_ID = "ecos-time-tracking-sd-type"
+        const val ATT_REMAINING_TIME_FIRST_LINE_SUPPORT = "remainingTimeFirstLineSupport"
+        const val ATT_REMAINING_TIME_SECOND_LINE_SUPPORT = "remainingTimeSecondLineSupport"
+        const val ATT_REMAINING_TIME_THIRD_LINE_SUPPORT = "remainingTimeThirdLineSupport"
     }
 
     private val lineCounterMap = mapOf(
-        "first-line" to "remainingTimeFirstLineSupport",
-        "second-line" to "remainingTimeSecondLineSupport",
-        "third-line" to "remainingTimeThirdLineSupport",
+        "first-line" to ATT_REMAINING_TIME_FIRST_LINE_SUPPORT,
+        "second-line" to ATT_REMAINING_TIME_SECOND_LINE_SUPPORT,
+        "third-line" to ATT_REMAINING_TIME_THIRD_LINE_SUPPORT,
     )
 
     fun processUpdateRemainingTime(
@@ -35,10 +38,7 @@ class SdTimeTrackingService(
         timeTrackingDate: Instant,
         diff: Long
     ) {
-        val zoneId = ZoneId.systemDefault()
-        val startYearMonth = YearMonth.from(timeTrackingDate.atZone(zoneId))
-        val currentYearMonth = YearMonth.now(zoneId)
-        if (startYearMonth != currentYearMonth) {
+        if (!isCurrentMonthDate(timeTrackingDate)) {
             log.info { "Time counter doesn't update for client: ${clientRef}. Time spent not in the current month" }
             return
         }
@@ -49,7 +49,7 @@ class SdTimeTrackingService(
             val remainingTimeInMinutes = getRemainingTime(clientMappingRef, attRemainingTime)
             remainingTimeInMinutes?.let {
                 val newRemainingTimeInMinutes = remainingTimeInMinutes + diff
-                recordsService.mutate(
+                mutateRemainingTime(
                     clientMappingRef,
                     mapOf(attRemainingTime to newRemainingTimeInMinutes)
                 )
@@ -57,7 +57,14 @@ class SdTimeTrackingService(
         }
     }
 
-    private fun findClientMappingRef(clientRef: EntityRef): EntityRef? {
+    fun isCurrentMonthDate(date: Instant): Boolean {
+        val zoneId = ZoneId.systemDefault()
+        val nowMonth = YearMonth.now(zoneId)
+        val dateMonth = YearMonth.from(date.atZone(zoneId))
+        return dateMonth == nowMonth
+    }
+
+    fun findClientMappingRef(clientRef: EntityRef): EntityRef? {
         val clientMappingRef = recordsService.queryOne(
             RecordsQuery.create {
                 withSourceId(ResetRemainingTimeAndStartSlaJob.CLIENTS_MAPPING_SOURCE_ID)
@@ -72,7 +79,7 @@ class SdTimeTrackingService(
         return clientMappingRef
     }
 
-    private fun getAttRemainingTime(supportLine: String): String {
+    fun getAttRemainingTime(supportLine: String): String {
         return lineCounterMap[supportLine] ?: error("Support line $supportLine does not supported")
     }
 
@@ -83,5 +90,23 @@ class SdTimeTrackingService(
             return null
         }
         return remainingTime.asLong()
+    }
+
+    fun mutateRemainingTime(clientMappingRef: EntityRef, remainingTimeMap: Map<String, Long>) {
+        recordsService.mutate(
+            clientMappingRef,
+            remainingTimeMap
+        )
+    }
+
+    fun getRemainingTimeMap(clientMappingRef: EntityRef): Map<String, Long> {
+        return recordsService.getAtts(
+            clientMappingRef,
+            mapOf(
+                ATT_REMAINING_TIME_FIRST_LINE_SUPPORT to "$ATT_REMAINING_TIME_FIRST_LINE_SUPPORT?num",
+                ATT_REMAINING_TIME_SECOND_LINE_SUPPORT to "$ATT_REMAINING_TIME_SECOND_LINE_SUPPORT?num",
+                ATT_REMAINING_TIME_THIRD_LINE_SUPPORT to "$ATT_REMAINING_TIME_THIRD_LINE_SUPPORT?num"
+            )
+        ).getAtts().asMap(String::class.java, Long::class.java)
     }
 }
