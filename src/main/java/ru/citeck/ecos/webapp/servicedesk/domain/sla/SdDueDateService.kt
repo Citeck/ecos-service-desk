@@ -27,11 +27,11 @@ class SdDueDateService(
         private const val DEFAULT_SCHEDULE_ID = "DEFAULT"
     }
 
-    fun getDueDate(duration: Duration, record: EntityRef): Instant {
+    fun getDueDate(duration: Duration, record: EntityRef, fromCreated: Boolean): Instant {
 
         val sdAtts = recordsService.getAtts(record, SdRequestAtts::class.java)
         val priorityIsChanged = sdAtts.priorityHasBeenChanged
-        val startTime = if (priorityIsChanged) sdAtts.created else Instant.now()
+        val startTime = if (priorityIsChanged && fromCreated) sdAtts.created else Instant.now()
 
         val workingSchedule = getWorkingScheduleForClient(sdAtts.client)
 
