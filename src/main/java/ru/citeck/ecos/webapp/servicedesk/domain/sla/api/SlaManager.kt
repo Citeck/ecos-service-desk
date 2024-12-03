@@ -24,7 +24,7 @@ class SlaManager(
         private val log = KotlinLogging.logger {}
     }
 
-    fun getDueDates(sdRequest: EntityRef): SlaDueDates {
+    fun getDueDates(sdRequest: EntityRef, fromCreated: Boolean): SlaDueDates {
         if (sdRequest.isEmpty()) {
             error("Empty SD request not allowed")
         }
@@ -34,10 +34,10 @@ class SlaManager(
 
         val slaDurations = slaParametersProvider.get(sdAtts.client, priority)
 
-        val timeFirstReaction = dueDateService.getDueDate(slaDurations.timeFirstReaction, sdRequest)
-        val timeToResolve = dueDateService.getDueDate(slaDurations.timeResolve, sdRequest)
+        val timeFirstReaction = dueDateService.getDueDate(slaDurations.timeFirstReaction, sdRequest, fromCreated)
+        val timeToResolve = dueDateService.getDueDate(slaDurations.timeResolve, sdRequest, fromCreated)
 
-        val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose, sdRequest)
+        val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose, sdRequest, fromCreated)
 
         val timeToResolveFromPause = let {
             val sla2Duration = slaDurations.timeResolve
@@ -47,7 +47,7 @@ class SlaManager(
 
             val remainingDuration = sla2Duration - spentDuration
 
-            return@let dueDateService.getDueDate(remainingDuration, sdRequest)
+            return@let dueDateService.getDueDate(remainingDuration, sdRequest, fromCreated)
         }
         val notificationToExecutorTimeResolveFromPause = let {
             val notificationTime = timeToResolveFromPause.minus(
@@ -94,7 +94,11 @@ class SlaManager(
                 slaDurations.notificationToInitiatorCloseReminder.toJavaDuration()
             ),
             timeToAutoClose = timeToAutoClose,
-            timeToSendFirstLineFromClarify = dueDateService.getDueDate(slaDurations.timeToSendFirstLineFromClarify, sdRequest)
+            timeToSendFirstLineFromClarify = dueDateService.getDueDate(
+                slaDurations.timeToSendFirstLineFromClarify,
+                sdRequest,
+                fromCreated
+            )
         )
 
         log.debug { "SLA due dates for request $sdRequest, with atts $sdAtts: $dueDates" }

@@ -56,7 +56,7 @@ class PriorityChangeListener(
 
         recordsService.mutate(sdRequestEvent.ref, mapOf(PRIORITY_CHANGED_ATT to true))
 
-        val recordSla = slaManager.getDueDates(sdRequestEvent.ref)
+        val recordSla = slaManager.getDueDates(sdRequestEvent.ref, true)
 
         recordsService.mutate(
             sdRequestEvent.ref,
