@@ -162,7 +162,7 @@ class ResetRemainingTimeAndStartSlaJob(
             val record = records.next()
             val attsInstance = if (EntityRef::class.java.isAssignableFrom(recordType)) {
                 @Suppress("UNCHECKED_CAST")
-                record.getId() as T
+                record.getAtts() as T
             } else {
                 dtoSchemaReader.instantiateNotNull(recordType, record.getAtts())
             }
