@@ -24,7 +24,7 @@ class SlaManager(
         private val log = KotlinLogging.logger {}
     }
 
-    fun getDueDates(sdRequest: EntityRef, fromCreated: Boolean): SlaDueDates {
+    fun getDueDates(sdRequest: EntityRef, initialTime: Instant? = null): SlaDueDates {
         if (sdRequest.isEmpty()) {
             error("Empty SD request not allowed")
         }
@@ -34,10 +34,10 @@ class SlaManager(
 
         val slaDurations = slaParametersProvider.get(sdAtts.client, priority)
 
-        val timeFirstReaction = dueDateService.getDueDate(slaDurations.timeFirstReaction, sdRequest, fromCreated)
-        val timeToResolve = dueDateService.getDueDate(slaDurations.timeResolve, sdRequest, fromCreated)
+        val timeFirstReaction = dueDateService.getDueDate(slaDurations.timeFirstReaction, sdRequest, initialTime)
+        val timeToResolve = dueDateService.getDueDate(slaDurations.timeResolve, sdRequest, initialTime)
 
-        val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose, sdRequest, fromCreated)
+        val timeToAutoClose = dueDateService.getDueDate(slaDurations.timeToAutoClose, sdRequest, initialTime)
 
         val timeToResolveFromPause = let {
             val sla2Duration = slaDurations.timeResolve
@@ -47,7 +47,7 @@ class SlaManager(
 
             val remainingDuration = sla2Duration - spentDuration
 
-            return@let dueDateService.getDueDate(remainingDuration, sdRequest, fromCreated)
+            return@let dueDateService.getDueDate(remainingDuration, sdRequest, initialTime)
         }
         val notificationToExecutorTimeResolveFromPause = let {
             val notificationTime = timeToResolveFromPause.minus(
@@ -95,9 +95,7 @@ class SlaManager(
             ),
             timeToAutoClose = timeToAutoClose,
             timeToSendFirstLineFromClarify = dueDateService.getDueDate(
-                slaDurations.timeToSendFirstLineFromClarify,
-                sdRequest,
-                fromCreated
+                slaDurations.timeToSendFirstLineFromClarify, sdRequest, initialTime
             )
         )
 

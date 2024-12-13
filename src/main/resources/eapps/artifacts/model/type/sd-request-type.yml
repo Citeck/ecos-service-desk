@@ -636,6 +636,7 @@ model:
         typeRef: emodel/type@ecos-time-tracking-type
         child: true
       multiple: true
+    # Deprecated
     - id: priorityHasBeenChanged
       name:
         ru: Приоритет был изменён

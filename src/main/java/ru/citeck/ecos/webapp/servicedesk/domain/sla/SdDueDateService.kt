@@ -27,19 +27,17 @@ class SdDueDateService(
         private const val DEFAULT_SCHEDULE_ID = "DEFAULT"
     }
 
-    fun getDueDate(duration: Duration, record: EntityRef, fromCreated: Boolean): Instant {
-
+    fun getDueDate(duration: Duration, record: EntityRef, initialTime: Instant?): Instant {
+        val initialTime = initialTime ?: Instant.now()
         val sdAtts = recordsService.getAtts(record, SdRequestAtts::class.java)
-        val priorityIsChanged = sdAtts.priorityHasBeenChanged
-        val startTime = if (priorityIsChanged && fromCreated) sdAtts.created else Instant.now()
 
         val workingSchedule = getWorkingScheduleForClient(sdAtts.client)
 
         // negative durations will work only with ecos-model 2.26.2+
         val result = workingSchedule
-            .addWorkingTime(startTime, duration.toJavaDuration())
+            .addWorkingTime(initialTime, duration.toJavaDuration())
 
-        log.debug { "Due date for from=$startTime, duration=$duration, result=$result" }
+        log.debug { "Due date for from=$initialTime, duration=$duration, result=$result" }
 
         return result
     }
@@ -69,9 +67,6 @@ class SdDueDateService(
     }
 
     private data class SdRequestAtts(
-        @AttName("_created")
-        val created: Instant,
-        val client: EntityRef,
-        val priorityHasBeenChanged: Boolean
+        val client: EntityRef
     )
 }

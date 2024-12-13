@@ -33,7 +33,7 @@ class SdSlaParamsRecords(
     override fun queryRecords(recsQuery: RecordsQuery): Any? {
         val record = recsQuery.getQuery(SlaQuery::class.java).record
 
-        val dueDate = slaManager.getDueDates(record, false)
+        val dueDate = slaManager.getDueDates(record)
 
         val result = RecsQueryRes<SlaDueDates>()
         result.setRecords(listOf(dueDate))
