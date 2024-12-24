@@ -1,0 +1,189 @@
+{
+  "id": "e76a368f-4e09-4d95-a7b1-106420147d8b",
+  "type": "LEFT_MENU",
+  "authorities": [
+    "GROUP_EVERYONE"
+  ],
+  "version": 1,
+  "workspace": "service-desk-workspace",
+  "subMenu": {
+    "left": {
+      "config": {},
+      "items": [
+        {
+          "id": "tasks",
+          "label": {
+            "ru": "Задачи",
+            "en": "Tasks"
+          },
+          "icon": "",
+          "hidden": false,
+          "type": "INCLUDE_MENU",
+          "config": {
+            "menuRef": "uiserv/menu@default-tasks"
+          },
+          "action": {
+            "type": "",
+            "config": {}
+          },
+          "items": [],
+          "allowedFor": []
+        },
+        {
+          "id": "sections",
+          "label": {
+            "ru": "Разделы",
+            "en": "Sections"
+          },
+          "icon": "",
+          "hidden": false,
+          "type": "SECTION",
+          "config": {},
+          "action": {
+            "type": "",
+            "config": {}
+          },
+          "items": [
+            {
+              "id": "8859c7c9-205e-46cf-9670-3783b0eb2936",
+              "label": {
+                "en": "Все открытые заявки"
+              },
+              "icon": "ui/icon@i-leftmenu-completed-tasks",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@open-requests-service-desk-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "738d081b-3796-44a5-9561-5842355d2110",
+              "label": {
+                "en": "В работе на 1-й линии ТП"
+              },
+              "icon": "ui/icon@i-leftmenu-completed-tasks",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@support-first-line-working-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "b3ccd757-bab3-4ee9-a0bd-69d4dfc94e41",
+              "label": {
+                "en": "В работе на 2-й линии ТП"
+              },
+              "icon": "ui/icon@i-leftmenu-completed-tasks",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@support-second-line-working-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "997a7f08-5119-44c5-933b-b27cfa76364a",
+              "label": {
+                "en": "В работе на 3-й линии ТП"
+              },
+              "icon": "ui/icon@i-leftmenu-completed-tasks",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@support-third-line-working-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "4727bb93-139b-4cad-80fb-d7b106b32db7",
+              "label": {
+                "en": "Все заявки"
+              },
+              "icon": "ui/icon@i-leftmenu-completed-tasks",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@all-requests-service-desk-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "301b50db-8935-49eb-89bb-20e1325eb0e1",
+              "label": {
+                "en": "Учёт времени SD"
+              },
+              "icon": "ui/icon@i-leftmenu-personal-documents",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@ecos-sd-time-tracking-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            }
+          ],
+          "allowedFor": []
+        }
+      ]
+    },
+    "create": {
+      "config": {},
+      "items": [
+        {
+          "id": "create-123",
+          "label": {
+            "ru": "Разделы",
+            "en": "Sections"
+          },
+          "icon": "",
+          "hidden": false,
+          "type": "CREATE_IN_SECTION",
+          "config": {
+            "sectionId": "sections"
+          },
+          "action": {
+            "type": "",
+            "config": {}
+          },
+          "items": [],
+          "allowedFor": []
+        }
+      ]
+    },
+    "user": {
+      "config": {},
+      "items": []
+    }
+  }
+}
