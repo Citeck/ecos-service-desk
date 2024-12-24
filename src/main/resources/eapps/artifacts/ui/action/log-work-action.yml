@@ -5,8 +5,7 @@ name:
   en: Log work
 type: create
 config:
-  typeRef: emodel/type@ecos-time-tracking-type
-  formId: uiserv/form@ecos-time-tracking-form
+  typeRef: emodel/type@ecos-time-tracking-sd-type
   attributes:
     _parent: ${?id}
     _parentAtt: time-trackable:timeTracking

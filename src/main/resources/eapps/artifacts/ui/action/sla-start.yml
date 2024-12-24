@@ -1,0 +1,44 @@
+---
+id: sla-start
+name:
+  ru: Возобновить SLA
+  en: Start SLA
+type: mutate
+confirm:
+  title:
+    ru: Возобновить SLA
+    en: Start SLA
+config:
+  record:
+    id: service-desk/sla-start@
+    attributes:
+      recordRef: ${?id}
+features:
+  execForQuery: false
+  execForRecord: true
+  execForRecords: true
+predicate:
+  t: and
+  val:
+    - t: eq
+      att: slaStopped?bool!
+      val: true
+    - t: not-eq
+      att: _status?str
+      val: request-clarification
+    - t: not-eq
+      att: _status?str
+      val: request-hold
+    - t: not-eq
+      att: _status?str
+      val: request-closes
+    - t: or
+      val:
+        - t: eq
+          att: _roles.isCurrentUserMemberOf.tech-role?bool
+          val: true
+        - t: eq
+          att: _roles.isCurrentUserMemberOf.lead-tech-role?bool
+          val: true
+
+

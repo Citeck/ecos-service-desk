@@ -8,3 +8,9 @@ ecos:
       keys:
         application:
           location: classpath:ecos/x509/keys/application.key
+
+service-desk:
+  job:
+    time-tracking:
+      resetRemainingTimeAndStartSla:
+        cron: '0 0 0 1 * *'

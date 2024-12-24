@@ -18,6 +18,7 @@ actions:
   - uiserv/action@return-to-work-from-close
   - uiserv/action@tasks-actions
   - uiserv/action@log-work-action
+  - uiserv/action@sla-start
   - uiserv/action@create-cr
 associations:
   - id: webLinks
@@ -608,6 +609,11 @@ model:
         ru: SLA 2 потраченное время
         en: SLA 2 spent time
       type: NUMBER
+    - id: slaStopped
+      name:
+        ru: SLA остановлен
+        en: SLA stopped
+      type: BOOLEAN
     - id: additionalParticipant
       name:
         ru: Доп. участник
@@ -629,8 +635,9 @@ model:
       type: ASSOC
       config:
         typeRef: emodel/type@ecos-time-tracking-type
-        child: false
+        child: true
       multiple: true
+    # Deprecated
     - id: priorityHasBeenChanged
       name:
         ru: Приоритет был изменён

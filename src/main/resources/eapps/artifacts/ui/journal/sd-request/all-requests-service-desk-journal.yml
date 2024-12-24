@@ -25,6 +25,13 @@ columns:
           medium: '#FFC300'
           high: '#FF5733'
           urgent: '#C70039'
+  - id: sla2Duration
+    name:
+      ru: SLA2
+      en: SLA2
+    searchable: false
+    searchableByText: false
+    sortable: false
   - id: _status
     name:
       ru: Статус
@@ -105,3 +112,4 @@ columns:
       ru: Линия закрытия
       en: Closing line
     type: NUMBER
+

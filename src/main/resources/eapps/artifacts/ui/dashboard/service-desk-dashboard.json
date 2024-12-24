@@ -1,5 +1,6 @@
 {
   "id": "c5dcfede-bfe0-4e89-a829-99e87bc8a7a7",
+  "name": null,
   "typeRef": "emodel/type@sd-request-type",
   "appliedToRef": "",
   "authority": null,
@@ -148,6 +149,25 @@
         {
           "name": "properties",
           "label": "dashboard-settings.widget.properties",
+          "dndId": "3239cc91-9049-4122-af64-a45811f80e16",
+          "id": "382fccad-ddca-479a-8714-d0fe23c4fd51",
+          "props": {
+            "id": "382fccad-ddca-479a-8714-d0fe23c4fd51",
+            "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {},
+              "formId": "uiserv/form@sd-request-remaining-time-widget-form",
+              "titleAsFormName": true
+            }
+          },
+          "description": {
+            "ru": "Основное",
+            "en": "Main"
+          }
+        },
+        {
+          "name": "properties",
+          "label": "dashboard-settings.widget.properties",
           "dndId": "074f5da9-0e45-456b-941e-e47e7c5a9b73",
           "id": "27c7b7da-9856-406a-a600-54751e21c49b",
           "props": {
@@ -271,6 +291,7 @@
                 "4b84d125-5b84-49d5-b1cc-46b1257f5b19",
                 "adafd908-9ac5-4d0e-80f0-8592db978a4f",
                 "1719d424-3ea6-4e82-beb9-69e2950dd88c",
+                "382fccad-ddca-479a-8714-d0fe23c4fd51",
                 "27c7b7da-9856-406a-a600-54751e21c49b",
                 "c6b6d37b-04f2-4a37-a322-4d9084f0782f"
               ],
