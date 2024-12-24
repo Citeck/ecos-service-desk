@@ -13,6 +13,7 @@ import ru.citeck.ecos.records3.record.dao.query.dto.query.SortBy
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.entity.toEntityRef
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaManager
+import java.time.Instant
 
 @Component
 class PriorityChangeListener(
@@ -21,7 +22,6 @@ class PriorityChangeListener(
     private val recordsService: RecordsService
 ) {
     companion object {
-        private const val PRIORITY_CHANGED_ATT = "priorityHasBeenChanged"
         private const val SLA_1_DUE_DATE_ATT = "sla_1_due_date"
         private const val SLA_2_DUE_DATE_ATT = "sla_2_due_date"
         private const val BPMN_PROC_SOURCE_ID = "eproc/bpmn-proc"
@@ -54,9 +54,9 @@ class PriorityChangeListener(
             return
         }
 
-        recordsService.mutate(sdRequestEvent.ref, mapOf(PRIORITY_CHANGED_ATT to true))
-
-        val recordSla = slaManager.getDueDates(sdRequestEvent.ref)
+        // TODO: in current implementation its work normal until a long time has passed since the
+        //  date of creation of the sd-request
+        val recordSla = slaManager.getDueDates(sdRequestEvent.ref, sdRequestEvent.created)
 
         recordsService.mutate(
             sdRequestEvent.ref,
@@ -128,7 +128,9 @@ private data class EventData(
     @AttName("record?id")
     val ref: EntityRef,
     @AttName("record.priority?str")
-    val priority: String
+    val priority: String,
+    @AttName("record._created")
+    val created: Instant
 )
 
 private data class TimerAtts(

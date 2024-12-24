@@ -19,6 +19,9 @@ import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.task.scheduler.EcosTaskSchedulerApi
 import ru.citeck.ecos.webapp.lib.lock.EcosAppLockService
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.records.SlaStartActionRecordsDao
+import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service.SdTimeTrackingService.Companion.ATT_REMAINING_TIME_FIRST_LINE_SUPPORT
+import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service.SdTimeTrackingService.Companion.ATT_REMAINING_TIME_SECOND_LINE_SUPPORT
+import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service.SdTimeTrackingService.Companion.ATT_REMAINING_TIME_THIRD_LINE_SUPPORT
 
 @Component
 class ResetRemainingTimeAndStartSlaJob(
@@ -38,10 +41,6 @@ class ResetRemainingTimeAndStartSlaJob(
         private const val ATT_TIME_LIMIT_FIRST_LINE_SUPPORT = "timeLimitFirstLineSupport"
         private const val ATT_TIME_LIMIT_SECOND_LINE_SUPPORT = "timeLimitSecondLineSupport"
         private const val ATT_TIME_LIMIT_THIRD_LINE_SUPPORT = "timeLimitThirdLineSupport"
-
-        private const val ATT_REMAINING_TIME_FIRST_LINE_SUPPORT = "remainingTimeFirstLineSupport"
-        private const val ATT_REMAINING_TIME_SECOND_LINE_SUPPORT = "remainingTimeSecondLineSupport"
-        private const val ATT_REMAINING_TIME_THIRD_LINE_SUPPORT = "remainingTimeThirdLineSupport"
     }
 
     @Value("\${service-desk.job.time-tracking.resetRemainingTimeAndStartSla.cron}")
