@@ -1,9 +1,11 @@
 package ru.citeck.ecos.webapp.servicedesk.domain.sla.listener
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.context.lib.auth.AuthContext
 import ru.citeck.ecos.events2.EventsService
 import ru.citeck.ecos.events2.type.RecordChangedEvent
+import ru.citeck.ecos.records2.RecordConstants
 import ru.citeck.ecos.records2.predicate.model.Predicates
 import ru.citeck.ecos.records3.RecordsService
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
@@ -12,6 +14,7 @@ import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
 import ru.citeck.ecos.records3.record.dao.query.dto.query.SortBy
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.entity.toEntityRef
+import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaDueDates
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaManager
 import java.time.Instant
 
@@ -26,6 +29,8 @@ class PriorityChangeListener(
         private const val SLA_2_DUE_DATE_ATT = "sla_2_due_date"
         private const val BPMN_PROC_SOURCE_ID = "eproc/bpmn-proc"
         private const val BPMN_JOB_SOURCE_ID = "eproc/bpmn-job"
+
+        private val log = KotlinLogging.logger {}
     }
 
     init {
@@ -54,35 +59,41 @@ class PriorityChangeListener(
             return
         }
 
-        // TODO: in current implementation its work normal until a long time has passed since the
-        //  date of creation of the sd-request
-        val recordSla = slaManager.getDueDates(sdRequestEvent.ref, sdRequestEvent.created)
+        val dueDateForSla = slaManager.getDueDates(sdRequestEvent.ref, sdRequestEvent.created)
 
-        recordsService.mutate(
-            sdRequestEvent.ref,
-            mapOf(
-                SLA_1_DUE_DATE_ATT to recordSla.timeFirstReaction,
-                SLA_2_DUE_DATE_ATT to recordSla.timeToResolve
-            )
+        val updatedSla = mapOf(
+            SLA_1_DUE_DATE_ATT to dueDateForSla.timeFirstReaction,
+            SLA_2_DUE_DATE_ATT to dueDateForSla.timeToResolve
         )
+        log.info { "Update SLA due dates for ${sdRequestEvent.ref} to $updatedSla" }
+        recordsService.mutate(sdRequestEvent.ref, updatedSla)
 
-        val timersAtts = sdProcesses.getTimerAtts()
+        sdProcesses.getTimerAtts().forEach { foundTimer ->
+            val timerCreatedAt = foundTimer.created
+            val dueDatesForTime = slaManager.getDueDates(sdRequestEvent.ref, timerCreatedAt)
 
-        // It's important to keep Timers IDs in sync with the BPMN sd-process.bpmn.xml
-        val timersIdToNewDueDates = mapOf(
-            "Event_1oke406" to recordSla.notificationToSupervisorTimeResolve,
-            "Event_0mvrxmh" to recordSla.notificationToExecutorTimeResolve,
-            "Event_0j6gdz4" to recordSla.timeToSendFirstLineFromClarify,
-            "Event_0td1d3a" to recordSla.notificationToInitiatorCloseReminder,
-            "Event_0mgqtus" to recordSla.timeToAutoClose,
-            "Event_1q9mnfb" to recordSla.notificationToSupervisorTimeReaction,
-            "Event_0zz32r2" to recordSla.notificationToExecutorTimeReaction
-        )
+            val newDueDate = dueDatesForTime.getSlaForTimerId(foundTimer.activityId)
 
-        for ((timerActivityId, newDueDate) in timersIdToNewDueDates) {
-            timersAtts.find { it.activityId == timerActivityId }?.let { timerRef ->
-                recordsService.mutate(timerRef.ref, mapOf("dueDate" to newDueDate))
+            log.info {
+                "Update SD ${sdRequestEvent.ref} timer ${foundTimer.activityId} " +
+                        "due date from ${foundTimer.dueDate} to $newDueDate"
             }
+
+            recordsService.mutate(foundTimer.ref, mapOf("dueDate" to newDueDate))
+        }
+    }
+
+    // It's important to keep Timers IDs in sync with the BPMN sd-process.bpmn.xml
+    private fun SlaDueDates.getSlaForTimerId(timerId: String): Instant? {
+        return when (timerId) {
+            "Event_1oke406" -> notificationToSupervisorTimeResolve
+            "Event_0mvrxmh" -> notificationToExecutorTimeResolve
+            "Event_0j6gdz4" -> timeToSendFirstLineFromClarify
+            "Event_0td1d3a" -> notificationToInitiatorCloseReminder
+            "Event_0mgqtus" -> timeToAutoClose
+            "Event_1q9mnfb" -> notificationToSupervisorTimeReaction
+            "Event_0zz32r2" -> notificationToExecutorTimeReaction
+            else -> null
         }
     }
 
@@ -138,5 +149,11 @@ private data class TimerAtts(
     val ref: EntityRef,
 
     @AttName("jobDefinition.activityId")
-    val activityId: String
+    val activityId: String,
+
+    @AttName(RecordConstants.ATT_CREATED)
+    val created: Instant,
+
+    @AttName("dueDate")
+    val dueDate: Instant
 )
