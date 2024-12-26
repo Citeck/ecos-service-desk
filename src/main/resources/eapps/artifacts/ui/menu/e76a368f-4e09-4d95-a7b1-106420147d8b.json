@@ -53,7 +53,8 @@
               "hidden": false,
               "type": "JOURNAL",
               "config": {
-                "recordRef": "uiserv/journal@open-requests-service-desk-journal"
+                "recordRef": "uiserv/journal@open-requests-service-desk-journal",
+                "displayCount": true
               },
               "action": {
                 "type": "",
@@ -71,7 +72,8 @@
               "hidden": false,
               "type": "JOURNAL",
               "config": {
-                "recordRef": "uiserv/journal@support-first-line-working-journal"
+                "recordRef": "uiserv/journal@support-first-line-working-journal",
+                "displayCount": true
               },
               "action": {
                 "type": "",
@@ -89,7 +91,8 @@
               "hidden": false,
               "type": "JOURNAL",
               "config": {
-                "recordRef": "uiserv/journal@support-second-line-working-journal"
+                "recordRef": "uiserv/journal@support-second-line-working-journal",
+                "displayCount": true
               },
               "action": {
                 "type": "",
@@ -107,7 +110,8 @@
               "hidden": false,
               "type": "JOURNAL",
               "config": {
-                "recordRef": "uiserv/journal@support-third-line-working-journal"
+                "recordRef": "uiserv/journal@support-third-line-working-journal",
+                "displayCount": true
               },
               "action": {
                 "type": "",
@@ -125,7 +129,8 @@
               "hidden": false,
               "type": "JOURNAL",
               "config": {
-                "recordRef": "uiserv/journal@all-requests-service-desk-journal"
+                "recordRef": "uiserv/journal@all-requests-service-desk-journal",
+                "displayCount": true
               },
               "action": {
                 "type": "",
