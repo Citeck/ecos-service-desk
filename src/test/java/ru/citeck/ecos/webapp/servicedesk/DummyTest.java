@@ -1,4 +1,4 @@
-package ru.citeck.ecos.webapp.servicedesk.domain.sla;
+package ru.citeck.ecos.webapp.servicedesk;
 
 import org.junit.jupiter.api.Test;
 

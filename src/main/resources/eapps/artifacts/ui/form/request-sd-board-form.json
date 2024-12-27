@@ -94,30 +94,31 @@
         "optionalWhenDisabled": false,
         "type": "selectJournal",
         "input": true,
-        "queryData": ""
+        "queryData": "",
+        "source": {
+          "custom": {
+            "columns": []
+          },
+          "type": "journal",
+          "customValues": []
+        }
       },
       {
         "label": {
           "ru": "SLA 2",
           "en": "SLA 2"
         },
-        "key": "textField",
-        "inputMasks": [
-          {
-            "label": "",
-            "mask": ""
-          }
-        ],
+        "key": "sla2DurationHmr",
+        "disabled": true,
         "clearOnHide": false,
         "defaultValue": "",
-        "refreshOn": [
-          "sla"
-        ],
-        "calculateValue": "var durationISO8601 = _.get(data, 'sla.sla2Duration') || null;\n\nif(durationISO8601 !== null) {\n  var hours = moment.duration(durationISO8601)._data.hours;\n  var minutes = moment.duration(durationISO8601)._data.minutes;\n  \n  value = hours + \"H \" + minutes + \"M\";\n  \n}",
-        "allowCalculateOverride": true,
+        "refreshOn": [],
         "optionalWhenDisabled": false,
         "type": "textfield",
-        "input": true
+        "input": true,
+        "inputMasks": [
+          {}
+        ]
       },
       {
         "label": {
@@ -156,27 +157,7 @@
             "index": 0
           },
           {
-            "components": [
-              {
-                "source": {
-                  "type": "recordsQuery",
-                  "recordsQuery": {
-                    "query": "var rec = _.get(instance, \"parent.data.cardId\");\n\nvar value = {\n    sourceId: \"service-desk/sd-sla\",\n    query: {\n        record: rec\n    }\n};",
-                    "attributes": {
-                      "sla2Duration": "sla2Info.duration"
-                    },
-                    "isSingle": true
-                  },
-                  "forceLoad": false
-                },
-                "update": {
-                  "type": "once"
-                },
-                "key": "sla",
-                "type": "asyncData",
-                "input": true
-              }
-            ],
+            "components": [],
             "type": "column",
             "input": false,
             "key": "column",

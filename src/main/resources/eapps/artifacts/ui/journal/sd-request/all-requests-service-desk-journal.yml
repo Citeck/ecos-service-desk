@@ -25,10 +25,10 @@ columns:
           medium: '#FFC300'
           high: '#FF5733'
           urgent: '#C70039'
-  - id: sla2Duration
+  - id: sla2DurationHmr
     name:
-      ru: SLA2
-      en: SLA2
+      ru: SLA 2
+      en: SLA 2
     searchable: false
     searchableByText: false
     sortable: false

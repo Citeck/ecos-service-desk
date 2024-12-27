@@ -15,6 +15,7 @@ import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaState
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.SlaType
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaDueDates
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.SlaManager
+import ru.citeck.ecos.webapp.servicedesk.domain.sla.converter.toSlaHmr
 import ru.citeck.ecos.wkgsch.lib.schedule.WorkingSchedule
 import java.time.Instant
 import kotlin.time.Duration
@@ -108,7 +109,7 @@ class SdSlaRecords(
                 return when (sla1State) {
                     SlaState.CREATED -> SlaInfo(
                         state = SlaState.CREATED,
-                        duration = Duration.ZERO.toIsoString()
+                        Duration.ZERO
                     )
 
                     SlaState.RUNNING -> run {
@@ -122,7 +123,7 @@ class SdSlaRecords(
 
                         SlaInfo(
                             state = SlaState.RUNNING,
-                            duration = diffDuration.toIsoString()
+                            diffDuration
                         )
                     }
 
@@ -141,7 +142,7 @@ class SdSlaRecords(
 
                         SlaInfo(
                             state = SlaState.COMPLETE,
-                            duration = diffDuration.toIsoString()
+                            diffDuration
                         )
                     }
 
@@ -156,7 +157,7 @@ class SdSlaRecords(
                 return when (sla2State) {
                     SlaState.CREATED -> SlaInfo(
                         state = SlaState.CREATED,
-                        duration = Duration.ZERO.toIsoString()
+                        Duration.ZERO
                     )
 
                     SlaState.RUNNING -> run {
@@ -170,7 +171,7 @@ class SdSlaRecords(
 
                         SlaInfo(
                             state = SlaState.RUNNING,
-                            duration = diffDuration.toIsoString()
+                            diffDuration
                         )
                     }
 
@@ -189,7 +190,7 @@ class SdSlaRecords(
 
                         SlaInfo(
                             state = SlaState.COMPLETE,
-                            duration = diffDuration.toIsoString()
+                            diffDuration
                         )
                     }
 
@@ -209,7 +210,7 @@ class SdSlaRecords(
 
                         SlaInfo(
                             state = SlaState.PAUSE,
-                            duration = remainingDuration.toIsoString()
+                            remainingDuration
                         )
                     }
 
@@ -271,12 +272,16 @@ class SdSlaRecords(
 
     data class SlaInfo(
         val state: SlaState?,
-        // iso 8601 duration
-        val duration: String
+        val durationInstance: Duration,
     ) {
         companion object {
-            val UNDEFINED = SlaInfo(null, Duration.ZERO.toIsoString())
+            val UNDEFINED = SlaInfo(null, Duration.ZERO)
         }
+
+        // iso 8601 duration
+        val duration: String = durationInstance.toIsoString()
+
+        val durationHumanReadable: String = durationInstance.toSlaHmr()
     }
 }
 
