@@ -581,6 +581,11 @@ model:
         ru: Время старта SLA 1
         en: SLA 1 start time
       type: DATETIME
+    - id: sla_1_completed_duration_ms
+      name:
+        ru: SLA 1 завершённая продолжительность
+        en: SLA 1 completed duration
+      type: NUMBER
     - id: sla_2_state
       name:
         ru: Состояние SLA 2
@@ -607,6 +612,11 @@ model:
       name:
         ru: SLA 2 потраченное время
         en: SLA 2 spent time
+      type: NUMBER
+    - id: sla_2_completed_duration_ms
+      name:
+        ru: SLA 2 завершённая продолжительность
+        en: SLA 2 completed duration
       type: NUMBER
     - id: slaStopped
       name:

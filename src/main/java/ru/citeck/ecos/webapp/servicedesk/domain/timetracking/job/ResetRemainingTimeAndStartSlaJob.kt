@@ -18,6 +18,7 @@ import ru.citeck.ecos.webapp.api.constants.AppName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.task.scheduler.EcosTaskSchedulerApi
 import ru.citeck.ecos.webapp.lib.lock.EcosAppLockService
+import ru.citeck.ecos.webapp.servicedesk.domain.request.SD_SOURCE_ID
 import ru.citeck.ecos.webapp.servicedesk.domain.sla.api.records.SlaStartActionRecordsDao
 import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service.SdTimeTrackingService.Companion.ATT_REMAINING_TIME_FIRST_LINE_SUPPORT
 import ru.citeck.ecos.webapp.servicedesk.domain.timetracking.service.SdTimeTrackingService.Companion.ATT_REMAINING_TIME_SECOND_LINE_SUPPORT
@@ -35,7 +36,6 @@ class ResetRemainingTimeAndStartSlaJob(
 
         private const val MAX_ITERATION = 10_000
         const val CLIENTS_MAPPING_SOURCE_ID = "${AppName.EMODEL}/clients-mapping-type"
-        private const val SD_REQUESTS_SOURCE_ID = "${AppName.EMODEL}/sd-request-type"
         private const val ATT_CLIENT = "client"
 
         private const val ATT_TIME_LIMIT_FIRST_LINE_SUPPORT = "timeLimitFirstLineSupport"
@@ -107,7 +107,7 @@ class ResetRemainingTimeAndStartSlaJob(
     private fun startSlaForSdRequests(clientRef: EntityRef) {
         forEachRecord(
             RecordsQuery.create {
-                withSourceId(SD_REQUESTS_SOURCE_ID)
+                withSourceId(SD_SOURCE_ID)
                 withLanguage(PredicateService.LANGUAGE_PREDICATE)
                 withQuery(
                     Predicates.and(
