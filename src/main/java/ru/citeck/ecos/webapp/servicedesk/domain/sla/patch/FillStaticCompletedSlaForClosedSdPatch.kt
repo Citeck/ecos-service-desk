@@ -3,12 +3,14 @@ package ru.citeck.ecos.webapp.servicedesk.domain.sla.patch
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Component
 import ru.citeck.ecos.model.lib.status.constants.StatusConstants
+import ru.citeck.ecos.records2.RecordConstants
 import ru.citeck.ecos.records2.predicate.model.Predicates
 import ru.citeck.ecos.records3.RecordsService
 import ru.citeck.ecos.records3.record.atts.dto.RecordAtts
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.query.dto.query.QueryPage
 import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
+import ru.citeck.ecos.records3.record.dao.query.dto.query.SortBy
 import ru.citeck.ecos.webapp.api.constants.AppName
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.lib.patch.PatchExecutionState
@@ -21,7 +23,7 @@ import ru.citeck.ecos.webapp.servicedesk.domain.request.SD_SOURCE_ID
 import ru.citeck.ecos.webapp.servicedesk.domain.request.SD_STATUS_CLOSED
 
 @Component
-@EcosPatch("fill-static-completed-sla-for-closed-sd-patch-3", "2025-01-10T00:00:00Z")
+@EcosPatch("fill-static-completed-sla-for-closed-sd-patch-4", "2025-01-10T00:00:00Z")
 @EcosPatchDependsOnApps(AppName.EMODEL)
 class FillStaticCompletedSlaForClosedSdPatch(
     private val recordsService: RecordsService
@@ -44,6 +46,7 @@ class FillStaticCompletedSlaForClosedSdPatch(
                     withSkipCount(state.patchedElements.toInt())
                     withMaxItems(BATCH_SIZE)
                 })
+                withSortBy(SortBy(RecordConstants.ATT_CREATED, true))
                     .build()
             }
         ).getRecords()
