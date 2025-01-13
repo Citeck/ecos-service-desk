@@ -127,7 +127,7 @@
               }
             ],
             "content": {
-              "ru": "<style>\n    .sla_1_ext {\n        position: relative;\n        height: 30px;\n        width: 100%;\n        margin-top: 20px;\n        border-radius:40px ;\n    }\n    \n    .sla_1_int {\n        display: flex;\n        align-items: center;\n        line-height: 30px;\n        color: #b7b7b7;\n        position: relative;\n        z-index: 1;\n        margin-left: 10px;\n        margin-top: 3px;\n    }\n    \n    .background_block {\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        width: 110px;\n        border-radius: 40px;\n        z-index: 0;\n    }\n    \n    .sla_1_int .icon-small-close {\n        color: red;\n        margin-top: 3px;\n    }\n    \n</style>\n<div>\n    <div class=\"background_block\"></div>\n    <p class=\"sla_1_int\">\n        <strong class=\"sla_text_time\">\n            {{data.sla.sla2Info.durationHumanReadable}}\n        </strong>\n        <i class=\"icon ecos-icon icon-small-close\"></i>\n        <b id=\"sla_text_info\" title=\"Время первой реакции\">| Время первой реакции</b>\n    </p>\n</div>",
+              "ru": "<style>\n    .sla_1_ext {\n        position: relative;\n        height: 30px;\n        width: 100%;\n        margin-top: 20px;\n        border-radius:40px ;\n    }\n    \n    .sla_1_int {\n        display: flex;\n        align-items: center;\n        line-height: 30px;\n        color: #b7b7b7;\n        position: relative;\n        z-index: 1;\n        margin-left: 10px;\n        margin-top: 3px;\n    }\n    \n    .background_block {\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        width: 110px;\n        border-radius: 40px;\n        z-index: 0;\n    }\n    \n    .sla_1_int .icon-small-close {\n        color: red;\n        margin-top: 3px;\n    }\n    \n</style>\n<div>\n    <div class=\"background_block\"></div>\n    <p class=\"sla_1_int\">\n        <strong class=\"sla_text_time\">\n            {{data.sla.sla1Info.durationHumanReadable}}\n        </strong>\n        <i class=\"icon ecos-icon icon-small-close\"></i>\n        <b id=\"sla_text_info\" title=\"Время первой реакции\">| Время первой реакции</b>\n    </p>\n</div>",
               "en": "<style>\n    .sla_1_ext {\n        position: relative;\n        height: 30px;\n        width: 100%;\n        margin-top: 20px;\n        border-radius:40px ;\n    }\n    \n    .sla_1_int {\n        display: flex;\n        align-items: center;\n        line-height: 30px;\n        color: #b7b7b7;\n        position: relative;\n        z-index: 1;\n        margin-left: 10px;\n        margin-top: 3px;\n    }\n    \n    .background_block {\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        width: 110px;\n        border-radius: 40px;\n        z-index: 0;\n    }\n    \n    .sla_1_int .icon-small-close {\n        color: red;\n        margin-top: 3px;\n    }\n    \n</style>\n<div>\n    <div class=\"background_block\"></div>\n    <p class=\"sla_1_int\">\n        <strong class=\"sla_text_time\">\n            {{data.hidden}}\n        </strong>\n        <i class=\"icon ecos-icon icon-small-close\"></i>\n        <b id=\"sla_text_info\" title=\"First reaction time\">| First reaction time</b>\n    </p>\n</div>\n"
             },
             "refreshOnChange": true,
@@ -447,7 +447,8 @@
           }
         ]
       }
-    ]
+    ],
+    "formId": "sd-request-sla-formatter-form"
   },
   "attributes": {},
   "notExists": false
