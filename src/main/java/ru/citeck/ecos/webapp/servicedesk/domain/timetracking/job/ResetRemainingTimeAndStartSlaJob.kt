@@ -67,6 +67,7 @@ class ResetRemainingTimeAndStartSlaJob(
     }
 
     private fun sync() {
+        log.info { "ResetRemainingTimeAndStartSlaJob sync started" }
         forEachRecord(
             RecordsQuery.create {
                 withSourceId(CLIENTS_MAPPING_SOURCE_ID)
@@ -96,12 +97,14 @@ class ResetRemainingTimeAndStartSlaJob(
                 attsToMutate[ATT_REMAINING_TIME_THIRD_LINE_SUPPORT] = client.timeLimitThirdLineSupport * 60
             }
 
+            log.info { "Set remaining times $attsToMutate to ${client.clientMapping}" }
             recordsService.mutate(
                 client.clientMapping,
                 attsToMutate
             )
             startSlaForSdRequests(client.clientRef)
         }
+        log.info { "ResetRemainingTimeAndStartSlaJob sync finished" }
     }
 
     private fun startSlaForSdRequests(clientRef: EntityRef) {
