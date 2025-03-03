@@ -269,13 +269,7 @@
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
                 "input": true,
-                "queryData": "",
-                "source": {
-                  "custom": {
-                    "columns": []
-                  },
-                  "type": "journal"
-                }
+                "queryData": ""
               }
             ],
             "type": "column",
@@ -304,13 +298,7 @@
                 "refreshOn": [],
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
-                "input": true,
-                "source": {
-                  "custom": {
-                    "columns": []
-                  },
-                  "type": "journal"
-                }
+                "input": true
               }
             ]
           },
@@ -333,13 +321,7 @@
                 "optionalWhenDisabled": false,
                 "type": "selectJournal",
                 "input": true,
-                "queryData": "",
-                "source": {
-                  "custom": {
-                    "columns": []
-                  },
-                  "type": "journal"
-                }
+                "queryData": ""
               }
             ]
           }
@@ -411,13 +393,7 @@
           }
         ],
         "type": "selectJournal",
-        "input": true,
-        "source": {
-          "custom": {
-            "columns": []
-          },
-          "type": "journal"
-        }
+        "input": true
       },
       {
         "label": {
@@ -425,9 +401,7 @@
           "en": "Resolution"
         },
         "key": "resolution",
-        "validate": {
-          "custom": "if (value === \"knownError\" && data.linksInfo.links === null) {\n  valid = \"resolution_links_validation\";\n}"
-        },
+        "disabled": true,
         "clearOnHide": false,
         "dataSrc": "values",
         "data": {
@@ -454,16 +428,13 @@
             }
           ],
           "headers": [
-            {
-              "key": "",
-              "value": ""
-            }
+            {}
           ]
         },
         "searchEnabled": false,
         "defaultValue": "",
         "optionalWhenDisabled": false,
-        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst stat = _.get(data, \"statusInfo.status\");\nif(formMode !== \"CREATE\") {\n  show = stat !== \"request-first-line\";\n} else {\n  show = false;\n}",
+        "customConditional": "const formMode = _.get(instance, \"options.formMode\");\nconst stat = _.get(data, \"statusInfo.status\");\nif(formMode !== \"CREATE\") {\n  show = stat === \"request-closes\" || stat === \"request-approve\";\n} else {\n  show = false;\n}",
         "type": "ecosSelect",
         "input": true
       },
@@ -633,31 +604,6 @@
                   "type": "once"
                 },
                 "key": "statusInfo",
-                "type": "asyncData",
-                "input": true
-              },
-              {
-                "label": "LinksInfo",
-                "source": {
-                  "type": "record",
-                  "forceLoad": true,
-                  "record": {
-                    "id": "{{recordId}}",
-                    "attributes": {
-                      "links": "webLinks"
-                    }
-                  }
-                },
-                "update": {
-                  "type": "once"
-                },
-                "refreshOn": [
-                  {
-                    "label": "resolution",
-                    "value": "resolution"
-                  }
-                ],
-                "key": "linksInfo",
                 "type": "asyncData",
                 "input": true
               },
