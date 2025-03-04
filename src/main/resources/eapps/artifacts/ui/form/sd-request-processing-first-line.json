@@ -15,52 +15,6 @@
     "components": [
       {
         "label": {
-          "ru": "Резолюция",
-          "en": "Resolution"
-        },
-        "key": "_ECM_resolution",
-        "validate": {
-          "required": true,
-          "custom": "if (value === \"knownError\" && data.linksInfo.links === null) {\n  valid = \"resolution_links_validation\";\n}"
-        },
-        "clearOnHide": false,
-        "dataSrc": "values",
-        "data": {
-          "values": [
-            {
-              "label": "resolution_done",
-              "value": "done"
-            },
-            {
-              "label": "resolution_notRelevant",
-              "value": "notRelevant"
-            },
-            {
-              "label": "resolution_duplicate",
-              "value": "duplicate"
-            },
-            {
-              "label": "resolution_notReproducible",
-              "value": "notReproducible"
-            },
-            {
-              "label": "resolution_knownError",
-              "value": "knownError"
-            }
-          ],
-          "headers": [
-            {}
-          ]
-        },
-        "searchEnabled": false,
-        "defaultValue": "",
-        "optionalWhenDisabled": false,
-        "customConditional": "const outcome = _.get(instance, \"options.outcome\");\nshow = outcome === \"closeRequest\" || outcome === \"toApprove\";",
-        "type": "ecosSelect",
-        "input": true
-      },
-      {
-        "label": {
           "ru": "Комментарий:",
           "en": "Comment:"
         },
@@ -203,33 +157,7 @@
         "key": "columns3",
         "columns": [
           {
-            "components": [
-              {
-                "label": "LinksInfo",
-                "source": {
-                  "type": "recordsScript",
-                  "forceLoad": true,
-                  "recordsScript": {
-                    "script": "value = Records.get(recordId).load('documentRef?id');",
-                    "attributes": {
-                      "links": "webLinks"
-                    }
-                  }
-                },
-                "update": {
-                  "type": "once"
-                },
-                "refreshOn": [
-                  {
-                    "label": "_ECM_resolution",
-                    "value": "_ECM_resolution"
-                  }
-                ],
-                "key": "linksInfo",
-                "type": "asyncData",
-                "input": true
-              }
-            ],
+            "components": [],
             "type": "column",
             "input": false,
             "key": "column",
