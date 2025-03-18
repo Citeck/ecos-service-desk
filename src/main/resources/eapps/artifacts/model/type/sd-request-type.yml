@@ -230,10 +230,17 @@ model:
         ru: Дата/Время остановки
         en: Stopping Date/Time
       type: DATETIME
+    # Deprecated
     - id: implementer
       name:
         ru: Исполнитель
         en: Implementer
+    - id: currentImplementers
+      name:
+        ru: Исполнитель
+        en: Implementer
+      type: AUTHORITY
+      multiple: true
     - id: webLinks
       name:
         ru: Ссылка
