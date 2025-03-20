@@ -99,8 +99,8 @@ columns:
       ru: Дата/Время остановки
       en: Stopping Date/Time
     type: DATETIME
-  - id: implementer
+  - id: currentImplementers
     name:
       ru: Исполнитель
       en: Implementer
-    type: TEXT
+    type: AUTHORITY
