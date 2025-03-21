@@ -100,7 +100,7 @@
         <bpmn:intermediateCatchEvent name="Эвент статус: Закрыто" id="Event_10fhoir" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент статус: Закрыто&quot;,&quot;en&quot;:&quot;Event-status: Closed&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-closes&quot;}">
             <bpmn:incoming >Flow_00tzpex</bpmn:incoming>
             <bpmn:outgoing >Flow_03y5nsj</bpmn:outgoing>
-            <bpmn:signalEventDefinition  signalRef="Signal_HgKO8YG" id="SignalEventDefinition_0f98qbx"/>
+            <bpmn:signalEventDefinition  signalRef="Signal_TluvMrC" id="SignalEventDefinition_0f98qbx"/>
         </bpmn:intermediateCatchEvent>
         <bpmn:scriptTask scriptFormat="javascript" name="Обнуление данных" id="Activity_0th9gn9" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Обнуление данных&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="document.att('firstReactionTimestamp', null);&#10;document.att('resolution', null);&#10;document.att('stoppingTimestamp', null);&#10;document.att('closedTimestamp', null);&#10;document.att('implThirdLineSupport', null);&#10;&#10;document.att(&quot;sla_1_state&quot;, &quot;CREATED&quot;);&#10;document.att(&quot;sla_1_start_time&quot;, null);&#10;document.att(&quot;sla_1_due_date&quot;, null);&#10;&#10;document.att(&quot;sla_2_state&quot;, &quot;CREATED&quot;);&#10;document.att(&quot;sla_2_start_time&quot;, null);&#10;document.att(&quot;sla_2_due_date&quot;, null);&#10;document.att(&quot;sla_2_pause_time&quot;, null);&#10;document.att(&quot;sla_2_spent_time&quot;, 0);&#10;document.att(&quot;sla_2_last_resume_time&quot;, null);&#10;&#10;document.att(&quot;sla_1_completed_duration_ms&quot;, null);&#10;document.att(&quot;sla_2_completed_duration_ms&quot;, null);&#10;&#10;document.save();">
             <bpmn:incoming >Flow_0ir273q</bpmn:incoming>
@@ -138,7 +138,7 @@
         <bpmn:subProcess triggeredByEvent="true" name="Обработка запуска SLA 2" id="Activity_0vhsfo8" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Обработка запуска SLA 2&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="SLA 2 Запуск" id="Event_0u6iw0e" ecos:documentation="{}" ecos:manualSignalName="sla-2-start" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Запуск&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing >Flow_1cxw9g5</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_QNdQtXd" id="SignalEventDefinition_1cyuvoy"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_9lWBFjj" id="SignalEventDefinition_1cyuvoy"/>
             </bpmn:startEvent>
             <bpmn:subProcess triggeredByEvent="false" name="" id="Activity_0orxly7" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_1biltdb</bpmn:incoming>
@@ -283,11 +283,11 @@
             </bpmn:scriptTask>
             <bpmn:boundaryEvent  cancelActivity="true" attachedToRef="Activity_0orxly7" name="SLA 2 Пауза" id="Event_1vei2oe" ecos:documentation="{}" ecos:manualSignalName="sla-2-pause" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Пауза&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing>Flow_0a2s7hv</bpmn:outgoing>
-                <bpmn:signalEventDefinition signalRef="Signal_TydNg6r" id="SignalEventDefinition_02887vd"/>
+                <bpmn:signalEventDefinition signalRef="Signal_xQqsHxc" id="SignalEventDefinition_02887vd"/>
             </bpmn:boundaryEvent>
             <bpmn:boundaryEvent  cancelActivity="true" attachedToRef="Activity_0orxly7" name="SLA 2 Завершение" id="Event_0er2bfv" ecos:documentation="{}" ecos:manualSignalName="sla-2-stop" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Завершение&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing>Flow_0nvky4d</bpmn:outgoing>
-                <bpmn:signalEventDefinition signalRef="Signal_EGClQ5f" id="SignalEventDefinition_1kero93"/>
+                <bpmn:signalEventDefinition signalRef="Signal_9kyA8g8" id="SignalEventDefinition_1kero93"/>
             </bpmn:boundaryEvent>
             <bpmn:exclusiveGateway default="Flow_1yn84o6" name="" id="Gateway_12i16x3" ecos:documentation="{}" ecos:name_ml="{}">
                 <bpmn:incoming >Flow_1cxw9g5</bpmn:incoming>
@@ -334,12 +334,12 @@
         <bpmn:intermediateThrowEvent name="SLA 2 Завершение" id="Event_03oygdv" ecos:documentation="{}" ecos:manualSignalName="sla-2-stop" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Завершение&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
             <bpmn:incoming >Flow_1e3qk4d</bpmn:incoming>
             <bpmn:outgoing >Flow_139do4u</bpmn:outgoing>
-            <bpmn:signalEventDefinition  signalRef="Signal_EGClQ5f" id="SignalEventDefinition_1byydkr"/>
+            <bpmn:signalEventDefinition  signalRef="Signal_9kyA8g8" id="SignalEventDefinition_1byydkr"/>
         </bpmn:intermediateThrowEvent>
         <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_1ia6z48" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: В работе на 1-й линии ТП" id="Event_1mfr21j" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: В работе на 1-й линии ТП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-first-line-work&quot;}">
                 <bpmn:outgoing >Flow_06zdhul</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_MixLIeI" id="SignalEventDefinition_0mbv4kx"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_xzC8HXU" id="SignalEventDefinition_0mbv4kx"/>
             </bpmn:startEvent>
             <bpmn:sendTask name="Ув. Инициатора о взятии в работу" id="Activity_05y1v0d" ecos:notificationCc="[]" ecos:notificationBcc="[]" ecos:notificationLang="ru" ecos:notificationFrom="${Config.getNotNull(&quot;app/service-desk$send-sd-email-from&quot;).asText()}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Ув. Инициатора о взятии в работу&quot;}" ecos:notificationCcExpression="[]" ecos:notificationTemplate="notifications/template@sd-take-to-work" ecos:notificationBccExpression="[]" ecos:notificationAdditionalMeta="{}" ecos:notificationTo="[&quot;initiator-role&quot;]" ecos:notificationSendCalendarEvent="false" ecos:documentation="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:notificationType="EMAIL_NOTIFICATION" ecos:notificationToExpression="[]">
                 <bpmn:incoming >Flow_1hy8i4t</bpmn:incoming>
@@ -436,7 +436,7 @@
         <bpmn:subProcess triggeredByEvent="true" name="В работе 2-линия" id="Activity_1wczbw9" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;В работе 2-линия&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: В работе на 2-й линии ТП" id="Event_03edsw7" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: В работе на 2-й линии ТП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-second-line-work&quot;}">
                 <bpmn:outgoing >Flow_11e9ec0</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_qZvHWqg" id="SignalEventDefinition_0bm4zqi"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_vIPZ2NC" id="SignalEventDefinition_0bm4zqi"/>
             </bpmn:startEvent>
             <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_0o9slan" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
                 <bpmn:incoming >Flow_0x3ele7</bpmn:incoming>
@@ -530,16 +530,16 @@
                     }</bpmn:script>
             </bpmn:scriptTask>
         </bpmn:subProcess>
-        <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_0w083oy" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+        <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_0w083oy" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: Передано 3-й линии ТП" id="Event_196253k" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: Передано 3-й линии ТП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-third-line&quot;}">
                 <bpmn:outgoing >Flow_0zh6uz7</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_h26Qm4n" id="SignalEventDefinition_0sm2tv3"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_nxw8Eym" id="SignalEventDefinition_0sm2tv3"/>
             </bpmn:startEvent>
             <bpmn:sendTask name="Ув. 3-й линии" id="Activity_1328tk0" ecos:notificationCc="[]" ecos:notificationBcc="[]" ecos:notificationLang="ru" ecos:notificationFrom="${Config.getNotNull(&quot;app/service-desk$send-sd-email-from&quot;).asText()}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Ув. 3-й линии&quot;}" ecos:notificationCcExpression="[]" ecos:notificationTemplate="notifications/template@sd-assign-task" ecos:notificationBccExpression="[]" ecos:notificationAdditionalMeta="{}" ecos:notificationTo="[&quot;impl-third-line-role&quot;]" ecos:notificationSendCalendarEvent="false" ecos:documentation="{}" ecos:notificationTitle="3" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:notificationType="EMAIL_NOTIFICATION" ecos:notificationBody="&lt;p&gt;3&lt;/p&gt;" ecos:notificationToExpression="[]">
                 <bpmn:incoming >Flow_1vahtwc</bpmn:incoming>
                 <bpmn:outgoing >Flow_1qe9c4i</bpmn:outgoing>
             </bpmn:sendTask>
-            <bpmn:userTask name="Задача взятия в работу" id="Activity_1lgwv6p" ecos:documentation="{}" ecos:manualRecipients="[]" ecos:laManualNotificationTemplateEnabled="false" ecos:outcomes="[{&quot;id&quot;:&quot;takeToWork&quot;,&quot;name&quot;:{&quot;ru&quot;:&quot;Взять в работу&quot;,&quot;en&quot;:&quot;Take to work&quot;},&quot;config&quot;:{&quot;theme&quot;:&quot;PRIMARY&quot;}}]" ecos:laNotificationAdditionalMeta="{}" ecos:laEnabled="false" ecos:name_ml="{&quot;ru&quot;:&quot;Задача взятия в работу&quot;,&quot;en&quot;:&quot;Task of taking to work&quot;}" ecos:formRef="uiserv/form@sd-request-take-to-work" ecos:laReportEnabled="false" ecos:manualRecipientsMode="false" ecos:priority="MEDIUM" ecos:assignees="[&quot;impl-third-line-role&quot;]">
+            <bpmn:userTask name="Задача взятия в работу" id="Activity_1lgwv6p" ecos:manualRecipients="[]" ecos:outcomes="[{&quot;id&quot;:&quot;takeToWork&quot;,&quot;name&quot;:{&quot;ru&quot;:&quot;Взять в работу&quot;,&quot;en&quot;:&quot;Take to work&quot;},&quot;config&quot;:{&quot;theme&quot;:&quot;PRIMARY&quot;}}]" ecos:laEnabled="false" ecos:name_ml="{&quot;ru&quot;:&quot;Задача взятия в работу&quot;,&quot;en&quot;:&quot;Task of taking to work&quot;}" ecos:formRef="uiserv/form@sd-request-take-to-work" ecos:manualRecipientsMode="false" ecos:documentation="{}" ecos:laManualNotificationTemplateEnabled="false" ecos:laNotificationAdditionalMeta="{}" ecos:laNotificationType="EMAIL_NOTIFICATION" ecos:laReportEnabled="false" ecos:priority="MEDIUM" ecos:assignees="[&quot;impl-third-line-role&quot;]">
                 <bpmn:incoming >Flow_1qe9c4i</bpmn:incoming>
                 <bpmn:outgoing >Flow_0ca7oz1</bpmn:outgoing>
             </bpmn:userTask>
@@ -589,13 +589,13 @@
                     throw new Error("Условия перехода не соблюдены. Предыдущий статус: "+ beforeStat);
                     }</bpmn:script>
             </bpmn:scriptTask>
-            <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_09t0e23" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
+            <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_09t0e23" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
                 <bpmn:incoming >Flow_17dspur</bpmn:incoming>
                 <bpmn:outgoing >Flow_01o7eso</bpmn:outgoing>
                 <bpmn:script>tasks.completeActiveTasks(execution);</bpmn:script>
             </bpmn:scriptTask>
-            <bpmn:sequenceFlow sourceRef="Gateway_0molh7x" targetRef="Gateway_1nbom6a" name="Задан исполнитель 3-й линии ТП" id="Flow_11rhbvg" ecos:name_ml="{&quot;ru&quot;:&quot;Задан исполнитель 3-й линии ТП&quot;}" ecos:conditionConfig="{&quot;fn&quot;:&quot;document.load(\&quot;implementerThirdLineSupport\&quot;) !== null;\n&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="SCRIPT"/>
-            <bpmn:task name="" id="Activity_1pihd9b" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:taskType="setStatus" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:status="request-third-line-work">
+            <bpmn:sequenceFlow sourceRef="Gateway_0molh7x" targetRef="Gateway_1nbom6a" name="Задан исполнитель 3-й линии ТП" id="Flow_11rhbvg" ecos:name_ml="{&quot;ru&quot;:&quot;Задан исполнитель 3-й линии ТП&quot;}" ecos:conditionConfig="{&quot;fn&quot;:&quot;document.load(\&quot;implementerThirdLineSupport\&quot;) !== null;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="SCRIPT"/>
+            <bpmn:task name="" id="Activity_1pihd9b" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:taskType="setStatus" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:status="request-third-line-work">
                 <bpmn:incoming >Flow_1x3y2h8</bpmn:incoming>
                 <bpmn:outgoing >Flow_1eac4bn</bpmn:outgoing>
             </bpmn:task>
@@ -622,7 +622,7 @@
         <bpmn:subProcess triggeredByEvent="true" name="В работе 3-я линия" id="Activity_0tviscz" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;В работе 3-я линия&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: В работе на 3-й линии ТП" id="Event_0bn7u2j" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: В работе на 3-й линии ТП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-third-line-work&quot;}">
                 <bpmn:outgoing >Flow_0xi0aud</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_nv4m2jA" id="SignalEventDefinition_0vouobj"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_oK9BSIu" id="SignalEventDefinition_0vouobj"/>
             </bpmn:startEvent>
             <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_0rv644c" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
                 <bpmn:incoming >Flow_0coum4j</bpmn:incoming>
@@ -682,7 +682,7 @@
             </bpmn:task>
             <bpmn:sequenceFlow sourceRef="Gateway_1thkp2k" targetRef="Activity_03muc8r" name="" id="Flow_0eh4c8a" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;Activity_1cedv42:toApprove&quot;}" ecos:conditionType="OUTCOME"/>
             <bpmn:sequenceFlow sourceRef="Event_0bn7u2j" targetRef="Activity_0l4h84z" name="" id="Flow_0xi0aud" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_0l4h84z" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;if(beforeStat  !== &quot;request-third-line&quot;) {&#10;  throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_0l4h84z" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;if(beforeStat  !== &quot;request-third-line&quot;) {&#10;  throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}">
                 <bpmn:incoming >Flow_0xi0aud</bpmn:incoming>
                 <bpmn:outgoing >Flow_0coum4j</bpmn:outgoing>
                 <bpmn:script>var beforeStat = event.get("before").asText();
@@ -714,14 +714,14 @@
         <bpmn:subProcess triggeredByEvent="true" name="Уточнение" id="Activity_10ytz2r" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Уточнение&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: На уточнении" id="Event_0xsln6t" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: На уточнении&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-clarification&quot;}">
                 <bpmn:outgoing >Flow_0bwog0p</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_SJrcsqx" id="SignalEventDefinition_1z0xsds"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_Ei2woTZ" id="SignalEventDefinition_1z0xsds"/>
             </bpmn:startEvent>
-            <bpmn:scriptTask scriptFormat="javascript" name="Заверщение активной задачи" id="Activity_1c9zo5l" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Заверщение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
+            <bpmn:scriptTask scriptFormat="javascript" name="Заверщение активной задачи" id="Activity_1c9zo5l" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Заверщение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
                 <bpmn:incoming >Flow_063p9je</bpmn:incoming>
                 <bpmn:outgoing >Flow_14iwcfz</bpmn:outgoing>
                 <bpmn:script>tasks.completeActiveTasks(execution);</bpmn:script>
             </bpmn:scriptTask>
-            <bpmn:subProcess triggeredByEvent="false" name="" id="Activity_0ol278f" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:subProcess triggeredByEvent="false" name="" id="Activity_0ol278f" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_0mymgch</bpmn:incoming>
                 <bpmn:outgoing >Flow_1oz8mnz</bpmn:outgoing>
                 <bpmn:startEvent isInterrupting="true" name="" id="Event_066s0wc" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
@@ -736,10 +736,10 @@
                     <bpmn:outgoing >Flow_0q16jse</bpmn:outgoing>
                     <bpmn:outgoing >Flow_12677rt</bpmn:outgoing>
                 </bpmn:exclusiveGateway>
-                <bpmn:intermediateCatchEvent name="В заявку добавлен комментарий от представителя заказчика" id="Event_0wuekqf" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;initiator&quot;:&quot;record.initiator.id&quot;,&quot;clientSupport&quot;:&quot;record._roles.assigneesOf.client-support[]&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;В заявку добавлен комментарий от представителя заказчика&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="COMMENT_CREATE" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;or&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;commentRecord._creator.id&quot;,&quot;val&quot;:&quot;{{initiator}}&quot;},{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{clientSupport}}&quot;}]}">
+                <bpmn:intermediateCatchEvent name="В заявку добавлен комментарий от представителя заказчика" id="Event_0wuekqf" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;initiator&quot;:&quot;record.initiator.id&quot;,&quot;clientSupport&quot;:&quot;record._roles.assigneesOf.client-support[]&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;В заявку добавлен комментарий от представителя заказчика&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="COMMENT_CREATE" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;or&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;commentRecord._creator.id&quot;,&quot;val&quot;:&quot;{{initiator}}&quot;},{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{clientSupport}}&quot;}]}">
                     <bpmn:incoming >Flow_0q16jse</bpmn:incoming>
                     <bpmn:outgoing >Flow_1806pgm</bpmn:outgoing>
-                    <bpmn:signalEventDefinition  signalRef="Signal_ZxI6P2w" id="SignalEventDefinition_0gwqd5n"/>
+                    <bpmn:signalEventDefinition  signalRef="Signal_SuYTam3" id="SignalEventDefinition_0gwqd5n"/>
                 </bpmn:intermediateCatchEvent>
                 <bpmn:exclusiveGateway name="" id="Gateway_1eztcj3" ecos:documentation="{}" ecos:name_ml="{}">
                     <bpmn:incoming >Flow_1pbmjv9</bpmn:incoming>
@@ -775,7 +775,7 @@
                 <bpmn:sequenceFlow sourceRef="Activity_0dsh5l7" targetRef="Gateway_1eztcj3" name="" id="Flow_1pbmjv9" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
                 <bpmn:sequenceFlow sourceRef="Gateway_1eztcj3" targetRef="Activity_1o97d7q" name="" id="Flow_1ahth3i" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
                 <bpmn:sequenceFlow sourceRef="Activity_1o97d7q" targetRef="Event_1bo2z8h" name="" id="Flow_16xoi3w" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-                <bpmn:userTask name="Уточнение данных" id="Activity_0dsh5l7" ecos:documentation="{}" ecos:manualRecipients="[]" ecos:laManualNotificationTemplateEnabled="false" ecos:outcomes="[{&quot;id&quot;:&quot;sent&quot;,&quot;name&quot;:{&quot;ru&quot;:&quot;Отправить&quot;},&quot;config&quot;:{&quot;theme&quot;:&quot;PRIMARY&quot;}}]" ecos:laNotificationAdditionalMeta="{}" ecos:laEnabled="false" ecos:name_ml="{&quot;ru&quot;:&quot;Уточнение данных&quot;}" ecos:formRef="uiserv/form@sd-request-clarification" ecos:laReportEnabled="false" ecos:manualRecipientsMode="false" ecos:priority="MEDIUM" ecos:assignees="[&quot;initiator-role&quot;]">
+                <bpmn:userTask name="Уточнение данных" id="Activity_0dsh5l7" ecos:manualRecipients="[]" ecos:outcomes="[{&quot;id&quot;:&quot;sent&quot;,&quot;name&quot;:{&quot;ru&quot;:&quot;Отправить&quot;},&quot;config&quot;:{&quot;theme&quot;:&quot;PRIMARY&quot;}}]" ecos:laEnabled="false" ecos:name_ml="{&quot;ru&quot;:&quot;Уточнение данных&quot;}" ecos:formRef="uiserv/form@sd-request-clarification" ecos:manualRecipientsMode="false" ecos:documentation="{}" ecos:laManualNotificationTemplateEnabled="false" ecos:laNotificationAdditionalMeta="{}" ecos:laNotificationType="EMAIL_NOTIFICATION" ecos:laReportEnabled="false" ecos:priority="MEDIUM" ecos:assignees="[&quot;initiator-role&quot;]">
                     <bpmn:incoming >Flow_12677rt</bpmn:incoming>
                     <bpmn:outgoing >Flow_1pbmjv9</bpmn:outgoing>
                 </bpmn:userTask>
@@ -786,7 +786,7 @@
             </bpmn:subProcess>
             <bpmn:sequenceFlow sourceRef="Activity_1c9zo5l" targetRef="Event_0k5fat1" name="" id="Flow_14iwcfz" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Event_0xsln6t" targetRef="Activity_11jvxin" name="" id="Flow_0bwog0p" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_11jvxin" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];&#10;var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;&#10;if (beforeStat.length === 0) {&#10;    throw new Error(&quot;Предыдущий статус не определен&quot;);&#10;}&#10;&#10;if (stats.indexOf(beforeStat) === -1) {&#10;    throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_11jvxin" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];&#10;var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;&#10;if (beforeStat.length === 0) {&#10;    throw new Error(&quot;Предыдущий статус не определен&quot;);&#10;}&#10;&#10;if (stats.indexOf(beforeStat) === -1) {&#10;    throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}">
                 <bpmn:incoming >Flow_0bwog0p</bpmn:incoming>
                 <bpmn:outgoing >Flow_19lov4t</bpmn:outgoing>
                 <bpmn:script>var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];
@@ -810,7 +810,7 @@
             </bpmn:boundaryEvent>
             <bpmn:sequenceFlow sourceRef="Event_0j6gdz4" targetRef="Activity_1gz2hue" name="Предельный срок уточнения" id="Flow_1s7nb3s" ecos:name_ml="{&quot;ru&quot;:&quot;Предельный срок уточнения&quot;}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Activity_04y90n0" targetRef="Activity_1c9zo5l" name="" id="Flow_063p9je" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Получение предельного срока уточнения" id="Activity_04y90n0" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Получение предельного срока уточнения&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var slaDueDates = Records.query({&#10;    sourceId: &quot;service-desk/sd-sla-params&quot;,&#10;    query: {&#10;        record: document.getRef()&#10;    }&#10;}, {&#10;    timeToSendFirstLineFromClarify: &quot;timeToSendFirstLineFromClarify&quot;&#10;});&#10;&#10;if (slaDueDates.records.length === 0) {&#10;  throw new Error(&quot;SLA параметры не найдены для: &quot; + document);&#10;}&#10;&#10;var timeToSendFirstLineFromClarify = slaDueDates.records[0].timeToSendFirstLineFromClarify&#10;&#10;if (timeToSendFirstLineFromClarify === null) {&#10;  throw new Error(&quot;SLA параметр timeToSendFirstLineFromClarify не найден&quot;);&#10;}&#10;&#10;execution.setVariable(&quot;timeToSendFirstLineFromClarify&quot;, timeToSendFirstLineFromClarify);">
+            <bpmn:scriptTask scriptFormat="javascript" name="Получение предельного срока уточнения" id="Activity_04y90n0" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Получение предельного срока уточнения&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var slaDueDates = Records.query({&#10;    sourceId: &quot;service-desk/sd-sla-params&quot;,&#10;    query: {&#10;        record: document.getRef()&#10;    }&#10;}, {&#10;    timeToSendFirstLineFromClarify: &quot;timeToSendFirstLineFromClarify&quot;&#10;});&#10;&#10;if (slaDueDates.records.length === 0) {&#10;  throw new Error(&quot;SLA параметры не найдены для: &quot; + document);&#10;}&#10;&#10;var timeToSendFirstLineFromClarify = slaDueDates.records[0].timeToSendFirstLineFromClarify&#10;&#10;if (timeToSendFirstLineFromClarify === null) {&#10;  throw new Error(&quot;SLA параметр timeToSendFirstLineFromClarify не найден&quot;);&#10;}&#10;&#10;execution.setVariable(&quot;timeToSendFirstLineFromClarify&quot;, timeToSendFirstLineFromClarify);">
                 <bpmn:incoming >Flow_19lov4t</bpmn:incoming>
                 <bpmn:outgoing >Flow_063p9je</bpmn:outgoing>
                 <bpmn:script>var slaDueDates = Records.query({
@@ -843,7 +843,7 @@
             <bpmn:intermediateThrowEvent name="SLA 2 Пауза" id="Event_0k5fat1" ecos:documentation="{}" ecos:manualSignalName="sla-2-pause" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Пауза&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:incoming >Flow_14iwcfz</bpmn:incoming>
                 <bpmn:outgoing >Flow_0mymgch</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_TydNg6r" id="SignalEventDefinition_0mkpxxn"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_xQqsHxc" id="SignalEventDefinition_0mkpxxn"/>
             </bpmn:intermediateThrowEvent>
             <bpmn:exclusiveGateway name="" id="Gateway_17xiodk" ecos:documentation="{}" ecos:name_ml="{}">
                 <bpmn:incoming >Flow_1oz8mnz</bpmn:incoming>
@@ -860,25 +860,25 @@
             <bpmn:intermediateThrowEvent name="SLA 2 Запуск" id="Event_09rduee" ecos:documentation="{}" ecos:manualSignalName="sla-2-start" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Запуск&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:incoming >Flow_1yfpd3m</bpmn:incoming>
                 <bpmn:outgoing >Flow_1bevzo3</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_QNdQtXd" id="SignalEventDefinition_139yk2x"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_9lWBFjj" id="SignalEventDefinition_139yk2x"/>
             </bpmn:intermediateThrowEvent>
             <bpmn:boundaryEvent  cancelActivity="true" attachedToRef="Activity_0ol278f" name="Изменен статус" id="Event_1cm4qnk" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Изменен статус&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing>Flow_1p4uqo6</bpmn:outgoing>
-                <bpmn:signalEventDefinition signalRef="Signal_zgmRcL8" id="SignalEventDefinition_1t6q4my"/>
+                <bpmn:signalEventDefinition signalRef="Signal_GH6wHmf" id="SignalEventDefinition_1t6q4my"/>
             </bpmn:boundaryEvent>
             <bpmn:sequenceFlow sourceRef="Event_1cm4qnk" targetRef="Gateway_17xiodk" name="" id="Flow_1p4uqo6" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
         </bpmn:subProcess>
-        <bpmn:subProcess triggeredByEvent="true" name="Подтверждение выполнения" id="Activity_1rmxd13" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Подтверждение выполнения&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+        <bpmn:subProcess triggeredByEvent="true" name="Подтверждение выполнения" id="Activity_1rmxd13" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Подтверждение выполнения&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: Подтверждение выполнения" id="Event_18ba0e1" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;resolution&quot;:&quot;record.resolution&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: Подтверждение выполнения&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-approve&quot;}">
                 <bpmn:outgoing >Flow_0ikpad8</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_vSrm60E" id="SignalEventDefinition_07cyv57"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_QaVSGcu" id="SignalEventDefinition_07cyv57"/>
             </bpmn:startEvent>
-            <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_1l7cv2x" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
+            <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_1l7cv2x" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
                 <bpmn:incoming >Flow_0ltrf5e</bpmn:incoming>
-                <bpmn:outgoing >Flow_1is3su4</bpmn:outgoing>
+                <bpmn:outgoing >Flow_0bbcun6</bpmn:outgoing>
                 <bpmn:script>tasks.completeActiveTasks(execution);</bpmn:script>
             </bpmn:scriptTask>
-            <bpmn:subProcess triggeredByEvent="false" name="" id="Activity_1itptv5" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:subProcess triggeredByEvent="false" name="" id="Activity_1itptv5" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_098rmtj</bpmn:incoming>
                 <bpmn:outgoing >Flow_050rov7</bpmn:outgoing>
                 <bpmn:startEvent isInterrupting="true" name="" id="Event_0bcl15q" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
@@ -899,7 +899,7 @@
                 <bpmn:intermediateCatchEvent name="В заявку добавлен комментарий от представителя заказчика" id="Event_1asx6g4" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;initiator&quot;:&quot;record.initiator.id&quot;,&quot;clientSupport&quot;:&quot;record._roles.assigneesOf.client-support[]&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;В заявку добавлен комментарий от представителя заказчика&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="COMMENT_CREATE" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;or&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;commentRecord._creator.id&quot;,&quot;val&quot;:&quot;{{initiator}}&quot;},{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{clientSupport}}&quot;}]}">
                     <bpmn:incoming >Flow_0eug3m2</bpmn:incoming>
                     <bpmn:outgoing >Flow_09it6zo</bpmn:outgoing>
-                    <bpmn:signalEventDefinition  signalRef="Signal_ZxI6P2w" id="SignalEventDefinition_1ld8qh5"/>
+                    <bpmn:signalEventDefinition  signalRef="Signal_SuYTam3" id="SignalEventDefinition_1ld8qh5"/>
                 </bpmn:intermediateCatchEvent>
                 <bpmn:sequenceFlow sourceRef="Gateway_0z179ob" targetRef="Activity_08e4sav" name="Внутренний заказчик" id="Flow_0ax87mc" ecos:name_ml="{&quot;ru&quot;:&quot;Внутренний заказчик&quot;}" ecos:conditionConfig="{&quot;fn&quot;:&quot;document.load(\&quot;petitionChannel\&quot;) === \&quot;internal\&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="SCRIPT"/>
                 <bpmn:userTask name="Подтверждение выполнения" id="Activity_08e4sav" ecos:manualRecipients="[]" ecos:outcomes="[{&quot;id&quot;:&quot;returnToWork&quot;,&quot;name&quot;:{&quot;ru&quot;:&quot;Вернуть в работу&quot;},&quot;config&quot;:{&quot;theme&quot;:&quot;PRIMARY&quot;}},{&quot;id&quot;:&quot;approved&quot;,&quot;name&quot;:{&quot;ru&quot;:&quot;Подтверждено&quot;},&quot;config&quot;:{&quot;theme&quot;:&quot;PRIMARY&quot;}}]" ecos:laEnabled="false" ecos:name_ml="{&quot;ru&quot;:&quot;Подтверждение выполнения&quot;}" ecos:formRef="uiserv/form@sd-request-approve" ecos:manualRecipientsMode="false" ecos:documentation="{}" ecos:laManualNotificationTemplateEnabled="false" ecos:laNotificationAdditionalMeta="{}" ecos:laNotificationType="EMAIL_NOTIFICATION" ecos:laReportEnabled="false" ecos:priority="MEDIUM" ecos:assignees="[&quot;initiator-role&quot;]">
@@ -980,10 +980,9 @@
                         }</bpmn:script>
                 </bpmn:scriptTask>
             </bpmn:subProcess>
-            <bpmn:sequenceFlow sourceRef="Activity_1l7cv2x" targetRef="Event_1g3dzb3" name="" id="Flow_1is3su4" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Event_18ba0e1" targetRef="Activity_0xrfu8j" name="" id="Flow_0ikpad8" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Activity_0xrfu8j" targetRef="Activity_12kyauz" name="" id="Flow_0sd8fqe" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_0xrfu8j" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];&#10;var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;&#10;if (beforeStat.length === 0) {&#10;    throw new Error(&quot;Предыдущий статус не определен&quot;);&#10;}&#10;&#10;if (stats.indexOf(beforeStat) === -1) {&#10;    throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}&#10;&#10;var resolution = event.get(&quot;resolution&quot;).asText();&#10;if (!resolution) {&#10;    throw new Error(&quot;Невозможно перевести заявку в статус 'Подтверждение выполнения' без указания резолюции&quot;);&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_0xrfu8j" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];&#10;var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;&#10;if (beforeStat.length === 0) {&#10;    throw new Error(&quot;Предыдущий статус не определен&quot;);&#10;}&#10;&#10;if (stats.indexOf(beforeStat) === -1) {&#10;    throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}&#10;&#10;var resolution = event.get(&quot;resolution&quot;).asText();&#10;if (!resolution) {&#10;    throw new Error(&quot;Невозможно перевести заявку в статус 'Подтверждение выполнения' без указания резолюции&quot;);&#10;}">
                 <bpmn:incoming >Flow_0ikpad8</bpmn:incoming>
                 <bpmn:outgoing >Flow_0sd8fqe</bpmn:outgoing>
                 <bpmn:script>var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];
@@ -1004,7 +1003,7 @@
                     }</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:sequenceFlow sourceRef="Activity_12kyauz" targetRef="Activity_1l7cv2x" name="" id="Flow_0ltrf5e" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Получение значений таймеров" id="Activity_12kyauz" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Получение значений таймеров&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var slaDueDates = Records.query({&#10;    sourceId: &quot;service-desk/sd-sla-params&quot;,&#10;    query: {&#10;        record: document.getRef()&#10;    }&#10;}, {&#10;    timeToAutoClose: &quot;timeToAutoClose&quot;,&#10;    notificationToInitiatorCloseReminder: &quot;notificationToInitiatorCloseReminder&quot;,&#10;});&#10;&#10;if (slaDueDates.records.length === 0) {&#10;    throw new Error(&quot;SLA параметры не найдены для: &quot; + document);&#10;}&#10;&#10;var timeToAutoClose = slaDueDates.records[0].timeToAutoClose&#10;var notificationToInitiatorCloseReminder = slaDueDates.records[0].notificationToInitiatorCloseReminder&#10;&#10;if (timeToAutoClose === null) {&#10;    throw new Error(&quot;SLA параметр timeToAutoClose не найден&quot;);&#10;}&#10;&#10;if (notificationToInitiatorCloseReminder === null) {&#10;    throw new Error(&quot;SLA параметр notificationToInitiatorCloseReminder не найден&quot;);&#10;}&#10;&#10;execution.setVariable(&quot;timeToAutoClose&quot;, timeToAutoClose);&#10;execution.setVariable(&quot;notificationToInitiatorCloseReminder&quot;, notificationToInitiatorCloseReminder);">
+            <bpmn:scriptTask scriptFormat="javascript" name="Получение значений таймеров" id="Activity_12kyauz" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Получение значений таймеров&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var slaDueDates = Records.query({&#10;    sourceId: &quot;service-desk/sd-sla-params&quot;,&#10;    query: {&#10;        record: document.getRef()&#10;    }&#10;}, {&#10;    timeToAutoClose: &quot;timeToAutoClose&quot;,&#10;    notificationToInitiatorCloseReminder: &quot;notificationToInitiatorCloseReminder&quot;,&#10;});&#10;&#10;if (slaDueDates.records.length === 0) {&#10;    throw new Error(&quot;SLA параметры не найдены для: &quot; + document);&#10;}&#10;&#10;var timeToAutoClose = slaDueDates.records[0].timeToAutoClose&#10;var notificationToInitiatorCloseReminder = slaDueDates.records[0].notificationToInitiatorCloseReminder&#10;&#10;if (timeToAutoClose === null) {&#10;    throw new Error(&quot;SLA параметр timeToAutoClose не найден&quot;);&#10;}&#10;&#10;if (notificationToInitiatorCloseReminder === null) {&#10;    throw new Error(&quot;SLA параметр notificationToInitiatorCloseReminder не найден&quot;);&#10;}&#10;&#10;execution.setVariable(&quot;timeToAutoClose&quot;, timeToAutoClose);&#10;execution.setVariable(&quot;notificationToInitiatorCloseReminder&quot;, notificationToInitiatorCloseReminder);">
                 <bpmn:incoming >Flow_0sd8fqe</bpmn:incoming>
                 <bpmn:outgoing >Flow_0ltrf5e</bpmn:outgoing>
                 <bpmn:script>var slaDueDates = Records.query({
@@ -1083,24 +1082,32 @@
             <bpmn:intermediateThrowEvent name="SLA 2 Запуск" id="Event_0epqqmo" ecos:documentation="{}" ecos:manualSignalName="sla-2-start" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Запуск&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:incoming >Flow_0vq32ym</bpmn:incoming>
                 <bpmn:outgoing >Flow_18uos1n</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_QNdQtXd" id="SignalEventDefinition_0ttpqwp"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_9lWBFjj" id="SignalEventDefinition_0ttpqwp"/>
             </bpmn:intermediateThrowEvent>
             <bpmn:sequenceFlow sourceRef="Event_1g3dzb3" targetRef="Activity_1itptv5" name="" id="Flow_098rmtj" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:intermediateThrowEvent name="SLA 2 Пауза" id="Event_1g3dzb3" ecos:documentation="{}" ecos:manualSignalName="sla-2-pause" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Пауза&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
-                <bpmn:incoming >Flow_1is3su4</bpmn:incoming>
+            <bpmn:intermediateThrowEvent name="SLA 2 Пауза" id="Event_1g3dzb3" ecos:documentation="{}" ecos:manualSignalName="sla-2-pause" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Пауза&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
+                <bpmn:incoming >Flow_1kb1s7j</bpmn:incoming>
                 <bpmn:outgoing >Flow_098rmtj</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_TydNg6r" id="SignalEventDefinition_09gujrm"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_xQqsHxc" id="SignalEventDefinition_09gujrm"/>
             </bpmn:intermediateThrowEvent>
             <bpmn:boundaryEvent  cancelActivity="true" attachedToRef="Activity_1itptv5" name="Изменен статус" id="Event_0lf21mf" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Изменен статус&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing>Flow_1gj03u7</bpmn:outgoing>
-                <bpmn:signalEventDefinition signalRef="Signal_zgmRcL8" id="SignalEventDefinition_0755rgi"/>
+                <bpmn:signalEventDefinition signalRef="Signal_GH6wHmf" id="SignalEventDefinition_0755rgi"/>
             </bpmn:boundaryEvent>
             <bpmn:sequenceFlow sourceRef="Event_0lf21mf" targetRef="Gateway_1is97aw" name="" id="Flow_1gj03u7" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+            <bpmn:scriptTask scriptFormat="javascript" name="Обнуление исполнителя" id="Activity_1qakaob" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Обнуление исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="document.att(&quot;currentImplementers&quot;, null); &#10;document.save();">
+                <bpmn:incoming >Flow_0bbcun6</bpmn:incoming>
+                <bpmn:outgoing >Flow_1kb1s7j</bpmn:outgoing>
+                <bpmn:script>document.att("currentImplementers", null);
+                    document.save();</bpmn:script>
+            </bpmn:scriptTask>
+            <bpmn:sequenceFlow sourceRef="Activity_1l7cv2x" targetRef="Activity_1qakaob" name="" id="Flow_0bbcun6" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+            <bpmn:sequenceFlow sourceRef="Activity_1qakaob" targetRef="Event_1g3dzb3" name="" id="Flow_1kb1s7j" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
         </bpmn:subProcess>
         <bpmn:subProcess triggeredByEvent="true" name="Эвент-статус: На удержании" id="Activity_1etfdiu" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: На удержании&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: На удержании" id="Event_0y2nffn" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: На удержании&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-hold&quot;}">
                 <bpmn:outgoing >Flow_1327ljn</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_6MDdcyg" id="SignalEventDefinition_1l8p08k"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_zunUO1V" id="SignalEventDefinition_1l8p08k"/>
             </bpmn:startEvent>
             <bpmn:sendTask name="Ув. Инициатора об удержании завки" id="Activity_1lxnmvq" ecos:notificationCc="[]" ecos:notificationBcc="[]" ecos:notificationLang="ru" ecos:notificationFrom="${Config.getNotNull(&quot;app/service-desk$send-sd-email-from&quot;).asText()}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Ув. Инициатора об удержании завки&quot;}" ecos:notificationCcExpression="[]" ecos:notificationTemplate="notifications/template@sd-request-hold" ecos:notificationBccExpression="[]" ecos:notificationAdditionalMeta="{}" ecos:notificationTo="[&quot;initiator-role&quot;]" ecos:notificationSendCalendarEvent="false" ecos:documentation="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:notificationType="EMAIL_NOTIFICATION" ecos:notificationToExpression="[]">
                 <bpmn:incoming >Flow_0em837z</bpmn:incoming>
@@ -1110,12 +1117,11 @@
                 <bpmn:incoming >Flow_0h0xtcb</bpmn:incoming>
             </bpmn:endEvent>
             <bpmn:sequenceFlow sourceRef="Activity_1lxnmvq" targetRef="Event_1aqbuhm" name="" id="Flow_0h0xtcb" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;// some script;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_07v70qd" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
+            <bpmn:scriptTask scriptFormat="javascript" name="Завершение активной задачи" id="Activity_07v70qd" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Завершение активной задачи&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="tasks.completeActiveTasks(execution);">
                 <bpmn:incoming >Flow_1pl0hmt</bpmn:incoming>
-                <bpmn:outgoing >Flow_0v0updz</bpmn:outgoing>
+                <bpmn:outgoing >Flow_04fli6v</bpmn:outgoing>
                 <bpmn:script>tasks.completeActiveTasks(execution);</bpmn:script>
             </bpmn:scriptTask>
-            <bpmn:sequenceFlow sourceRef="Activity_07v70qd" targetRef="Event_0j4zq53" name="" id="Flow_0v0updz" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:scriptTask scriptFormat="javascript" name="Заполнение времени остановки" id="Activity_0fz9iet" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Заполнение времени остановки&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var date = new Date();&#10;&#10;if(document.load(&quot;stoppingTimestamp&quot;) === null) {&#10;  document.att('stoppingTimestamp', date.toISOString());&#10;  document.save();&#10;}">
                 <bpmn:incoming >Flow_1728t50</bpmn:incoming>
                 <bpmn:outgoing >Flow_1pl0hmt</bpmn:outgoing>
@@ -1130,9 +1136,9 @@
             <bpmn:sequenceFlow sourceRef="Event_0y2nffn" targetRef="Activity_13i85fg" name="" id="Flow_1327ljn" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Event_0j4zq53" targetRef="Activity_1lxnmvq" name="" id="Flow_0em837z" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:intermediateThrowEvent name="SLA 2 Пауза" id="Event_0j4zq53" ecos:documentation="{}" ecos:manualSignalName="sla-2-pause" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Пауза&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
-                <bpmn:incoming >Flow_0v0updz</bpmn:incoming>
+                <bpmn:incoming >Flow_1p9njuc</bpmn:incoming>
                 <bpmn:outgoing >Flow_0em837z</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_TydNg6r" id="SignalEventDefinition_1vuyg58"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_xQqsHxc" id="SignalEventDefinition_1vuyg58"/>
             </bpmn:intermediateThrowEvent>
             <bpmn:scriptTask scriptFormat="javascript" name="Проверка условий перехода" id="Activity_13i85fg" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка условий перехода&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var stats = ['request-first-line-work', 'request-second-line-work', 'request-third-line-work'];&#10;var beforeStat = event.get(&quot;before&quot;).asText();&#10;&#10;&#10;if (beforeStat.length === 0) {&#10;    throw new Error(&quot;Предыдущий статус не определен&quot;);&#10;}&#10;&#10;if (stats.indexOf(beforeStat) === -1) {&#10;    throw new Error(&quot;Условия перехода не соблюдены. Предыдущий статус: &quot;+ beforeStat);&#10;}&#10;&#10;if (!comment) {&#10;    throw new Error(&quot;Поле Комментарий не может быть пустым.&quot;);&#10;}">
                 <bpmn:incoming >Flow_1327ljn</bpmn:incoming>
@@ -1154,11 +1160,19 @@
                     }</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:sequenceFlow sourceRef="Activity_13i85fg" targetRef="Activity_0fz9iet" name="" id="Flow_1728t50" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+            <bpmn:scriptTask scriptFormat="javascript" name="Обнуление исполнителя" id="Activity_1unk3uh" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Обнуление исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="document.att(&quot;currentImplementers&quot;, null); &#10;document.save();">
+                <bpmn:incoming >Flow_04fli6v</bpmn:incoming>
+                <bpmn:outgoing >Flow_1p9njuc</bpmn:outgoing>
+                <bpmn:script>document.att("currentImplementers", null);
+                    document.save();</bpmn:script>
+            </bpmn:scriptTask>
+            <bpmn:sequenceFlow sourceRef="Activity_07v70qd" targetRef="Activity_1unk3uh" name="" id="Flow_04fli6v" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
+            <bpmn:sequenceFlow sourceRef="Activity_1unk3uh" targetRef="Event_0j4zq53" name="" id="Flow_1p9njuc" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
         </bpmn:subProcess>
         <bpmn:subProcess triggeredByEvent="true" name="Информирование Исполнителя о добавлении комментария" id="Activity_1aeztn8" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Информирование Исполнителя о добавлении комментария&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
-            <bpmn:startEvent isInterrupting="false" name="Эвент: Добавлен комментарий от Инициатора" id="Event_0e5xruf" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;initiator&quot;:&quot;record.initiator.id&quot;,&quot;commentAuthorRef&quot;:&quot;commentRecord._creator?id&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент: Добавлен комментарий от Инициатора&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="COMMENT_CREATE" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;commentRecord._creator.id&quot;,&quot;val&quot;:&quot;{{initiator}}&quot;}">
+            <bpmn:startEvent isInterrupting="false" name="Эвент: Добавлен комментарий от Инициатора" id="Event_0e5xruf" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;initiator&quot;:&quot;record.initiator.id&quot;,&quot;commentAuthorRef&quot;:&quot;commentRecord._creator?id&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент: Добавлен комментарий от Инициатора&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="COMMENT_CREATE" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;commentRecord._creator.id&quot;,&quot;val&quot;:&quot;{{initiator}}&quot;}">
                 <bpmn:outgoing >Flow_0eq912r</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_u7hBNgZ" id="SignalEventDefinition_0z5mq16"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_e03J8LJ" id="SignalEventDefinition_0z5mq16"/>
             </bpmn:startEvent>
             <bpmn:endEvent name="" id="Event_18bj5p8" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_0fewzrw</bpmn:incoming>
@@ -1180,15 +1194,15 @@
                 <bpmn:incoming >Flow_0723usk</bpmn:incoming>
             </bpmn:endEvent>
             <bpmn:sequenceFlow sourceRef="Activity_0nefudh" targetRef="Event_04e2niv" name="" id="Flow_0723usk" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:startEvent isInterrupting="false" name="Эвент: Добавлен комментарий от Исполнителя" id="Event_0ch7h2r" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;commentAuthorRef&quot;:&quot;commentRecord._creator?id&quot;,&quot;firstLineMembers&quot;:&quot;record._roles.assigneesOf.impl-first-line-role[]&quot;,&quot;secondLineMembers&quot;:&quot;record._roles.assigneesOf.impl-second-line-role[]&quot;,&quot;thirdLineMembers&quot;:&quot;record._roles.assigneesOf.impl-third-line-role[]&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент: Добавлен комментарий от Исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="COMMENT_CREATE" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;and&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;not&quot;,&quot;val&quot;:{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord.tags[].type&quot;,&quot;val&quot;:&quot;INTERNAL&quot;}},{&quot;t&quot;:&quot;or&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{firstLineMembers}}&quot;},{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{secondLineMembers}}&quot;},{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{thirdLineMembers}}&quot;}]}]}">
+            <bpmn:startEvent isInterrupting="false" name="Эвент: Добавлен комментарий от Исполнителя" id="Event_0ch7h2r" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;commentAuthorRef&quot;:&quot;commentRecord._creator?id&quot;,&quot;firstLineMembers&quot;:&quot;record._roles.assigneesOf.impl-first-line-role[]&quot;,&quot;secondLineMembers&quot;:&quot;record._roles.assigneesOf.impl-second-line-role[]&quot;,&quot;thirdLineMembers&quot;:&quot;record._roles.assigneesOf.impl-third-line-role[]&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент: Добавлен комментарий от Исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="COMMENT_CREATE" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;and&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;not&quot;,&quot;val&quot;:{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord.tags[].type&quot;,&quot;val&quot;:&quot;INTERNAL&quot;}},{&quot;t&quot;:&quot;or&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{firstLineMembers}}&quot;},{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{secondLineMembers}}&quot;},{&quot;t&quot;:&quot;contains&quot;,&quot;att&quot;:&quot;commentRecord._creator.authorities.list[]&quot;,&quot;val&quot;:&quot;{{thirdLineMembers}}&quot;}]}]}">
                 <bpmn:outgoing >Flow_0eyh0kk</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_GU3aojM" id="SignalEventDefinition_01jo4cb"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_as8rE2b" id="SignalEventDefinition_01jo4cb"/>
             </bpmn:startEvent>
         </bpmn:subProcess>
         <bpmn:subProcess triggeredByEvent="true" name="Валидация резолюции" id="Activity_02v2j3o" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Валидация резолюции&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент: смена резолюции" id="Event_1jpwstt" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент: смена резолюции&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;diff._has.resolution?bool&quot;,&quot;val&quot;:true}">
                 <bpmn:outgoing >Flow_0g6uuq6</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_pSbSYT0" id="SignalEventDefinition_1eqw4n3"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_8SNFfmj" id="SignalEventDefinition_1eqw4n3"/>
             </bpmn:startEvent>
             <bpmn:sequenceFlow sourceRef="Event_1jpwstt" targetRef="Activity_1qvvo5u" name="" id="Flow_0g6uuq6" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:scriptTask scriptFormat="javascript" name="Проверка резолюции" id="Activity_1qvvo5u" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка резолюции&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var resolution = document.load('resolution');&#10;var link = document.load('webLinks');&#10;&#10;if(resolution === 'knownError') {&#10;  if(link === null) {&#10;    throw new Error(&quot;При резолюции \&quot;Известная ошибка\&quot; должна быть указана ссылка&quot;);&#10;  }&#10;}">
@@ -1211,7 +1225,7 @@
         <bpmn:subProcess triggeredByEvent="true" name="Информирование привлеченного сотрудника" id="Activity_05y21r6" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Информирование привлеченного сотрудника&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент: Добавлен доп. участник" id="Event_0epqf8h" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;additionalParticipantChanged&quot;:&quot;diff._has.additionalParticipant?bool&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент: Добавлен доп. участник&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;additionalParticipantChanged&quot;,&quot;val&quot;:true}">
                 <bpmn:outgoing >Flow_097vf6p</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_OjfJNOA" id="SignalEventDefinition_0pvj55f"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_t86KUxE" id="SignalEventDefinition_0pvj55f"/>
             </bpmn:startEvent>
             <bpmn:sendTask name="Ув. Привлечённому сотруднику" id="Activity_1kem475" ecos:notificationCc="[]" ecos:notificationBcc="[]" ecos:notificationLang="ru" ecos:notificationFrom="${Config.getNotNull(&quot;app/service-desk$send-sd-email-from&quot;).asText()}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Ув. Привлечённому сотруднику&quot;}" ecos:notificationCcExpression="[]" ecos:notificationTemplate="notifications/template@sd-new-participant" ecos:notificationBccExpression="[]" ecos:notificationAdditionalMeta="{}" ecos:notificationTo="[]" ecos:notificationSendCalendarEvent="false" ecos:documentation="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:notificationType="EMAIL_NOTIFICATION" ecos:notificationToExpression="[&quot;${additionalParticipant}&quot;]">
                 <bpmn:incoming >Flow_0fno9rr</bpmn:incoming>
@@ -1235,7 +1249,7 @@
         <bpmn:subProcess triggeredByEvent="true" name="Обработка паузы SLA 2" id="Activity_1s5p337" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Обработка паузы SLA 2&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="SLA 2 Пауза" id="Event_09l1sbs" ecos:documentation="{}" ecos:manualSignalName="sla-2-pause" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Пауза&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing >Flow_0tt51w9</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_TydNg6r" id="SignalEventDefinition_0sjui72"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_xQqsHxc" id="SignalEventDefinition_0sjui72"/>
             </bpmn:startEvent>
             <bpmn:endEvent name="" id="Event_1fu2ni7" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_12ky37s</bpmn:incoming>
@@ -1287,7 +1301,7 @@
         <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_09qiygb" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: Передано 1-й линии ТП" id="Event_0ln4xe3" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: Передано 1-й линии ТП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-first-line&quot;}">
                 <bpmn:outgoing >Flow_1xtmc4q</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_gr5bYmp" id="SignalEventDefinition_0cr8ylq"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_iwZuhzk" id="SignalEventDefinition_0cr8ylq"/>
             </bpmn:startEvent>
             <bpmn:sendTask name="Ув. 1-й линии" id="Activity_0poy3ky" ecos:notificationCc="[]" ecos:notificationBcc="[]" ecos:notificationLang="ru" ecos:notificationFrom="${Config.getNotNull(&quot;app/service-desk$send-sd-email-from&quot;).asText()}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Ув. 1-й линии&quot;}" ecos:notificationCcExpression="[]" ecos:notificationTemplate="notifications/template@sd-assign-task" ecos:notificationBccExpression="[]" ecos:notificationAdditionalMeta="{}" ecos:notificationTo="[&quot;impl-first-line-role&quot;]" ecos:notificationSendCalendarEvent="false" ecos:documentation="{}" ecos:notificationTitle="1" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:notificationType="EMAIL_NOTIFICATION" ecos:notificationBody="&lt;p&gt;1&lt;/p&gt;" ecos:notificationToExpression="[]">
                 <bpmn:incoming >Flow_1a6q9zn</bpmn:incoming>
@@ -1394,11 +1408,11 @@
             <bpmn:intermediateThrowEvent name="Отменить уведомления по SLA 1" id="Event_1z08egl" ecos:documentation="{}" ecos:manualSignalName="cancel-sla-1-notification" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Отменить уведомления по SLA 1&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:incoming >Flow_0cfyc1u</bpmn:incoming>
                 <bpmn:outgoing >Flow_1rqiwy6</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_BvMA4E1" id="SignalEventDefinition_0d99whr"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_CCIMuua" id="SignalEventDefinition_0d99whr"/>
             </bpmn:intermediateThrowEvent>
             <bpmn:boundaryEvent  cancelActivity="true" attachedToRef="Activity_18mb1z2" name="Отмена уведомлений" id="Event_1q0kz9e" ecos:documentation="{}" ecos:manualSignalName="cancel-sla-1-notification" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Отмена уведомлений&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing>Flow_18ce1t4</bpmn:outgoing>
-                <bpmn:signalEventDefinition signalRef="Signal_BvMA4E1" id="SignalEventDefinition_1hzrb4o"/>
+                <bpmn:signalEventDefinition signalRef="Signal_CCIMuua" id="SignalEventDefinition_1hzrb4o"/>
             </bpmn:boundaryEvent>
             <bpmn:endEvent name="" id="Event_025qrrg" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_18ce1t4</bpmn:incoming>
@@ -1420,7 +1434,7 @@
             <bpmn:intermediateThrowEvent name="SLA 2 Запуск" id="Event_12qctcf" ecos:documentation="{}" ecos:manualSignalName="sla-2-start" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Запуск&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:incoming >Flow_146p715</bpmn:incoming>
                 <bpmn:outgoing >Flow_1a6q9zn</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_QNdQtXd" id="SignalEventDefinition_110byrz"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_9lWBFjj" id="SignalEventDefinition_110byrz"/>
             </bpmn:intermediateThrowEvent>
             <bpmn:scriptTask scriptFormat="javascript" name="Подготовка SLA 1" id="Activity_1il3s4y" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Подготовка SLA 1&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var msg = &quot;Sla 1 prepare&quot;;&#10;&#10;var slaDueDates = Records.query({&#10;    sourceId: &quot;service-desk/sd-sla-params&quot;,&#10;    query: {&#10;        record: document.getRef()&#10;    }&#10;}, {&#10;    timeFirstReaction: &quot;timeFirstReaction&quot;,&#10;    notificationToExecutorTimeReaction: &quot;notificationToExecutorTimeReaction&quot;,&#10;    notificationToSupervisorTimeReaction: &quot;notificationToSupervisorTimeReaction&quot;,&#10;});&#10;&#10;if (slaDueDates.records.length === 0) {&#10;    throw new Error(&quot;SLA параметры не найдены для: &quot; + document);&#10;}&#10;&#10;var params = slaDueDates.records[0];&#10;&#10;msg += &quot;\nparams: &quot; + params;&#10;log.debug(msg);&#10;&#10;execution.setVariable(&quot;notificationToExecutorTimeReaction&quot;, params.notificationToExecutorTimeReaction);&#10;execution.setVariable(&quot;notificationToSupervisorTimeReaction&quot;, params.notificationToSupervisorTimeReaction);&#10;&#10;&#10;document.att(&quot;sla_1_state&quot;, &quot;RUNNING&quot;);&#10;document.att(&quot;sla_1_due_date&quot;, params.timeFirstReaction);&#10;&#10;document.save();">
                 <bpmn:incoming >Flow_016qay2</bpmn:incoming>
@@ -1467,7 +1481,7 @@
             <bpmn:sequenceFlow sourceRef="Gateway_0493q6t" targetRef="Activity_0mp4zci" name="Всегда" id="Flow_17g1x6y" ecos:name_ml="{&quot;ru&quot;:&quot;Всегда&quot;}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:boundaryEvent  cancelActivity="false" attachedToRef="Activity_0mp4zci" name="Возобновить SLA 1" id="Event_14gtpar" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Возобновить SLA 1&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;and&quot;,&quot;val&quot;:[{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;diff._has.slaStopped?bool&quot;,&quot;val&quot;:true},{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;record.slaStopped?bool&quot;,&quot;val&quot;:false},{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;record.firstReactionTimestamp&quot;,&quot;val&quot;:null}]}">
                 <bpmn:outgoing>Flow_1ouvqqe</bpmn:outgoing>
-                <bpmn:signalEventDefinition signalRef="Signal_1jBpSF5" id="SignalEventDefinition_0s3vv24"/>
+                <bpmn:signalEventDefinition signalRef="Signal_xlLPxAV" id="SignalEventDefinition_0s3vv24"/>
             </bpmn:boundaryEvent>
             <bpmn:sequenceFlow sourceRef="Activity_0poy3ky" targetRef="Gateway_0493q6t" name="" id="Flow_18swuiz" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:exclusiveGateway name="" id="Gateway_0hi0e7d" ecos:documentation="{}" ecos:name_ml="{}">
@@ -1593,7 +1607,7 @@
             <bpmn:sequenceFlow sourceRef="Activity_0upahzr" targetRef="Event_0kt6zkf" name="" id="Flow_1i16bnc" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:startEvent isInterrupting="false" name="SLA 2 Завершение" id="Event_0qtmzwb" ecos:documentation="{}" ecos:manualSignalName="sla-2-stop" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;SLA 2 Завершение&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{}">
                 <bpmn:outgoing >Flow_1w6xrfz</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_EGClQ5f" id="SignalEventDefinition_0xkyvht"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_9kyA8g8" id="SignalEventDefinition_0xkyvht"/>
             </bpmn:startEvent>
             <bpmn:exclusiveGateway default="Flow_08ssslr" name="" id="Gateway_1ge9tsf" ecos:documentation="{}" ecos:name_ml="{}">
                 <bpmn:incoming >Flow_1w6xrfz</bpmn:incoming>
@@ -1614,7 +1628,7 @@
         <bpmn:subProcess triggeredByEvent="true" name="Ожидание 2-я линия" id="Activity_1g09ruj" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Ожидание 2-я линия&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
             <bpmn:startEvent isInterrupting="false" name="Эвент-статус: Передано 2-й линии ТП" id="Event_0ft1bhm" ecos:documentation="{}" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Эвент-статус: Передано 2-й линии ТП&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="false" ecos:eventType="RECORD_STATUS_CHANGED" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;after&quot;,&quot;val&quot;:&quot;request-second-line&quot;}">
                 <bpmn:outgoing >Flow_1d0b7zp</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_I15HBcr" id="SignalEventDefinition_0a3ngj6"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_OF9Zxar" id="SignalEventDefinition_0a3ngj6"/>
             </bpmn:startEvent>
             <bpmn:sendTask name="Ув. 2-й линии" id="Activity_1i0yyds" ecos:notificationCc="[]" ecos:notificationBcc="[]" ecos:notificationLang="ru" ecos:notificationFrom="${Config.getNotNull(&quot;app/service-desk$send-sd-email-from&quot;).asText()}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Ув. 2-й линии&quot;}" ecos:notificationCcExpression="[]" ecos:notificationTemplate="notifications/template@sd-assign-task" ecos:notificationBccExpression="[]" ecos:notificationAdditionalMeta="{}" ecos:notificationTo="[&quot;impl-second-line-role&quot;]" ecos:notificationSendCalendarEvent="false" ecos:documentation="{}" ecos:notificationTitle="2" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:notificationType="EMAIL_NOTIFICATION" ecos:notificationBody="&lt;p&gt;2&lt;/p&gt;" ecos:notificationToExpression="[]">
                 <bpmn:incoming >Flow_08nux2r</bpmn:incoming>
@@ -1688,49 +1702,49 @@
             </bpmn:scriptTask>
         </bpmn:subProcess>
         <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_19fpd7i" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
-            <bpmn:scriptTask scriptFormat="javascript" name="Заполнение исполнителя" id="Activity_1kzsuly" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Заполнение исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var taskRef = event.get(&quot;taskRef&quot;).asText(); &#10;&#10;var task = Records.get(taskRef);&#10;var candidateGroups = task.load(&quot;candidateGroups[]?id&quot;);&#10;var candidateUsers = task.load(&quot;candidateUsers[]?id&quot;);&#10;&#10;var implementers = candidateGroups;&#10;implementers.addAll(candidateUsers);&#10;&#10;document.att(&quot;currentImplementers&quot;, implementers);&#10;document.save();">
+            <bpmn:scriptTask scriptFormat="javascript" name="Заполнение исполнителя" id="Activity_1kzsuly" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Заполнение исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var assigneeRef = event.get(&quot;assigneeRef&quot;).asText();&#10;if (assigneeRef !== '') {&#10;  document.att(&quot;currentImplementers&quot;, assigneeRef);&#10;  document.save();&#10;} else {&#10;  var candidateGroupsRef = event.get(&quot;candidateGroupsRef&quot;).asStrList();&#10;  var candidateUsersRef = event.get(&quot;candidateUsersRef&quot;).asStrList();&#10;  &#10;  var implementers = candidateGroupsRef;&#10;  implementers.addAll(candidateUsersRef);&#10;  &#10;  document.att(&quot;currentImplementers&quot;, implementers);&#10;  document.save();&#10;}">
                 <bpmn:incoming >Flow_1q5bfp7</bpmn:incoming>
                 <bpmn:outgoing >Flow_0hqc2xf</bpmn:outgoing>
-                <bpmn:script>var taskRef = event.get("taskRef").asText();
+                <bpmn:script>var assigneeRef = event.get("assigneeRef").asText();
+                    if (assigneeRef !== '') {
+                    document.att("currentImplementers", assigneeRef);
+                    document.save();
+                    } else {
+                    var candidateGroupsRef = event.get("candidateGroupsRef").asStrList();
+                    var candidateUsersRef = event.get("candidateUsersRef").asStrList();
 
-                    var task = Records.get(taskRef);
-                    var candidateGroups = task.load("candidateGroups[]?id");
-                    var candidateUsers = task.load("candidateUsers[]?id");
-
-                    var implementers = candidateGroups;
-                    implementers.addAll(candidateUsers);
+                    var implementers = candidateGroupsRef;
+                    implementers.addAll(candidateUsersRef);
 
                     document.att("currentImplementers", implementers);
-                    document.save();</bpmn:script>
+                    document.save();
+                    }</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:endEvent name="" id="Event_0fit3g5" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_0hqc2xf</bpmn:incoming>
             </bpmn:endEvent>
             <bpmn:sequenceFlow sourceRef="Event_14n4drc" targetRef="Activity_1kzsuly" name="" id="Flow_1q5bfp7" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Activity_1kzsuly" targetRef="Event_0fit3g5" name="" id="Flow_0hqc2xf" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:startEvent isInterrupting="false" name="Задача создана" id="Event_14n4drc" ecos:documentation="{}" ecos:manualSignalName="bpmn-user-task-create" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;procDefId&quot;:&quot;procDefId&quot;,&quot;taskRef&quot;:&quot;taskId?id&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:true,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Задача создана&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:&quot;&quot;}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;procDefId&quot;,&quot;val&quot;:&quot;sd-process&quot;}">
+            <bpmn:startEvent isInterrupting="false" name="Задача создана" id="Event_14n4drc" ecos:documentation="{}" ecos:manualSignalName="bpmn-user-task-create" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;procDefId&quot;:&quot;procDefId&quot;,&quot;assigneeRef&quot;:&quot;assigneeRef?id&quot;,&quot;candidateGroupsRef&quot;:&quot;candidateGroupsRef[]?id&quot;,&quot;candidateUsersRef&quot;:&quot;candidateUsersRef[]?id&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Задача создана&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;procDefId&quot;,&quot;val&quot;:&quot;sd-process&quot;}">
                 <bpmn:outgoing >Flow_1q5bfp7</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_z0Tf96w" id="SignalEventDefinition_1o46kji"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_6wLG6sZ" id="SignalEventDefinition_1o46kji"/>
             </bpmn:startEvent>
         </bpmn:subProcess>
-        <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_00cinog" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
-            <bpmn:scriptTask scriptFormat="javascript" name="Заполнение исполнителя" id="Activity_18l99f8" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Заполнение исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var taskRef = event.get(&quot;taskRef&quot;).asText(); &#10;&#10;var task = Records.get(taskRef); &#10;var assignee = task.load(&quot;assignee?id&quot;); &#10;&#10;document.att(&quot;currentImplementers&quot;, assignee); &#10;document.save();">
+        <bpmn:subProcess triggeredByEvent="true" name="" id="Activity_00cinog" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Заполнение исполнителя" id="Activity_18l99f8" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Заполнение исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var assignee = event.get(&quot;assignee&quot;).asText(); &#10;&#10;document.att(&quot;currentImplementers&quot;, &quot;emodel/person@&quot; + assignee);&#10;document.save();">
                 <bpmn:incoming >Flow_0l67a28</bpmn:incoming>
                 <bpmn:outgoing >Flow_0hvw2vy</bpmn:outgoing>
-                <bpmn:script>var taskRef = event.get("taskRef").asText();
+                <bpmn:script>var assignee = event.get("assignee").asText();
 
-                    var task = Records.get(taskRef);
-                    var assignee = task.load("assignee?id");
-
-                    document.att("currentImplementers", assignee);
+                    document.att("currentImplementers", "emodel/person@" + assignee);
                     document.save();</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:endEvent name="" id="Event_0xuf79n" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
                 <bpmn:incoming >Flow_0hvw2vy</bpmn:incoming>
             </bpmn:endEvent>
-            <bpmn:startEvent isInterrupting="false" name="Исполнитель задачи изменен" id="Event_0vlfgc2" ecos:documentation="{}" ecos:manualSignalName="bpmn-user-task-assign" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;procDefId&quot;:&quot;procDefId&quot;,&quot;taskRef&quot;:&quot;taskId?id&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:true,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Исполнитель задачи изменен&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:&quot;&quot;}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;procDefId&quot;,&quot;val&quot;:&quot;sd-process&quot;}">
+            <bpmn:startEvent isInterrupting="false" name="Исполнитель задачи изменен" id="Event_0vlfgc2" ecos:documentation="{}" ecos:manualSignalName="bpmn-user-task-assign" ecos:eventFilterByRecordType="DOCUMENT" ecos:eventModel="{&quot;procDefId&quot;:&quot;procDefId&quot;,&quot;assignee&quot;:&quot;assignee&quot;}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Исполнитель задачи изменен&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:eventManualMode="true" ecos:eventFilterByPredicate="{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;procDefId&quot;,&quot;val&quot;:&quot;sd-process&quot;}">
                 <bpmn:outgoing >Flow_0l67a28</bpmn:outgoing>
-                <bpmn:signalEventDefinition  signalRef="Signal_nsKtSoo" id="SignalEventDefinition_0to6mie"/>
+                <bpmn:signalEventDefinition  signalRef="Signal_sTFgo6L" id="SignalEventDefinition_0to6mie"/>
             </bpmn:startEvent>
             <bpmn:sequenceFlow sourceRef="Event_0vlfgc2" targetRef="Activity_18l99f8" name="" id="Flow_0l67a28" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
             <bpmn:sequenceFlow sourceRef="Activity_18l99f8" targetRef="Event_0xuf79n" name="" id="Flow_0hvw2vy" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
@@ -1740,7 +1754,7 @@
         </bpmn:endEvent>
         <bpmn:sequenceFlow sourceRef="Activity_0xg0xlw" targetRef="Activity_1t5xbeh" name="" id="Flow_1y50rxs" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
         <bpmn:sequenceFlow sourceRef="Activity_1t5xbeh" targetRef="Event_120wwf5" name="" id="Flow_1dsj66o" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot; &quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-        <bpmn:scriptTask scriptFormat="javascript" name="Обнуление исполнителя" id="Activity_1t5xbeh" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{&quot;ru&quot;:&quot;Обнуление исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="document.att(&quot;currentImplementers&quot;, null); &#10;document.save();">
+        <bpmn:scriptTask scriptFormat="javascript" name="Обнуление исполнителя" id="Activity_1t5xbeh" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Обнуление исполнителя&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="document.att(&quot;currentImplementers&quot;, null); &#10;document.save();">
             <bpmn:incoming >Flow_1y50rxs</bpmn:incoming>
             <bpmn:outgoing >Flow_1dsj66o</bpmn:outgoing>
             <bpmn:script>document.att("currentImplementers", null);
@@ -1759,29 +1773,29 @@
     <bpmn:collaboration id="Collaboration_14malwd">
         <bpmn:participant  name="Service Desk" processRef="sd-process" id="Participant_1jdf6sc" ecos:documentation="{}" ecos:name_ml="{&quot;ru&quot;:&quot;Service Desk&quot;}" ecos:ecosType="emodel/type@sd-request-type"/>
     </bpmn:collaboration>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_42990289e9df5b4d551e8f37006754c9" id="Signal_HgKO8YG"/>
-    <bpmn:signal name="sla-2-start;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_QNdQtXd"/>
-    <bpmn:signal name="sla-2-pause;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_TydNg6r"/>
-    <bpmn:signal name="sla-2-stop;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_EGClQ5f"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_713ad1c39f6c31a0eb1ae3f07986b607" id="Signal_MixLIeI"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_55d6c725dcf0cf835ebe4e1f8418e090" id="Signal_qZvHWqg"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_33c0d678ff01e367373d3426d252f37d" id="Signal_h26Qm4n"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_6fc6e4e729c4d7ef2ba2e591c0b17da0" id="Signal_nv4m2jA"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_2c1a3283c95430e5f7a34dade5fa6fa0" id="Signal_SJrcsqx"/>
-    <bpmn:signal name="COMMENT_CREATE;${execution.businessKey};ANY;pr_af41db8ca1922efddc4733e31594e297" id="Signal_ZxI6P2w"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_zgmRcL8"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_1b488d8e813f8205ac0d7823c4f0930a" id="Signal_vSrm60E"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_091a59ad2c664b96d92da833e4c939fc" id="Signal_6MDdcyg"/>
-    <bpmn:signal name="COMMENT_CREATE;${execution.businessKey};ANY;pr_d0e0e9c264e7d9100e94add35e20038c" id="Signal_u7hBNgZ"/>
-    <bpmn:signal name="COMMENT_CREATE;${execution.businessKey};ANY;pr_41bd7f9b888b0ebd15be5a21b2c791e4" id="Signal_GU3aojM"/>
-    <bpmn:signal name="RECORD_CHANGED;${execution.businessKey};ANY;pr_aa3109b54981c04003cf89b94bb65468" id="Signal_pSbSYT0"/>
-    <bpmn:signal name="RECORD_CHANGED;${execution.businessKey};ANY;pr_acc6b6432dcaa77c88474683032613ca" id="Signal_OjfJNOA"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_2070cac6c1e7e38bbab6a04846af1662" id="Signal_gr5bYmp"/>
-    <bpmn:signal name="cancel-sla-1-notification;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_BvMA4E1"/>
-    <bpmn:signal name="RECORD_CHANGED;${execution.businessKey};ANY;pr_3c947f35829417ff40e6810060751588" id="Signal_1jBpSF5"/>
-    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_938c09f3723c6ae1afc2a4a231d691ce" id="Signal_I15HBcr"/>
-    <bpmn:signal name="bpmn-user-task-create;${execution.businessKey};ANY;pr_1f196351956f5d05979f97a3c4209964" id="Signal_z0Tf96w"/>
-    <bpmn:signal name="bpmn-user-task-assign;${execution.businessKey};ANY;pr_1f196351956f5d05979f97a3c4209964" id="Signal_nsKtSoo"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_42990289e9df5b4d551e8f37006754c9" id="Signal_TluvMrC"/>
+    <bpmn:signal name="sla-2-start;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_9lWBFjj"/>
+    <bpmn:signal name="sla-2-pause;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_xQqsHxc"/>
+    <bpmn:signal name="sla-2-stop;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_9kyA8g8"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_713ad1c39f6c31a0eb1ae3f07986b607" id="Signal_xzC8HXU"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_55d6c725dcf0cf835ebe4e1f8418e090" id="Signal_vIPZ2NC"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_33c0d678ff01e367373d3426d252f37d" id="Signal_nxw8Eym"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_6fc6e4e729c4d7ef2ba2e591c0b17da0" id="Signal_oK9BSIu"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_2c1a3283c95430e5f7a34dade5fa6fa0" id="Signal_Ei2woTZ"/>
+    <bpmn:signal name="COMMENT_CREATE;${execution.businessKey};ANY;pr_af41db8ca1922efddc4733e31594e297" id="Signal_SuYTam3"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_GH6wHmf"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_1b488d8e813f8205ac0d7823c4f0930a" id="Signal_QaVSGcu"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_091a59ad2c664b96d92da833e4c939fc" id="Signal_zunUO1V"/>
+    <bpmn:signal name="COMMENT_CREATE;${execution.businessKey};ANY;pr_d0e0e9c264e7d9100e94add35e20038c" id="Signal_e03J8LJ"/>
+    <bpmn:signal name="COMMENT_CREATE;${execution.businessKey};ANY;pr_41bd7f9b888b0ebd15be5a21b2c791e4" id="Signal_as8rE2b"/>
+    <bpmn:signal name="RECORD_CHANGED;${execution.businessKey};ANY;pr_aa3109b54981c04003cf89b94bb65468" id="Signal_8SNFfmj"/>
+    <bpmn:signal name="RECORD_CHANGED;${execution.businessKey};ANY;pr_acc6b6432dcaa77c88474683032613ca" id="Signal_t86KUxE"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_2070cac6c1e7e38bbab6a04846af1662" id="Signal_iwZuhzk"/>
+    <bpmn:signal name="cancel-sla-1-notification;${execution.businessKey};ANY;pr_99914b932bd37a50b983c5e7c90ae93b" id="Signal_CCIMuua"/>
+    <bpmn:signal name="RECORD_CHANGED;${execution.businessKey};ANY;pr_3c947f35829417ff40e6810060751588" id="Signal_xlLPxAV"/>
+    <bpmn:signal name="RECORD_STATUS_CHANGED;${execution.businessKey};ANY;pr_938c09f3723c6ae1afc2a4a231d691ce" id="Signal_OF9Zxar"/>
+    <bpmn:signal name="bpmn-user-task-create;${execution.businessKey};ANY;pr_1f196351956f5d05979f97a3c4209964" id="Signal_6wLG6sZ"/>
+    <bpmn:signal name="bpmn-user-task-assign;${execution.businessKey};ANY;pr_1f196351956f5d05979f97a3c4209964" id="Signal_sTFgo6L"/>
     <bpmndi:BPMNDiagram id="BPMNDiagram_1">
         <bpmndi:BPMNPlane  bpmnElement="Collaboration_14malwd" id="BPMNPlane_1">
             <bpmndi:BPMNShape bpmnElement="Participant_1jdf6sc" isExpanded="true" id="Participant_1jdf6sc_di">
@@ -1855,15 +1869,6 @@
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_0th9gn9" isExpanded="true" id="Activity_1ex36zw_di">
                 <dc:Bounds x="-781.0" y="-1921.0" width="100.0" height="80.0"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="Event_120wwf5" isExpanded="true" id="Event_120wwf5_di">
-                <dc:Bounds x="1142.0" y="-1899.0" width="36.0" height="36.0"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="Activity_1t5xbeh" isExpanded="false" id="Activity_0t7h7vc_di">
-                <dc:Bounds x="980.0" y="-1921.0" width="100.0" height="80.0"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="Activity_0xg0xlw" isExpanded="true" id="Activity_0jv2nf1_di">
-                <dc:Bounds x="840.0" y="-1921.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_0vhsfo8" isExpanded="true" id="Activity_0vhsfo8_di">
                 <dc:Bounds x="-1100.0" y="-1670.0" width="1470.0" height="500.0"/>
@@ -2620,10 +2625,10 @@
                 <dc:Bounds x="-1060.0" y="5372.0" width="36.0" height="36.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_1l7cv2x" isExpanded="true" id="Activity_01nu4hp_di">
-                <dc:Bounds x="-710.0" y="5350.0" width="100.0" height="80.0"/>
+                <dc:Bounds x="-760.0" y="5350.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_1itptv5" isExpanded="true" id="Activity_1itptv5_di">
-                <dc:Bounds x="-470.0" y="5090.0" width="1250.0" height="660.0"/>
+                <dc:Bounds x="-450.0" y="5090.0" width="1230.0" height="660.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Event_0bcl15q" isExpanded="true" id="Event_0bcl15q_di">
                 <dc:Bounds x="-430.0" y="5372.0" width="36.0" height="36.0"/>
@@ -2731,10 +2736,10 @@
                 <di:waypoint x="220.0" y="5295.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNShape bpmnElement="Activity_0xrfu8j" isExpanded="true" id="Activity_0z9w470_di">
-                <dc:Bounds x="-980.0" y="5350.0" width="100.0" height="80.0"/>
+                <dc:Bounds x="-1000.0" y="5350.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_12kyauz" isExpanded="true" id="Activity_0rg66dj_di">
-                <dc:Bounds x="-850.0" y="5350.0" width="100.0" height="80.0"/>
+                <dc:Bounds x="-880.0" y="5350.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_1smstlk" isExpanded="true" id="Activity_1hgsu4u_di">
                 <dc:Bounds x="-140.0" y="5790.0" width="100.0" height="80.0"/>
@@ -2755,7 +2760,10 @@
                 <dc:Bounds x="1002.0" y="5372.0" width="36.0" height="36.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Event_1g3dzb3" isExpanded="true" id="Event_00zfect_di">
-                <dc:Bounds x="-568.0" y="5372.0" width="36.0" height="36.0"/>
+                <dc:Bounds x="-518.0" y="5372.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1qakaob" isExpanded="false" id="BPMNShape_069lmdl">
+                <dc:Bounds x="-640.0" y="5350.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Event_0lf21mf" isExpanded="true" id="Event_03oki77_di">
                 <dc:Bounds x="762.0" y="5172.0" width="36.0" height="36.0"/>
@@ -2766,21 +2774,17 @@
             <bpmndi:BPMNShape bpmnElement="Event_0td1d3a" isExpanded="true" id="Event_1img9k8_di">
                 <dc:Bounds x="-308.0" y="5732.0" width="36.0" height="36.0"/>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNEdge bpmnElement="Flow_1is3su4" id="Flow_1is3su4_di">
-                <di:waypoint x="-610.0" y="5390.0"/>
-                <di:waypoint x="-568.0" y="5390.0"/>
-            </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_0ikpad8" id="Flow_0ikpad8_di">
                 <di:waypoint x="-1024.0" y="5390.0"/>
-                <di:waypoint x="-980.0" y="5390.0"/>
+                <di:waypoint x="-1000.0" y="5390.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_0sd8fqe" id="Flow_0sd8fqe_di">
+                <di:waypoint x="-900.0" y="5390.0"/>
                 <di:waypoint x="-880.0" y="5390.0"/>
-                <di:waypoint x="-850.0" y="5390.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_0ltrf5e" id="Flow_0ltrf5e_di">
-                <di:waypoint x="-750.0" y="5390.0"/>
-                <di:waypoint x="-710.0" y="5390.0"/>
+                <di:waypoint x="-780.0" y="5390.0"/>
+                <di:waypoint x="-760.0" y="5390.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_1szbzug" id="Flow_1szbzug_di">
                 <di:waypoint x="-290.0" y="5768.0"/>
@@ -2814,13 +2818,21 @@
                 <di:waypoint x="1092.0" y="5390.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_098rmtj" id="Flow_098rmtj_di">
-                <di:waypoint x="-532.0" y="5390.0"/>
-                <di:waypoint x="-470.0" y="5390.0"/>
+                <di:waypoint x="-482.0" y="5390.0"/>
+                <di:waypoint x="-450.0" y="5390.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_1gj03u7" id="Flow_1gj03u7_di">
                 <di:waypoint x="798.0" y="5190.0"/>
                 <di:waypoint x="910.0" y="5190.0"/>
                 <di:waypoint x="910.0" y="5365.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0bbcun6" id="Flow_0bbcun6_di">
+                <di:waypoint x="-660.0" y="5390.0"/>
+                <di:waypoint x="-640.0" y="5390.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1kb1s7j" id="Flow_1kb1s7j_di">
+                <di:waypoint x="-540.0" y="5390.0"/>
+                <di:waypoint x="-518.0" y="5390.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNShape bpmnElement="Activity_1etfdiu" isExpanded="true" id="Activity_02u7wn1_di">
                 <dc:Bounds x="-1100.0" y="6060.0" width="1310.0" height="300.0"/>
@@ -2835,40 +2847,47 @@
                 <dc:Bounds x="-28.0" y="6182.0" width="36.0" height="36.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_07v70qd" isExpanded="true" id="Activity_00zjar7_di">
-                <dc:Bounds x="-540.0" y="6160.0" width="100.0" height="80.0"/>
+                <dc:Bounds x="-650.0" y="6160.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_0fz9iet" isExpanded="true" id="Activity_1xz6tox_di">
-                <dc:Bounds x="-710.0" y="6160.0" width="100.0" height="80.0"/>
+                <dc:Bounds x="-810.0" y="6160.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Event_0j4zq53" isExpanded="true" id="Event_0qc3ewy_di">
                 <dc:Bounds x="-358.0" y="6182.0" width="36.0" height="36.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Activity_13i85fg" isExpanded="true" id="Activity_0i25dn1_di">
-                <dc:Bounds x="-910.0" y="6160.0" width="100.0" height="80.0"/>
+                <dc:Bounds x="-960.0" y="6160.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1unk3uh" isExpanded="false" id="BPMNShape_196nuto">
+                <dc:Bounds x="-500.0" y="6160.0" width="100.0" height="80.0"/>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNEdge bpmnElement="Flow_0h0xtcb" id="Flow_0h0xtcb_di">
                 <di:waypoint x="-100.0" y="6200.0"/>
                 <di:waypoint x="-28.0" y="6200.0"/>
             </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="Flow_0v0updz" id="Flow_0v0updz_di">
-                <di:waypoint x="-440.0" y="6200.0"/>
-                <di:waypoint x="-358.0" y="6200.0"/>
-            </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_1pl0hmt" id="Flow_1pl0hmt_di">
-                <di:waypoint x="-610.0" y="6200.0"/>
-                <di:waypoint x="-540.0" y="6200.0"/>
+                <di:waypoint x="-710.0" y="6200.0"/>
+                <di:waypoint x="-650.0" y="6200.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_1327ljn" id="Flow_1327ljn_di">
                 <di:waypoint x="-1024.0" y="6200.0"/>
-                <di:waypoint x="-910.0" y="6200.0"/>
+                <di:waypoint x="-960.0" y="6200.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_0em837z" id="Flow_0em837z_di">
                 <di:waypoint x="-322.0" y="6200.0"/>
                 <di:waypoint x="-200.0" y="6200.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_1728t50" id="Flow_1728t50_di">
+                <di:waypoint x="-860.0" y="6200.0"/>
                 <di:waypoint x="-810.0" y="6200.0"/>
-                <di:waypoint x="-710.0" y="6200.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_04fli6v" id="Flow_04fli6v_di">
+                <di:waypoint x="-550.0" y="6200.0"/>
+                <di:waypoint x="-500.0" y="6200.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1p9njuc" id="Flow_1p9njuc_di">
+                <di:waypoint x="-400.0" y="6200.0"/>
+                <di:waypoint x="-358.0" y="6200.0"/>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNShape bpmnElement="Activity_1aeztn8" isExpanded="true" id="Activity_012rrqz_di">
                 <dc:Bounds x="-1100.0" y="6510.0" width="510.0" height="200.0"/>
@@ -3371,6 +3390,15 @@
                 <di:waypoint x="-445.0" y="7450.0"/>
                 <di:waypoint x="-383.0" y="7450.0"/>
             </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Event_120wwf5" isExpanded="true" id="Event_120wwf5_di">
+                <dc:Bounds x="1142.0" y="-1899.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1t5xbeh" isExpanded="false" id="Activity_0t7h7vc_di">
+                <dc:Bounds x="980.0" y="-1921.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0xg0xlw" isExpanded="true" id="Activity_0jv2nf1_di">
+                <dc:Bounds x="840.0" y="-1921.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="TextAnnotation_17gh8rk" isExpanded="true" id="TextAnnotation_17gh8rk_di">
                 <dc:Bounds x="-780.0" y="-2020.0" width="200.0" height="50.0"/>
             </bpmndi:BPMNShape>
@@ -3427,10 +3455,6 @@
                 <di:waypoint x="-681.0" y="-1770.0"/>
                 <di:waypoint x="-578.0" y="-1770.0"/>
             </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="Association_0vxup68" id="Association_0vxup68_di">
-                <di:waypoint x="-727.0" y="-1921.0"/>
-                <di:waypoint x="-720.0" y="-1970.0"/>
-            </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="Flow_1y50rxs" id="Flow_1y50rxs_di">
                 <di:waypoint x="940.0" y="-1881.0"/>
                 <di:waypoint x="980.0" y="-1881.0"/>
@@ -3438,6 +3462,10 @@
             <bpmndi:BPMNEdge bpmnElement="Flow_1dsj66o" id="Flow_1dsj66o_di">
                 <di:waypoint x="1080.0" y="-1881.0"/>
                 <di:waypoint x="1142.0" y="-1881.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Association_0vxup68" id="Association_0vxup68_di">
+                <di:waypoint x="-727.0" y="-1921.0"/>
+                <di:waypoint x="-720.0" y="-1970.0"/>
             </bpmndi:BPMNEdge>
         </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>
