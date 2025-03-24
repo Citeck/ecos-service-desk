@@ -627,7 +627,7 @@
                       "status": "_status?str"
                     }
                   },
-                  "forceLoad": false
+                  "forceLoad": true
                 },
                 "update": {
                   "type": "once"
