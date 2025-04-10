@@ -28,6 +28,7 @@ associations:
       - uiserv/journal@ecos-sd-time-tracking-journal
 defaultCreateVariant: true
 defaultWorkspace: service-desk-workspace
+workspaceScope: PRIVATE
 model:
   roles:
     - id: initiator-role

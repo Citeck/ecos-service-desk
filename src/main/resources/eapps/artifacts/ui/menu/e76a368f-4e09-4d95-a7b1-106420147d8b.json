@@ -148,7 +148,7 @@
               "hidden": false,
               "type": "JOURNAL",
               "config": {
-                "recordRef": "uiserv/journal@ecos-sd-time-tracking-journal"
+                "recordRef": "uiserv/journal@sd-time-tracking-journal"
               },
               "action": {
                 "type": "",

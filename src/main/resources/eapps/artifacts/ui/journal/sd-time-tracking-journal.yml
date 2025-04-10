@@ -1,0 +1,74 @@
+---
+id: sd-time-tracking-journal
+name:
+  ru: Учёт времени SD
+  en: SD time tracking
+predicate:
+  t: eq
+  a: _parent._type
+  v: emodel/type@sd-request-type
+typeRef: emodel/type@ecos-time-tracking-type
+actions:
+  - uiserv/action@view-dashboard
+  - uiserv/action@delete
+editable: false
+columns:
+  - id: user
+    name:
+      ru: Пользователь
+      en: User
+    type: PERSON
+  - id: _parent
+    name:
+      ru: Заявка
+      en: Request
+    type: ASSOC
+    groupable: true
+    config:
+      typeRef: emodel/type@sd-request-type
+    editor:
+      type: journal
+      config:
+        journalId: all-requests-service-desk-journal
+  - id: letterTopic
+    name:
+      ru: Тема письма
+      en: Letter topic
+    type: TEXT
+    attribute: _parent.letterTopic
+  - id: durationInMinutes
+    name:
+      ru: Затраченное время, мин.
+      en: Time spent, min.
+    type: NUMBER
+  - id: workDescription
+    name:
+      ru: Описание работы
+      en: Work description
+    type: TEXT
+  - id: startDate
+    name:
+      ru: Дата начала
+      en: Start date
+    type: DATETIME
+  - id: documentStatus
+    name:
+      ru: Статус заявки
+      en: Request status
+    type: TEXT
+    attribute: _parent._status
+    searchable: false
+    sortable: false
+  - id: client
+    name:
+      ru: Клиент
+      en: Client
+    attribute: _parent.client
+    type: ASSOC
+    config:
+      typeRef: emodel/type@clients-type
+    editor:
+      type: journal
+      config:
+        journalId: sd-clients-journal
+
