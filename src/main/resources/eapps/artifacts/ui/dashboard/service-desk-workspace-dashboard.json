@@ -1,0 +1,100 @@
+{
+  "id": "service-desk-workspace-dashboard",
+  "name": {},
+  "typeRef": "emodel/type@workspace-dashboard",
+  "appliedToRef": "",
+  "scope": "",
+  "priority": 0,
+  "workspace": "service-desk-workspace",
+  "config": {
+    "v2": {
+      "widgets": [
+        {
+          "name": "journal",
+          "label": "dashboard-settings.widget.journal",
+          "additionalProps": {},
+          "dndId": "2ba332f1-b3e4-4ff8-9548-4ed5aa62db02",
+          "id": "4454308b-1219-4bac-a5f7-eebf028576f5",
+          "props": {
+            "id": "4454308b-1219-4bac-a5f7-eebf028576f5",
+            "config": {
+              "widgetDisplayCondition": null,
+              "elementsDisplayCondition": {},
+              "version": "v2",
+              "v2": {
+                "journalsListIds": [
+                  "uiserv/journal@count-of-closed-requests-by-support-line"
+                ],
+                "journalSettingId": "uiserv/journal-settings@count-of-closed-sd-requests-grouping",
+                "journalId": "count-of-closed-requests-by-support-line",
+                "customJournalMode": false,
+                "customJournal": ""
+              }
+            }
+          },
+          "description": "Вкладка"
+        },
+        {
+          "name": "journal",
+          "label": "dashboard-settings.widget.journal",
+          "additionalProps": {},
+          "dndId": "2110095e-0c42-4d50-a7fd-2b5f802ef40b",
+          "id": "39240741-4f42-47aa-9649-f35bb115d0d3",
+          "props": {
+            "id": "39240741-4f42-47aa-9649-f35bb115d0d3",
+            "config": {
+              "version": "v2",
+              "v2": {
+                "journalsListIds": [
+                  "uiserv/journal@open-and-closed-requests-by-month"
+                ],
+                "journalSettingId": "uiserv/journal-settings@open-and-closed-sd-reqeusts-grouping",
+                "journalId": "open-and-closed-requests-by-month",
+                "customJournalMode": false,
+                "customJournal": ""
+              }
+            }
+          }
+        }
+      ],
+      "desktop": [
+        {
+          "id": "layout_bb6e6685-f802-4680-8606-007a42a8c1bd",
+          "tab": {
+            "label": "Вкладка",
+            "idLayout": "layout_bb6e6685-f802-4680-8606-007a42a8c1bd"
+          },
+          "type": "1-column",
+          "columns": [
+            {
+              "widgets": [
+                "4454308b-1219-4bac-a5f7-eebf028576f5",
+                "39240741-4f42-47aa-9649-f35bb115d0d3"
+              ]
+            }
+          ]
+        }
+      ],
+      "mobile": [
+        {
+          "id": "layout_330b11c3-f296-4949-8a4d-2e0c698e656c",
+          "tab": {
+            "label": {
+              "ru": "Вкладка",
+              "en": "Tab"
+            },
+            "idLayout": "layout_330b11c3-f296-4949-8a4d-2e0c698e656c"
+          },
+          "type": "mobile",
+          "columns": [
+            {
+              "widgets": []
+            }
+          ]
+        }
+      ]
+    },
+    "version": "v2"
+  },
+  "attributes": {}
+}

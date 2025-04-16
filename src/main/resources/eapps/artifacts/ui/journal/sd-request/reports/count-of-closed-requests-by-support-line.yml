@@ -1,0 +1,130 @@
+---
+id: count-of-closed-requests-by-support-line
+name:
+  ru: Количество завершенных запросов по линиям тех.поддержки
+  en: Count of closed requests by support line
+typeRef: emodel/type@sd-request-type
+editable: false
+predicate:
+  t: and
+  v:
+    - t: eq
+      a: "(date_part('year', _created) = date_part('year', now()))"
+      v: true
+    - t: eq
+      att: _status
+      val: request-closes
+columns:
+  - id: _created
+    name:
+      ru: Дата создания
+      en: Creation date
+    type: DATETIME
+    groupable: true
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    sortable: false
+  - id: _status
+    name:
+      ru: Статус
+      en: Status
+    type: TEXT
+  - id: _docNum
+    name:
+      ru: Номер заявки
+      en: Request number
+    type: NUMBER
+  - id: client
+    name:
+      ru: Заказчик
+      en: Customer
+    type: ASSOC
+  - id: initiator
+    name:
+      ru: Инициатор
+      en: Initiator
+    type: PERSON
+  - id: author
+    name:
+      ru: Автор
+      en: Author
+    type: TEXT
+  - id: petitionChannel
+    name:
+      ru: Канал обращения
+      en: Channel of petition
+    type: ASSOC
+  - id: resolution
+    name:
+      ru: Резолюция
+      en: Resolution
+    type: TEXT
+  - id: firstReactionTimestamp
+    name:
+      ru: Дата/Время первой реакции
+      en: Date/Time first reaction
+    type: DATETIME
+  - id: closedTimestamp
+    name:
+      ru: Дата/Время закрытия
+      en: Closing Date/Time
+    type: DATETIME
+  - id: stoppingTimestamp
+    name:
+      ru: Дата/Время остановки
+      en: Stopping Date/Time
+    type: DATETIME
+  - id: closingLine
+    name:
+      ru: Линия закрытия
+      en: Closing line
+    groupable: true
+    formatter:
+      type: script
+      config:
+        fn: |
+          return Citeck.helpers.getMLValue({
+            ru: cell + ' линия',
+            en: cell + ' line'
+          });
+  - id: isRequestOpen
+    name:
+      ru: Заявка открыта
+      en: Is request open
+    type: BOOLEAN
+    attribute: (closingLine IS NULL)
+    searchable: true
+    sortable: true
+    groupable: true
+  - id: createdMonth
+    name:
+      ru: Месяц создания
+      en: Created month
+    type: NUMBER
+    attribute: (date_part('month', _created))
+    searchable: true
+    sortable: true
+    groupable: true
+    formatter:
+      type: script
+      config:
+        fn: |
+          let name = 'unknown';
+          switch (cell) {
+            case 1: name = 'january'; break;
+            case 2: name = 'february'; break;
+            case 3: name = 'march'; break;
+            case 4: name = 'april'; break;
+            case 5: name = 'may'; break;
+            case 6: name = 'june'; break;
+            case 7: name = 'july'; break;
+            case 8: name = 'august'; break;
+            case 9: name = 'september'; break;
+            case 10: name = 'october'; break;
+            case 11: name = 'november'; break;
+            case 12: name = 'december'; break;
+          }
+          return Citeck.messages.global['ecos.forms.' + name] || name;
