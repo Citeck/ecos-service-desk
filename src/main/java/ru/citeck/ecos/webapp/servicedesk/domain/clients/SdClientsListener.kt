@@ -23,6 +23,7 @@ class SdClientsListener(
 ) {
 
     companion object {
+        private const val CLIENT_SOURCE_ID = "emodel/clients-type"
         private const val CLIENT_ATT_USERS = "users"
         private const val CLIENT_ATT_AUTH_GROUPS = "authGroups"
 
@@ -75,18 +76,33 @@ class SdClientsListener(
         event.assocs ?: return
         AuthContext.runAsSystem {
             event.assocs.find { it.assocId == CLIENT_ATT_USERS }?.let {
-                handleField(USERS_MEMBER_ID, it.added, it.removed)
+                handleField(USERS_MEMBER_ID, CLIENT_ATT_USERS, it.added, it.removed)
             }
             event.assocs.find { it.assocId == CLIENT_ATT_AUTH_GROUPS }?.let {
-                handleField(GROUPS_MEMBER_ID, it.added, it.removed)
+                handleField(GROUPS_MEMBER_ID, CLIENT_ATT_AUTH_GROUPS, it.added, it.removed)
             }
         }
     }
 
-    private fun handleField(memberId: String, added: List<EntityRef>, removed: List<EntityRef>) {
+    private fun handleField(
+        memberId: String,
+        clientAtt: String,
+        added: List<EntityRef>,
+        removed: List<EntityRef>
+    ) {
 
         if (added.isEmpty() && removed.isEmpty()) {
             return
+        }
+
+        val totallyRemoved = removed.filter { removedMember ->
+            val clientWithMember = recordsService.queryOne(
+                RecordsQuery.create()
+                    .withSourceId(CLIENT_SOURCE_ID)
+                    .withQuery(Predicates.contains(clientAtt, removedMember.toString()))
+                    .build()
+            )
+            EntityRef.isEmpty(clientWithMember)
         }
 
         val existingMemberRef = recordsService.queryOne(
@@ -116,13 +132,13 @@ class SdClientsListener(
             if (added.isNotEmpty()) {
                 memberMutAtts.setAtt(ATT_ADD_PREFIX + MEMBER_ATT_AUTHORITIES, added)
             }
-            if (removed.isNotEmpty()) {
-                memberMutAtts.setAtt(ATT_REM_PREFIX + MEMBER_ATT_AUTHORITIES, removed)
+            if (totallyRemoved.isNotEmpty()) {
+                memberMutAtts.setAtt(ATT_REM_PREFIX + MEMBER_ATT_AUTHORITIES, totallyRemoved)
             }
         }
         val mutRes = recordsService.mutate(memberMutAtts)
         if (existingMemberRef.isNotEmpty()
-            && removed.isNotEmpty() && added.isEmpty()
+            && totallyRemoved.isNotEmpty() && added.isEmpty()
             && !recordsService.getAtt(mutRes, "_has.$MEMBER_ATT_AUTHORITIES?bool").asBoolean()
         ) {
             recordsService.delete(mutRes)
