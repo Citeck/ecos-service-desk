@@ -3,12 +3,8 @@ id: service-desk-workspace
 name:
   ru: Service Desk
   en: Service Desk
-icon: null
-description: null
 workspaceMembers:
   - id: 4532ec22-1b54-4c05-adc2-6a8991c8a496
     authority: emodel/authority-group@support-lead
     memberRole: MANAGER
-visibility: PRIVATE
-homePageLink: ''
-templateRef: null
+visibility: PUBLIC
