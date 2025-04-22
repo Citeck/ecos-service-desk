@@ -3,8 +3,19 @@ id: service-desk-workspace
 name:
   ru: Service Desk
   en: Service Desk
+description:
+  ru: Пространство для работы с пользовательскими запросами и сбора аналитики по запросам.
+  en: A space for handling user requests and collecting analytics on support activities.
 workspaceMembers:
   - id: 4532ec22-1b54-4c05-adc2-6a8991c8a496
-    authority: emodel/authority-group@support-lead
+    authorities:
+      - emodel/authority-group@support-lead
     memberRole: MANAGER
+  - id: default-users
+    authorities:
+      - emodel/authority-group@impl-support-first-line-default
+      - emodel/authority-group@impl-support-second-line-default
+      - emodel/authority-group@impl-support-third-line-default
+      - emodel/authority-group@technologists-default
+    memberRole: USER
 visibility: PUBLIC
