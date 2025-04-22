@@ -159,6 +159,114 @@
             }
           ],
           "allowedFor": []
+        },
+        {
+          "id": "fee7c1ab-e465-4801-b081-d021a3b32b0b",
+          "label": {
+            "ru": "Справочники",
+            "en": "Data Lists"
+          },
+          "icon": "",
+          "hidden": false,
+          "type": "SECTION",
+          "config": {},
+          "action": {
+            "type": "",
+            "config": {}
+          },
+          "items": [
+            {
+              "id": "8c0101d5-15ea-45b7-b4c7-9e72c7257fd3",
+              "label": {
+                "en": "Маппинг заказчиков"
+              },
+              "icon": "ui/icon@i-leftmenu-personal-documents",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@clients-mapping-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "a8cc5440-0e51-4a86-8408-8d13a6c18d8c",
+              "label": {
+                "en": "Заказчики"
+              },
+              "icon": "ui/icon@i-leftmenu-hr-department",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@sd-clients-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "028829ee-a4a3-431a-a927-ddd3bfd56631",
+              "label": {
+                "en": "Типы обращений"
+              },
+              "icon": "ui/icon@i-leftmenu-tax-report",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@petition-types-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "2fd81971-646e-40a3-85ce-52fb57c8a040",
+              "label": {
+                "en": "Виды сервиса"
+              },
+              "icon": "ui/icon@i-leftmenu-journal-settings",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@service-types-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            },
+            {
+              "id": "46b02830-2eaf-44cf-87d7-2c08d9a91537",
+              "label": {
+                "en": "Модули системы"
+              },
+              "icon": "ui/icon@i-leftmenu-running-processes",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@system-module-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
+            }
+          ],
+          "allowedFor": []
         }
       ]
     },
