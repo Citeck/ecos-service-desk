@@ -6,6 +6,9 @@ name:
 description:
   ru: Пространство для работы с пользовательскими запросами и сбора аналитики по запросам.
   en: A space for handling user requests and collecting analytics on support activities.
+
+icon: uiserv/icon@service-desk-workspace-icon
+
 workspaceMembers:
   - id: 4532ec22-1b54-4c05-adc2-6a8991c8a496
     authorities:
