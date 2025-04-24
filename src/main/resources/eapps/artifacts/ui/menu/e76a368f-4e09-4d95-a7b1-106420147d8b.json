@@ -264,6 +264,24 @@
               },
               "items": [],
               "allowedFor": []
+            },
+            {
+              "id": "46b02830-2eaf-55cf-17d7-2c08d9a31537",
+              "label": {
+                "en": "SLA"
+              },
+              "icon": "ui/icon@i-leftmenu-task-statistic",
+              "hidden": false,
+              "type": "JOURNAL",
+              "config": {
+                "recordRef": "uiserv/journal@sd-sla-journal"
+              },
+              "action": {
+                "type": "",
+                "config": {}
+              },
+              "items": [],
+              "allowedFor": []
             }
           ],
           "allowedFor": []
