@@ -88,7 +88,10 @@
           "type": "mobile",
           "columns": [
             {
-              "widgets": []
+              "widgets": [
+                "4454308b-1219-4bac-a5f7-eebf028576f5",
+                "39240741-4f42-47aa-9649-f35bb115d0d3"
+              ]
             }
           ]
         }
