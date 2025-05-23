@@ -62,22 +62,6 @@
         "defaultValue": "",
         "refreshOn": [],
         "optionalWhenDisabled": false,
-        "logic": [
-          {
-            "name": "change display value",
-            "trigger": {
-              "type": "javascript",
-              "javascript": "result = _.get(instance, \"parent.data.letterTopic\").length > 50;"
-            },
-            "actions": [
-              {
-                "name": "change display value",
-                "type": "value",
-                "value": "var topic = _.get(instance, \"parent.data.letterTopic\");\n\nvalue = topic.slice(0, 50).concat(\"...\");"
-              }
-            ]
-          }
-        ],
         "type": "textfield",
         "input": true
       },
