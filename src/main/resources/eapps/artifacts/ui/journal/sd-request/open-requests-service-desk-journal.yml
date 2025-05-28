@@ -14,7 +14,6 @@ actionsFromType: false
 actions:
     - uiserv/action@edit
     - uiserv/action@create-assignment
-    - uiserv/action@create-camunda-user-task
     - uiserv/action@view-dashboard
     - uiserv/action@add-participant
     - uiserv/action@return-to-work-from-hold
