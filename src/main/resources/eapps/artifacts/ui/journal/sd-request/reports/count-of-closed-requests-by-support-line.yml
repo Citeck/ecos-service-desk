@@ -5,6 +5,7 @@ name:
   en: Count of closed requests by support line
 typeRef: emodel/type@sd-request-type
 editable: false
+actionsFromType: false
 predicate:
   t: and
   v:
