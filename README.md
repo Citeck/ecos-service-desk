@@ -2,7 +2,7 @@
 
 **Read this in other languages: [Русский](README.RU.MD)**
 
-# `Service desk`
+# Service desk
 
 Welcome to the Citeck `ecos-service-desk` repository! The `Service desk` module provides a comprehensive solution for handling service requests, incidents, and support tickets. It allows organizations to efficiently manage and track customer and employee inquiries, ensuring timely resolution and excellent service delivery.
 
