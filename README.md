@@ -2,9 +2,9 @@
 
 **Read this in other languages: [Русский](README.RU.MD)**
 
-# `ecos-service-desk`
+# `Service desk`
 
-Welcome to the Citeck `ecos-service-desk` repository! The `ecos-service-desk` module provides a comprehensive solution for handling service requests, incidents, and support tickets. It allows organizations to efficiently manage and track customer and employee inquiries, ensuring timely resolution and excellent service delivery.
+Welcome to the Citeck `ecos-service-desk` repository! The `Service desk` module provides a comprehensive solution for handling service requests, incidents, and support tickets. It allows organizations to efficiently manage and track customer and employee inquiries, ensuring timely resolution and excellent service delivery.
 
 ## Get started
 
@@ -72,8 +72,8 @@ We welcome contributions from the community to make Citeck even better. Everyone
 
 ## Support
 
-If you need any assistance or have any questions regarding Citeck `ecos-service-desk`, please create an issue in this repository or reach out to our [support team](mailto:support@citeck.ru).
+If you need any assistance or have any questions regarding Citeck `Service desk`, please create an issue in this repository or reach out to our [support team](mailto:support@citeck.ru).
 
 ## License
 
-Citeck `ecos-service-desk` is released under the [GNU Lesser General Public License](LICENSE).
+Citeck `Service desk` is released under the [GNU Lesser General Public License](LICENSE).
