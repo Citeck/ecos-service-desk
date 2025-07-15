@@ -118,4 +118,10 @@ columns:
       ru: Линия закрытия
       en: Closing line
     type: NUMBER
-
+  - id: counterparty
+    name:
+      ru: Контрагент
+      en: Counterparty
+    type: ASSOC
+    attribute: client.counterparty
+    visible: false
