@@ -3,6 +3,7 @@ id: sd-request-type
 name:
   ru: Заявка SD
   en: SD request
+localIdTemplate: "SD-{{_docNum}}"
 storageType: ECOS_MODEL
 parentRef: emodel/type@case
 formRef: uiserv/form@request-sd-form
