@@ -77,7 +77,6 @@ class SlaDurationHumanReadableConverterTest {
         assertThat(SlaDurationHumanReadableConverter.convert(duration)).isEqualTo("125H 30M")
     }
 
-
     @Test
     fun `days, hours, minutes and seconds to human readable`() {
         val duration = Duration.parse("P5DT5H30M45S")
@@ -133,5 +132,4 @@ class SlaDurationHumanReadableConverterTest {
 
         assertThat(SlaDurationHumanReadableConverter.convert(duration)).isEqualTo("-4H 45M")
     }
-
 }

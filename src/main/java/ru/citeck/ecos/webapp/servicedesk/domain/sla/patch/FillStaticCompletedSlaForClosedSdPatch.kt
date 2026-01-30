@@ -42,10 +42,12 @@ class FillStaticCompletedSlaForClosedSdPatch(
                 withQuery(
                     Predicates.eq(StatusConstants.ATT_STATUS, SD_STATUS_CLOSED),
                 )
-                withPage(QueryPage.create {
-                    withSkipCount(state.patchedElements.toInt())
-                    withMaxItems(BATCH_SIZE)
-                })
+                withPage(
+                    QueryPage.create {
+                        withSkipCount(state.patchedElements.toInt())
+                        withMaxItems(BATCH_SIZE)
+                    }
+                )
                 withSortBy(SortBy(RecordConstants.ATT_CREATED, true))
                     .build()
             }

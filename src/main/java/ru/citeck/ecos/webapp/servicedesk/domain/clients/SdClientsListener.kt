@@ -137,9 +137,10 @@ class SdClientsListener(
             }
         }
         val mutRes = recordsService.mutate(memberMutAtts)
-        if (existingMemberRef.isNotEmpty()
-            && totallyRemoved.isNotEmpty() && added.isEmpty()
-            && !recordsService.getAtt(mutRes, "_has.$MEMBER_ATT_AUTHORITIES?bool").asBoolean()
+        if (existingMemberRef.isNotEmpty() &&
+            totallyRemoved.isNotEmpty() &&
+            added.isEmpty() &&
+            !recordsService.getAtt(mutRes, "_has.$MEMBER_ATT_AUTHORITIES?bool").asBoolean()
         ) {
             recordsService.delete(mutRes)
         }

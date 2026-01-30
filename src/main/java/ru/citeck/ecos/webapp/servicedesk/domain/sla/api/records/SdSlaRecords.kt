@@ -29,7 +29,8 @@ import kotlin.time.toKotlinDuration
 @Component
 class SdSlaParamsRecords(
     private val slaManager: SlaManager
-) : AbstractRecordsDao(), RecordsQueryDao {
+) : AbstractRecordsDao(),
+    RecordsQueryDao {
     override fun getId(): String {
         return "sd-sla-params"
     }
@@ -50,7 +51,8 @@ class SdSlaParamsRecords(
 class SdSlaRecords(
     private val slaParametersProvider: SlaParametersProvider,
     private val sdDueDateService: SdDueDateService
-) : AbstractRecordsDao(), RecordsQueryDao {
+) : AbstractRecordsDao(),
+    RecordsQueryDao {
 
     companion object {
         private val log = KotlinLogging.logger {}
@@ -230,7 +232,6 @@ class SdSlaRecords(
                         }
 
                         val diffDuration = getDiff(sla2CompletedAt, sla2DueDate)
-
 
                         SlaInfo(
                             state = SlaState.COMPLETE,

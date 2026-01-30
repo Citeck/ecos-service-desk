@@ -9,7 +9,6 @@ object SlaDurationHumanReadableConverter {
         val humanReadable = duration.toComponents { hours, minutes, _, _ ->
             if (hours == 0L && minutes == 0) {
                 return "0M"
-
             }
 
             var result = ""

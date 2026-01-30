@@ -153,7 +153,8 @@ class ResetRemainingTimeAndStartSlaJob(
         }
 
         val records = IterableRecords(
-            query, IterableRecordsConfig.create()
+            query,
+            IterableRecordsConfig.create()
                 .withAttsToLoad(attsToLoadSchema)
                 .build(),
             recordsService

@@ -95,7 +95,9 @@ class SlaManager(
             ),
             timeToAutoClose = timeToAutoClose,
             timeToSendFirstLineFromClarify = dueDateService.getDueDate(
-                slaDurations.timeToSendFirstLineFromClarify, sdRequest, initialTime
+                slaDurations.timeToSendFirstLineFromClarify,
+                sdRequest,
+                initialTime
             )
         )
 

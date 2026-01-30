@@ -27,11 +27,12 @@ class AddClientsToWorkspacePatch(
 
     override fun call(): Any {
 
-        val clients = recordsService.query(RecordsQuery.create()
-            .withSourceId("emodel/clients-type")
-            .withQuery(Predicates.alwaysTrue())
-            .withMaxItems(10000)
-            .build(),
+        val clients = recordsService.query(
+            RecordsQuery.create()
+                .withSourceId("emodel/clients-type")
+                .withQuery(Predicates.alwaysTrue())
+                .withMaxItems(10000)
+                .build(),
             ClientsAtts::class.java
         )
 

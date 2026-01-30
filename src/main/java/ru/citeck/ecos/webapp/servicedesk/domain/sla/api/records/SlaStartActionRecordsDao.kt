@@ -18,7 +18,8 @@ class SlaStartActionRecordsDao(
     private val slaEventEmitter: SlaEventEmitter,
     private val roleService: RoleService,
     private val typesRegistry: EcosTypesRegistry
-) : AbstractRecordsDao(), ValueMutateDao<SlaStartActionRecordsDao.ActionDto> {
+) : AbstractRecordsDao(),
+    ValueMutateDao<SlaStartActionRecordsDao.ActionDto> {
 
     companion object {
         private const val ID = "sla-start"
@@ -65,7 +66,7 @@ class SlaStartActionRecordsDao(
         if (!typesRegistry.isSubType(recordType.getLocalId(), SD_TYPE_REF.getLocalId())) {
             error(
                 "This action allowed only for ${SD_TYPE_REF.getLocalId()}. " +
-                "Type of provided record: ${recordType.getLocalId()}"
+                    "Type of provided record: ${recordType.getLocalId()}"
             )
         }
         val userRoles = roleService.getCurrentUserRoles(recordRef, recordType)

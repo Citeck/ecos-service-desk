@@ -48,7 +48,6 @@ class PriorityChangeListener(
                 AuthContext.runAsSystem {
                     updateSlaAndTimersDueDates(sdRequest)
                 }
-
             }
         }
     }
@@ -76,7 +75,7 @@ class PriorityChangeListener(
 
             log.info {
                 "Update SD ${sdRequestEvent.ref} timer ${foundTimer.activityId} " +
-                        "due date from ${foundTimer.dueDate} to $newDueDate"
+                    "due date from ${foundTimer.dueDate} to $newDueDate"
             }
 
             recordsService.mutate(foundTimer.ref, mapOf("dueDate" to newDueDate))

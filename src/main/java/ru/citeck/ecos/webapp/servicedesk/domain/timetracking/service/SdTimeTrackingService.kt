@@ -39,7 +39,7 @@ class SdTimeTrackingService(
         diff: Long
     ) {
         if (!isCurrentMonthDate(timeTrackingDate)) {
-            log.info { "Time counter doesn't update for client: ${clientRef}. Time spent not in the current month" }
+            log.info { "Time counter doesn't update for client: $clientRef. Time spent not in the current month" }
             return
         }
 
@@ -73,7 +73,7 @@ class SdTimeTrackingService(
             }
         )
         if (clientMappingRef == null) {
-            log.warn { "Client mapping ref not found by clientRef: ${clientRef}. Time counter doesn't update" }
+            log.warn { "Client mapping ref not found by clientRef: $clientRef. Time counter doesn't update" }
             return null
         }
         return clientMappingRef

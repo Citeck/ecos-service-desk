@@ -10,7 +10,6 @@ import ru.citeck.ecos.records3.record.mixin.external.ExtMixinConfig
 import ru.citeck.ecos.webapp.api.entity.EntityRef
 import ru.citeck.ecos.webapp.api.entity.toEntityRef
 
-
 @Configuration
 class SlaDurationHumanReadableMixinConfiguration {
 
@@ -47,8 +46,6 @@ class SlaDurationHumanReadableMixinConfiguration {
                         getSlaData(data["recordRef"].toEntityRef(), recordsService)?.sla1DurationHumanReadable
                     }
             }
-
-
         }
     }
 
@@ -64,8 +61,6 @@ class SlaDurationHumanReadableMixinConfiguration {
                         getSlaData(data["recordRef"].toEntityRef(), recordsService)?.sla2DurationHumanReadable
                     }
             }
-
-
         }
     }
 
@@ -77,4 +72,3 @@ class SlaDurationHumanReadableMixinConfiguration {
         val sla2DurationHumanReadable: String
     )
 }
-
