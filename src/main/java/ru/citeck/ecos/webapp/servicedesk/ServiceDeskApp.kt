@@ -7,13 +7,11 @@ import ru.citeck.ecos.webapp.lib.spring.EcosSpringApplication
 @SpringBootApplication
 @EnableDiscoveryClient
 class ServiceDeskApp {
-
     companion object {
         const val NAME = "service-desk"
-
-        @JvmStatic
-        fun main(args: Array<String>) {
-            EcosSpringApplication(ServiceDeskApp::class.java).run(*args)
-        }
     }
+}
+
+fun main(args: Array<String>) {
+    EcosSpringApplication(ServiceDeskApp::class.java).run(*args)
 }
