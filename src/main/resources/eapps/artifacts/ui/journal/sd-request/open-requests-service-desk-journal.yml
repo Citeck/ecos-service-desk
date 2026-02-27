@@ -21,6 +21,11 @@ actions:
     - uiserv/action@log-work-action
 editable: false
 columns:
+  - id: _modified
+    name:
+      ru: Дата изменения
+      en: Modified
+    type: DATETIME
   - id: _created
     name:
       ru: Дата создания

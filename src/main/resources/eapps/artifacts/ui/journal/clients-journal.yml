@@ -33,3 +33,14 @@ columns:
       ru: Контрагент
       en: Counterparty
     type: TEXT
+  - id: _modified
+    name:
+      ru: Дата изменения
+      en: Modified
+    type: DATETIME
+
+  - id: _created
+    name:
+      ru: Дата создания
+      en: Created
+    type: DATETIME

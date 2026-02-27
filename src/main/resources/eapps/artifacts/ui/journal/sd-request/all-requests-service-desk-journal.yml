@@ -12,6 +12,11 @@ actions:
   - uiserv/action@view-dashboard
   - uiserv/action@log-work-action
 columns:
+  - id: _modified
+    name:
+      ru: Дата изменения
+      en: Modified
+    type: DATETIME
   - id: _created
     name:
       ru: Дата создания

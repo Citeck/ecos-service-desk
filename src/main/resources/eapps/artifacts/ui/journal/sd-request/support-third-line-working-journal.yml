@@ -19,6 +19,11 @@ actions:
   - uiserv/action@return-to-work-from-close
   - uiserv/action@log-work-action
 columns:
+  - id: _modified
+    name:
+      ru: Дата изменения
+      en: Modified
+    type: DATETIME
   - id: _created
     name:
       ru: Дата создания

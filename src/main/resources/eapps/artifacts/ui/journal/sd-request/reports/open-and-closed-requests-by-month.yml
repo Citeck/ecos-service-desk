@@ -13,6 +13,11 @@ predicate:
       a: "(date_part('year', _created) = date_part('year', now()))"
       v: true
 columns:
+  - id: _modified
+    name:
+      ru: Дата изменения
+      en: Modified
+    type: DATETIME
   - id: _created
     name:
       ru: Дата создания

@@ -51,3 +51,14 @@ columns:
     name:
       ru: Штрафные санкции (% от стоимости за час просрочки)
       en: Penalties (% of the cost per hour of delay)
+  - id: _modified
+    name:
+      ru: Дата изменения
+      en: Modified
+    type: DATETIME
+
+  - id: _created
+    name:
+      ru: Дата создания
+      en: Created
+    type: DATETIME
