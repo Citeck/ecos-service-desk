@@ -1,0 +1,48 @@
+---
+id: sd-request-links-journal
+name:
+  ru: Заявки SD
+  en: SD Requests
+typeRef: emodel/type@sd-request-type
+editable: false
+columns:
+  - id: _docNum
+    name:
+      ru: Номер
+      en: Number
+    type: NUMBER
+  - id: letterTopic
+    name:
+      ru: Тема
+      en: Subject
+    type: TEXT
+  - id: priority
+    name:
+      ru: Приоритет
+      en: Priority
+    type: TEXT
+    formatter:
+      type: colored
+      config:
+        color:
+          low: '#DAF7A6'
+          medium: '#FFC300'
+          high: '#FF5733'
+          urgent: '#C70039'
+  - id: _status
+    name:
+      ru: Статус
+      en: Status
+    type: TEXT
+
+  - id: _modified
+    name:
+      ru: Дата изменения
+      en: Modified
+    type: DATETIME
+
+  - id: _created
+    name:
+      ru: Дата создания
+      en: Created
+    type: DATETIME
