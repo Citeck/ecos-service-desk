@@ -32,9 +32,6 @@ associations:
     direction: BOTH
     journals:
       - uiserv/journal@all-requests-service-desk-journal
-      - uiserv/journal@ecos-release-journal
-      - uiserv/journal@ept-sprint-journal
-      - uiserv/journal@ept-issue-journal
 defaultCreateVariant: true
 defaultWorkspace: service-desk-workspace
 workspaceScope: PRIVATE
