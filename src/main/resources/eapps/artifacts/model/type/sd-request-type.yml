@@ -260,51 +260,16 @@ model:
       name:
         ru: Приоритет
         en: Priority
-    - id: implFirstLineSupport
+    - id: mappingClientRef
       name:
-        ru: Исполнители 1-й линии ТП
-        en: Implementer of the 1st line support
-      type: AUTHORITY_GROUP
+        ru: Ссылка на маппинг клиента
+        en: Client mapping ref
       computed:
         type: SCRIPT
         config:
           fn: |-
-            var mappingClient = Records.query({
-                "sourceId": "emodel/clients-mapping-type",
-                "consistency": "EVENTUAL",
-                "language": "predicate",
-                "page": {
-                    "maxItems": 1
-                },
-                "query": {
-                    "t": "and",
-                    "val": [
-                        {
-                            "att": "_type",
-                            "t": "eq",
-                            "val": "emodel/type@clients-mapping-type"
-                        },
-                        {
-                            "att": "client",
-                            "t": "eq",
-                            "val": value.load("client?str")
-                        }
-                    ]
-                },
-                "sortBy": [
-                    {
-                        "ascending": false,
-                        "attribute": "_created"
-                    }
-                ],
-            }, {
-                id: "?id"
-            });
-
-            if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("implFirstLineSupport?str");
-            } else {
-                var defaultMappingClient = Records.query({
+            var findMapping = function(clientPredicate) {
+                return Records.query({
                     "sourceId": "emodel/clients-mapping-type",
                     "consistency": "EVENTUAL",
                     "language": "predicate",
@@ -319,10 +284,7 @@ model:
                                 "t": "eq",
                                 "val": "emodel/type@clients-mapping-type"
                             },
-                            {
-                                "att": "client",
-                                "t": "empty"
-                            }
+                            clientPredicate
                         ]
                     },
                     "sortBy": [
@@ -334,8 +296,32 @@ model:
                 }, {
                     id: "?id"
                 });
-                    return Records.get(defaultMappingClient.records[0].id).load("implFirstLineSupport?str");
-                }
+            };
+
+            var res = findMapping({
+                "att": "client",
+                "t": "eq",
+                "val": value.load("client?str")
+            });
+            if (res.records.length === 0) {
+                res = findMapping({
+                    "att": "client",
+                    "t": "empty"
+                });
+            }
+            return res.records.length > 0 ? res.records[0].id : null;
+        storingType: NONE
+    - id: implFirstLineSupport
+      name:
+        ru: Исполнители 1-й линии ТП
+        en: Implementer of the 1st line support
+      type: AUTHORITY_GROUP
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            var ref = value.load("mappingClientRef?str");
+            return ref ? Records.get(ref).load("implFirstLineSupport?str") : null;
         storingType: NONE
     - id: implSecondLineSupport
       name:
@@ -346,73 +332,8 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var mappingClient = Records.query({
-                "sourceId": "emodel/clients-mapping-type",
-                "consistency": "EVENTUAL",
-                "language": "predicate",
-                "page": {
-                    "maxItems": 1
-                },
-                "query": {
-                    "t": "and",
-                    "val": [
-                        {
-                            "att": "_type",
-                            "t": "eq",
-                            "val": "emodel/type@clients-mapping-type"
-                        },
-                        {
-                            "att": "client",
-                            "t": "eq",
-                            "val": value.load("client?str")
-                        }
-                    ]
-                },
-                "sortBy": [
-                    {
-                        "ascending": false,
-                        "attribute": "_created"
-                    }
-                ],
-            }, {
-                id: "?id"
-            });
-
-            if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("implSecondLineSupport?str");
-            } else {
-                var defaultMappingClient = Records.query({
-                    "sourceId": "emodel/clients-mapping-type",
-                    "consistency": "EVENTUAL",
-                    "language": "predicate",
-                    "page": {
-                        "maxItems": 1
-                    },
-                    "query": {
-                        "t": "and",
-                        "val": [
-                            {
-                                "att": "_type",
-                                "t": "eq",
-                                "val": "emodel/type@clients-mapping-type"
-                            },
-                            {
-                                "att": "client",
-                                "t": "empty"
-                            }
-                        ]
-                    },
-                    "sortBy": [
-                        {
-                            "ascending": false,
-                            "attribute": "_created"
-                        }
-                    ],
-                }, {
-                    id: "?id"
-                });
-                    return Records.get(defaultMappingClient.records[0].id).load("implSecondLineSupport?str");
-                }
+            var ref = value.load("mappingClientRef?str");
+            return ref ? Records.get(ref).load("implSecondLineSupport?str") : null;
         storingType: NONE
     - id: implThirdLineSupport
       name:
@@ -423,73 +344,8 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var mappingClient = Records.query({
-                "sourceId": "emodel/clients-mapping-type",
-                "consistency": "EVENTUAL",
-                "language": "predicate",
-                "page": {
-                    "maxItems": 1
-                },
-                "query": {
-                    "t": "and",
-                    "val": [
-                        {
-                            "att": "_type",
-                            "t": "eq",
-                            "val": "emodel/type@clients-mapping-type"
-                        },
-                        {
-                            "att": "client",
-                            "t": "eq",
-                            "val": value.load("client?str")
-                        }
-                    ]
-                },
-                "sortBy": [
-                    {
-                        "ascending": false,
-                        "attribute": "_created"
-                    }
-                ],
-            }, {
-                id: "?id"
-            });
-
-            if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("implThirdLineSupport?str");
-            } else {
-                var defaultMappingClient = Records.query({
-                    "sourceId": "emodel/clients-mapping-type",
-                    "consistency": "EVENTUAL",
-                    "language": "predicate",
-                    "page": {
-                        "maxItems": 1
-                    },
-                    "query": {
-                        "t": "and",
-                        "val": [
-                            {
-                                "att": "_type",
-                                "t": "eq",
-                                "val": "emodel/type@clients-mapping-type"
-                            },
-                            {
-                                "att": "client",
-                                "t": "empty"
-                            }
-                        ]
-                    },
-                    "sortBy": [
-                        {
-                            "ascending": false,
-                            "attribute": "_created"
-                        }
-                    ],
-                }, {
-                    id: "?id"
-                });
-                    return Records.get(defaultMappingClient.records[0].id).load("implThirdLineSupport?str");
-                }
+            var ref = value.load("mappingClientRef?str");
+            return ref ? Records.get(ref).load("implThirdLineSupport?str") : null;
         storingType: NONE
     - id: technologist
       name:
@@ -500,73 +356,8 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var mappingClient = Records.query({
-                "sourceId": "emodel/clients-mapping-type",
-                "consistency": "EVENTUAL",
-                "language": "predicate",
-                "page": {
-                    "maxItems": 1
-                },
-                "query": {
-                    "t": "and",
-                    "val": [
-                        {
-                            "att": "_type",
-                            "t": "eq",
-                            "val": "emodel/type@clients-mapping-type"
-                        },
-                        {
-                            "att": "client",
-                            "t": "eq",
-                            "val": value.load("client?str")
-                        }
-                    ]
-                },
-                "sortBy": [
-                    {
-                        "ascending": false,
-                        "attribute": "_created"
-                    }
-                ],
-            }, {
-                id: "?id"
-            });
-
-            if (mappingClient.records.length > 0) {
-                return Records.get(mappingClient.records[0].id).load("technologist?str");
-            } else {
-                var defaultMappingClient = Records.query({
-                    "sourceId": "emodel/clients-mapping-type",
-                    "consistency": "EVENTUAL",
-                    "language": "predicate",
-                    "page": {
-                        "maxItems": 1
-                    },
-                    "query": {
-                        "t": "and",
-                        "val": [
-                            {
-                                "att": "_type",
-                                "t": "eq",
-                                "val": "emodel/type@clients-mapping-type"
-                            },
-                            {
-                                "att": "client",
-                                "t": "empty"
-                            }
-                        ]
-                    },
-                    "sortBy": [
-                        {
-                            "ascending": false,
-                            "attribute": "_created"
-                        }
-                    ],
-                }, {
-                    id: "?id"
-                });
-                    return Records.get(defaultMappingClient.records[0].id).load("technologist?str");
-                }
+            var ref = value.load("mappingClientRef?str");
+            return ref ? Records.get(ref).load("technologist?str") : null;
         storingType: NONE
     - id: implementerThirdLineSupport
       name:
