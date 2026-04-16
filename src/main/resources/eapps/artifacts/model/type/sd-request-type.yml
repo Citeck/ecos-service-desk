@@ -265,10 +265,23 @@ model:
       name:
         ru: Приоритет
         en: Priority
-    - id: mappingClientRef
+    - id: clientMappingRef
       name:
         ru: Ссылка на маппинг клиента
         en: Client mapping ref
+      type: ASSOC
+      computed:
+        type: SCRIPT
+        config:
+          fn: |-
+            return Records.queryOne({
+              sourceId: 'service-desk/clients-mapping-service',
+              language: 'mapping-by-client',
+              query: {
+                client: value.load("client?id")
+              }
+            }, 'mappingRef?id');
+        storingType: NONE
     - id: implFirstLineSupport
       name:
         ru: Исполнители 1-й линии ТП
@@ -278,7 +291,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("implFirstLineSupport?str") : null;
         storingType: NONE
     - id: implSecondLineSupport
@@ -290,7 +303,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("implSecondLineSupport?str") : null;
         storingType: NONE
     - id: implThirdLineSupport
@@ -302,7 +315,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("implThirdLineSupport?str") : null;
         storingType: NONE
     - id: technologist
@@ -314,7 +327,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("technologist?str") : null;
         storingType: NONE
     - id: implementerThirdLineSupport
