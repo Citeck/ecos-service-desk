@@ -60,7 +60,7 @@ class SdClientsMappingMixinIntegrationTest {
     }
 
     private fun resolveMappingRef(sdRequestRef: EntityRef): String {
-        return recordsService.getAtt(sdRequestRef, "mappingClientRef?id").asText()
+        return recordsService.getAtt(sdRequestRef, "clientMappingRef?id").asText()
     }
 
     @Test

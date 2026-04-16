@@ -14,7 +14,7 @@ class SdClientsMappingServiceDao(
     override fun queryRecords(recsQuery: RecordsQuery): Any? {
         if (recsQuery.language == MappingByClientQuery.LANG) {
             val query = recsQuery.getQuery(MappingByClientQuery::class.java)
-            return MappingByClientQuery.Resp(cache.getMappingRef(query.client))
+            return MappingByClientQuery.Resp(cache.getMappingRef(query.client ?: EntityRef.EMPTY))
         }
         return null
     }
@@ -24,7 +24,7 @@ class SdClientsMappingServiceDao(
     }
 
     data class MappingByClientQuery(
-        val client: EntityRef
+        val client: EntityRef?
     ) {
         companion object {
             const val LANG = "mapping-by-client"
