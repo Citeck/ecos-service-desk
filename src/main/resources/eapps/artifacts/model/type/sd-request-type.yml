@@ -269,53 +269,6 @@ model:
       name:
         ru: Ссылка на маппинг клиента
         en: Client mapping ref
-      computed:
-        type: SCRIPT
-        config:
-          fn: |-
-            var findMapping = function(clientPredicate) {
-                return Records.query({
-                    "sourceId": "emodel/clients-mapping-type",
-                    "consistency": "EVENTUAL",
-                    "language": "predicate",
-                    "page": {
-                        "maxItems": 1
-                    },
-                    "query": {
-                        "t": "and",
-                        "val": [
-                            {
-                                "att": "_type",
-                                "t": "eq",
-                                "val": "emodel/type@clients-mapping-type"
-                            },
-                            clientPredicate
-                        ]
-                    },
-                    "sortBy": [
-                        {
-                            "ascending": false,
-                            "attribute": "_created"
-                        }
-                    ],
-                }, {
-                    id: "?id"
-                });
-            };
-
-            var res = findMapping({
-                "att": "client",
-                "t": "eq",
-                "val": value.load("client?str")
-            });
-            if (res.records.length === 0) {
-                res = findMapping({
-                    "att": "client",
-                    "t": "empty"
-                });
-            }
-            return res.records.length > 0 ? res.records[0].id : null;
-        storingType: NONE
     - id: implFirstLineSupport
       name:
         ru: Исполнители 1-й линии ТП
