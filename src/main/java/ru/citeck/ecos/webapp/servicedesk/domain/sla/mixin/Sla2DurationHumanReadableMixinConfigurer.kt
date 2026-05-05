@@ -2,6 +2,7 @@ package ru.citeck.ecos.webapp.servicedesk.domain.sla.mixin
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import ru.citeck.ecos.context.lib.auth.AuthContext
 import ru.citeck.ecos.records3.RecordsService
 import ru.citeck.ecos.records3.record.atts.schema.annotation.AttName
 import ru.citeck.ecos.records3.record.dao.query.dto.query.RecordsQuery
@@ -21,15 +22,18 @@ class SlaDurationHumanReadableMixinConfiguration {
     }
 
     private fun getSlaData(recordRef: EntityRef, recordsService: RecordsService): SlaData? {
-        val sla = recordsService.queryOne(
-            RecordsQuery.create {
-                withSourceId("service-desk/sd-sla")
-                withQuery(
-                    mapOf("record" to recordRef)
-                )
-            },
-            SlaData::class.java
-        )
+
+        val sla = AuthContext.runAsSystem {
+            recordsService.queryOne(
+                RecordsQuery.create {
+                    withSourceId("service-desk/sd-sla")
+                    withQuery(
+                        mapOf("record" to recordRef)
+                    )
+                },
+                SlaData::class.java
+            )
+        }
 
         return sla
     }
