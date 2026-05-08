@@ -40,6 +40,7 @@ columns:
     name:
       ru: Затраченное время
       en: Time spent
+    type: NUMBER
     formatter:
       type: duration
   - id: workDescription
