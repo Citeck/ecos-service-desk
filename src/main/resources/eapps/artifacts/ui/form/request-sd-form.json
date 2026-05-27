@@ -21,7 +21,7 @@
       "sd_priority_medium": "Medium",
       "sd_priority_high": "High",
       "sd_priority_urgent": "Urgent",
-      "resolution_links_validation": "Необходимо добавить ссылки через виджет \"Связи документа\""
+      "resolution_links_validation": "Необходимо добавить ссылки или задачи через виджет \"Связи документа\""
     },
     "en": {
       "resolution_done": "Done",
@@ -33,7 +33,7 @@
       "sd_priority_medium": "Medium",
       "sd_priority_high": "High",
       "sd_priority_urgent": "Urgent",
-      "resolution_links_validation": "Need to add links via the \"Document associations\" widget"
+      "resolution_links_validation": "Need to add links or tasks via the \"Document associations\" widget"
     }
   },
   "definition": {
@@ -426,7 +426,7 @@
         },
         "key": "resolution",
         "validate": {
-          "custom": "if (value === \"knownError\" && data.linksInfo.links === null) {\n  valid = \"resolution_links_validation\";\n}"
+          "custom": "if (value === \"knownError\" && (data.linksInfo.links === null && (data.linksInfo.associatedWith === null || data.linksInfo.associatedWith.indexOf(\"ept-issue\") === -1))) {\n  valid = \"resolution_links_validation\";\n}"
         },
         "clearOnHide": false,
         "dataSrc": "values",
@@ -644,7 +644,8 @@
                   "record": {
                     "id": "{{recordId}}",
                     "attributes": {
-                      "links": "webLinks"
+                      "links": "webLinks",
+                      "associatedWith": "assoc:associatedWith[]._type.id"
                     }
                   }
                 },
