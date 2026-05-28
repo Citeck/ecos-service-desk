@@ -1175,16 +1175,16 @@
           "request-closes": "READ"
         },
         "lead-tech-role": {
-          "request-first-line": "READ",
-          "request-first-line-work": "READ",
-          "request-second-line": "READ",
-          "request-second-line-work": "READ",
-          "request-third-line": "READ",
-          "request-third-line-work": "READ",
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
           "request-approve": "WRITE",
-          "request-clarification": "READ",
-          "request-hold": "READ",
-          "request-closes": "READ"
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
         },
         "add-partic-role": {
           "request-first-line": "READ",
@@ -1199,16 +1199,16 @@
           "request-closes": "READ"
         },
         "tech-role": {
-          "request-first-line": "READ",
-          "request-first-line-work": "READ",
-          "request-second-line": "READ",
-          "request-second-line-work": "READ",
-          "request-third-line": "READ",
-          "request-third-line-work": "READ",
+          "request-first-line": "WRITE",
+          "request-first-line-work": "WRITE",
+          "request-second-line": "WRITE",
+          "request-second-line-work": "WRITE",
+          "request-third-line": "WRITE",
+          "request-third-line-work": "WRITE",
           "request-approve": "WRITE",
-          "request-clarification": "READ",
-          "request-hold": "READ",
-          "request-closes": "READ"
+          "request-clarification": "WRITE",
+          "request-hold": "WRITE",
+          "request-closes": "WRITE"
         }
       },
       "rules": []
