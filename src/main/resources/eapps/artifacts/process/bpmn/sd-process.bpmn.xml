@@ -1205,17 +1205,17 @@
                 <bpmn:signalEventDefinition  signalRef="Signal_8SNFfmj" id="SignalEventDefinition_1eqw4n3"/>
             </bpmn:startEvent>
             <bpmn:sequenceFlow sourceRef="Event_1jpwstt" targetRef="Activity_1qvvo5u" name="" id="Flow_0g6uuq6" ecos:name_ml="{}" ecos:conditionConfig="{&quot;fn&quot;:&quot;&quot;,&quot;expression&quot;:&quot;&quot;,&quot;outcome&quot;:&quot;&quot;}" ecos:conditionType="NONE"/>
-            <bpmn:scriptTask scriptFormat="javascript" name="Проверка резолюции" id="Activity_1qvvo5u" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка резолюции&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var resolution = document.load('resolution');&#10;var link = document.load('webLinks');&#10;var associatedWith = document.load('assoc:associatedWith[]._type.id');&#10;&#10;if (resolution === 'knownError' &amp;&amp; (associatedWith === null || associatedWith.indexOf(&quot;ept-issue&quot;) === -1)) {&#10;  if(link === null) {&#10;    throw new Error(&quot;При резолюции \&quot;Известная ошибка\&quot; должна быть указана ссылка или задача&quot;);&#10;  }&#10;}">
+            <bpmn:scriptTask scriptFormat="javascript" name="Проверка резолюции" id="Activity_1qvvo5u" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:false}" ecos:name_ml="{&quot;ru&quot;:&quot;Проверка резолюции&quot;}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}" ecos:script="var resolution = document.load('resolution');&#10;var link = document.load('webLinks');&#10;var associatedWith = document.load('assoc:associatedWith[]._type.id').toArray();&#10;&#10;if (resolution === 'knownError' &amp;&amp;&#10;  (link === null &amp;&amp;&#10;    (associatedWith === null || associatedWith.indexOf(&quot;ept-issue&quot;) === -1))) {&#10;    throw new Error(&quot;При резолюции \&quot;Известная ошибка\&quot; должна быть указана ссылка или задача&quot;);&#10;}">
                 <bpmn:incoming >Flow_0g6uuq6</bpmn:incoming>
                 <bpmn:outgoing >Flow_0rl85cv</bpmn:outgoing>
                 <bpmn:script>var resolution = document.load('resolution');
                     var link = document.load('webLinks');
-                    var associatedWith = document.load('assoc:associatedWith[]._type.id');
+                    var associatedWith = document.load('assoc:associatedWith[]._type.id').toArray();
 
-                    if (resolution === 'knownError' &amp;&amp; (associatedWith === null || associatedWith.indexOf("ept-issue") === -1)) {
-                    if(link === null) {
+                    if (resolution === 'knownError' &amp;&amp;
+                    (link === null &amp;&amp;
+                    (associatedWith === null || associatedWith.indexOf("ept-issue") === -1))) {
                     throw new Error("При резолюции \"Известная ошибка\" должна быть указана ссылка или задача");
-                    }
                     }</bpmn:script>
             </bpmn:scriptTask>
             <bpmn:endEvent name="" id="Event_0s74u88" ecos:documentation="{}" ecos:asyncConfig="{&quot;asyncBefore&quot;:false,&quot;asyncAfter&quot;:false,&quot;exclusive&quot;:true}" ecos:name_ml="{}" ecos:jobConfig="{&quot;jobPriority&quot;:null,&quot;jobRetryTimeCycle&quot;:null}">
