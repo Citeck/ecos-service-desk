@@ -1,18 +1,86 @@
 {
-  "id": "sd-request-processing-second-line",
+  "id": "sd-request-processing-third-line",
   "formKey": "",
   "title": {
-    "ru": "Форма обработки заявки 2-й линии ТП",
-    "en": "2nd support line request processing form"
+    "ru": "Форма обработки заявки 3-й линии ТП",
+    "en": "3rd support line request processing form"
   },
   "description": {},
   "customModule": "",
   "typeRef": "",
   "width": "",
   "system": false,
-  "i18n": {},
+  "i18n": {
+    "ru": {
+      "resolution_done": "Готово",
+      "resolution_notRelevant": "Не актуально",
+      "resolution_knownError": "Известная ошибка",
+      "resolution_duplicate": "Дубликат",
+      "resolution_notReproducible": "Не воспроизводится",
+      "resolution_links_validation": "Необходимо добавить ссылки или задачи через виджет \"Связи документа\""
+    },
+    "en": {
+      "resolution_done": "Done",
+      "resolution_notRelevant": "Not relevant",
+      "resolution_knownError": "Known error",
+      "resolution_duplicate": "Duplicate",
+      "resolution_notReproducible": "Not reproducible",
+      "resolution_links_validation": "Need to add links or tasks via the \"Document associations\" widget"
+    }
+  },
   "definition": {
     "components": [
+      {
+        "label": {
+          "ru": "Резолюция",
+          "en": "Resolution"
+        },
+        "key": "_ECM_resolution",
+        "validate": {
+          "custom": "if (value === \"knownError\" && (data.parentInfo.links === null && (data.parentInfo.associatedWith === null || data.parentInfo.associatedWith.indexOf(\"ept-issue\") === -1))) {\n  valid = \"resolution_links_validation\";\n}",
+          "select": false
+        },
+        "clearOnHide": false,
+        "dataSrc": "values",
+        "data": {
+          "values": [
+            {
+              "label": "resolution_done",
+              "value": "done"
+            },
+            {
+              "label": "resolution_notRelevant",
+              "value": "notRelevant"
+            },
+            {
+              "label": "resolution_duplicate",
+              "value": "duplicate"
+            },
+            {
+              "label": "resolution_notReproducible",
+              "value": "notReproducible"
+            },
+            {
+              "label": "resolution_knownError",
+              "value": "knownError"
+            }
+          ],
+          "headers": [
+            {}
+          ]
+        },
+        "searchEnabled": false,
+        "defaultValue": "",
+        "refreshOn": [
+          "parentInfo"
+        ],
+        "customDefaultValue": "if (data.parentInfo && data.parentInfo.resolution) {\n  value = data.parentInfo.resolution;\n}",
+        "optionalWhenDisabled": false,
+        "type": "ecosSelect",
+        "input": true,
+        "reorder": false,
+        "reference": false
+      },
       {
         "label": {
           "ru": "Комментарий:",
@@ -206,23 +274,7 @@
             "input": false,
             "key": "column",
             "label": "Column",
-            "components": [
-              {
-                "label": {
-                  "en": "To 3rd support line",
-                  "ru": "Передать 3-й линии ТП"
-                },
-                "key": "outcome_toThirdSupportLine",
-                "state": "",
-                "theme": "primary",
-                "block": true,
-                "disableOnInvalid": true,
-                "refreshOn": [],
-                "optionalWhenDisabled": false,
-                "type": "button",
-                "input": true
-              }
-            ],
+            "components": [],
             "clearOnHide": true,
             "conditional": {
               "show": null,
@@ -242,9 +294,31 @@
         "oneColumnInViewMode": false,
         "type": "columns",
         "input": false
+      },
+      {
+        "label": "parentInfo",
+        "source": {
+          "type": "record",
+          "forceLoad": true,
+          "record": {
+            "id": "{{recordId}}",
+            "attributes": {
+              "resolution": "documentRef.resolution",
+              "associatedWith": "documentRef.assoc:associatedWith[]._type.id",
+              "links": "documentRef.webLinks"
+            }
+          }
+        },
+        "update": {
+          "type": "once"
+        },
+        "key": "parentInfo",
+        "type": "asyncData",
+        "input": true,
+        "triggerEventOnChange": false
       }
     ],
-    "formId": "sd-request-processing-second-line"
+    "formId": "sd-request-processing-third-line"
   },
   "attributes": {},
   "notExists": false
