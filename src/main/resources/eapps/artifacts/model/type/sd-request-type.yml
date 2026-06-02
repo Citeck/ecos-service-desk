@@ -20,6 +20,7 @@ actions:
   - uiserv/action@tasks-actions
   - uiserv/action@log-work-action
   - uiserv/action@sla-start
+  - uiserv/action@sd-create-task-ept
 associations:
   - id: webLinks
     journalsFromTarget: false
