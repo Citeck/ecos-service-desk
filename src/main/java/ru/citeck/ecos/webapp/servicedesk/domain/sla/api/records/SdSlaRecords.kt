@@ -63,23 +63,22 @@ class SdSlaRecords(
     }
 
     override fun queryRecords(recsQuery: RecordsQuery): Any? {
-        val record = recsQuery.getQuery(SlaQuery::class.java).record
-        if (record.isEmpty()) {
-            log.warn { "Empty SD request not allowed" }
-            return null
+        val query = recsQuery.getQuery(SlaQuery::class.java)
+        val refs = when {
+            query.records.isNotEmpty() -> query.records
+            query.record.isNotEmpty() -> listOf(query.record)
+            else -> {
+                log.warn { "Empty SD request not allowed" }
+                return null
+            }
         }
 
-        val req = recordsService.getAtts(record, RequestInfo::class.java)
-        if (req.client == EntityRef.EMPTY || req.priority == null) {
-            return null
-        }
+        val reqs = recordsService.getAtts(refs, RequestInfo::class.java)
 
-        var workingSchedule: WorkingSchedule? = null
-        fun getWorkingTimeDiff(date0: Instant, date1: Instant): Duration {
-            val schedule = workingSchedule ?: run {
-                val loadedSchedule = sdDueDateService.getWorkingScheduleForClient(req.client)
-                workingSchedule = loadedSchedule
-                loadedSchedule
+        val schedulesByClient = HashMap<EntityRef, WorkingSchedule>()
+        fun getWorkingTimeDiff(client: EntityRef, date0: Instant, date1: Instant): Duration {
+            val schedule = schedulesByClient.getOrPut(client) {
+                sdDueDateService.getWorkingScheduleForClient(client)
             }
             // todo: negative diff should be calculated in WorkingSchedule, but now it is not supported
             val duration = if (date0.isAfter(date1)) {
@@ -90,21 +89,24 @@ class SdSlaRecords(
             return duration.toKotlinDuration()
         }
 
-        val sla1 = req.toSlaInfo(SlaType.SLA1) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
-        val sla2 = req.toSlaInfo(SlaType.SLA2) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
+        val records = ArrayList<SlaRecord?>(refs.size)
+        refs.forEachIndexed { idx, ref ->
+            val req = reqs[idx]
+            if (req.client == EntityRef.EMPTY || req.priority == null) {
+                records.add(null)
+                return@forEachIndexed
+            }
+            val getDiff = { d0: Instant, d1: Instant -> getWorkingTimeDiff(req.client, d0, d1) }
+            val sla1 = req.toSlaInfo(SlaType.SLA1, getDiff)
+            val sla2 = req.toSlaInfo(SlaType.SLA2, getDiff)
 
-        log.debug { "SLA info for $record: \nsla1: $sla1 \nsla2:$sla2" }
+            log.debug { "SLA info for $ref: \nsla1: $sla1 \nsla2:$sla2" }
+
+            records.add(SlaRecord(recordRef = ref, sla1Info = sla1, sla2Info = sla2, req, getDiff))
+        }
 
         val result = RecsQueryRes<SlaRecord>()
-        result.setRecords(
-            listOf(
-                SlaRecord(
-                    sla1Info = sla1,
-                    sla2Info = sla2,
-                    req
-                ) { d0, d1 -> getWorkingTimeDiff(d0, d1) }
-            )
-        )
+        result.setRecords(records)
         return result
     }
 
@@ -308,6 +310,7 @@ class SdSlaRecords(
     )
 
     private data class SlaRecord(
+        val recordRef: EntityRef,
         val sla1Info: SlaInfo,
         val sla2Info: SlaInfo,
         val requestInfo: RequestInfo,
@@ -338,5 +341,6 @@ class SdSlaRecords(
 }
 
 private data class SlaQuery(
-    val record: EntityRef
+    val record: EntityRef = EntityRef.EMPTY,
+    val records: List<EntityRef> = emptyList()
 )

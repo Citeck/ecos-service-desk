@@ -266,56 +266,22 @@ model:
       name:
         ru: Приоритет
         en: Priority
-    - id: mappingClientRef
+    - id: clientMappingRef
       name:
         ru: Ссылка на маппинг клиента
         en: Client mapping ref
+      type: ASSOC
       computed:
         type: SCRIPT
         config:
           fn: |-
-            var findMapping = function(clientPredicate) {
-                return Records.query({
-                    "sourceId": "emodel/clients-mapping-type",
-                    "consistency": "EVENTUAL",
-                    "language": "predicate",
-                    "page": {
-                        "maxItems": 1
-                    },
-                    "query": {
-                        "t": "and",
-                        "val": [
-                            {
-                                "att": "_type",
-                                "t": "eq",
-                                "val": "emodel/type@clients-mapping-type"
-                            },
-                            clientPredicate
-                        ]
-                    },
-                    "sortBy": [
-                        {
-                            "ascending": false,
-                            "attribute": "_created"
-                        }
-                    ],
-                }, {
-                    id: "?id"
-                });
-            };
-
-            var res = findMapping({
-                "att": "client",
-                "t": "eq",
-                "val": value.load("client?str")
-            });
-            if (res.records.length === 0) {
-                res = findMapping({
-                    "att": "client",
-                    "t": "empty"
-                });
-            }
-            return res.records.length > 0 ? res.records[0].id : null;
+            return Records.queryOne({
+              sourceId: 'service-desk/clients-mapping-service',
+              language: 'mapping-by-client',
+              query: {
+                client: value.load("client?id")
+              }
+            }, 'mappingRef?id');
         storingType: NONE
     - id: implFirstLineSupport
       name:
@@ -326,7 +292,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("implFirstLineSupport?str") : null;
         storingType: NONE
     - id: implSecondLineSupport
@@ -338,7 +304,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("implSecondLineSupport?str") : null;
         storingType: NONE
     - id: implThirdLineSupport
@@ -350,7 +316,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("implThirdLineSupport?str") : null;
         storingType: NONE
     - id: technologist
@@ -362,7 +328,7 @@ model:
         type: SCRIPT
         config:
           fn: |-
-            var ref = value.load("mappingClientRef?str");
+            var ref = value.load("clientMappingRef?str");
             return ref ? Records.get(ref).load("technologist?str") : null;
         storingType: NONE
     - id: implementerThirdLineSupport

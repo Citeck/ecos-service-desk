@@ -36,10 +36,13 @@ columns:
       en: Letter topic
     type: TEXT
     attribute: _parent.letterTopic
-  - id: timeSpent
+  - id: duration
     name:
       ru: Затраченное время
       en: Time spent
+    type: NUMBER
+    formatter:
+      type: duration
   - id: workDescription
     name:
       ru: Описание работы
