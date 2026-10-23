@@ -1,8 +1,8 @@
 ---
 id: add-sd-journal-to-ept-issue-assocs
 name:
-  ru: Добавить журнал SD заявок к ассоциациям blocks и relates-to в типе ept-issue
-  en: Add SD requests journal to blocks and relates-to associations in ept-issue type
+  ru: Добавить журнал SD заявок к ассоциациям blocks и assoc:associatedWith в типе ept-issue
+  en: Add SD requests journal to blocks and assoc:associatedWith associations in ept-issue type
 
 target: 'model/type$ept-issue'
 
@@ -13,5 +13,5 @@ config:
       path: '$.associations[?(@.id == "blocks")].journals'
       value: uiserv/journal@sd-request-links-journal
     - op: add
-      path: '$.associations[?(@.id == "relates-to")].journals'
+      path: '$.associations[?(@.id == "assoc:associatedWith")].journals'
       value: uiserv/journal@sd-request-links-journal
